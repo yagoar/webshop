@@ -1,21 +1,15 @@
 package com.dhbw;
 
-import com.dhbw.user.Gender;
-import com.dhbw.user.User;
-import com.dhbw.user.UserDao;
-import com.mysql.jdbc.Connection;
-import org.hibernate.Transaction;
-import org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl;
+import com.dhbw.user.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Stone on 03.12.2016.
@@ -40,6 +34,18 @@ public class DBTest {
             testuser.setDateOfBirth(new Date());
             testuser.setGender(Gender.MALE);
             testuser.setPassword("mypwd");
+
+            Address address = new Address();
+            address.setCity("Stuttgart");
+            address.setStreet("Rotebühlplatz");
+            address.setNo("42");
+            address.setAddressType(AddressType.BILLING);
+            address.setZip(71180);
+
+            List<Address> addressList = new ArrayList<>();
+            addressList.add(address);
+
+            testuser.setAddresses(addressList);
 
 
 

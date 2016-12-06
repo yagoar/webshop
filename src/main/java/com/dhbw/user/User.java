@@ -30,7 +30,7 @@ public class User implements Serializable {
 
     private boolean isAdmin;
 
-    @OneToMany(targetEntity = Address.class)
+    @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
     public int getId() {
