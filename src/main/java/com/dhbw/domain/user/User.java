@@ -1,4 +1,4 @@
-package com.dhbw.user;
+package com.dhbw.domain.user;
 
 
 import javax.persistence.*;

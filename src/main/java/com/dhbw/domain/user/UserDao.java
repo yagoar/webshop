@@ -1,14 +1,11 @@
-package com.dhbw.user;
+package com.dhbw.domain.user;
 
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 
-/**
- * Created by Stone on 05.12.2016.
- */
 @Transactional
 public interface UserDao extends CrudRepository<User, Long> {
 
-    public User findByEmail(String email);
+    User findByEmail(String email);
 }

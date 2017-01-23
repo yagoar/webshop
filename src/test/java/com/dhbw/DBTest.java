@@ -1,6 +1,6 @@
 package com.dhbw;
 
-import com.dhbw.user.*;
+import com.dhbw.domain.user.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

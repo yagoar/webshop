@@ -1,4 +1,4 @@
-package com.dhbw.user;
+package com.dhbw.domain.user;
 
 /**
  * Created by Stone on 05.12.2016.
