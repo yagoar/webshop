@@ -1,12 +1,8 @@
 package com.dhbw.api;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,21 +19,25 @@ public class UserEndpoint
   @Autowired
   private UserDao userDao;
 
-  @POST
+/*  @POST
   @Path("/login")
-  public void login( String email, String password ) {
+  public void login(String email, String password ) {
 
-  }
+  }*/
 
   @PUT
   @Path( "/register" )
-  public void register(  ) {
-
+  public boolean register(User user) {
+    if(userDao.findByEmail(user.getEmail()) == null) {
+      userDao.save(user);
+      return true;
+    }
+    else return false;
   }
 
-  @GET
+/*  @GET
   @Path("/order-history")
   public void getOrderHistory() {
 
-  }
+  }*/
 }

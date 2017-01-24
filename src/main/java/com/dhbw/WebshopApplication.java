@@ -1,6 +1,7 @@
 package com.dhbw;
 
-import com.dhbw.user.UserDao;
+
+import com.dhbw.domain.user.UserDao;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

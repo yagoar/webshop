@@ -2,6 +2,7 @@ package com.dhbw.domain.user;
 
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * Created by Stone on 01.12.2016.
  */
 @Entity
+@XmlRootElement
 public class User implements Serializable {
 
     @Id
