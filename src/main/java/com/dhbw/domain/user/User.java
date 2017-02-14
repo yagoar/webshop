@@ -1,6 +1,9 @@
 package com.dhbw.domain.user;
 
 
+import com.dhbw.domain.item.ShoppingOrder;
+import com.dhbw.domain.item.ShoppingCart;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
@@ -8,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Stone on 01.12.2016.
+ * Created by jgerle on 01.12.2016.
  */
 @Entity
 @XmlRootElement
@@ -16,7 +19,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     private String email;
 
@@ -35,11 +38,17 @@ public class User implements Serializable {
     @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    public int getId() {
+    @OneToOne(targetEntity = ShoppingCart.class, cascade = CascadeType.ALL)
+    private ShoppingCart shoppingCart;
+
+    @OneToMany(targetEntity = ShoppingOrder.class, cascade = CascadeType.ALL)
+    private List<ShoppingOrder> shoppingOrders;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -98,6 +107,7 @@ public class User implements Serializable {
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }
+
     public List<Address> getAddresses() {
         return addresses;
     }
@@ -105,4 +115,12 @@ public class User implements Serializable {
     public void setAddresses(List<Address> addresses) {
         this.addresses = addresses;
     }
+
+    public ShoppingCart getShoppingCart() { return shoppingCart; }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) { this.shoppingCart = shoppingCart; }
+
+    public List<ShoppingOrder> getShoppingOrders() { return shoppingOrders; }
+
+    public void setShoppingOrders(List<ShoppingOrder> shoppingOrders) { this.shoppingOrders = shoppingOrders; }
 }

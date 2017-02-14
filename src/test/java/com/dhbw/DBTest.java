@@ -1,5 +1,6 @@
 package com.dhbw;
 
+import com.dhbw.domain.item.*;
 import com.dhbw.domain.user.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,14 +13,33 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Stone on 03.12.2016.
+ * Created by jgerle on 03.12.2016.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DBTest {
 
     @Autowired
-    public UserDao userDao;
+    private UserDao userDao;
+
+    @Autowired
+    private AddressDao addressDao;
+
+    @Autowired
+    private CategoryDao categoryDao;
+
+    @Autowired
+    private ItemDao itemDao;
+
+    @Autowired
+    private ItemSetDao itemSetDao;
+
+    @Autowired
+    private OrderDao orderDao;
+
+    @Autowired
+    private ShoppingCartDao shoppingCartDao;
+
 
     @Test
     public void TestUser() {
@@ -57,5 +77,22 @@ public class DBTest {
             System.err.println(e.getMessage());
         }
 
+    }
+
+    @Test
+    public void TestItems() {
+
+        Item item1 = new Item();
+        item1.setName("item1");
+        item1.setDescription("First test item");
+        item1.setPrice(1.99);
+
+        Category category1 = new Category();
+        category1.setName("Category1");
+        category1.setDescription("Test category");
+
+        item1.setCategory(category1);
+
+        itemDao.save(item1);
     }
 }

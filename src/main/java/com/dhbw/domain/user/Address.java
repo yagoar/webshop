@@ -6,14 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- * Created by Stone on 05.12.2016.
+ * Created by jgerle on 05.12.2016.
  */
 @Entity
 public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     private AddressType addressType;
 
@@ -25,11 +25,11 @@ public class Address {
 
     private int zip;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
