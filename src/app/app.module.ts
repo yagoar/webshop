@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import {RegisterComponent} from "./register/register.component";
 import {UserService} from "./services/user.service";
 import {routing} from "./app.routing";
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
