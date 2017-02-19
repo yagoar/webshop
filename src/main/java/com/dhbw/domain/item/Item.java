@@ -1,6 +1,7 @@
 package com.dhbw.domain.item;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by jgerle on 14.02.2017.
@@ -16,6 +17,9 @@ public class Item {
 
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
     private Category category;
+
+    @ManyToMany(targetEntity = ItemSet.class, cascade = CascadeType.ALL)
+    private List<ItemSet> itemSets;
 
     private String description;
 
@@ -40,17 +44,13 @@ public class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setName(String name) { this.name = name; }
 
     public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+    public void setCategory(Category category) { this.category = category; }
 
     public String getDescription() {
         return description;
@@ -92,4 +92,7 @@ public class Item {
         this.price = price;
     }
 
+    public List<ItemSet> getItemSets() { return itemSets; }
+
+    public void setItemSets(List<ItemSet> itemSets) { this.itemSets = itemSets; }
 }

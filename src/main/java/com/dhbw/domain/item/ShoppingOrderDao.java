@@ -8,6 +8,6 @@ import javax.transaction.Transactional;
  * Created by jgerle on 14.02.2017.
  */
 @Transactional
-public interface OrderDao extends CrudRepository<ShoppingOrder, Long> {
+public interface ShoppingOrderDao extends CrudRepository<ShoppingOrder, Long> {
 
 }

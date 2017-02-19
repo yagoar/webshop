@@ -15,6 +15,7 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     @ElementCollection
