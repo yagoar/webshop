@@ -20,6 +20,8 @@ public class Item {
 
     private String description;
 
+    private String brand;
+
     private double price;
 
     private String color;
@@ -89,4 +91,7 @@ public class Item {
         this.price = price;
     }
 
+    public String getBrand() { return brand; }
+
+    public void setBrand(String brand) { this.brand = brand; }
 }

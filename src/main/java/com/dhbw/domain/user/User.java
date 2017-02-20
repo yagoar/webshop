@@ -38,11 +38,6 @@ public class User implements Serializable {
     @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
-    @OneToOne(targetEntity = ShoppingCart.class, cascade = CascadeType.ALL)
-    private ShoppingCart shoppingCart;
-
-    @OneToMany(targetEntity = ShoppingOrder.class, cascade = CascadeType.ALL)
-    private List<ShoppingOrder> shoppingOrders;
 
     public Long getId() {
         return id;
@@ -116,11 +111,4 @@ public class User implements Serializable {
         this.addresses = addresses;
     }
 
-    public ShoppingCart getShoppingCart() { return shoppingCart; }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) { this.shoppingCart = shoppingCart; }
-
-    public List<ShoppingOrder> getShoppingOrders() { return shoppingOrders; }
-
-    public void setShoppingOrders(List<ShoppingOrder> shoppingOrders) { this.shoppingOrders = shoppingOrders; }
 }
