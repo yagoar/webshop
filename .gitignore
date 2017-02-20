@@ -20,7 +20,7 @@ target/
 /tmp
 
 # Angular 2 output
-/src/main/resources/static/
+
 
 # dependencies
 /node_modules
