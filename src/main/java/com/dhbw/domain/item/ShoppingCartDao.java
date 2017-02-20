@@ -1,5 +1,6 @@
 package com.dhbw.domain.item;
 
+import com.dhbw.domain.user.User;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
@@ -9,5 +10,8 @@ import javax.transaction.Transactional;
  */
 @Transactional
 public interface ShoppingCartDao extends CrudRepository<ShoppingCart, Long> {
+
+    ShoppingCart findByUser(User user);
+
 
 }
