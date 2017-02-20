@@ -1,0 +1,18 @@
+<nav class="navbar navbar-default" id="webshop-nav">
+   <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" (click)="isCollapsed = !isCollapsed">
+       <span class="sr-only">Toggle navigation</span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+       <span class="icon-bar"></span>
+     </button>
+   </div>
+
+   <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+     <ul class="nav navbar-nav">
+       <li><a href="#">Home</a></li>
+       <li><a href="products">Produkte</a></li>
+       <li><a href="register">Registrierung</a></li>
+     </ul>
+   </div>
+</nav>

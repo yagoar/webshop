@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {UserService} from "../services/user.service";
+
 import 'rxjs/Rx';
+import {UserService} from "../../../services/user.service";
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'register.component.html'
+    selector: 'webshop-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponent {
