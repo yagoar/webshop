@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+/* -------------- TOP HEADER --------------- */
+
+#top-header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: right;
+    background-color: whitesmoke;
+}
+
+.top-header-link {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+/* -------------- NAVIGATION BAR -------------- */
+
+.navbar-default {
+    border-width: 0;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+}
+
+#webshop-nav {
+    margin-left: -15px;
+    margin-right: -15px;
+    font-size: 16px;
+}
