@@ -25,6 +25,8 @@ public class ItemSet {
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
     private Category category;
 
+    private String pictureLink;
+
     public Long getId() {
         return id;
     }
@@ -66,4 +68,8 @@ public class ItemSet {
     public Category getCategory() { return category; }
 
     public void setCategory(Category category) { this.category = category; }
+
+    public String getPictureLink() { return pictureLink; }
+
+    public void setPictureLink(String pictureLink) { this.pictureLink = pictureLink; }
 }
