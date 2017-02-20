@@ -18,9 +18,6 @@ public class Item {
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
     private Category category;
 
-    @ManyToMany(targetEntity = ItemSet.class, cascade = CascadeType.ALL)
-    private List<ItemSet> itemSets;
-
     private String description;
 
     private double price;
@@ -92,7 +89,4 @@ public class Item {
         this.price = price;
     }
 
-    public List<ItemSet> getItemSets() { return itemSets; }
-
-    public void setItemSets(List<ItemSet> itemSets) { this.itemSets = itemSets; }
 }

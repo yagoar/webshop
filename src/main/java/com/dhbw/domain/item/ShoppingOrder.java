@@ -15,9 +15,6 @@ public class ShoppingOrder {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne( cascade = CascadeType.ALL)
-    private ShoppingCart shoppingCart;
-
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
@@ -29,14 +26,6 @@ public class ShoppingOrder {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        this.shoppingCart = shoppingCart;
     }
 
     public Date getDate() {

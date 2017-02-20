@@ -24,7 +24,7 @@ public class ShoppingCart {
     @Column(name="qty")
     private Map<Item, Integer> itemsAndQuantity;
 
-    @OneToOne(mappedBy = "shoppingCart")
+    @OneToOne(targetEntity = ShoppingOrder.class, cascade = CascadeType.ALL)
     private ShoppingOrder shoppingOrder;
 
     public Long getId() {

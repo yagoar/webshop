@@ -123,5 +123,18 @@ public class DBTest {
 
         shoppingCartDao.save(cart);
     }
+
+    @Test
+    public void ShoppingOrderTest() {
+
+        ShoppingOrder order = new ShoppingOrder();
+        User user = new User();
+        user.setLastName("ShoppingOrderUser");
+        order.setUser(user);
+        order.setDate(new Date());
+        order.setPaid(true);
+
+        shoppingOrderDao.save(order);
+    }
 }
 

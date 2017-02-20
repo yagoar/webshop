@@ -17,12 +17,6 @@ public class Category {
 
     private String description;
 
-    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
-    private List<Item> items;
-
-    @OneToMany(targetEntity = ItemSet.class, cascade = CascadeType.ALL)
-    private List<ItemSet> itemSets;
-
     public Long getId() {
         return id;
     }
@@ -46,18 +40,5 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public List<Item> getItems() { return items; }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
-
-    public List<ItemSet> getItemSets() {
-        return itemSets;
-    }
-
-    public void setItemSets(List<ItemSet> itemSets) {
-        this.itemSets = itemSets;
-    }
 }
