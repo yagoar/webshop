@@ -47,7 +47,7 @@ public class DaoTest {
         cart.addItemToCart(itemDao.findByName("Noodles grau"), 5);
         shoppingCartDao.save(cart);
         cart = shoppingCartDao.findByUser(user);
-        Assert.assertEquals(true, cart.getItemsAndQuantity().containsKey(itemDao.findByName("Noodles schwarz")));
+        Assert.assertTrue(cart.getItemsAndQuantity().containsKey(itemDao.findByName("Noodles grau")));
     }
 
     @Test
