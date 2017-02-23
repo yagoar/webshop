@@ -7,7 +7,6 @@ export class UserService {
     constructor(private http: Http) { }
 
     create(user: User) {
-        console.log(user);
         return this.http.put('/api/v1/user/register', user).map((response: Response) => response.json());
     }
 

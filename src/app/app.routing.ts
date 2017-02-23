@@ -5,19 +5,11 @@ import {HomeComponent} from "./webshop/pages/home/home.component";
 import {LoginComponent} from "./webshop/pages/login/login.component";
 import {ProductsComponent} from "./webshop/pages/products/products.component";
 import {AdminComponent} from "./admin/admin.component";
+import {WebshopModule} from "./webshop/webshop.module";
 
 const appRoutes: Routes = [
-    { path: '', component: WebshopComponent,
-    children: [
-        { path: '', component: HomeComponent },
-        { path: 'register', component: RegisterComponent },
-        { path: 'login', component: LoginComponent },
-        { path: 'products', component: ProductsComponent }
-    ]},
-    { path: 'admin', component: AdminComponent,
-        children: [
+    { path: '', redirectTo: '/shop', pathMatch: 'full' },
 
-    ]},
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
