@@ -15,12 +15,39 @@ target/
 *.iml
 *.ipr
 
+# LaTeX temporary files
+/bericht/auxiliary/*
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.lol
+*.pdf
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.bcf
+*.run.xml
+
 # compiled output
 /dist
 /tmp
-
-# Angular 2 output
-
 
 # dependencies
 /node_modules

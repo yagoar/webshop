@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[english,ngerman]{babel}
+
+%Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+\usepackage{tocvsec2}
+\usepackage{tocloft} 
+\setlength\cftparskip{-2pt}
+\setlength\cftbeforesecskip{1pt}
+\setlength\cftaftertoctitleskip{2pt}
+
+%Literaturverzeichnis
+\usepackage{csquotes}
+\usepackage[backend=biber,sorting=none]{biblatex}
+\addbibresource{studienarbeit.bib}
+
+%Anhang
+\usepackage[titletoc]{appendix}
+\newcommand*{\Appendixautorefname}{Anhang}
+
+% Seitenlayout
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,headheight=33.10503pt,headsep=15pt]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\setlength{\emergencystretch}{\textwidth}
+\renewcommand{\baselinestretch}{1.5}\normalsize
+
+%Graphiken / Tabellen
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{caption}
+\captionsetup[figure]{font=small,skip=0pt}
+\captionsetup[table]{font=small,skip=3pt}
+\usepackage{array}
+\renewcommand{\arraystretch}{1.5}
+\usepackage{framed}
+\usepackage{longtable}
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
+% Schriftart
+\usepackage{fontspec}
+\usepackage{upquote}
+\setmainfont{Arial}
+
+%Abschnitte
+\usepackage[compact]{titlesec}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{*0}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{*0}{0pt plus 2pt minus 2pt}
+\let\subsectionautorefname\sectionautorefname
+\let\subsubsectionautorefname\sectionautorefname
+
+%Abstract
+\usepackage{abstract}
+
+%Header und Footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhf{} 
+\fancyfoot[L]{ \today }
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{fancynopage}{
+	\fancyhf{} 
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{plain}{
+	\thispagestyle{fancy}
+}
+
+%Links
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+%Listings
+\usepackage{listings}
