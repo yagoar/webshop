@@ -1,0 +1,109 @@
+
+/*
+    This script generates entities for testing purposes.
+ */
+
+# Users
+INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
+VALUES ('Peter', 'Lustig', 'peter@lustig.de', 'peterspasswort', CURDATE(), TRUE);
+INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
+VALUES ('Homer', 'Simpson', 'elhomo@springfield.de', 'homer', CURDATE(), FALSE);
+INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
+VALUES ('Donald', 'Trump', 'President@usgov.com', 'usafirst', CURDATE(), FALSE);
+INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
+VALUES ('Sheldon', 'Cooper', 'shelly@gmail.com', 'theflash', CURDATE(), TRUE);
+INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
+VALUES ('Motgomery', 'Burns', 'monty@springfield.com', 'smithers', CURDATE(), TRUE);
+
+# Adresses
+INSERT INTO webshop.address (address_type, city, no, street, zip)
+VALUES (1, 'Stuttgart', 1, 'Königstr.', 70173);
+INSERT INTO webshop.address (address_type, city, no, street, zip)
+VALUES (0, 'Springfield', 742, 'Evergreen Terrace.', 00205);
+INSERT INTO webshop.address (address_type, city, no, street, zip)
+VALUES (1, 'Washington D.C', 1600, 'Pennsylvania Avenue', 20500);
+INSERT INTO webshop.address (address_type, city, no, street, zip)
+VALUES (1, 'Pasadens', 2311, 'Northern Los Robles Avenue', 91101);
+INSERT INTO webshop.address (address_type, city, no, street, zip)
+VALUES (0, 'Springfield', 1, 'Burns Mansion', 00205);
+
+# User_Address
+INSERT INTO webshop.user_addresses (user_id, addresses_id) VALUES (1, 1);
+INSERT INTO webshop.user_addresses (user_id, addresses_id) VALUES (2, 2);
+INSERT INTO webshop.user_addresses (user_id, addresses_id) VALUES (3, 3);
+INSERT INTO webshop.user_addresses (user_id, addresses_id) VALUES (4, 4);
+INSERT INTO webshop.user_addresses (user_id, addresses_id) VALUES (5, 5);
+
+# Categories
+INSERT INTO webshop.category (description, name)
+VALUES ('Stricknadeln und Zubehör', 'Stricken');
+INSERT INTO webshop.category (description, name)
+VALUES ('Häkelnadeln und Zubehör', 'Häkeln');
+INSERT INTO webshop.category (description, name)
+VALUES ('Wolle', 'Wolle');
+INSERT INTO webshop.category (description, name)
+VALUES ('Sets für Häkelprojekte', 'Häkelprojekte');
+INSERT INTO webshop.category (description, name)
+VALUES ('Sets für Strickprojekte', 'Strickprojekte');
+
+# Items
+INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
+VALUES ('Noodles grün', 'Textilgarn (Baumwolle)', 'grün', 400, 12.50, 'Stafil', 'Baumwolle', 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
+VALUES ('Noodles blau', 'Textilgarn (Baumwolle)', 'blau', 400, 12.50, 'Stafil', 'Baumwolle', 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
+VALUES ('Noodles schwarz', 'Textilgarn (Baumwolle)', 'schwarz', 400, 12.50, 'Stafil', 'Baumwolle', 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
+VALUES ('Noodles gelb', 'Textilgarn (Baumwolle)', 'gelb', 400, 12.50, 'Stafil', 'Baumwolle', 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
+VALUES ('Noodles grau', 'Textilgarn (Baumwolle)', 'grau', 400, 12.50, 'Stafil', 'Baumwolle', 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+
+# ItemSets
+INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
+VALUES ('Häkelset Kissenbezug', 'Kissenbezug blau/grün', 19.99, 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
+VALUES ('Häkelset Kissenbezug', 'Kissenbezug grau', 19.99, 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
+VALUES ('Häkelset Kissenbezug', 'Kissenbezug schwarz', 19.99, 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
+VALUES ('Häkelset Stuhlhusse', 'Husse grün', 19.99, 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
+VALUES ('Häkelset Stuhlhusse', 'Husse gelb', 19.99, 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+
+# ItemSets_Items
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (1, 1);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (1, 2);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (2, 5);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (2, 5);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (3, 3);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (3, 3);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (4, 1);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (4, 1);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (5, 4);
+INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (5, 4);
+
+# ShoppingOrders
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 0, 1);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 1, 2);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 0, 2);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 1, 3);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 0, 4);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 1, 4);
+INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 0, 5);
+
+# ShoppingCarts
+INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (1, 1);
+INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (3, 2);
+INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (NULL, 3);
+INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (5, 4);
+INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (7, 5);
+
+# Item and Quantity
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (1, 1, 1);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (1, 2, 3);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (2, 1, 4);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (3, 1, 1);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (3, 2, 5);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (4, 1, 3);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (4, 1, 4);
+INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (5, 1, 1);
