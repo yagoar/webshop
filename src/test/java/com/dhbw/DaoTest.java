@@ -8,16 +8,18 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jgerle on 20.02.2017.
  */
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class DaoTest {
 
     @Autowired
@@ -38,16 +40,31 @@ public class DaoTest {
     private ShoppingOrderDao shoppingOrderDao;
 
     @Test
-    public void UserDaoTest() {
+    public void UserAndCartDaoTest() {
 
-        User user = new User();
-        user.setLastName("Lustig");
-        user.setFirstName("Peter");
-        String generic = (new Date()).toString();
-        user.setEmail(generic + "@lustig.de");
-        userDao.save(user);
+        User user = userDao.findByEmail("peter@lustig.de");
+        ShoppingCart cart = shoppingCartDao.findByUser(user);
+        cart.addItemToCart(itemDao.findByName("Noodles grau"), 5);
+        shoppingCartDao.save(cart);
+        cart = shoppingCartDao.findByUser(user);
+        Assert.assertEquals(true, cart.getItemsAndQuantity().containsKey(itemDao.findByName("Noodles schwarz")));
+    }
 
-        Assert.assertEquals(user.getId(), userDao.findByEmail(generic + "@lustig.de").getId());
+    @Test
+    public void ItemSetDaoTest() {
+
+        List<ItemSet> setList = itemSetDao.findByPriceLessThan(20.00);
+        for(ItemSet set : setList) {
+            set.setPrice(21.99);
+            itemSetDao.save(set);
+        }
+        ItemSet cheap = itemSetDao.findByName("Kissenbezug blau/grün");
+        cheap.setPrice(9.99);
+        itemSetDao.save(cheap);
+        Assert.assertEquals(1, itemSetDao.findByPriceLessThan(20.00).size());
+
+        ItemSet green = itemSetDao.findByName("Husse grün");
+        Assert.assertTrue(green.getItems().contains(itemDao.findByName("Noodles grün")));
     }
 
 }

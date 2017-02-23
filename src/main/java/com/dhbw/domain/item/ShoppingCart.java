@@ -4,6 +4,7 @@ import com.dhbw.domain.user.User;
 
 import javax.persistence.*;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by jgerle on 14.02.2017.
@@ -18,7 +19,7 @@ public class ShoppingCart {
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @ElementCollection
+    @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="item_qty", joinColumns=@JoinColumn(name="parentEntity_id"))
     @MapKeyJoinColumn(name="item_id")
     @Column(name="qty")
@@ -57,5 +58,25 @@ public class ShoppingCart {
 
     public void setShoppingOrder(ShoppingOrder shoppingOrder) {
         this.shoppingOrder = shoppingOrder;
+    }
+
+    public void addItemToCart(Item item, Integer quantity) {
+
+        if(!isItemInCart(item)) {
+            itemsAndQuantity.put(item, quantity);
+        }
+        else {
+            itemsAndQuantity.put(item, itemsAndQuantity.get(item) + quantity);
+        }
+    }
+
+    public boolean isItemInCart(Item item) {
+        final boolean[] alreadyInCart = {false};
+        itemsAndQuantity.forEach((k, v) -> {
+            if(k.getId() == item.getId()) {
+                alreadyInCart[0] = true;
+            }
+        });
+        return alreadyInCart[0];
     }
 }

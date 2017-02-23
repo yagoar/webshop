@@ -19,7 +19,7 @@ public class ItemSet {
 
     private double price;
 
-    @ManyToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Item.class, cascade = CascadeType.ALL)
     private List<Item> items;
 
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
