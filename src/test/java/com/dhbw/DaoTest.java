@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by jgerle on 20.02.2017.
@@ -44,10 +42,19 @@ public class DaoTest {
 
         User user = userDao.findByEmail("peter@lustig.de");
         ShoppingCart cart = shoppingCartDao.findByUser(user);
-        cart.addItemToCart(itemDao.findByName("Noodles grau"), 5);
+        Item it = itemDao.findByName("Noodles grau");
+        cart.addItemToCart(it, 5);
         shoppingCartDao.save(cart);
-        cart = shoppingCartDao.findByUser(user);
-        Assert.assertTrue(cart.getItemsAndQuantity().containsKey(itemDao.findByName("Noodles grau")));
+        Assert.assertTrue(cart.isItemInCart(it));
+        cart.removeItemFromCart(it, 5);
+        shoppingCartDao.save(cart);
+        Assert.assertFalse(cart.isItemInCart(it));
+        ItemSet set = itemSetDao.findByName("Kissenbezug blau/grün");
+        cart.addItemSetToCart(set, 1);
+        shoppingCartDao.save(cart);
+        Assert.assertTrue(cart.isItemSetInCart(set));
+        cart.removeItemSetFromCart(set, 1);
+        Assert.assertFalse(cart.isItemSetInCart(set));
     }
 
     @Test
@@ -65,6 +72,19 @@ public class DaoTest {
 
         ItemSet green = itemSetDao.findByName("Husse grün");
         Assert.assertTrue(green.getItems().contains(itemDao.findByName("Noodles grün")));
+    }
+
+    @Test
+    public void ShoppingOrderDaoTest() {
+
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findByEmail("monty@springfield.com"));
+        cart.addItemToCart(itemDao.findOne(1L), 1);
+        cart.addItemSetToCart(itemSetDao.findOne(1L), 1);
+        shoppingCartDao.placeOrder(cart);
+        shoppingCartDao.save(cart);
+        Assert.assertTrue(cart.getItemsAndQuantity().isEmpty());
+        Assert.assertTrue(cart.getItemSetsAndQuantity().isEmpty());
+
     }
 
 }

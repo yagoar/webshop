@@ -72,4 +72,19 @@ public class ItemSet {
     public String getPictureLink() { return pictureLink; }
 
     public void setPictureLink(String pictureLink) { this.pictureLink = pictureLink; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ItemSet itemSet = (ItemSet) o;
+
+        return id.equals(itemSet.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }
