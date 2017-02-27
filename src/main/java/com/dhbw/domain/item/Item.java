@@ -117,4 +117,20 @@ public class Item {
     public int hashCode() {
         return id.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", description='" + description + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", color='" + color + '\'' +
+                ", weight=" + weight +
+                ", material='" + material + '\'' +
+                ", pictureLink='" + pictureLink + '\'' +
+                '}';
+    }
 }

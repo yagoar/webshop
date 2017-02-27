@@ -89,4 +89,17 @@ public class ItemSet {
     public int hashCode() {
         return id.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return "ItemSet{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", items=" + items +
+                ", category=" + category +
+                ", pictureLink='" + pictureLink + '\'' +
+                '}';
+    }
 }
