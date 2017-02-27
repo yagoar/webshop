@@ -1,9 +1,11 @@
 package com.dhbw.domain.item;
 
 import com.dhbw.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.Map;
 
@@ -21,6 +23,7 @@ public class ShoppingOrder {
     @OneToOne
     private User user;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
     private Date date;
 
     private boolean paid;
@@ -67,6 +70,7 @@ public class ShoppingOrder {
         this.paid = paid;
     }
 
+    @XmlTransient
     public User getUser() {
         return user;
     }

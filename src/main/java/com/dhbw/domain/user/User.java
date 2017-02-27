@@ -3,6 +3,7 @@ package com.dhbw.domain.user;
 
 import com.dhbw.domain.item.ShoppingOrder;
 import com.dhbw.domain.item.ShoppingCart;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -23,6 +24,7 @@ public class User implements Serializable {
 
     private String email;
 
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
     private Date dateOfBirth;
 
     private String lastName;
