@@ -3,6 +3,7 @@ package com.dhbw.domain.item;
 import com.dhbw.domain.user.User;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.Map;
 
@@ -10,6 +11,7 @@ import java.util.Map;
  * Created by jgerle on 14.02.2017.
  */
 @Entity
+@XmlRootElement
 public class ShoppingOrder {
 
     @Id

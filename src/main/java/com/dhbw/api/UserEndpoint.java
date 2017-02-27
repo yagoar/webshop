@@ -4,10 +4,16 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.dhbw.domain.item.ShoppingOrder;
+import com.dhbw.domain.item.ShoppingOrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;
+
+import java.util.List;
 
 @Component
 @Path( "/user" )
@@ -18,6 +24,8 @@ public class UserEndpoint
 
   @Autowired
   private UserDao userDao;
+  @Autowired
+  private ShoppingOrderDao shoppingOrderDao;
 
 /*  @POST
   @Path("/login")
@@ -35,9 +43,9 @@ public class UserEndpoint
     else return false;
   }
 
-/*  @GET
-  @Path("/order-history")
-  public void getOrderHistory() {
-
-  }*/
+  @GET
+  @Path("{userId}/order-history")
+  public List<ShoppingOrder> getOrderHistory(@PathParam("userId") Long userId) {
+    return shoppingOrderDao.findByUser(userDao.findOne(userId));
+  }
 }

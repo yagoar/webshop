@@ -1,12 +1,14 @@
 package com.dhbw.domain.item;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 /**
  * Created by jgerle on 14.02.2017.
  */
 @Entity
+@XmlRootElement
 public class Category {
 
     @Id
