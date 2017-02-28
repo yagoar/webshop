@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 import 'rxjs/Rx';
-import {UserService} from "../../../services/user.service";
+import {UserService} from "../../../../shared/services/user.service";
 
 @Component({
     selector: 'webshop-register',
@@ -11,7 +10,7 @@ import {UserService} from "../../../services/user.service";
 })
 
 export class RegisterComponent {
-    user: any = {};
+    model: any = {};
     loading = false;
 
     constructor(
@@ -20,11 +19,10 @@ export class RegisterComponent {
 
     register() {
         this.loading = true;
-        this.userService.create(this.user)
+        this.userService.create(this.model)
             .subscribe(
                 data => {
-                    localStorage.setItem('currentUser', JSON.stringify(this.user));
-                    this.router.navigate(['']);
+                    this.router.navigate(['/login']);
                 },
                 error => {
                     this.loading = false;

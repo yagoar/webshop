@@ -1,21 +1,115 @@
+/********************************************************
+ * Structure *
+********************************************************/
+
+
+
+/********************************************************
+ * UI Elements *
+********************************************************/
+
+/* - Buttons - */
+.btn {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+
+.btn-primary {
+    background-color: #7c0d34;
+    border-width: 0;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #b21c4c;
+}
+
+.btn-secondary {
+    background-color: #ffffff;
+    border-color: #7c0d34;
+}
+
+.btn-secondary:focus, .btn-secondary:hover {
+    background-color: #ffffff;
+    border-color: #b21c4c;
+}
+
+/* - Forms - */
+.form-control{
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    border-color: #7c0d34;
+}
+
+/* - Links - */
+a {
+    color: #7c0d34;
+}
+
+a:hover,
+a:focus{
+    text-decoration: none;
+    color: #b21c4c;
+}
+
+/* - Panels - */
+.panel {
+    border-radius: 0;
+    box-shadow: none !important;
+    border-width: 0;
+}
+
+.panel-group>.panel {
+    border-radius: 0;
+    box-shadow: none !important;
+    border-width: 0;
+}
+
+/********************************************************
+ * Logo header *
+********************************************************/
+#pattern-container {
+    background: url("./assets/pattern.png") repeat;
+}
 /* -------------- TOP HEADER --------------- */
 
 #top-header {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 20px;
     text-align: right;
-    background-color: whitesmoke;
+    background-color: rgba(56, 56, 56, 0.45);
+    border-bottom-color: rgba(124, 13, 5, 0.45);
+    border-bottom-width: 2px;
+
 }
 
 .top-header-link {
     margin-left: 10px;
     font-size: 16px;
+    color: #ffffff;
 }
 
 /* -------------- NAVIGATION BAR -------------- */
 
 .navbar-default {
+    margin-bottom: 0;
+    border-radius: 0;
     border-width: 0;
+    border-bottom-color: #7c0d34;
+    background-color: rgba(255, 255, 255, 0.45);
+
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    background-color: rgba(153, 153, 153, 0.45);
+    border-width: 0;
+
 }
 
 @media (min-width: 768px) {
@@ -34,4 +128,8 @@
     margin-left: -15px;
     margin-right: -15px;
     font-size: 16px;
+}
+
+#content-container.container-fluid {
+    padding-top: 15px;
 }

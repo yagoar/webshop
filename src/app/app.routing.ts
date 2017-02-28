@@ -1,8 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
-import {RegisterComponent} from "./webshop/pages/register/register.component";
+import {RegisterComponent} from "./webshop/pages/account/register/register.component";
 import {WebshopComponent} from "./webshop/webshop.component";
 import {HomeComponent} from "./webshop/pages/home/home.component";
-import {LoginComponent} from "./webshop/pages/login/login.component";
+import {LoginComponent} from "./webshop/pages/account/login/login.component";
 import {ProductsComponent} from "./webshop/pages/products/products.component";
 import {AdminComponent} from "./admin/admin.component";
 import {WebshopModule} from "./webshop/webshop.module";
