@@ -1,7 +1,9 @@
 package com.dhbw.domain.item;
 
 import com.dhbw.domain.user.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -10,9 +12,8 @@ import java.util.List;
  * Created by jgerle on 14.02.2017.
  */
 @Transactional
-public interface ShoppingOrderDao extends CrudRepository<ShoppingOrder, Long> {
+public interface ShoppingOrderDao extends JpaRepository<ShoppingOrder, Long> {
 
-    List<ShoppingOrder> findByUser(User user);
-
+    Page<ShoppingOrder> findByUser(User user, Pageable pageable);
 
 }

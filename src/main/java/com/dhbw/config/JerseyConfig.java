@@ -1,20 +1,18 @@
 package com.dhbw.config;
 
-import javax.ws.rs.ApplicationPath;
-
+import com.dhbw.api.items.ItemsEndpointImpl;
+import com.dhbw.api.user.UserEndpointImpl;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
-import com.dhbw.api.UserEndpoint;
+
+import javax.ws.rs.ApplicationPath;
 
 @Component
 @ApplicationPath( "api/v1")
 public class JerseyConfig extends ResourceConfig
 {
   public JerseyConfig() {
-    registerEndpoints();
+    registerClasses(UserEndpointImpl.class, ItemsEndpointImpl.class);
   }
 
-  private void registerEndpoints() {
-    register( UserEndpoint.class );
-  }
 }
