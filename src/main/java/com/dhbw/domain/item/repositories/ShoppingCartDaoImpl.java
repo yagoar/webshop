@@ -17,10 +17,10 @@ public class ShoppingCartDaoImpl implements ShoppingCartDaoCustom {
 
     @Override
     public void placeOrder(ShoppingCart cart) {
-        ShoppingOrder order = new ShoppingOrder(cart.getUser(), new Date(), cart.getItemsAndQuantity(), cart.getItemSetsAndQuantity());
+        /*ShoppingOrder order = new ShoppingOrder(cart.getUser(), new Date(), cart.getItemsAndQuantity(), cart.getItemSetsAndQuantity());
         cart.setShoppingOrder(order);
         shoppingOrderDao.save(order);
         cart.getItemsAndQuantity().clear();
-        cart.getItemSetsAndQuantity().clear();
+        cart.getItemSetsAndQuantity().clear();*/
     }
 }

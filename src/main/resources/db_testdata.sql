@@ -46,41 +46,61 @@ VALUES ('Sets für Häkelprojekte', 'Häkelprojekte');
 INSERT INTO webshop.category (description, name)
 VALUES ('Sets für Strickprojekte', 'Strickprojekte');
 
-# Items
-INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
-VALUES ('Noodles grün', 'Textilgarn (Baumwolle)', 'grün', 400, 12.50, 'Stafil', 'Baumwolle', 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
-VALUES ('Noodles blau', 'Textilgarn (Baumwolle)', 'blau', 400, 12.50, 'Stafil', 'Baumwolle', 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
-VALUES ('Noodles schwarz', 'Textilgarn (Baumwolle)', 'schwarz', 400, 12.50, 'Stafil', 'Baumwolle', 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
-VALUES ('Noodles gelb', 'Textilgarn (Baumwolle)', 'gelb', 400, 12.50, 'Stafil', 'Baumwolle', 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item (name, description, color, weight, price, brand, material, category_id, picture_link)
-VALUES ('Noodles grau', 'Textilgarn (Baumwolle)', 'grau', 400, 12.50, 'Stafil', 'Baumwolle', 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+# BaseItems
+INSERT INTO webshop.base_item (name, description, price, category_id, picture_link)
+VALUES ('Noodles grün', 'Textilgarn (Baumwolle)', 12.50, 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.base_item (name, description, price, category_id, picture_link)
+VALUES ('Noodles blau', 'Textilgarn (Baumwolle)', 12.50, 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.base_item (name, description, price, category_id, picture_link)
+VALUES ('Noodles schwarz', 'Textilgarn (Baumwolle)', 12.50, 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.base_item (name, description, price, category_id, picture_link)
+VALUES ('Noodles gelb', 'Textilgarn (Baumwolle)', 12.50, 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+INSERT INTO webshop.base_item (name, description, price, category_id, picture_link)
+VALUES ('Noodles grau', 'Textilgarn (Baumwolle)', 12.50, 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
 
-# ItemSets
-INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
-VALUES ('Häkelset Kissenbezug', 'Kissenbezug blau/grün', 19.99, 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
-VALUES ('Häkelset Kissenbezug', 'Kissenbezug grau', 19.99, 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
-VALUES ('Häkelset Kissenbezug', 'Kissenbezug schwarz', 19.99, 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
-VALUES ('Häkelset Stuhlhusse', 'Husse grün', 19.99, 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
-INSERT INTO webshop.item_set (description, name, price, category_id, picture_link)
-VALUES ('Häkelset Stuhlhusse', 'Husse gelb', 19.99, 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg');
+# SingleItem
+INSERT INTO webshop.single_item (color, weight, brand, material, id)
+VALUES ('grün', 400, 'Stafil', 'Baumwolle', 1);
+INSERT INTO webshop.single_item (color, weight, brand, material, id)
+VALUES ('blau', 400, 'Stafil', 'Baumwolle', 2);
+INSERT INTO webshop.single_item (color, weight, brand, material, id)
+VALUES ('schwarz', 400, 'Stafil', 'Baumwolle', 3);
+INSERT INTO webshop.single_item (color, weight, brand, material, id)
+VALUES ('gelb', 400, 'Stafil', 'Baumwolle', 4);
+INSERT INTO webshop.single_item (color, weight, brand, material, id)
+VALUES ('grau', 400, 'Stafil', 'Baumwolle', 5);
 
-# ItemSets_Items
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (1, 1);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (1, 2);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (2, 5);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (2, 5);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (3, 3);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (3, 3);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (4, 1);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (4, 1);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (5, 4);
-INSERT INTO webshop.item_set_items (item_set_id, items_id) VALUES (5, 4);
+# MultipleItems
+INSERT INTO webshop.multiple_item (id) VALUE (1);
+INSERT INTO webshop.multiple_item (id) VALUE (2);
+INSERT INTO webshop.multiple_item (id) VALUE (3);
+INSERT INTO webshop.multiple_item (id) VALUE (4);
+INSERT INTO webshop.multiple_item (id) VALUE (5);
+
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (1, 1);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (1, 2);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (1, 3);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (2, 4);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (2, 5);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (3, 2);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (3, 5);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (4, 1);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (4, 4);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (5, 1);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (5, 3);
+INSERT INTO webshop.multiple_item_items (multiple_item_id, items_id)
+VALUES (5, 5);
 
 # ShoppingOrders
 INSERT INTO webshop.shopping_order (date, paid, user_id) VALUES (CURDATE(), 0, 1);
@@ -98,12 +118,44 @@ INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (NULL, 3);
 INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (5, 4);
 INSERT INTO webshop.shopping_cart (shopping_order_id, user_id) VALUES (7, 5);
 
-# Item and Quantity
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (1, 1, 1);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (1, 2, 3);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (2, 1, 4);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (3, 1, 1);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (3, 2, 5);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (4, 1, 3);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (4, 1, 4);
-INSERT INTO webshop.item_qty (parent_entity_id, qty, item_id) VALUES (5, 1, 1);
+# ItemAndQunatity
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (1, 1);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (2, 3);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (3, 4);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (1, 5);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (3, 1);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (12, 4);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (4, 2);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (1, 3);
+INSERT INTO webshop.item_and_quantity (quantity, item_id)
+VALUES (3, 5);
+
+# ShoppingCartItems
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (1, 1);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (1, 2);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (2, 3);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (2, 4);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (3, 5);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (4, 6);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (4, 7);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (4, 8);
+INSERT INTO webshop.shopping_cart_items (shopping_cart_id, items_id)
+VALUES (4, 9);
+
+

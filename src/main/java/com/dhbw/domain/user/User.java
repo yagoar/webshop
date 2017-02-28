@@ -37,7 +37,7 @@ public class User implements Serializable {
 
     private boolean isAdmin;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
     private List<Address> addresses;
 
 

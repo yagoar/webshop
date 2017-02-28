@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,26 +29,16 @@ public class ShoppingOrder {
 
     private boolean paid;
 
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="order_item_qty", joinColumns=@JoinColumn(name="parentEntity_id"))
-    @MapKeyJoinColumn(name="item_id")
-    @Column(name="qty")
-    private Map<Item, Integer> itemsAndQuantity;
-
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="order_itemSet_qty", joinColumns=@JoinColumn(name="parentEntity_id"))
-    @MapKeyJoinColumn(name="itemSet_id")
-    @Column(name="qty")
-    private Map<ItemSet, Integer> itemSetsAndQuantity;
+    @OneToMany(targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
+    private List<ItemAndQuantity> items;
 
     public ShoppingOrder() {
     }
 
-    public ShoppingOrder(User user, Date date, Map<Item, Integer> items, Map<ItemSet, Integer> ItemSets) {
+    public ShoppingOrder(User user, Date date, List<ItemAndQuantity> items) {
         this.user = user;
         this.date = date;
-        this.itemsAndQuantity = items;
-        this.itemSetsAndQuantity = ItemSets;
+        this.items = items;
     }
 
     public Long getId() { return id; }
@@ -79,11 +70,11 @@ public class ShoppingOrder {
         this.user = user;
     }
 
-    public Map<Item, Integer> getItemsAndQuantity() { return itemsAndQuantity; }
+    public List<ItemAndQuantity> getItems() {
+        return items;
+    }
 
-    public void setItemsAndQuantity(Map<Item, Integer> itemsAndQuantity) { this.itemsAndQuantity = itemsAndQuantity; }
-
-    public Map<ItemSet, Integer> getItemSetsAndQuantity() { return itemSetsAndQuantity; }
-
-    public void setItemSetsAndQuantity(Map<ItemSet, Integer> itemSetsAndQuantity) { this.itemSetsAndQuantity = itemSetsAndQuantity; }
+    public void setItems(List<ItemAndQuantity> items) {
+        this.items = items;
+    }
 }

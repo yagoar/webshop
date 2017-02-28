@@ -5,6 +5,7 @@ import com.dhbw.domain.user.User;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,17 +23,8 @@ public class ShoppingCart {
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="item_qty", joinColumns=@JoinColumn(name="parentEntity_id"))
-    @MapKeyJoinColumn(name="item_id")
-    @Column(name="qty")
-    private Map<Item, Integer> itemsAndQuantity;
-
-    @ElementCollection(fetch=FetchType.EAGER)
-    @CollectionTable(name="itemSet_qty", joinColumns=@JoinColumn(name="parentEntity_id"))
-    @MapKeyJoinColumn(name="itemSet_id")
-    @Column(name="qty")
-    private Map<ItemSet, Integer> itemSetsAndQuantity;
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
+    private List<ItemAndQuantity> items;
 
     @OneToOne(targetEntity = ShoppingOrder.class)
     private ShoppingOrder shoppingOrder;
@@ -53,73 +45,17 @@ public class ShoppingCart {
         this.user = user;
     }
 
-    public Map<Item, Integer> getItemsAndQuantity() {
-        return itemsAndQuantity;
-    }
-
-    public void setItemsAndQuantity(Map<Item, Integer> itemsAndQuantity) {
-        this.itemsAndQuantity = itemsAndQuantity;
-    }
-
     public ShoppingOrder getShoppingOrder() {
         return shoppingOrder;
     }
 
     public void setShoppingOrder(ShoppingOrder shoppingOrder) { this.shoppingOrder = shoppingOrder; }
 
-    public Map<ItemSet, Integer> getItemSetsAndQuantity() { return itemSetsAndQuantity; }
-
-    public void setItemSetsAndQuantity(Map<ItemSet, Integer> itemSetsAndQuantity) { this.itemSetsAndQuantity = itemSetsAndQuantity; }
-
-    public void addItemToCart(Item item, Integer quantity) {
-
-        if(!isItemInCart(item)) {
-            itemsAndQuantity.put(item, quantity);
-        }
-        else {
-            itemsAndQuantity.put(item, itemsAndQuantity.get(item) + quantity);
-        }
+    public List<ItemAndQuantity> getItems() {
+        return items;
     }
 
-    public boolean isItemInCart(Item item) {
-        return itemsAndQuantity.containsKey(item);
-    }
-
-    public void removeItemFromCart(Item item, Integer quantity) {
-
-        int previous = itemsAndQuantity.get(item);
-        int updated = previous - quantity;
-        if(updated > 0) {
-            itemsAndQuantity.put(item, updated);
-        }
-        else {
-            itemsAndQuantity.remove(item);
-        }
-    }
-
-    public void addItemSetToCart(ItemSet set, Integer quantity) {
-
-        if(!isItemSetInCart(set)) {
-            itemSetsAndQuantity.put(set, quantity);
-        }
-        else {
-            itemSetsAndQuantity.put(set, itemSetsAndQuantity.get(set) + quantity);
-        }
-    }
-
-    public boolean isItemSetInCart(ItemSet set) {
-        return itemSetsAndQuantity.containsKey(set);
-    }
-
-    public void removeItemSetFromCart(ItemSet set, Integer quantity) {
-
-        int previous = itemSetsAndQuantity.get(set);
-        int updated = previous - quantity;
-        if(updated > 0) {
-            itemSetsAndQuantity.put(set, updated);
-        }
-        else {
-            itemSetsAndQuantity.remove(set);
-        }
+    public void setItems(List<ItemAndQuantity> items) {
+        this.items = items;
     }
 }
