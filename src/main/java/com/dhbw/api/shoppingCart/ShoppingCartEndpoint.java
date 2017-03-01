@@ -1,10 +1,6 @@
 package com.dhbw.api.shoppingCart;
 
-import com.dhbw.domain.item.BaseItem;
-import com.dhbw.domain.item.Item;
 import com.dhbw.domain.item.ItemAndQuantity;
-import com.dhbw.domain.item.ShoppingCart;
-import com.dhbw.domain.user.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
