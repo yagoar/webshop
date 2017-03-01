@@ -1,5 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
   <h2>Login</h2>
+  <alert *ngIf="loginFailed"  type="danger" dismissible="true">Login fehlgeschlagen</alert>
   <form (ngSubmit)="login()">
     <div class="form-group">
       <label for="username">E-Mail</label>

@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-webshop',
-  templateUrl: './webshop.component.html',
-  styleUrls: ['./webshop.component.css']
+  templateUrl: './webshop.component.html'
 })
 export class WebshopComponent implements OnInit {
 

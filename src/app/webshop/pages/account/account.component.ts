@@ -3,8 +3,7 @@ import {AuthenticationService} from "../../../shared/services/authentication.ser
 
 @Component({
   selector: 'webshop-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  templateUrl: './account.component.html'
 })
 export class AccountComponent implements OnInit {
 

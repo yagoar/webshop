@@ -1,19 +1,27 @@
 
-<div class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Kategorien</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
+<div>
+    <div >
+        <accordion>
+            <accordion-group #categories>
+                <div accordion-heading>
+                    Kategorien
+                    <i class="pull-right float-xs-right glyphicon"
+                       [ngClass]="{'glyphicon-chevron-down': categories?.isOpen, 'glyphicon-chevron-right': !categories?.isOpen}"></i>
+                </div>
+                Kategorien
+            </accordion-group>
+        </accordion>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Filter</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
+    <div >
+        <accordion>
+            <accordion-group #filter>
+                <div accordion-heading>
+                    Filter
+                    <i class="pull-right float-xs-right glyphicon"
+                       [ngClass]="{'glyphicon-chevron-down': filter?.isOpen, 'glyphicon-chevron-right': !filter?.isOpen}"></i>
+                </div>
+                Filter
+            </accordion-group>
+        </accordion>
     </div>
 </div>

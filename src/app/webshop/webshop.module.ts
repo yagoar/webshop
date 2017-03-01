@@ -10,7 +10,7 @@ import {TopHeaderComponent} from "./top-header/top-header.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {WebshopComponent} from "./webshop.component";
 import {FormsModule} from "@angular/forms";
-import {CollapseModule} from "ng2-bootstrap";
+import {CollapseModule, AlertModule, AccordionModule, PaginationModule} from "ng2-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
 import {AccountComponent} from "./pages/account/account.component";
 
@@ -19,7 +19,10 @@ import {AccountComponent} from "./pages/account/account.component";
     WebshopRoutingModule,
     FormsModule,
     BrowserModule,
-    CollapseModule.forRoot()
+    CollapseModule.forRoot(),
+    AlertModule.forRoot(),
+    AccordionModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   declarations: [
     routedComponents,

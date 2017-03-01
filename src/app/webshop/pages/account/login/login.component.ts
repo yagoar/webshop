@@ -5,12 +5,12 @@ import {User} from "../../../../shared/models/user";
 
 @Component({
   selector: 'webshop-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   model: any = {};
   returnUrl: string;
+  loginFailed: boolean = false;
 
   constructor(
       private route: ActivatedRoute,
@@ -27,19 +27,16 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    let user = {
-      email : "test",
-      password : "test"
-    };
-    localStorage.setItem('currentUser', JSON.stringify(user));
     this.router.navigate(['/shop/account']);
-/*    this.authenticationService.login(this.model.username, this.model.password)
+    this.authenticationService.login(this.model.username, this.model.password)
         .subscribe(
             data => {
-              this.router.navigate([this.returnUrl]);
+              this.loginFailed = false;
+              this.router.navigate(['/shop/account']);
             },
             error => {
+              this.loginFailed = true;
             });
- */
+
   }
 }

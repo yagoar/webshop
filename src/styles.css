@@ -1,8 +1,11 @@
 /********************************************************
- * Structure *
+ * All *
 ********************************************************/
 
-
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: large;
+}
 
 /********************************************************
  * UI Elements *
@@ -20,8 +23,9 @@
     border-width: 0;
 }
 
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #b21c4c;
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: #b21c4c !important;
+    outline: none !important;
 }
 
 .btn-secondary {
@@ -29,9 +33,11 @@
     border-color: #7c0d34;
 }
 
-.btn-secondary:focus, .btn-secondary:hover {
+.btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
     background-color: #ffffff;
-    border-color: #b21c4c;
+    border-color: #b21c4c !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /* - Forms - */
@@ -39,12 +45,12 @@
     -webkit-border-radius: 25px;
     -moz-border-radius: 25px;
     border-radius: 25px;
-
     box-shadow: none !important;
 }
 
-.form-control:focus {
+.form-control:focus, .form-control:active {
     border-color: #7c0d34;
+    outline: none;
 }
 
 /* - Links - */
@@ -53,9 +59,11 @@ a {
 }
 
 a:hover,
-a:focus{
+a:focus,
+a:active{
     text-decoration: none;
     color: #b21c4c;
+    outline: none;
 }
 
 /* - Panels - */
@@ -71,6 +79,15 @@ a:focus{
     border-width: 0;
 }
 
+/* - Alerts - */
+
+.alert.alert-danger.alert-dismissible {
+    border-radius: 25px;
+    border: 0;
+    background-color: rgba(178, 28, 76, 0.3);
+    color: #7c0d34;
+}
+
 /********************************************************
  * Logo header *
 ********************************************************/
@@ -82,7 +99,7 @@ a:focus{
 #top-header {
     padding: 10px 20px;
     text-align: right;
-    background-color: rgba(56, 56, 56, 0.45);
+    background-color: rgba(41, 84, 0, 0.35);
     border-bottom-color: rgba(124, 13, 5, 0.45);
     border-bottom-width: 2px;
 
@@ -90,7 +107,7 @@ a:focus{
 
 .top-header-link {
     margin-left: 10px;
-    font-size: 16px;
+    font-size: medium;
     color: #ffffff;
 }
 
@@ -100,14 +117,13 @@ a:focus{
     margin-bottom: 0;
     border-radius: 0;
     border-width: 0;
-    border-bottom-color: #7c0d34;
     background-color: rgba(255, 255, 255, 0.45);
 
 }
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-nav>li>a:focus {
-    background-color: rgba(153, 153, 153, 0.45);
+    background-color: rgba(41, 84, 0, 0.35);
     border-width: 0;
 
 }
@@ -127,9 +143,62 @@ a:focus{
 #webshop-nav {
     margin-left: -15px;
     margin-right: -15px;
-    font-size: 16px;
+    font-size: large;
 }
 
 #content-container.container-fluid {
     padding-top: 15px;
+}
+
+/********************************************************
+ * Products page *
+********************************************************/
+
+/* -------------- Item grid -------------- */
+
+.item-grid {
+    padding-top: 15px;
+}
+
+.item-info {
+    text-align: center;
+    padding: 15px;
+}
+
+.item-name {
+    text-overflow: ellipsis;
+    font-size: 1.1em;
+    width: 100%;
+    overflow: hidden
+}
+
+.item-brand {
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgb(145, 145, 145);
+}
+
+.col-xs-12>.img-responsive {
+    max-width: 60% !important;
+    padding: 15px;
+}
+
+/* -------------- Pagination -------------- */
+
+.pagination>li>a, .pagination>li>span {
+    border: 0;
+    border-radius: 25px;
+    color: #7c0d34;
+}
+
+.pagination>.active>a {
+    background-color: #7c0d34;
+}
+
+.pagination>.active>a:hover {
+    background-color: #b21c4c;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover {
+    color: #b21c4c;
 }

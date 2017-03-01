@@ -5,8 +5,7 @@ import {UserService} from "../../../../shared/services/user.service";
 
 @Component({
     selector: 'webshop-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+    templateUrl: './register.component.html'
 })
 
 export class RegisterComponent {
