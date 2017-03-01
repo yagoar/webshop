@@ -35,7 +35,7 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
 
     @Override
-    public String getItemsInCategory(String category, int page, int size) {
+    public String getItemsInCategory(String category, int page, int size, List<String> filter) {
 
         //Page<Item> items = itemDao.findByCategory(categoryDao.findByName(category), new PageRequest(page,size));
         //return Response.ok().entity(str).build();

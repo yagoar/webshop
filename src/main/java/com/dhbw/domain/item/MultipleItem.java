@@ -10,13 +10,13 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name="ID")
 public class MultipleItem extends BaseItem {
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Item.class, cascade = CascadeType.ALL)
-    private List<Item> items;
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = SingleItem.class, cascade = CascadeType.ALL)
+    private List<SingleItem> items;
 
 
-    public List<Item> getItems() { return items; }
+    public List<SingleItem> getItems() { return items; }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<SingleItem> items) {
         this.items = items;
     }
 }
