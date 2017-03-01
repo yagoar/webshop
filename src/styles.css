@@ -4,7 +4,7 @@
 
 body {
     font-family: 'Raleway', sans-serif;
-    font-size: large;
+    font-size: medium;
 }
 
 /********************************************************
@@ -186,6 +186,7 @@ a:active{
 /* -------------- Pagination -------------- */
 
 .pagination>li>a, .pagination>li>span {
+    font-size: medium;
     border: 0;
     border-radius: 25px;
     color: #7c0d34;
@@ -201,4 +202,14 @@ a:active{
 
 .pagination>li>a:focus, .pagination>li>a:hover {
     color: #b21c4c;
+}
+
+/* - Left panels - */
+
+.items-sidebar {
+    font-size: medium;
+}
+
+.sidebar-heading {
+    font-size: large;
 }

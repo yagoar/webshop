@@ -1,9 +1,9 @@
 
-<div>
+<div class="items-sidebar">
     <div >
         <accordion>
             <accordion-group #categories>
-                <div accordion-heading>
+                <div accordion-heading class="sidebar-heading">
                     Kategorien
                     <i class="pull-right float-xs-right glyphicon"
                        [ngClass]="{'glyphicon-chevron-down': categories?.isOpen, 'glyphicon-chevron-right': !categories?.isOpen}"></i>
@@ -15,7 +15,7 @@
     <div >
         <accordion>
             <accordion-group #filter>
-                <div accordion-heading>
+                <div accordion-heading class="sidebar-heading">
                     Filter
                     <i class="pull-right float-xs-right glyphicon"
                        [ngClass]="{'glyphicon-chevron-down': filter?.isOpen, 'glyphicon-chevron-right': !filter?.isOpen}"></i>
