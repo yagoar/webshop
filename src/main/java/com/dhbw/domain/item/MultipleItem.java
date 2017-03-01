@@ -7,12 +7,11 @@ import java.util.List;
  * Created by jgerle on 28.02.2017.
  */
 @Entity
-@PrimaryKeyJoinColumn(name="ID")
+@DiscriminatorValue("multiple")
 public class MultipleItem extends BaseItem {
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = SingleItem.class, cascade = CascadeType.ALL)
     private List<SingleItem> items;
-
 
     public List<SingleItem> getItems() { return items; }
 

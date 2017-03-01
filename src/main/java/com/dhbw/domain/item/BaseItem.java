@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by jgerle on 28.02.2017.
  */
 @Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 @XmlRootElement
 public class BaseItem {
 

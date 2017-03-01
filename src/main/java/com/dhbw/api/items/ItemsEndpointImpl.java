@@ -1,8 +1,6 @@
 package com.dhbw.api.items;
 
 import com.dhbw.domain.item.CategoryDao;
-import com.dhbw.domain.item.Item;
-import com.dhbw.domain.item.ItemDao;
 import com.dhbw.domain.item.ShoppingOrderDao;
 import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +14,6 @@ import java.util.List;
 
 @Component
 public class ItemsEndpointImpl implements ItemsEndpoint {
-
-    @Autowired
-    private ItemDao itemDao;
 
     @Autowired
     private CategoryDao categoryDao;

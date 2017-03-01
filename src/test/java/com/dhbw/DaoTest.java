@@ -27,40 +27,39 @@ public class DaoTest {
     @Autowired
     private CategoryDao categoryDao;
     @Autowired
-    private ItemDao itemDao;
-    @Autowired
-    private ItemSetDao itemSetDao;
-    @Autowired
     private ShoppingOrderDao orderDao;
     @Autowired
     private ShoppingCartDao shoppingCartDao;
     @Autowired
     private ShoppingOrderDao shoppingOrderDao;
+    @Autowired
+    private BaseItemDao baseItemDao;
+
 
     @Test
     public void UserAndCartDaoTest() {
 
-        /*User user = userDao.findByEmail("peter@lustig.de");
+        User user = userDao.findByEmail("peter@lustig.de");
         ShoppingCart cart = shoppingCartDao.findByUser(user);
-        Item it = itemDao.findByName("Noodles grau");
+        BaseItem it = baseItemDao.findByName("Noodles grau");
         cart.addItemToCart(it, 5);
         shoppingCartDao.save(cart);
         Assert.assertTrue(cart.isItemInCart(it));
-        cart.removeItemFromCart(it, 5);
+        cart.removeItemFromCart(it);
         shoppingCartDao.save(cart);
         Assert.assertFalse(cart.isItemInCart(it));
-        ItemSet set = itemSetDao.findByName("Kissenbezug blau/grün");
-        cart.addItemSetToCart(set, 1);
+        BaseItem it2 = baseItemDao.findByName("Kissenbezug grau");
+        cart.addItemToCart(it2, 1);
         shoppingCartDao.save(cart);
-        Assert.assertTrue(cart.isItemSetInCart(set));
-        cart.removeItemSetFromCart(set, 1);
-        Assert.assertFalse(cart.isItemSetInCart(set));*/
+        Assert.assertTrue(cart.isItemInCart(it2));
+        cart.removeItemFromCart(it2);
+        Assert.assertFalse(cart.isItemInCart(it2));
     }
 
     @Test
     public void ItemSetDaoTest() {
 
-        List<ItemSet> setList = itemSetDao.findByPriceLessThan(20.00);
+/*        List<ItemSet> setList = itemSetDao.findByPriceLessThan(20.00);
         for(ItemSet set : setList) {
             set.setPrice(21.99);
             itemSetDao.save(set);
@@ -71,7 +70,7 @@ public class DaoTest {
         Assert.assertEquals(1, itemSetDao.findByPriceLessThan(20.00).size());
 
         ItemSet green = itemSetDao.findByName("Husse grün");
-        Assert.assertTrue(green.getItems().contains(itemDao.findByName("Noodles grün")));
+        Assert.assertTrue(green.getItems().contains(itemDao.findByName("Noodles grün")));*/
     }
 
     @Test
@@ -86,5 +85,4 @@ public class DaoTest {
         Assert.assertTrue(cart.getItemSetsAndQuantity().isEmpty());*/
 
     }
-
 }

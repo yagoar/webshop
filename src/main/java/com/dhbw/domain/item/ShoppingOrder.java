@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by jgerle on 14.02.2017.
@@ -29,13 +30,13 @@ public class ShoppingOrder {
 
     private boolean paid;
 
-    @OneToMany(targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
-    private List<ItemAndQuantity> items;
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
+    private Set<ItemAndQuantity> items;
 
     public ShoppingOrder() {
     }
 
-    public ShoppingOrder(User user, Date date, List<ItemAndQuantity> items) {
+    public ShoppingOrder(User user, Date date, Set<ItemAndQuantity> items) {
         this.user = user;
         this.date = date;
         this.items = items;
@@ -70,11 +71,11 @@ public class ShoppingOrder {
         this.user = user;
     }
 
-    public List<ItemAndQuantity> getItems() {
+    public Set<ItemAndQuantity> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemAndQuantity> items) {
+    public void setItems(Set<ItemAndQuantity> items) {
         this.items = items;
     }
 }

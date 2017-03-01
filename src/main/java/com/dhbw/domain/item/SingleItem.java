@@ -1,5 +1,6 @@
 package com.dhbw.domain.item;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -7,7 +8,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
  * Created by jgerle on 28.02.2017.
  */
 @Entity
-@PrimaryKeyJoinColumn(name="ID")
+@DiscriminatorValue("single")
 public class SingleItem extends BaseItem {
 
     private String brand;
