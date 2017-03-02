@@ -34,6 +34,7 @@ body {
 }
 
 .btn-secondary:focus, .btn-secondary:hover, .btn-secondary:active {
+    color: #b21c4c;
     background-color: #ffffff;
     border-color: #b21c4c !important;
     outline: none !important;
@@ -94,7 +95,7 @@ a:active{
 #pattern-container {
     background: url("./assets/pattern.png") repeat;
 }
-/* -------------- TOP HEADER --------------- */
+/* - Top header - */
 
 #top-header {
     padding: 10px 20px;
@@ -105,19 +106,23 @@ a:active{
 
 }
 
+#top-header>div {
+    padding: 0;
+}
+
 .top-header-link {
     margin-left: 10px;
-    font-size: medium;
     color: #ffffff;
 }
 
-/* -------------- NAVIGATION BAR -------------- */
+/* - Navigation bar - */
 
 .navbar-default {
     margin-bottom: 0;
     border-radius: 0;
     border-width: 0;
     background-color: rgba(255, 255, 255, 0.45);
+    font-size: large;
 
 }
 
@@ -143,7 +148,6 @@ a:active{
 #webshop-nav {
     margin-left: -15px;
     margin-right: -15px;
-    font-size: large;
 }
 
 #content-container.container-fluid {
@@ -154,7 +158,7 @@ a:active{
  * Products page *
 ********************************************************/
 
-/* -------------- Item grid -------------- */
+/* - Item grid - */
 
 .item-grid {
     padding-top: 15px;
@@ -167,7 +171,6 @@ a:active{
 
 .item-name {
     text-overflow: ellipsis;
-    font-size: 1.1em;
     width: 100%;
     overflow: hidden
 }
@@ -178,18 +181,19 @@ a:active{
     color: rgb(145, 145, 145);
 }
 
-.col-xs-12>.img-responsive {
+
+.item-grid .col-xs-12>.img-responsive {
     max-width: 60% !important;
     padding: 15px;
 }
 
-/* -------------- Pagination -------------- */
+/* - Pagination - */
 
 .pagination>li>a, .pagination>li>span {
-    font-size: medium;
     border: 0;
     border-radius: 25px;
     color: #7c0d34;
+    font-size: medium;
 }
 
 .pagination>.active>a {
@@ -206,10 +210,12 @@ a:active{
 
 /* - Left panels - */
 
-.items-sidebar {
-    font-size: medium;
+.items-sidebar ul{
+    list-style-type: none;
+}
+.items-sidebar>ul{
+    padding:0;
 }
 
 .sidebar-heading {
-    font-size: large;
 }

@@ -1,6 +1,6 @@
 <div class="col-md-4 col-md-offset-4">
   <h2>Login</h2>
-  <alert *ngIf="loginFailed"  type="danger" dismissible="true">Login fehlgeschlagen</alert>
+  <alert *ngIf="loginFailed"  type="danger" dismissible="true" (click)="loginFailed = false">Login fehlgeschlagen</alert>
   <form (ngSubmit)="login()">
     <div class="form-group">
       <label for="username">E-Mail</label>
@@ -14,5 +14,5 @@
       <button [disabled]="loading" class="btn btn-primary">Anmelden</button>
     </div>
   </form>
-  <p>Sie haben bereits ein Konto? <a href="#/shop/register"><button class="btn btn-secondary">Registrieren</button></a></p>
+  <p>Sie haben noch kein Konto? <a href="#/shop/register"><button class="btn btn-secondary">Registrieren</button></a></p>
 </div>

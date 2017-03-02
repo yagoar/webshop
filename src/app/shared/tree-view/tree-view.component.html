@@ -1,0 +1,20 @@
+<ul>
+  <li *ngFor="let cat of categories">
+
+    <div *ngIf="cat.categories.length > 0">
+
+      <span class="iconButton" (click)="cat.toggle()">{{cat.getIcon()}}</span> {{ cat.name }}
+
+      <div *ngIf="cat.expanded">
+
+        <tree-view [categories]="cat.categories"></tree-view>
+
+      </div>
+    </div>
+
+    <div *ngIf="cat.categories.length == 0">
+      {{ cat.name }}
+    </div>
+
+  </li>
+</ul>

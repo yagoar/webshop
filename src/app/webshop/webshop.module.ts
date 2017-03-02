@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import {routedComponents, WebshopRoutingModule} from "./webshop.routing";
 import {HeaderComponent} from "../shared/header/header.component";
 import {MenuComponent} from "./menu/menu.component";
-import {NavigationComponent} from "./pages/products/products-sidebar/products-sidebar.component";
+import {ItemsSidebarComponent} from "./pages/items/item-sidebar/item-sidebar.component";
 import {LoginComponent} from "./pages/account/login/login.component";
-import {ProductsComponent} from "./pages/products/products.component";
-import {ProductGridComponent} from "./pages/products/product-grid/product-grid.component";
+import { ItemsComponent} from "./pages/items/items.component";
+import { ItemsGridComponent} from "./pages/items/item-grid/item-grid.component";
 import {TopHeaderComponent} from "./top-header/top-header.component";
 import {ShoppingCartComponent} from "./shopping-cart/shopping-cart.component";
 import {WebshopComponent} from "./webshop.component";
@@ -13,9 +13,12 @@ import {FormsModule} from "@angular/forms";
 import {CollapseModule, AlertModule, AccordionModule, PaginationModule} from "ng2-bootstrap";
 import {BrowserModule} from "@angular/platform-browser";
 import {AccountComponent} from "./pages/account/account.component";
+import {CommonModule} from "@angular/common";
+import {TreeViewComponent} from "../shared/tree-view/tree-view.component";
 
 @NgModule({
   imports: [
+    CommonModule,
     WebshopRoutingModule,
     FormsModule,
     BrowserModule,
@@ -29,13 +32,14 @@ import {AccountComponent} from "./pages/account/account.component";
     WebshopComponent,
     HeaderComponent,
     MenuComponent,
-    NavigationComponent,
+    ItemsSidebarComponent,
     LoginComponent,
-    ProductsComponent,
-    ProductGridComponent,
+    ItemsComponent,
+    ItemsGridComponent,
     TopHeaderComponent,
     ShoppingCartComponent,
-    AccountComponent
+    AccountComponent,
+    TreeViewComponent
   ]
 })
 export class WebshopModule { }

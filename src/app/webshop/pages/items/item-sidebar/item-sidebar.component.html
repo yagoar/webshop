@@ -1,0 +1,38 @@
+<div class="items-sidebar">
+    <div >
+        <accordion>
+            <accordion-group #categoriesAcc id="categories-acc" [isOpen]="categoriesIsOpen">
+                <div accordion-heading class="sidebar-heading">
+                    Kategorien
+                    <i class="pull-right float-xs-right glyphicon"
+                       [ngClass]="{'glyphicon-chevron-down': categoriesAcc?.isOpen, 'glyphicon-chevron-right': !categoriesAcc?.isOpen}"></i>
+                </div>
+                <tree-view [categories]="categories"></tree-view>
+            </accordion-group>
+        </accordion>
+    </div>
+    <div >
+        <accordion>
+            <accordion-group #filterAcc>
+                <div accordion-heading class="sidebar-heading">
+                    Filter
+                    <i class="pull-right float-xs-right glyphicon"
+                       [ngClass]="{'glyphicon-chevron-down': filterAcc?.isOpen, 'glyphicon-chevron-right': !filterAcc?.isOpen}"></i>
+                </div>
+                <ul>
+                    <li *ngFor="let filter of filters">
+                        <span class="iconButton" (click)="filter.toggle()">{{filter.getIcon()}}</span> {{filter.name}}
+
+                        <div *ngIf="filter.expanded">
+                            <ul>
+                                <li *ngFor="let option of filter.options">
+                                    <input type="checkbox"/> {{option}}
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </accordion-group>
+        </accordion>
+    </div>
+</div>
