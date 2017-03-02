@@ -1,8 +1,6 @@
 package com.dhbw.domain.user;
 
 
-import com.dhbw.domain.item.ShoppingOrder;
-import com.dhbw.domain.item.ShoppingCart;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
@@ -20,7 +18,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+    private Long u_id;
 
     private String email;
 
@@ -41,12 +39,12 @@ public class User implements Serializable {
     private List<Address> addresses;
 
 
-    public Long getId() {
-        return id;
+    public Long getU_id() {
+        return u_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setU_id(Long u_id) {
+        this.u_id = u_id;
     }
 
     public String getEmail() {

@@ -13,7 +13,12 @@ public class BaseItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long i_id;
+
+    @Column(name = "dtype", insertable = false, updatable = false)
+    private String dtype;
+
+    private int articleNumber;
 
     private String name;
 
@@ -27,11 +32,11 @@ public class BaseItem {
     private String pictureLink;
 
     public Long getId() {
-        return id;
+        return i_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.i_id = id;
     }
 
     public String getName() {
@@ -72,5 +77,36 @@ public class BaseItem {
 
     public void setPictureLink(String pictureLink) {
         this.pictureLink = pictureLink;
+    }
+
+    public String getDtype() {
+        return dtype;
+    }
+
+    public void setDtype(String dtype) {
+        this.dtype = dtype;
+    }
+
+    public int getArticleNumber() {
+        return articleNumber;
+    }
+
+    public void setArticleNumber(int articleNumber) {
+        this.articleNumber = articleNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        BaseItem baseItem = (BaseItem) o;
+
+        return i_id.equals(baseItem.i_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return i_id.hashCode();
     }
 }

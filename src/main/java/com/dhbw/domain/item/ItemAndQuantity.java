@@ -12,19 +12,19 @@ public class ItemAndQuantity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long iq_id;
 
     @OneToOne(fetch = FetchType.EAGER)
     private BaseItem item;
 
     private int quantity;
 
-    public Long getId() {
-        return id;
+    public Long getIq_id() {
+        return iq_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIq_id(Long iq_id) {
+        this.iq_id = iq_id;
     }
 
     public BaseItem getItem() {

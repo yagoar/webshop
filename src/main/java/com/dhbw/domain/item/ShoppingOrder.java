@@ -7,8 +7,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -20,7 +18,7 @@ public class ShoppingOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long so_id;
 
     @OneToOne
     private User user;
@@ -42,9 +40,9 @@ public class ShoppingOrder {
         this.items = items;
     }
 
-    public Long getId() { return id; }
+    public Long getSo_id() { return so_id; }
 
-    public void setId(Long id) { this.id = id; }
+    public void setSo_id(Long so_id) { this.so_id = so_id; }
 
     public Date getDate() {
         return date;

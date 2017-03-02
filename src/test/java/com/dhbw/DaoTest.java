@@ -57,32 +57,37 @@ public class DaoTest {
     }
 
     @Test
-    public void ItemSetDaoTest() {
+    public void BaseItemDaoTest() {
 
-/*        List<ItemSet> setList = itemSetDao.findByPriceLessThan(20.00);
-        for(ItemSet set : setList) {
-            set.setPrice(21.99);
-            itemSetDao.save(set);
+        List<BaseItem> itemlist = baseItemDao.findByPriceLessThan(20.00);
+        for(BaseItem item : itemlist) {
+            item.setPrice(21.99);
+            baseItemDao.save(item);
         }
-        ItemSet cheap = itemSetDao.findByName("Kissenbezug blau/grün");
+        BaseItem cheap = baseItemDao.findByName("Kissenbezug blau/grün");
         cheap.setPrice(9.99);
-        itemSetDao.save(cheap);
-        Assert.assertEquals(1, itemSetDao.findByPriceLessThan(20.00).size());
+        baseItemDao.save(cheap);
+        Assert.assertEquals(1, baseItemDao.findByPriceLessThan(20.00).size());
 
-        ItemSet green = itemSetDao.findByName("Husse grün");
-        Assert.assertTrue(green.getItems().contains(itemDao.findByName("Noodles grün")));*/
+        List<BaseItem> singleList = baseItemDao.findByDtype("single");
+        for(BaseItem single : singleList) {
+            Assert.assertTrue(single.getDtype().equals("single"));
+        }
+
+        List<BaseItem> categoryList = baseItemDao.findByCategory(categoryDao.findByName("Häkeln"));
+        for(BaseItem item : categoryList) {
+            Assert.assertTrue(item.getCategory().getName().equals("Häkeln"));
+        }
     }
 
     @Test
     public void ShoppingOrderDaoTest() {
 
-/*        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findByEmail("monty@springfield.com"));
-        cart.addItemToCart(itemDao.findOne(1L), 1);
-        cart.addItemSetToCart(itemSetDao.findOne(1L), 1);
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findByEmail("monty@springfield.com"));
+        cart.addItemToCart(baseItemDao.findOne(1L), 1);
+        cart.addItemToCart(baseItemDao.findOne(9L), 1);
         shoppingCartDao.placeOrder(cart);
         shoppingCartDao.save(cart);
-        Assert.assertTrue(cart.getItemsAndQuantity().isEmpty());
-        Assert.assertTrue(cart.getItemSetsAndQuantity().isEmpty());*/
-
+        Assert.assertTrue(cart.getItems().isEmpty());
     }
 }

@@ -4,9 +4,6 @@ import com.dhbw.domain.user.User;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -18,7 +15,7 @@ public class ShoppingCart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long sc_id;
 
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
@@ -29,12 +26,12 @@ public class ShoppingCart {
     @OneToOne(targetEntity = ShoppingOrder.class)
     private ShoppingOrder shoppingOrder;
 
-    public Long getId() {
-        return id;
+    public Long getSc_id() {
+        return sc_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setSc_id(Long sc_id) {
+        this.sc_id = sc_id;
     }
 
     public User getUser() {
@@ -63,7 +60,7 @@ public class ShoppingCart {
 
         boolean result = false;
         for(ItemAndQuantity entry : items) {
-            if(entry.getItem().getId() == item.getId()) result = true;
+            if(entry.getItem().equals(item)) result = true;
         }
         return result;
     }
@@ -78,7 +75,7 @@ public class ShoppingCart {
         }
         else {
             for(ItemAndQuantity entry : items) {
-                if (entry.getItem().getId() == item.getId()) {
+                if (entry.getItem().equals(item)) {
                     entry.setQuantity(entry.getQuantity() + quantity);
                 }
             }
@@ -89,7 +86,7 @@ public class ShoppingCart {
 
         ItemAndQuantity toRemove = new ItemAndQuantity();
         for(ItemAndQuantity entry : items) {
-            if (entry.getItem().getId() == item.getId()) {
+            if (entry.getItem().equals(item)) {
                 toRemove = entry;
             }
         }
@@ -99,7 +96,7 @@ public class ShoppingCart {
     public void reduceQuantityOfItemInCart(BaseItem item, int quantity) {
 
         for(ItemAndQuantity entry : items) {
-            if (entry.getItem().getId() == item.getId()) {
+            if (entry.getItem().equals(item)) {
                 entry.setQuantity(entry.getQuantity() - quantity);
             }
         }

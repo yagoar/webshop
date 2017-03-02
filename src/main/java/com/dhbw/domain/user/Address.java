@@ -15,7 +15,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long a_id;
 
     private AddressType addressType;
 
@@ -27,12 +27,12 @@ public class Address {
 
     private int zip;
 
-    public Long getId() {
-        return id;
+    public Long getA_id() {
+        return a_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setA_id(Long a_id) {
+        this.a_id = a_id;
     }
 
     public AddressType getAddressType() {
