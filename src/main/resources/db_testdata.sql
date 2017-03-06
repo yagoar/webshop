@@ -5,15 +5,15 @@
 
 # Users
 INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Peter', 'Lustig', 'peter@lustig.de', 'peterspasswort', CURDATE(), TRUE);
+VALUES ('Peter', 'Lustig', 'peter@lustig.de', '$2a$10$aU9jmhzy7jsnIwQX6SnDh.py//24IDsSMLN8BluV4Q/Xpx4pmH/S6', CURDATE(), TRUE);
 INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Homer', 'Simpson', 'elhomo@springfield.de', 'homer', CURDATE(), FALSE);
+VALUES ('Homer', 'Simpson', 'elhomo@springfield.de', '$2a$10$7E2ydJohkIX1k8xqJbR5JeQynNmlh/Yp3rr6KBeCeopHPo3uHC9fq', CURDATE(), FALSE);
 INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Donald', 'Trump', 'President@usgov.com', 'usafirst', CURDATE(), FALSE);
+VALUES ('Donald', 'Trump', 'President@usgov.com', '$2a$10$qAGCerOSKAolFsdgs/f67OYn9cDBK6U9dXKp8NcetCLSpG9EdKejy', CURDATE(), FALSE);
 INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Sheldon', 'Cooper', 'shelly@gmail.com', 'theflash', CURDATE(), TRUE);
+VALUES ('Sheldon', 'Cooper', 'shelly@gmail.com', '$2a$10$2bOJnU.NpqOaQxxjj8NA2.gAeMmEP6x6G4ybvYw6dHzeH4bF2XKG6', CURDATE(), TRUE);
 INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Motgomery', 'Burns', 'monty@springfield.com', 'smithers', CURDATE(), TRUE);
+VALUES ('Motgomery', 'Burns', 'monty@springfield.com', '$2a$10$PYmXSNe0MoivzOQLR1WLJuyF9dPvEYrtUkfpfQsfo98COjXl7PW4q', CURDATE(), TRUE);
 
 # Adresses
 INSERT INTO webshop.address (address_type, city, no, street, zip)

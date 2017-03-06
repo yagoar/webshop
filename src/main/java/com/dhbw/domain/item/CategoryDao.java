@@ -1,5 +1,6 @@
 package com.dhbw.domain.item;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
@@ -8,7 +9,7 @@ import javax.transaction.Transactional;
  * Created by jgerle on 14.02.2017.
  */
 @Transactional
-public interface CategoryDao extends CrudRepository<Category, Long> {
+public interface CategoryDao extends JpaRepository<Category, Long> {
 
     Category findByName(String name);
 }

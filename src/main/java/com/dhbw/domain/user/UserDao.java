@@ -1,11 +1,13 @@
 package com.dhbw.domain.user;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
 @Transactional
-public interface UserDao extends CrudRepository<User, Long> {
+@Component
+public interface UserDao extends JpaRepository<User, Long> {
 
     User findByEmail(String email);
 }

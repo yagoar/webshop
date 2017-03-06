@@ -1,5 +1,6 @@
 package com.dhbw.api.user;
 
+import com.dhbw.domain.user.ResetPassword;
 import com.dhbw.domain.user.User;
 
 import javax.ws.rs.*;
@@ -19,9 +20,13 @@ public interface UserEndpoint {
     @Path( "register" )
     Response register(User user);
 
-    @POST
+    @PUT
     @Path( "login" )
     Response login(User user);
+
+    @POST
+    @Path( "profile/password" )
+    Response resetPassword(ResetPassword resetPassword);
 
     @GET
     @Path("{userId}/order-history")
