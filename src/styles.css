@@ -210,12 +210,15 @@ a:active{
 
 /* - Left panels - */
 
-.items-sidebar ul{
-    list-style-type: none;
-}
-.items-sidebar>ul{
-    padding:0;
+.toggle-list .node-icon>i {
+    width: 16px;
 }
 
-.sidebar-heading {
+.toggle-list ul {
+    padding-left: 30px;
+    list-style-type: none;
+}
+
+.toggle-list>ul {
+    padding-left:0;
 }

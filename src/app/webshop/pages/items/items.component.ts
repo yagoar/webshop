@@ -120,7 +120,13 @@ export class ItemsComponent implements OnInit {
           {
             name : "Nadeln",
             description :"desc",
-            categories : []
+            categories : [
+              {
+                name : "Knöpfe",
+                description :"desc",
+                categories : []
+              }
+            ]
           }
         ]
       },

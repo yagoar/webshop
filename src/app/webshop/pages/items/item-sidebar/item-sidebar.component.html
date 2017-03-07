@@ -7,7 +7,7 @@
                     <i class="pull-right float-xs-right glyphicon"
                        [ngClass]="{'glyphicon-chevron-down': categoriesAcc?.isOpen, 'glyphicon-chevron-right': !categoriesAcc?.isOpen}"></i>
                 </div>
-                <tree-view [categories]="categories"></tree-view>
+                <tree-view class="toggle-list"[categories]="categories"></tree-view>
             </accordion-group>
         </accordion>
     </div>
@@ -19,19 +19,22 @@
                     <i class="pull-right float-xs-right glyphicon"
                        [ngClass]="{'glyphicon-chevron-down': filterAcc?.isOpen, 'glyphicon-chevron-right': !filterAcc?.isOpen}"></i>
                 </div>
-                <ul>
-                    <li *ngFor="let filter of filters">
-                        <span class="iconButton" (click)="filter.toggle()">{{filter.getIcon()}}</span> {{filter.name}}
+                <div class="toggle-list">
+                    <ul>
+                        <li *ngFor="let filter of filters">
 
-                        <div *ngIf="filter.expanded">
-                            <ul>
-                                <li *ngFor="let option of filter.options">
-                                    <input type="checkbox"/> {{option}}
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
+                            <span class="iconButton" (click)="filter.toggle()">{{filter.getIcon()}}</span> {{filter.name}}
+
+                            <div *ngIf="filter.expanded">
+                                <ul>
+                                    <li *ngFor="let option of filter.options">
+                                        <input type="checkbox"/> {{option}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </accordion-group>
         </accordion>
     </div>

@@ -11,6 +11,8 @@ export class TreeCategory{
     }
 
     toggle(){
+
+        console.log(this.name);
         this.expanded = !this.expanded;
     }
 

@@ -1,9 +1,12 @@
 <ul>
   <li *ngFor="let cat of categories">
 
-    <div *ngIf="cat.categories.length > 0">
-
-      <span class="iconButton" (click)="cat.toggle()">{{cat.getIcon()}}</span> {{ cat.name }}
+    <div (click)="cat.toggle()" *ngIf="cat.categories.length > 0">
+      <span class="node-icon">
+        <i *ngIf="!cat.expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
+        <i *ngIf="cat.expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
+      </span>
+      <span class="node-name">{{ cat.name }}</span>
 
       <div *ngIf="cat.expanded">
 
@@ -13,7 +16,7 @@
     </div>
 
     <div *ngIf="cat.categories.length == 0">
-      {{ cat.name }}
+      <div class="node-name">{{ cat.name }}</div>
     </div>
 
   </li>
