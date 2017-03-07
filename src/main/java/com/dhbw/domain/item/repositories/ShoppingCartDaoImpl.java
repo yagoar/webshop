@@ -4,12 +4,14 @@ import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.item.ShoppingOrder;
 import com.dhbw.domain.item.ShoppingOrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 
 /**
  * Created by jgerle on 26.02.2017.
  */
+@Repository
 public class ShoppingCartDaoImpl implements ShoppingCartDaoCustom {
 
     @Autowired

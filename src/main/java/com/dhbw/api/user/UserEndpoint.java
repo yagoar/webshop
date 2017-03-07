@@ -7,7 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path( "user" )
+
 @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface UserEndpoint {

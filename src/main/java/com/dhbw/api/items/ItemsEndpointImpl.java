@@ -4,15 +4,14 @@ import com.dhbw.domain.item.CategoryDao;
 import com.dhbw.domain.item.ShoppingOrderDao;
 import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.DefaultValue;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Component
+@Path( "items" )
 public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Autowired

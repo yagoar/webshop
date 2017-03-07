@@ -1,32 +1,57 @@
 package com.dhbw;
 
-
-import com.dhbw.config.JerseyConfig;
-import org.glassfish.jersey.test.JerseyTest;
+import com.dhbw.domain.user.User;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.embedded.LocalServerPort;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.ws.rs.core.Application;
+import static io.restassured.RestAssured.given;
 
 /**
  * Created by jgerle on 06.03.2017.
  */
-public class RESTTest extends JerseyTest {
 
-    @Override
-    protected Application configure() {
-        ApplicationContext context = new AnnotationConfigApplicationContext(TestConfig.class);
-        return new JerseyConfig()
-                .property("contextConfig", context);
+@RunWith(SpringRunner.class)
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT, classes=WebshopApplication.class)
+public class RESTTest {
+
+    @LocalServerPort
+    private int port;
+
+    @Before
+    public void setUp() {
+        RestAssured.port = this.port;
+        RestAssured.basePath = "/api/v1/";
+        RestAssured.baseURI = "http://localhost";
     }
 
     @Test
-    public void RegisterUserTest() {
+    public void LoginUserTest() {
 
-        String test = target("test").request().get(String.class);
-        Assert.assertEquals(test, "test");
+        User testUser = new User();
+        testUser.setEmail("peter@lustig.de");
+        testUser.setPassword("peterspasswort");
+
+        String login = given()
+                    .contentType(ContentType.JSON)
+                    .body(testUser)
+                .when()
+                    .put("user/login")
+                .then()
+                    .statusCode(200)
+                    .extract().response().asString();
+
+        Assert.assertEquals("Login erfolgreich", login);
     }
 
 

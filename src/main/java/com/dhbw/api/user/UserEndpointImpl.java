@@ -11,9 +11,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 @Component
+@Path( "user" )
 public class UserEndpointImpl implements UserEndpoint {
 
     @Autowired
