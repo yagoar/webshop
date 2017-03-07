@@ -53,11 +53,6 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response getProfileInfo(Long userId) {
-        return null;
-    }
-
-    @Override
     public Response resetPassword(Long userId, ResetPassword resetPassword) {
         if (resetPassword.getNewPassword() == null ||  ("").equals(resetPassword.getNewPassword())) return Response.status(Response.Status.BAD_REQUEST)
                 .entity("Neues Passwort darf nicht leer sein").build();
@@ -74,14 +69,6 @@ public class UserEndpointImpl implements UserEndpoint {
     @Override
     public Response getUserInfo(Long userId) {
         return null;
-    }
-
-    @Override
-    public Response getOrderHistory(Long userId, int page, int size) {
-
-        Page<ShoppingOrder> orderHistory = shoppingOrderDao.findByUser(userDao.findOne(userId), new PageRequest(page, size));
-        return Response.ok().entity(orderHistory).build();
-
     }
 
 }
