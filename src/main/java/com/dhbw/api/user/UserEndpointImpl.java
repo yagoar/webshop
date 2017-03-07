@@ -72,6 +72,11 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
+    public Response getUserInfo(Long userId) {
+        return null;
+    }
+
+    @Override
     public Response getOrderHistory(Long userId, int page, int size) {
 
         Page<ShoppingOrder> orderHistory = shoppingOrderDao.findByUser(userDao.findOne(userId), new PageRequest(page, size));
