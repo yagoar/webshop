@@ -53,8 +53,13 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response resetPassword(ResetPassword resetPassword) {
-        if (resetPassword.getNewPassword() == null || resetPassword.getNewPassword() != "") return Response.status(Response.Status.BAD_REQUEST)
+    public Response getProfileInfo(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Response resetPassword(Long userId, ResetPassword resetPassword) {
+        if (resetPassword.getNewPassword() == null ||  ("").equals(resetPassword.getNewPassword())) return Response.status(Response.Status.BAD_REQUEST)
                 .entity("Neues Passwort darf nicht leer sein").build();
         else if (BCrypt.checkpw(resetPassword.getPreviousPassword(), userDao.findByEmail(resetPassword.getEmail()).getPassword())) {
                     User user = userDao.findByEmail(resetPassword.getEmail());
