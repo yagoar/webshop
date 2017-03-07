@@ -2,7 +2,6 @@ package com.dhbw.domain.item.repositories;
 
 import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.item.ShoppingOrder;
-import com.dhbw.domain.item.ShoppingOrderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

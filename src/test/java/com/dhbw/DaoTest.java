@@ -2,6 +2,10 @@ package com.dhbw;
 
 
 import com.dhbw.domain.item.*;
+import com.dhbw.domain.item.repositories.BaseItemDao;
+import com.dhbw.domain.item.repositories.CategoryDao;
+import com.dhbw.domain.item.repositories.ShoppingCartDao;
+import com.dhbw.domain.item.repositories.ShoppingOrderDao;
 import com.dhbw.domain.user.AddressDao;
 import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;

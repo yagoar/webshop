@@ -35,7 +35,7 @@ public interface ShoppingCartEndpoint {
      * Deletes an item from the shopping cart
      *
      * @param userId id of the user
-     * @param itemId
+     * @param itemId id of the item
      * @return Response object with result of the operation
      */
     @DELETE

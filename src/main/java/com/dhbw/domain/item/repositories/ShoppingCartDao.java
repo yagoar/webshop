@@ -1,6 +1,6 @@
-package com.dhbw.domain.item;
+package com.dhbw.domain.item.repositories;
 
-import com.dhbw.domain.item.repositories.ShoppingCartDaoCustom;
+import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.user.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

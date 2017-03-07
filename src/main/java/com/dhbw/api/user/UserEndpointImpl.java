@@ -1,14 +1,12 @@
 package com.dhbw.api.user;
 
-import com.dhbw.domain.item.ShoppingOrder;
-import com.dhbw.domain.item.ShoppingOrderDao;
+import com.dhbw.domain.item.repositories.ShoppingOrderDao;
+import com.dhbw.domain.user.Address;
 import com.dhbw.domain.user.ResetPassword;
 import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
@@ -68,6 +66,16 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Override
     public Response getUserInfo(Long userId) {
+        return null;
+    }
+
+    @Override
+    public Response updateBillingAddress(Long userId, Address billingAddr) {
+        return null;
+    }
+
+    @Override
+    public Response updateShippingAddress(Long userId, Address shippingAddr) {
         return null;
     }
 
