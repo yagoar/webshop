@@ -15,6 +15,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {AccountComponent} from "./pages/account/account.component";
 import {CommonModule} from "@angular/common";
 import {TreeViewComponent} from "../shared/tree-view/tree-view.component";
+import {TreeCategoryComponent} from "../shared/tree-view/tree-category";
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import {TreeViewComponent} from "../shared/tree-view/tree-view.component";
     TopHeaderComponent,
     ShoppingCartComponent,
     AccountComponent,
-    TreeViewComponent
+    TreeViewComponent,
+    TreeCategoryComponent
   ]
 })
 export class WebshopModule { }

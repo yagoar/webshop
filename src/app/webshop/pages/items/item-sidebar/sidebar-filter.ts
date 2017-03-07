@@ -14,12 +14,4 @@ export class SideBarFilter {
         this.expanded = !this.expanded;
     }
 
-    getIcon(){
-
-        if(this.expanded){
-            return '-';
-        }
-
-        return '+';
-    }
 }

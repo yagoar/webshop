@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {TreeCategory} from "./tree-category";
+import {Category} from "../models/shop/category";
 
 @Component({
   selector: 'tree-view',
@@ -7,5 +7,6 @@ import {TreeCategory} from "./tree-category";
 })
 
 export class TreeViewComponent {
-  @Input() categories: Array<TreeCategory>;
+  @Input() categories: Array<Category>;
+
 }

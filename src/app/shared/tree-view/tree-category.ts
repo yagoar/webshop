@@ -1,27 +1,19 @@
-export class TreeCategory{
+import {Component, OnInit, Input} from "@angular/core";
+import {Category} from "../models/shop/category";
 
-    name: string;
-    categories: Array<TreeCategory>;
-    expanded:boolean;
+@Component({
+    selector: 'tree-category',
+    templateUrl: './tree-category.html'
+})
+export class TreeCategoryComponent implements OnInit {
+    ngOnInit(): void {
 
-    constructor(name,categories) {
-        this.name = name;
-        this.categories = categories;
-        this.expanded = false;
     }
 
-    toggle(){
+    @Input() category: Category;
+    expanded: boolean = false;
 
-        console.log(this.name);
+    toggle() {
         this.expanded = !this.expanded;
-    }
-
-    getIcon(){
-
-        if(this.expanded){
-            return '-';
-        }
-
-        return '+';
     }
 }

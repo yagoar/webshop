@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {TreeCategory} from "../../../shared/tree-view/tree-category";
 import {SideBarFilter} from "./item-sidebar/sidebar-filter";
+import {Category} from "../../../shared/models/shop/category";
 
 @Component({
   selector: 'items',
@@ -9,7 +9,7 @@ import {SideBarFilter} from "./item-sidebar/sidebar-filter";
 export class ItemsComponent implements OnInit {
 
   public items: Array<any> = [];
-  public categories: Array<TreeCategory> = [];
+  public categories: Array<Category> = [];
   public filters: Array<SideBarFilter> = [];
 
   ngOnInit() {
@@ -112,36 +112,39 @@ export class ItemsComponent implements OnInit {
       }
     ];
 
-    let cat = [
+    this.getCategories();
+    this.getFilters();
+  }
+
+  public getCategories() {
+    this.categories = [
       {
+        id:1,
         name : "Nadeln",
         description :"desc",
-        categories : [
+        childCategories : [
           {
-            name : "Nadeln",
+            id:2,
+            name : "Nadeln2",
             description :"desc",
-            categories : [
+            childCategories : [
               {
+                id:3,
                 name : "Knöpfe",
                 description :"desc",
-                categories : []
+                childCategories : []
               }
             ]
           }
         ]
       },
       {
+        id:3,
         name : "Knöpfe",
         description :"desc",
-        categories : []
+        childCategories : []
       }
     ];
-
-    cat.forEach(c => {
-      this.categories.push(new TreeCategory(c.name, c.categories));
-    });
-
-    this.getFilters();
   }
 
   public getFilters() {

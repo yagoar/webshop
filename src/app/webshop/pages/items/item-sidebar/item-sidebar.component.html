@@ -23,7 +23,12 @@
                     <ul>
                         <li *ngFor="let filter of filters">
 
-                            <span class="iconButton" (click)="filter.toggle()">{{filter.getIcon()}}</span> {{filter.name}}
+                            <span (click)="filter.toggle()" class="node-icon">
+                                <i *ngIf="!filter.expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
+                                <i *ngIf="filter.expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
+                            </span>
+                            <span class="node-name">{{filter.name}}</span>
+
 
                             <div *ngIf="filter.expanded">
                                 <ul>

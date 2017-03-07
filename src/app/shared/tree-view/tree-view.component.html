@@ -1,23 +1,5 @@
 <ul>
-  <li *ngFor="let cat of categories">
-
-    <div (click)="cat.toggle()" *ngIf="cat.categories.length > 0">
-      <span class="node-icon">
-        <i *ngIf="!cat.expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
-        <i *ngIf="cat.expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
-      </span>
-      <span class="node-name">{{ cat.name }}</span>
-
-      <div *ngIf="cat.expanded">
-
-        <tree-view [categories]="cat.categories"></tree-view>
-
-      </div>
-    </div>
-
-    <div *ngIf="cat.categories.length == 0">
-      <div class="node-name">{{ cat.name }}</div>
-    </div>
-
-  </li>
+  <div *ngFor="let cat of categories">
+    <tree-category [category]="cat"></tree-category>
+  </div>
 </ul>
