@@ -6,7 +6,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path( "shopping-cart/{userId}" )
 @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingCartEndpoint {
@@ -18,6 +17,7 @@ public interface ShoppingCartEndpoint {
      * @return Response object with shopping cart
      */
     @GET
+    @Path( "{userId}" )
     Response getShoppingCart(@PathParam("userId") Long userId);
 
     /**
@@ -28,6 +28,7 @@ public interface ShoppingCartEndpoint {
      * @return Response object with result of the operation
      */
     @POST
+    @Path( "{userId}" )
     Response addItemToShoppingCart(@PathParam("userId") Long userId,
                                    ItemAndQuantity itemAndQuantity);
 
@@ -39,7 +40,7 @@ public interface ShoppingCartEndpoint {
      * @return Response object with result of the operation
      */
     @DELETE
-    @Path("{itemId}")
+    @Path("{userId}/{itemId}")
     Response removeItemFromShoppingCart(@PathParam("userId") Long userId,
                                         @PathParam("itemId") Long itemId);
 
@@ -52,7 +53,7 @@ public interface ShoppingCartEndpoint {
      * @return Response object with result of the operation
      */
     @POST
-    @Path("{itemId}")
+    @Path("{userId}/{itemId}")
     Response updateItemQuantity(@PathParam("userId") Long userId,
                                 @PathParam("itemId") Long itemId,
                                 Integer quantity);

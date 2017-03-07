@@ -8,7 +8,6 @@ import javax.ws.rs.core.Response;
  * Created by yaizagonzalo on 28.02.17.
  */
 
-@Path( "shopping-order/{userId}" )
 @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingOrderEndpoint {
@@ -20,6 +19,7 @@ public interface ShoppingOrderEndpoint {
      * @return Response object with result of the operation
      */
     @PUT
+    @Path( "{userId}")
     Response placeOrder(@PathParam("userId") Long userId);
 
     /**
@@ -31,7 +31,7 @@ public interface ShoppingOrderEndpoint {
      * @return Response object containing a Pageable object with the order history
      */
     @GET
-    @Path("history")
+    @Path("{userId}/history")
     Response getOrderHistory(@PathParam("userId") Long userId,
                              @QueryParam("page") @DefaultValue("0") int page,
                              @QueryParam("size") @DefaultValue("20") int size);
