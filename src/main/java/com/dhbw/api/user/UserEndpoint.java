@@ -29,6 +29,10 @@ public interface UserEndpoint {
     Response resetPassword(ResetPassword resetPassword);
 
     @GET
+    @Path("{userId}/profile")
+    Response getUserInfo(@PathParam("userId") Long userId);
+
+    @GET
     @Path("{userId}/order-history")
     Response getOrderHistory(@PathParam("userId") Long userId,
                              @QueryParam("page") @DefaultValue("0") int page,

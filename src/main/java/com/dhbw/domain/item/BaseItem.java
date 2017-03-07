@@ -20,6 +20,8 @@ public class BaseItem {
 
     private int articleNumber;
 
+    private int stock;
+
     private String name;
 
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
@@ -30,14 +32,6 @@ public class BaseItem {
     private double price;
 
     private String pictureLink;
-
-    public Long getId() {
-        return i_id;
-    }
-
-    public void setId(Long id) {
-        this.i_id = id;
-    }
 
     public String getName() {
         return name;
@@ -94,6 +88,14 @@ public class BaseItem {
     public void setArticleNumber(int articleNumber) {
         this.articleNumber = articleNumber;
     }
+
+    public int getStock() { return stock; }
+
+    public void setStock(int stock) { this.stock = stock; }
+
+    public Long getI_id() { return i_id; }
+
+    public void setI_id(Long i_id) { this.i_id = i_id; }
 
     @Override
     public boolean equals(Object o) {
