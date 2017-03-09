@@ -1,15 +1,15 @@
 package com.dhbw.api.shoppingOrder;
 
+import com.dhbw.domain.item.ShoppingOrder;
 import com.dhbw.domain.item.repositories.ShoppingCartDao;
 import com.dhbw.domain.item.repositories.ShoppingCartDaoImpl;
 import com.dhbw.domain.item.repositories.ShoppingOrderDao;
 import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,7 +42,8 @@ public class ShoppingOrderEndpointImpl implements ShoppingOrderEndpoint {
     }
 
     @Override
-    public Response getOrderHistory(Long userId, @DefaultValue("0") int page, @DefaultValue("20") int limit) {
-        return Response.status(Response.Status.OK).entity(shoppingOrderDao.findByUser(userDao.findOne(userId), new PageRequest(page, limit))).type(MediaType.APPLICATION_JSON).build();
+    public Response getOrderHistory(Long userId, int page, int limit) {
+        Page<ShoppingOrder> orders = shoppingOrderDao.findByUser(userDao.findOne(userId), new PageRequest(page, limit));
+        return Response.status(Response.Status.OK).entity(orders).type(MediaType.APPLICATION_JSON).build();
     }
 }
