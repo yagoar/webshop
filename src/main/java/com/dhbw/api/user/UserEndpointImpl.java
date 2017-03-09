@@ -1,16 +1,13 @@
 package com.dhbw.api.user;
 
-import com.dhbw.domain.item.repositories.ShoppingOrderDao;
-import com.dhbw.domain.user.Address;
-import com.dhbw.domain.user.ResetPassword;
-import com.dhbw.domain.user.User;
-import com.dhbw.domain.user.UserDao;
+import com.dhbw.domain.user.*;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
+import java.util.Set;
 
 @Component
 @Path( "user" )
@@ -18,8 +15,6 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Autowired
     private UserDao userDao;
-    @Autowired
-    private ShoppingOrderDao shoppingOrderDao;
 
     @Override
     public String test() {
@@ -66,17 +61,35 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Override
     public Response getUserInfo(Long userId) {
-        return null;
+        return Response.status(Response.Status.OK).entity(userDao.findOne(userId)).build();
     }
 
     @Override
     public Response updateBillingAddress(Long userId, Address billingAddr) {
-        return null;
+        Set<Address> addresses = userDao.findOne(userId).getAddresses();
+        for(Address address : addresses) {
+            if(address.getAddressType().equals(AddressType.BILLING)) {
+                address = billingAddr;
+                address.setAddressType(AddressType.BILLING);
+            }
+        }
+        userDao.findOne(userId).setAddresses(addresses);
+        userDao.save(userDao.findOne(userId));
+        return Response.ok().build();
     }
 
     @Override
     public Response updateShippingAddress(Long userId, Address shippingAddr) {
-        return null;
+        Set<Address> addresses = userDao.findOne(userId).getAddresses();
+        for(Address address : addresses) {
+            if(address.getAddressType().equals(AddressType.SHIPPING)) {
+                address = shippingAddr;
+                address.setAddressType(AddressType.SHIPPING);
+            }
+        }
+        userDao.findOne(userId).setAddresses(addresses);
+        userDao.save(userDao.findOne(userId));
+        return Response.ok().build();
     }
 
 }

@@ -12,6 +12,10 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingOrderEndpoint {
 
+    @GET
+    @Path( "test" )
+    String test();
+
     /**
      * Places an order using the current state of the user's shopping cart and addresses
      *
@@ -27,12 +31,12 @@ public interface ShoppingOrderEndpoint {
      *
      * @param userId id of the user
      * @param page selected page
-     * @param size orders per page
+     * @param limit orders per page
      * @return Response object containing a Pageable object with the order history
      */
     @GET
-    @Path("{userId}/history")
+    @Path("{userId}")
     Response getOrderHistory(@PathParam("userId") Long userId,
-                             @QueryParam("page") @DefaultValue("0") int page,
-                             @QueryParam("size") @DefaultValue("20") int size);
+                             @DefaultValue("0") @QueryParam("page")  int page,
+                             @DefaultValue("20") @QueryParam("limit")  int limit);
 }

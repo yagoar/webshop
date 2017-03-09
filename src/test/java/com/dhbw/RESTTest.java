@@ -22,7 +22,7 @@ import static io.restassured.RestAssured.given;
  */
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT, classes=WebshopApplication.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = WebshopApplication.class)
 public class RESTTest {
 
     @LocalServerPort
@@ -43,15 +43,29 @@ public class RESTTest {
         testUser.setPassword("peterspasswort");
 
         String login = given()
-                    .contentType(ContentType.JSON)
-                    .body(testUser)
+                .contentType(ContentType.JSON)
+                .body(testUser)
                 .when()
-                    .put("user/login")
+                .put("user/login")
                 .then()
-                    .statusCode(200)
-                    .extract().response().asString();
+                .statusCode(200)
+                .extract().response().asString();
 
         Assert.assertEquals("Login erfolgreich", login);
+    }
+
+    @Test
+    public void ShoppingOrderTest() {
+        String placedOrder = given()
+                .contentType(ContentType.JSON)
+                .body(5L)
+                .when()
+                .put("shopping-order/5")
+                .then()
+                .statusCode(200)
+                .extract().response().asString();
+
+        Assert.assertEquals("Bestellung erfolgt", placedOrder);
     }
 
 

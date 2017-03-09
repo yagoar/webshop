@@ -1,5 +1,6 @@
 package com.dhbw.api.items;
 
+import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
 import com.dhbw.domain.item.ItemFilter;
 import com.dhbw.domain.item.repositories.ShoppingOrderDao;
@@ -17,11 +18,7 @@ import java.util.List;
 public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Autowired
-    private CategoryDao categoryDao;
-    @Autowired
-    private UserDao userDao;
-    @Autowired
-    private ShoppingOrderDao shoppingOrderDao;
+    private BaseItemDao baseItemDao;
 
     @Override
     public String test() {
@@ -35,7 +32,7 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Override
     public Response getItemDetails(Long itemId) {
-        return null;
+        return Response.status(Response.Status.OK).entity(baseItemDao.findOne(itemId)).build();
     }
 
 

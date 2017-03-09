@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jgerle on 01.12.2016.
@@ -29,14 +31,15 @@ public class User implements Serializable {
 
     private String firstName;
 
+    @XmlTransient
     private String password;
 
     private Gender gender;
 
     private boolean isAdmin;
 
-    @OneToMany(targetEntity = Address.class, cascade = CascadeType.ALL)
-    private List<Address> addresses;
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, cascade = CascadeType.ALL)
+    private Set<Address> addresses;
 
 
     public Long getU_id() {
@@ -103,11 +106,11 @@ public class User implements Serializable {
         isAdmin = admin;
     }
 
-    public List<Address> getAddresses() {
+    public Set<Address> getAddresses() {
         return addresses;
     }
 
-    public void setAddresses(List<Address> addresses) {
+    public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
     }
 

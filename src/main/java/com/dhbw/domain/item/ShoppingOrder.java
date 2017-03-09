@@ -60,7 +60,6 @@ public class ShoppingOrder {
         this.paid = paid;
     }
 
-    @XmlTransient
     public User getUser() {
         return user;
     }

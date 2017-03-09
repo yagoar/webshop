@@ -10,6 +10,10 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingCartEndpoint {
 
+    @GET
+    @Path( "test" )
+    String test();
+
     /**
      * Gets current shopping cart of the user
      *

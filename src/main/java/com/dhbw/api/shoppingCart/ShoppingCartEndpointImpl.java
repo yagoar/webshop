@@ -1,9 +1,15 @@
 package com.dhbw.api.shoppingCart;
 
 import com.dhbw.domain.item.ItemAndQuantity;
+import com.dhbw.domain.item.ShoppingCart;
+import com.dhbw.domain.item.repositories.BaseItemDao;
+import com.dhbw.domain.item.repositories.ShoppingCartDao;
+import com.dhbw.domain.user.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
@@ -12,23 +18,45 @@ import javax.ws.rs.core.Response;
 @Component
 @Path( "shopping-cart" )
 public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
+
+    @Autowired
+    ShoppingCartDao shoppingCartDao;
+    @Autowired
+    UserDao userDao;
+    @Autowired
+    BaseItemDao baseItemDao;
+
+    @Override
+    public String test() {
+        return "test";
+    }
+
     @Override
     public Response getShoppingCart(Long userId) {
-        return null;
+        return Response.status(Response.Status.OK).entity(shoppingCartDao.findByUser(userDao.findOne(userId))).type(MediaType.APPLICATION_JSON).build();
     }
 
     @Override
     public Response addItemToShoppingCart(Long userId, ItemAndQuantity itemAndQuantity) {
-        return null;
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
+        cart.addItemToCart(itemAndQuantity.getItem(), itemAndQuantity.getQuantity());
+        shoppingCartDao.save(cart);
+        return Response.status(Response.Status.OK).entity("Artikel wurde dem Warenkorb hinzugefügt").build();
     }
 
     @Override
     public Response removeItemFromShoppingCart(Long userId, Long itemId) {
-        return null;
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
+        cart.removeItemFromCart(baseItemDao.findOne(itemId));
+        shoppingCartDao.save(cart);
+        return Response.status(Response.Status.OK).entity("Artikel wurde aus dem Warenkorb entfernt").build();
     }
 
     @Override
     public Response updateItemQuantity(Long userId, Long itemId, Integer quantity) {
-        return null;
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
+        cart.reduceQuantityOfItemInCart(baseItemDao.findOne(itemId), quantity);
+        shoppingCartDao.save(cart);
+        return Response.status(Response.Status.OK).entity("Menge angepasst").build();
     }
 }
