@@ -41,18 +41,10 @@ INSERT INTO webshop.category (description, name)
 VALUES ('Häkelnadeln und Zubehör', 'Häkeln');
 INSERT INTO webshop.category (description, name)
 VALUES ('Wolle', 'Wolle');
-INSERT INTO webshop.category (description, name)
-VALUES ('Sets für Häkelprojekte', 'Häkelprojekte');
-INSERT INTO webshop.category (description, name)
-VALUES ('Sets für Strickprojekte', 'Strickprojekte');
-
-# Child categories
-INSERT INTO webshop.category_child_categories (category_c_id, child_categories_c_id)
-VALUES (1, 3);
-INSERT INTO webshop.category_child_categories (category_c_id, child_categories_c_id)
-VALUES (2, 4);
-INSERT INTO webshop.category_child_categories (category_c_id, child_categories_c_id)
-VALUES (3, 5);
+INSERT INTO webshop.category (description, name, parent_category_c_id)
+VALUES ('Sets für Häkelprojekte', 'Häkelprojekte', 2);
+INSERT INTO webshop.category (description, name, parent_category_c_id)
+VALUES ('Sets für Strickprojekte', 'Strickprojekte', 1);
 
 # SingleItem
 INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)

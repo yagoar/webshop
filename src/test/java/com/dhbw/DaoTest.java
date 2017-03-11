@@ -18,6 +18,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jgerle on 20.02.2017.
@@ -95,5 +96,11 @@ public class DaoTest {
         shoppingCartDao.placeOrder(cart);
         shoppingCartDao.save(cart);
         Assert.assertTrue(cart.getItems().isEmpty());
+    }
+
+    @Test
+    public void CategoryTest() {
+        Category category = categoryDao.findByName("Häkeln");
+        List<Category> children = categoryDao.findByParentCategory(category);
     }
 }

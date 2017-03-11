@@ -2,7 +2,6 @@ package com.dhbw.domain.item;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,8 +15,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long c_id;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Category.class, cascade = CascadeType.ALL)
-    private Set<Category> childCategories;
+    @OneToOne
+    private Category parentCategory;
 
     private String name;
 
@@ -47,11 +46,11 @@ public class Category {
         this.description = description;
     }
 
-    public Set<Category> getChildCategories() {
-        return childCategories;
+    public Category getParentCategory() {
+        return parentCategory;
     }
 
-    public void setChildCategories(Set<Category> childCategories) {
-        this.childCategories = childCategories;
+    public void setParentCategory(Category parentCategory) {
+        this.parentCategory = parentCategory;
     }
 }
