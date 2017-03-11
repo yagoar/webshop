@@ -1,12 +1,14 @@
 package com.dhbw;
 
 
+import com.dhbw.api.user.UserEndpointImpl;
 import com.dhbw.domain.item.*;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
 import com.dhbw.domain.item.repositories.ShoppingCartDao;
 import com.dhbw.domain.item.repositories.ShoppingOrderDao;
 import com.dhbw.domain.user.AddressDao;
+import com.dhbw.domain.user.ResetPassword;
 import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;
 import org.junit.Assert;
@@ -14,11 +16,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by jgerle on 20.02.2017.
@@ -41,6 +42,8 @@ public class DaoTest {
     private ShoppingOrderDao shoppingOrderDao;
     @Autowired
     private BaseItemDao baseItemDao;
+    @Autowired
+    private UserEndpointImpl userEndpoint;
 
 
     @Test
@@ -103,5 +106,13 @@ public class DaoTest {
         Category category = categoryDao.findByName("Häkeln");
         List<Category> children = categoryDao.findByParentCategory(category);
         Assert.assertTrue(children.contains(categoryDao.findByName("Häkelprojekte")));
+
+        ResetPassword reset = new ResetPassword();
+        reset.setEmail("elhomo@springfield.de");
+        reset.setPreviousPassword("homer");
+        reset.setNewPassword("marge");
+        User user = userDao.findByEmail("elhomo@springfield.de");
+        Response response = userEndpoint.resetPassword(user.getU_id(), reset);
+        Assert.assertTrue(response.getStatus() == 200);
     }
 }

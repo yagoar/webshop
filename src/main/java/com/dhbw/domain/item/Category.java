@@ -53,4 +53,19 @@ public class Category {
     public void setParentCategory(Category parentCategory) {
         this.parentCategory = parentCategory;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        return c_id.equals(category.c_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return c_id.hashCode();
+    }
 }
