@@ -2,7 +2,7 @@ package com.dhbw.domain.item.repositories;
 
 import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.user.User;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
  */
 @Transactional
 @Repository
-public interface ShoppingCartDao extends CrudRepository<ShoppingCart, Long>, ShoppingCartDaoCustom {
+public interface ShoppingCartDao extends JpaRepository<ShoppingCart, Long>, ShoppingCartDaoCustom {
 
     ShoppingCart findByUser(User user);
 }

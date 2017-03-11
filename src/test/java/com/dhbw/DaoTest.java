@@ -80,10 +80,10 @@ public class DaoTest {
             Assert.assertTrue(single.getDtype().equals("single"));
         }
 
-        List<BaseItem> categoryList = baseItemDao.findByCategory(categoryDao.findByName("Häkeln"));
+        /*List<BaseItem> categoryList = baseItemDao.findByCategory(categoryDao.findByName("Häkeln"));
         for(BaseItem item : categoryList) {
             Assert.assertTrue(item.getCategory().getName().equals("Häkeln"));
-        }
+        }*/
     }
 
     @Test

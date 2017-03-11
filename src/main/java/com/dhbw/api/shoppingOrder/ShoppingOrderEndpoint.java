@@ -30,13 +30,9 @@ public interface ShoppingOrderEndpoint {
      * Gets all orders performed by the user as a Pageable object
      *
      * @param userId id of the user
-     * @param page selected page
-     * @param limit orders per page
-     * @return Response object containing a Pageable object with the order history
+     * @return Response object containing a List with the order history
      */
     @GET
     @Path("{userId}")
-    Response getOrderHistory(@PathParam("userId") Long userId,
-                             @DefaultValue("0") @QueryParam("page")  int page,
-                             @DefaultValue("20") @QueryParam("limit")  int limit);
+    Response getOrderHistory(@PathParam("userId") Long userId);
 }
