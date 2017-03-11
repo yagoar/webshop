@@ -102,5 +102,6 @@ public class DaoTest {
     public void CategoryTest() {
         Category category = categoryDao.findByName("Häkeln");
         List<Category> children = categoryDao.findByParentCategory(category);
+        Assert.assertTrue(children.contains(categoryDao.findByName("Häkelprojekte")));
     }
 }
