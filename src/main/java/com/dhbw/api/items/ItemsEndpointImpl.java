@@ -1,5 +1,7 @@
 package com.dhbw.api.items;
 
+import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.Category;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
 import com.dhbw.domain.item.ItemFilter;
@@ -13,11 +15,13 @@ import org.springframework.stereotype.Component;
 import javax.swing.*;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Path( "items" )
+@Path("items")
 public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Autowired
@@ -32,7 +36,18 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Override
     public Response getItemsInCategory(Long categoryId) {
-        return Response.status(Response.Status.OK).entity(baseItemDao.findByCategory(categoryDao.findOne(categoryId))).build();
+        List<BaseItem> ownItems = baseItemDao.findByCategory(categoryDao.findOne(categoryId));
+        List<Category> children = categoryDao.findByParentCategory(categoryDao.findOne(categoryId));
+        List<BaseItem> childrensItems = new ArrayList<>();
+        if (!children.isEmpty()) {
+            for (Category category : children) {
+                childrensItems.addAll(baseItemDao.findByCategory(category));
+            }
+            if (!childrensItems.isEmpty()) {
+                ownItems.addAll(childrensItems);
+            }
+        }
+        return Response.status(Response.Status.OK).entity(ownItems).type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 
     @Override
