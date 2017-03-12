@@ -170,6 +170,7 @@ a:active{
 }
 
 .item-name {
+    font-weight: 700;
     text-overflow: ellipsis;
     width: 100%;
     overflow: hidden
@@ -225,4 +226,122 @@ a:active{
 
 .toggle-list li {
 
+}
+
+/********************************************************
+ * Shopping cart page *
+********************************************************/
+
+.sc-item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+
+}
+.sc-item .img-responsive {
+    max-width: 80px !important;
+    margin-right: 15px;
+    float:left
+}
+
+.sc-item-quantity {
+    margin-right: 10px;
+}
+
+.sc-item-quantity button {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.sc-item-quantity button:focus {
+    outline:0;
+}
+
+.sc-item-quantity i {
+    padding-top: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.sc-item-quantity i:hover {
+    color: #7c0d34;
+}
+
+.sc-item-quantity i:focus,
+.sc-item-quantity i:active {
+    color: #b21c4c;
+}
+
+.sc-item-quantity input {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    font-size: 14px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    box-shadow: none !important;
+    width: 50px;
+}
+
+.sc-item-quantity input:hover,
+.sc-item-quantity input:active {
+    border-color: #7c0d34;
+    outline: none;
+}
+
+.sc-item-price {
+    margin-right: 10px;
+    padding: 6px 12px;
+}
+
+.sc-item-delete {
+    padding-top: 6px;
+}
+
+.sc-item-delete i {
+    cursor: pointer;
+}
+
+.sc-item-delete i:hover {
+    color: #7c0d34;
+}
+
+.sc-item-delete i:focus,
+.sc-item-delete i:active {
+    color: #b21c4c;
+}
+
+.sc-item-delete button {
+    border:none;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.sc-item-delete button:focus {
+    outline:0;
+}
+
+
+#sc-overview {
+    margin: 15px 0;
+    background-color: #d8d8d8;
+    padding: 20px;
+    border-radius: 25px;
+}
+
+#sc-overview>h4 {
+    margin-top: 0;
+}
+
+#sc-overview>button {
+    margin-top: 25px;
+    width: 100%;
 }

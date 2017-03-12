@@ -13,7 +13,7 @@ const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
         { path: '', component: HomeComponent },
         { path: 'products', component: ItemsComponent },
-        { path: 'shopping-cart', component: ShoppingCartComponent },
+        { path: 'cart', component: ShoppingCartComponent },
         { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent }

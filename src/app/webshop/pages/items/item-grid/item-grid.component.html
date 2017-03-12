@@ -13,7 +13,7 @@
         <div class="item-brand">{{item.brand}}</div>
         <div class="item-price">
           <button type="button" (click)="addToCart(item.id)" class="btn btn-secondary">
-            <i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>{{item.price}} €</b>
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>{{item.price | currency:'EUR':true}} €</b>
           </button>
         </div>
       </div>
