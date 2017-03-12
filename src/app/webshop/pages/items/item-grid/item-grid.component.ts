@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {PagerService} from "../../../../shared/services/pager.service";
 
 @Component({
   selector: 'items-grid',
@@ -6,19 +7,36 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class ItemsGridComponent implements OnInit {
 
-  public totalItems: number = 100;
-  public currentPage: number = 4;
-  public itemsPerPage: number = 10;
   @Input() items: Array<any> = [];
+  pagedItems: Array<any>;
+  pager: any = {};
+  pageSize: number = 5;
 
-  constructor() { }
+  constructor(private pagerService: PagerService) { }
 
   ngOnInit() {
-
-
+    this.setPage(1);
   }
 
-  public getPage(): void {
+  setPageSize(size: number) {
+    this.pageSize = size;
+  }
+
+  setPage(page: number) {
+
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.items.length, page, this.pageSize);
+
+    // get current page of items
+    this.pagedItems = this.items.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  }
+
+  onPageChange(event:any) {
+      this.setPage(event.page);
   }
 
   public openDetailPage(id:number) {

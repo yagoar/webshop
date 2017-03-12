@@ -23,23 +23,25 @@
                     <ul>
                         <li *ngFor="let filter of filters">
 
-                            <span (click)="filter.toggle()" class="node-icon">
-                                <i *ngIf="!filter.expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
-                                <i *ngIf="filter.expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
-                            </span>
-                            <span class="node-name">{{filter.name}}</span>
-
-
-                            <div *ngIf="filter.expanded">
-                                <ul>
-                                    <li *ngFor="let option of filter.options">
-                                        <input type="checkbox"/> {{option}}
-                                    </li>
-                                </ul>
+                            <div *ngIf="filter.options.length > 0">
+                                <span (click)="filter.toggle()" class="node-icon">
+                                    <i *ngIf="!filter.expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
+                                    <i *ngIf="filter.expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
+                                </span>
+                                <span class="node-name">{{filter.name}}</span>
+                                
+                                <div *ngIf="filter.expanded">
+                                    <ul>
+                                        <li *ngFor="let option of filter.options">
+                                            <input type="checkbox" name="checked" [(ngModel)]="option.checked"/> {{option.name}}
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
+                <button class="btn btn-primary" (click)="setFilters()">Filter übernehmen</button>
             </accordion-group>
         </accordion>
     </div>

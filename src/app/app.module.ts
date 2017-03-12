@@ -9,6 +9,7 @@ import { CollapseModule, AlertModule } from "ng2-bootstrap";
 import { WebshopModule } from "./webshop/webshop.module";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { AuthGuard } from "./shared/authguard";
+import {PagerService} from "./shared/services/pager.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AuthGuard } from "./shared/authguard";
   providers: [
     AuthGuard,
     AuthenticationService,
-    UserService
+    UserService,
+    PagerService
   ],
   bootstrap: [AppComponent]
 })

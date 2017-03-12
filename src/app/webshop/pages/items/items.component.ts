@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SideBarFilter} from "./item-sidebar/sidebar-filter";
-import {Category} from "../../../shared/models/shop/category";
+import * as _ from 'lodash';
+import {SideBarFilter} from './item-sidebar/model/sidebar-filter';
+import {Category} from '../../../shared/models/shop/category';
+import {FilterOption} from "./item-sidebar/model/filter-option";
+import {Item} from "../../../shared/models/shop/item";
 
 @Component({
   selector: 'items',
@@ -8,107 +11,126 @@ import {Category} from "../../../shared/models/shop/category";
 })
 export class ItemsComponent implements OnInit {
 
-  public items: Array<any> = [];
-  public categories: Array<Category> = [];
-  public filters: Array<SideBarFilter> = [];
+  items: Item[] = [];
+  categories: Array<Category> = [];
+  filters: Array<SideBarFilter> = [];
 
   ngOnInit() {
+
     this.items =[
       {
         id: 1,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Stafil",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Stafil',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       },
       {
         id: 2,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Cusco",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Cusco',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       },
       {
         id: 3,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Stafil",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Stafil',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       },
       {
         id: 4,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Stafil",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Stafil',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       },
       {
         id: 5,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Stafil",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Stafil',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       },
       {
         id: 6,
-        name: "Noodles grün",
+        name: 'Noodles grün',
+        dtype: 'single',
+        articleNumber: 123,
+        stock: 123,
         category: {
           id: 1,
-          name: "Stricken",
-          description: "Stricknadeln und Zubehör"
+          name: 'Stricken',
+          description: 'Stricknadeln und Zubehör'
         },
-        description: "Textilgarn (Baumwolle)",
+        description: 'Textilgarn (Baumwolle)',
         price: 12.5,
-        pictureLink: "http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg",
-        brand: "Stafil",
-        color: "grün",
+        pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
+        brand: 'Stafil',
+        color: 'grün',
         weight: 400,
-        material: "Baumwolle"
+        material: 'Baumwolle'
       }
     ];
 
@@ -116,22 +138,22 @@ export class ItemsComponent implements OnInit {
     this.getFilters();
   }
 
-  public getCategories() {
+  getCategories() {
     this.categories = [
       {
         id:1,
-        name : "Nadeln",
-        description :"desc",
+        name : 'Nadeln',
+        description :'desc',
         childCategories : [
           {
             id:2,
-            name : "Nadeln2",
-            description :"desc",
+            name : 'Nadeln2',
+            description :'desc',
             childCategories : [
               {
                 id:3,
-                name : "Knöpfe",
-                description :"desc",
+                name : 'Knöpfe',
+                description :'desc',
                 childCategories : []
               }
             ]
@@ -140,37 +162,39 @@ export class ItemsComponent implements OnInit {
       },
       {
         id:3,
-        name : "Knöpfe",
-        description :"desc",
+        name : 'Knöpfe',
+        description :'desc',
         childCategories : []
       }
     ];
   }
 
-  public getFilters() {
+  getFilters() {
 
     //Create side bar filter objects
-    let brandFilter = new SideBarFilter("Marke", []);
-    let colorFilter = new SideBarFilter("Farbe", []);
-    let materialFilter = new SideBarFilter("Material", []);
+    let brandFilters = new SideBarFilter('Marke', []);
+    let colorFilters = new SideBarFilter('Farbe', []);
+    let materialFilters = new SideBarFilter('Material', []);
 
     this.items.forEach(i => {
 
-      if( i.brand !== null && brandFilter.options.indexOf(i.brand) === -1) {
-        brandFilter.options.push(i.brand);
+      if( i.brand !== null && _.findIndex(brandFilters.options, {name: i.brand}) === -1) {
+        brandFilters.options.push(new FilterOption(i.brand, 'brand'));
       }
 
-      if( i.color !== null && colorFilter.options.indexOf(i.color) === -1) {
-        colorFilter.options.push(i.color);
+      if( i.color !== null && _.findIndex(colorFilters.options, {name: i.color}) === -1) {
+        colorFilters.options.push(new FilterOption(i.color, 'color'));
       }
 
-      if( i.material !== null && materialFilter.options.indexOf(i.material) === -1) {
-        materialFilter.options.push(i.material);
+      if( i.material !== null && _.findIndex(materialFilters.options, {name: i.material}) === -1) {
+        materialFilters.options.push(new FilterOption(i.material, 'material'));
       }
 
     });
 
-    this.filters.push(brandFilter, colorFilter, materialFilter);
+    this.filters.push(brandFilters, colorFilters, materialFilters);
   }
+
+
 
 }

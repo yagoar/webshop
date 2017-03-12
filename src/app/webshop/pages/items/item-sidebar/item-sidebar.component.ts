@@ -1,6 +1,9 @@
-import {Component, OnInit, Input} from '@angular/core';
-import { TreeCategory} from "../../../../shared/tree-view/tree-category";
-import {SideBarFilter} from "./sidebar-filter";
+import {Component, OnInit, Input, Output} from '@angular/core';
+import * as _ from 'lodash';
+import {SideBarFilter} from "./model/sidebar-filter";
+import {Category} from "../../../../shared/models/shop/category";
+import {Item} from "../../../../shared/models/shop/item";
+import {FilterOption} from "./model/filter-option";
 
 @Component({
   selector: 'items-sidebar',
@@ -9,10 +12,27 @@ import {SideBarFilter} from "./sidebar-filter";
 export class ItemsSidebarComponent implements OnInit {
 
   categoriesIsOpen: boolean = true;
-  @Input() categories: Array<TreeCategory>;
-  @Input() filters: Array<SideBarFilter>;
+  checkedFilters: Array<any> = [];
+  @Input()  categories: Category[];
+  @Input()  filters: SideBarFilter[];
+  @Output() filteredItems: Item[];
 
   ngOnInit() {
+  }
+
+  setFilters() {
+
+    this.checkedFilters.push({'brand' : []}, {'color' : []}, {'material' : []});
+
+    let selBrands: string[] = [];
+    let selColors: string[] = [];
+    let selMaterials: string[] = [];
+
+    this.filters.forEach(f => {
+      if(_.findIndex(f.options, {'filter': 'brand', 'checked' : true}) !== -1){
+        selBrands.push()
+      }
+    });
   }
 
 
