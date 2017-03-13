@@ -10,6 +10,7 @@ import { WebshopModule } from "./webshop/webshop.module";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { AuthGuard } from "./shared/authguard";
 import {PagerService} from "./shared/services/pager.service";
+import {ItemsService} from "./shared/services/items/items.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {PagerService} from "./shared/services/pager.service";
     AuthGuard,
     AuthenticationService,
     UserService,
-    PagerService
+    PagerService,
+    ItemsService
   ],
   bootstrap: [AppComponent]
 })

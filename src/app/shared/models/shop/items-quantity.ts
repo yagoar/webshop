@@ -1,6 +1,6 @@
 import {Item} from "./item";
 export interface ItemsAndQuantity {
-    id?: number;
+    iq_id?: number;
     item: Item;
     quantity: number;
 }

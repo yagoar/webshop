@@ -20,13 +20,13 @@ export class ShoppingCartComponent implements OnInit {
       items: [
         {
           item: {
-            id: 3,
+            i_id: 3,
             name: 'Noodles grün',
             dtype: 'single',
             articleNumber: 123,
             stock: 123,
             category: {
-              id: 1,
+              c_id: 1,
               name: 'Stricken',
               description: 'Stricknadeln und Zubehör'
             },
@@ -42,13 +42,13 @@ export class ShoppingCartComponent implements OnInit {
         },
         {
           item: {
-            id: 3,
+            i_id: 3,
             name: 'Noodles grün',
             dtype: 'single',
             articleNumber: 123453,
             stock: 123,
             category: {
-              id: 1,
+              c_id: 1,
               name: 'Stricken',
               description: 'Stricknadeln und Zubehör'
             },
@@ -78,7 +78,7 @@ export class ShoppingCartComponent implements OnInit {
 
   addOne(itemId : number) {
     _.map(this.shoppingCart.items,function(scItem: ItemsAndQuantity){
-      if(scItem.item.id === itemId) {
+      if(scItem.item.i_id === itemId) {
         scItem.quantity++;
       }
       return scItem;
@@ -87,7 +87,7 @@ export class ShoppingCartComponent implements OnInit {
 
   removeOne(itemId : number) {
     _.map(this.shoppingCart.items,function(scItem: ItemsAndQuantity){
-      if(scItem.item.id === itemId) {
+      if(scItem.item.i_id === itemId) {
         if(scItem.quantity > 1) {
           scItem.quantity--;
         }

@@ -1,20 +1,21 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {PagerService} from "../../../../shared/services/pager.service";
+import {Item} from "../../../../shared/models/shop/item";
 
 @Component({
   selector: 'items-grid',
   templateUrl: './item-grid.component.html'
 })
-export class ItemsGridComponent implements OnInit {
+export class ItemsGridComponent implements OnChanges {
 
-  @Input() items: Array<any> = [];
-  pagedItems: Array<any>;
+  @Input() items: Item[] = [];
+  pagedItems: Item[];
   pager: any = {};
   pageSize: number = 5;
 
   constructor(private pagerService: PagerService) { }
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
     this.setPage(1);
   }
 
@@ -23,16 +24,11 @@ export class ItemsGridComponent implements OnInit {
   }
 
   setPage(page: number) {
-
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
-    }
-
     // get pager object from service
     this.pager = this.pagerService.getPager(this.items.length, page, this.pageSize);
-
     // get current page of items
     this.pagedItems = this.items.slice(this.pager.startIndex, this.pager.endIndex + 1);
+
   }
 
   onPageChange(event:any) {

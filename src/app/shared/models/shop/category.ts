@@ -1,5 +1,5 @@
 export interface Category {
-    id?: number;
+    c_id?: number;
     name: string;
     childCategories?: Array<Category>;
     description?: string;

@@ -1,7 +1,7 @@
 import {Category} from "./category";
 
 export interface Item {
-    id: number;
+    i_id: number;
     dtype: string;
     articleNumber: number;
     stock: number;

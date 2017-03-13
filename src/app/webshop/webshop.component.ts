@@ -19,13 +19,13 @@ export class WebshopComponent implements OnInit {
       items: [
         {
           item: {
-            id: 3,
+            i_id: 3,
             name: 'Noodles grün',
             dtype: 'single',
             articleNumber: 123,
             stock: 123,
             category: {
-              id: 1,
+              c_id: 1,
               name: 'Stricken',
               description: 'Stricknadeln und Zubehör'
             },
@@ -41,13 +41,13 @@ export class WebshopComponent implements OnInit {
         },
         {
           item: {
-            id: 3,
+            i_id: 3,
             name: 'Noodles grün',
             dtype: 'single',
             articleNumber: 123,
             stock: 123,
             category: {
-              id: 1,
+              c_id: 1,
               name: 'Stricken',
               description: 'Stricknadeln und Zubehör'
             },

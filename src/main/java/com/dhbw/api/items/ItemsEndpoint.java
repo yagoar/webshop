@@ -36,7 +36,7 @@ public interface ItemsEndpoint {
      * @return Response object with items from the query
      */
     @GET
-    @Path("category/{categoryId}/items")
+    @Path("{categoryId}")
     Response getItemsInCategory(@PathParam("categoryId")  Long categoryId);
 
 
