@@ -4,6 +4,7 @@ import {SideBarFilter} from './item-sidebar/model/sidebar-filter';
 import {Category} from '../../../shared/models/shop/category';
 import {FilterOption} from "./item-sidebar/model/filter-option";
 import {Item} from "../../../shared/models/shop/item";
+import {ActivatedRoute, Router, NavigationEnd} from "@angular/router";
 
 @Component({
   selector: 'items',
@@ -11,11 +12,29 @@ import {Item} from "../../../shared/models/shop/item";
 })
 export class ItemsComponent implements OnInit {
 
+  category: Category;
   items: Item[] = [];
   categories: Array<Category> = [];
   filters: Array<SideBarFilter> = [];
 
+  constructor(private router: Router, private route: ActivatedRoute) {
+
+    this.getCategoryId();
+
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd) {
+        this.getCategoryId();
+      }
+    });
+
+
+  }
+
   ngOnInit() {
+
+
+
+
 
     this.items =[
       {
@@ -136,6 +155,16 @@ export class ItemsComponent implements OnInit {
 
     this.getCategories();
     this.getFilters();
+  }
+
+  getCategoryId() {
+    let categoryId;
+
+    this.route.params.subscribe(param => {
+      categoryId = param['id'];
+    });
+
+    return categoryId;
   }
 
   getCategories() {

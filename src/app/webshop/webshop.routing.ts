@@ -12,7 +12,7 @@ import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.compone
 const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
         { path: '', component: HomeComponent },
-        { path: 'products', component: ItemsComponent },
+        { path: 'category/:id', component: ItemsComponent },
         { path: 'cart', component: ShoppingCartComponent },
         { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
         { path: 'login', component: LoginComponent },

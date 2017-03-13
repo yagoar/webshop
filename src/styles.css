@@ -89,6 +89,10 @@ a:active{
     color: #7c0d34;
 }
 
+/* - Tree view - */
+
+
+
 /********************************************************
  * Logo header *
 ********************************************************/
@@ -211,6 +215,21 @@ a:active{
 
 /* - Left panels - */
 
+.toggle-list .node-icon {
+    border:none;
+    cursor: pointer;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding:0;
+}
+
+.toggle-list .node-icon:focus {
+    outline:0;
+}
+
 .toggle-list .node-icon>i {
     width: 16px;
 }
@@ -224,8 +243,8 @@ a:active{
     padding-left:0;
 }
 
-.toggle-list li {
-
+.toggle-list .no-icon {
+    padding-left: 20px;
 }
 
 /********************************************************

@@ -13,7 +13,7 @@
         <div class="item-brand">{{item.brand}}</div>
         <div class="item-price">
           <button type="button" (click)="addToCart(item.id)" class="btn btn-secondary">
-            <i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>{{item.price | currency:'EUR':true}} €</b>
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i> <b>{{item.price | currency:'EUR':true}}</b>
           </button>
         </div>
       </div>
@@ -22,8 +22,8 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-5 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-12">
-    <pagination [itemsPerPage]="pageSize" [boundaryLinks]="true" [totalItems]="items.length" [maxSize]="6" [(ngModel)]="pager.currentPage" class="pagination-sm"
+  <div class="text-center">
+    <pagination [itemsPerPage]="pageSize" [boundaryLinks]="true" [totalItems]="items.length" [maxSize]="6" [(ngModel)]="pager.currentPage" class=" pagination-sm"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="onPageChange($event)"></pagination>
   </div>
 </div>
