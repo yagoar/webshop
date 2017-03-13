@@ -30,8 +30,15 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     private CategoryDao categoryDao;
 
     @Override
-    public String test() {
-        return "test";
+    public Response getParentCategories() {
+        //TODO
+        return null;
+    }
+
+    @Override
+    public Response getCategory(Long categoryId) {
+        //TODO
+        return null;
     }
 
     @Override

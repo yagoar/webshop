@@ -9,9 +9,24 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ItemsEndpoint {
 
+    /**
+     * Gets all parent categories (not children of other categories)
+     *
+     * @return Response object with categories (only names needed, no children or description)
+     */
     @GET
-    @Path( "test" )
-    String test();
+    @Path("categories")
+    Response getParentCategories();
+
+    /**
+     * Gets a category by its id
+     *
+     * @param categoryId id of the selected category, items in child categories should appear too
+     * @return Response object with the category object
+     */
+    @GET
+    @Path("category/{categoryId}")
+    Response getCategory(@PathParam("categoryId")  Long categoryId);
 
     /**
      * Gets items of a category with a selected page
@@ -21,8 +36,10 @@ public interface ItemsEndpoint {
      * @return Response object with items from the query
      */
     @GET
-    @Path("category/{categoryId}")
+    @Path("category/{categoryId}/items")
     Response getItemsInCategory(@PathParam("categoryId")  Long categoryId);
+
+
 
     /**
      * Gets detail information of an item
