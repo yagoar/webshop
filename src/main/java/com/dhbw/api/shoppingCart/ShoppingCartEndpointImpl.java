@@ -4,19 +4,23 @@ import com.dhbw.domain.item.ItemAndQuantity;
 import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.ShoppingCartDao;
+import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
 
 /**
  * Created by jgerle on 07.03.2017.
  */
 @Component
-@Path( "shopping-cart" )
+@Path("shopping-cart")
 public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
 
     @Autowired
@@ -26,6 +30,9 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     @Autowired
     BaseItemDao baseItemDao;
 
+    @Context
+    SecurityContext securityContext;
+
     @Override
     public String test() {
         return "test";
@@ -33,7 +40,13 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
 
     @Override
     public Response getShoppingCart(Long userId) {
-        return Response.status(Response.Status.OK).entity(shoppingCartDao.findByUser(userDao.findOne(userId))).type(MediaType.APPLICATION_JSON).build();
+        Principal principal = securityContext.getUserPrincipal();
+        String email = principal.getName();
+        Long tokenUserId = userDao.findByEmail(email).getU_id();
+        if (!userId.equals(tokenUserId)) {
+            return Response.status(Response.Status.UNAUTHORIZED).entity("Fremder Warenkorb").build();
+        } else
+            return Response.status(Response.Status.OK).entity(shoppingCartDao.findByUser(userDao.findOne(userId))).type(MediaType.APPLICATION_JSON).build();
     }
 
     @Override

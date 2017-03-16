@@ -60,7 +60,6 @@ public class AuthenticationEndpoint {
     private String issueToken(String username) {
 
         User user = userDao.findByEmail(username);
-        String id = user.getU_id().toString();
         String role;
         if(user.isAdmin()) role = "ADMIN";
         else role = "USER";
@@ -70,7 +69,7 @@ public class AuthenticationEndpoint {
             Algorithm algorithm = Algorithm.HMAC256("secret");
             token = JWT.create()
                     .withIssuer("auth0")
-                    .withClaim("id", id)
+                    .withClaim("email", username)
                     .withClaim("role", role)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException exception){

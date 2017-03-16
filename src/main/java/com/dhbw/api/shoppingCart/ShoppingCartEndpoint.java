@@ -1,5 +1,6 @@
 package com.dhbw.api.shoppingCart;
 
+import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.item.ItemAndQuantity;
 
 import javax.ws.rs.*;
@@ -21,6 +22,7 @@ public interface ShoppingCartEndpoint {
      * @return Response object with shopping cart
      */
     @GET
+    @Secured
     @Path( "{userId}" )
     Response getShoppingCart(@PathParam("userId") Long userId);
 

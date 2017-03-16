@@ -1,5 +1,7 @@
 package com.dhbw.api.authentication;
 
+import com.auth0.jwt.JWT;
+
 import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Priorities;
@@ -7,8 +9,10 @@ import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
+import java.security.Principal;
 
 /**
  * Created by jgerle on 16.03.2017.
@@ -34,6 +38,41 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         // Extract the token from the HTTP Authorization header
         String token = authorizationHeader.substring("Bearer".length()).trim();
 
+
+        JWT decoded = JWT.decode(token);
+        String username = decoded.getClaim("email").asString();
+
+        requestContext.setSecurityContext(new SecurityContext() {
+
+            @Override
+            public Principal getUserPrincipal() {
+
+                return new Principal() {
+
+                    @Override
+                    public String getName() {
+                        return username;
+                    }
+                };
+            }
+
+            @Override
+            public boolean isUserInRole(String role) {
+                return true;
+            }
+
+            @Override
+            public boolean isSecure() {
+                return false;
+            }
+
+            @Override
+            public String getAuthenticationScheme() {
+                return null;
+            }
+        });
+
+
         try {
 
             // Validate the token
@@ -46,8 +85,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
     }
 
     private void validateToken(String token) throws Exception {
-        String given = token;
-        // Check if it was issued by the server and if it's not expired
-        // Throw an Exception if the token is invalid
+        JWT decoded = JWT.decode(token);
+        if(!decoded.getIssuer().equals("auth0")) throw new Exception("Token source not verified");
     }
 }
