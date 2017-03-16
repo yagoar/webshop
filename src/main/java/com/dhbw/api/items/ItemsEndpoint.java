@@ -1,5 +1,7 @@
 package com.dhbw.api.items;
 
+import com.dhbw.api.authentication.Secured;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,6 +38,7 @@ public interface ItemsEndpoint {
      * @return Response object with items from the query
      */
     @GET
+    @Secured
     @Path("{categoryId}")
     Response getItemsInCategory(@PathParam("categoryId")  Long categoryId);
 
