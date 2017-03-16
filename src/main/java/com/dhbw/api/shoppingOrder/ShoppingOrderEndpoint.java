@@ -1,5 +1,7 @@
 package com.dhbw.api.shoppingOrder;
 
+import com.dhbw.api.authentication.Secured;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,6 +20,7 @@ public interface ShoppingOrderEndpoint {
      * @return Response object with result of the operation
      */
     @PUT
+    @Secured
     @Path("")
     Response placeOrder();
 
@@ -27,6 +30,7 @@ public interface ShoppingOrderEndpoint {
      * @return Response object containing a List with the order history
      */
     @GET
+    @Secured
     @Path("")
     Response getOrderHistory();
 }

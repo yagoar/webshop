@@ -1,5 +1,6 @@
 package com.dhbw.api.user;
 
+import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.user.Address;
 import com.dhbw.domain.user.ResetPassword;
 import com.dhbw.domain.user.User;
@@ -41,6 +42,7 @@ public interface UserEndpoint {
      * @return Response object with result of the operation
      */
     @POST
+    @Secured
     @Path( "profile/password" )
     Response resetPassword(ResetPassword resetPassword);
 
@@ -50,6 +52,7 @@ public interface UserEndpoint {
      * @return Response object containing a User object with all the information
      */
     @GET
+    @Secured
     @Path("profile")
     Response getUserInfo();
 
@@ -60,6 +63,7 @@ public interface UserEndpoint {
      * @return Response object with result of the operation
      */
     @POST
+    @Secured
     @Path( "profile/billing" )
     Response updateBillingAddress(Address billingAddr);
 
@@ -70,6 +74,7 @@ public interface UserEndpoint {
      * @return Response object with result of the operation
      */
     @POST
+    @Secured
     @Path( "profile/shipping" )
     Response updateShippingAddress(Address shippingAddr);
 
