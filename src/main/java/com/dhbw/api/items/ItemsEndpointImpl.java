@@ -31,14 +31,12 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Override
     public Response getParentCategories() {
-        //TODO
-        return null;
+        return Response.status(Response.Status.OK).entity(categoryDao.getParentCategories()).type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 
     @Override
     public Response getCategory(Long categoryId) {
-        //TODO
-        return null;
+        return Response.status(Response.Status.OK).entity(categoryDao.findOne(categoryId)).build();
     }
 
     @Override

@@ -18,4 +18,7 @@ public interface CategoryDao extends JpaRepository<Category, Long> {
 
     Category findByName(String name);
     List<Category> findByParentCategory(Category category);
+
+    @Query("SELECT c FROM Category c WHERE c.parentCategory IS NULL")
+    List<Category> getParentCategories();
 }
