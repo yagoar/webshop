@@ -15,20 +15,18 @@ public interface ShoppingOrderEndpoint {
     /**
      * Places an order using the current state of the user's shopping cart and addresses
      *
-     * @param userId id of the user
      * @return Response object with result of the operation
      */
     @PUT
-    @Path( "{userId}")
-    Response placeOrder(@PathParam("userId") Long userId);
+    @Path("")
+    Response placeOrder();
 
     /**
      * Gets all orders performed by the user as a Pageable object
      *
-     * @param userId id of the user
      * @return Response object containing a List with the order history
      */
     @GET
-    @Path("{userId}")
-    Response getOrderHistory(@PathParam("userId") Long userId);
+    @Path("")
+    Response getOrderHistory();
 }

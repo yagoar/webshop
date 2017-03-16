@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -29,14 +32,21 @@ public class ShoppingOrderEndpointImpl implements ShoppingOrderEndpoint {
     @Autowired
     UserDao userDao;
 
+    @Context
+    SecurityContext securityContext;
+
     @Override
-    public Response placeOrder(Long userId) {
+    public Response placeOrder() {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         shoppingCartDaoImpl.placeOrder(shoppingCartDao.findByUser(userDao.findOne(userId)));
         return Response.status(Response.Status.OK).entity("Bestellung erfolgt").build();
     }
 
     @Override
-    public Response getOrderHistory(Long userId) {
+    public Response getOrderHistory() {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         List<ShoppingOrder> orders = shoppingOrderDao.findByUser(userDao.findOne(userId));
         return Response.status(Response.Status.OK).entity(orders).type(MediaType.APPLICATION_JSON).build();
     }

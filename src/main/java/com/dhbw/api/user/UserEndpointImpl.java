@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
+import java.security.Principal;
 import java.util.Set;
 
 @Component
@@ -15,6 +18,9 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Autowired
     private UserDao userDao;
+
+    @Context
+    SecurityContext securityContext;
 
     @Override
     public Response register(User user) {
@@ -41,7 +47,9 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response resetPassword(Long userId, ResetPassword resetPassword) {
+    public Response resetPassword(ResetPassword resetPassword) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         if (resetPassword.getNewPassword() == null ||  ("").equals(resetPassword.getNewPassword())) return Response.status(Response.Status.BAD_REQUEST)
                 .entity("Neues Passwort darf nicht leer sein").build();
         else if (BCrypt.checkpw(resetPassword.getPreviousPassword(), userDao.findByEmail(resetPassword.getEmail()).getPassword())) {
@@ -55,12 +63,16 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response getUserInfo(Long userId) {
+    public Response getUserInfo() {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         return Response.status(Response.Status.OK).entity(userDao.findOne(userId)).build();
     }
 
     @Override
-    public Response updateBillingAddress(Long userId, Address billingAddr) {
+    public Response updateBillingAddress(Address billingAddr) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         Set<Address> addresses = userDao.findOne(userId).getAddresses();
         for(Address address : addresses) {
             if(address.getAddressType().equals(AddressType.BILLING)) {
@@ -74,7 +86,9 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response updateShippingAddress(Long userId, Address shippingAddr) {
+    public Response updateShippingAddress(Address shippingAddr) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         Set<Address> addresses = userDao.findOne(userId).getAddresses();
         for(Address address : addresses) {
             if(address.getAddressType().equals(AddressType.SHIPPING)) {
