@@ -1,26 +1,47 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from "@angular/http";
 
+export class Credentials {
+    constructor(public username: string, public password: string) {}
+}
+
 @Injectable()
 export class AuthenticationService {
 
-  constructor(private http: Http) { }
+  token: string;
 
-  login(username: string, password: string) {
-    return this.http.post('/api/v1/user/register', JSON.stringify({ username: username, password: password }))
+  constructor(private http: Http) {
+      // set token if saved in local storage
+      let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.token = currentUser && currentUser.token;
+  }
+
+  login(credentials: Credentials) {
+    return this.http.post('/api/v1/authentication', credentials)
         .map((response: Response) => {
-          // login successful if there's a jwt token in the response
-          let user = response.json();
-          if (user) {
-            // store user details in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-          }
+            // login successful if there's a jwt token in the response
+            let token = response.text();
+            console.log(token);
+            if (token) {
+                // set token property
+                this.token = token;
+
+                // store username and jwt token in local storage to keep user logged in between page refreshes
+                localStorage.setItem('currentUser', JSON.stringify({ username: credentials.username, token: token }));
+
+                // return true to indicate successful login
+                return true;
+            } else {
+                // return false to indicate failed login
+                return false;
+            }
         });
   }
 
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+      // clear token remove user from local storage to log user out
+      this.token = null;
+      localStorage.removeItem('currentUser');
   }
 
 }

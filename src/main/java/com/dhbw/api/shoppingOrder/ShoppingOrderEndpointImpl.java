@@ -30,11 +30,6 @@ public class ShoppingOrderEndpointImpl implements ShoppingOrderEndpoint {
     UserDao userDao;
 
     @Override
-    public String test() {
-        return "test";
-    }
-
-    @Override
     public Response placeOrder(Long userId) {
         shoppingCartDaoImpl.placeOrder(shoppingCartDao.findByUser(userDao.findOne(userId)));
         return Response.status(Response.Status.OK).entity("Bestellung erfolgt").build();

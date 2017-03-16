@@ -34,23 +34,23 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     SecurityContext securityContext;
 
     @Override
-    public String test() {
-        return "test";
-    }
-
-    @Override
-    public Response getShoppingCart(Long userId) {
+    public Response getShoppingCart() {
         Principal principal = securityContext.getUserPrincipal();
-        String email = principal.getName();
-        Long tokenUserId = userDao.findByEmail(email).getU_id();
-        if (!userId.equals(tokenUserId)) {
-            return Response.status(Response.Status.UNAUTHORIZED).entity("Fremder Warenkorb").build();
-        } else
-            return Response.status(Response.Status.OK).entity(shoppingCartDao.findByUser(userDao.findOne(userId))).type(MediaType.APPLICATION_JSON).build();
+        Long userId = Long.valueOf(principal.getName());
+        return Response.status(Response.Status.OK).entity(shoppingCartDao.findByUser(userDao.findOne(userId))).type(MediaType.APPLICATION_JSON).build();
     }
 
     @Override
-    public Response addItemToShoppingCart(Long userId, ItemAndQuantity itemAndQuantity) {
+    public Response getItemCountShoppingCart() {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
+        return Response.ok(shoppingCartDao.findByUser(userDao.findOne(userId)).getItems().size()).type(MediaType.APPLICATION_JSON).build();
+    }
+
+    @Override
+    public Response addItemToShoppingCart(ItemAndQuantity itemAndQuantity) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
         cart.addItemToCart(itemAndQuantity.getItem(), itemAndQuantity.getQuantity());
         shoppingCartDao.save(cart);
@@ -58,7 +58,9 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     }
 
     @Override
-    public Response removeItemFromShoppingCart(Long userId, Long itemId) {
+    public Response removeItemFromShoppingCart(Long itemId) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
         cart.removeItemFromCart(baseItemDao.findOne(itemId));
         shoppingCartDao.save(cart);
@@ -66,7 +68,9 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     }
 
     @Override
-    public Response updateItemQuantity(Long userId, Long itemId, Integer quantity) {
+    public Response updateItemQuantity(Long itemId, Integer quantity) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
         cart.reduceQuantityOfItemInCart(baseItemDao.findOne(itemId), quantity);
         shoppingCartDao.save(cart);

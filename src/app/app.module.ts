@@ -5,17 +5,17 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserService } from "./shared/services/user.service";
 import { routing } from "./app.routing";
-import { CollapseModule, AlertModule } from "ng2-bootstrap";
+import { CollapseModule } from "ng2-bootstrap";
 import { WebshopModule } from "./webshop/webshop.module";
 import { AuthenticationService } from "./shared/services/authentication.service";
 import { AuthGuard } from "./shared/authguard";
 import {PagerService} from "./shared/services/pager.service";
 import {ItemsService} from "./shared/services/items/items.service";
+import {CartCountService} from "./shared/services/cart-count.service";
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent],
   imports: [
     WebshopModule,
     BrowserModule,
@@ -31,7 +31,8 @@ import {ItemsService} from "./shared/services/items/items.service";
     AuthenticationService,
     UserService,
     PagerService,
-    ItemsService
+    ItemsService,
+    CartCountService
   ],
   bootstrap: [AppComponent]
 })

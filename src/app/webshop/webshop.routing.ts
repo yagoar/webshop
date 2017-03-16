@@ -7,13 +7,15 @@ import {LoginComponent} from "./pages/account/login/login.component";
 import {WebshopComponent} from "./webshop.component";
 import {AccountComponent} from "./pages/account/account.component";
 import {AuthGuard} from "../shared/authguard";
-import {ShoppingCartComponent} from "./pages/shopping-cart/shopping-cart.component";
+import {ShoppingCartComponent} from "./pages/checkout/shopping-cart/shopping-cart.component";
+import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/order-confirmation.component";
 
 const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
         { path: '', component: HomeComponent },
         { path: 'category/:id', component: ItemsComponent },
-        { path: 'cart', component: ShoppingCartComponent },
+        { path: 'cart', component: ShoppingCartComponent},
+        { path: 'checkout', component: OrderConfirmationComponent },
         { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent }

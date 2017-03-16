@@ -42,6 +42,7 @@ public class AuthenticationEndpoint {
             return Response.ok(token).build();
 
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
@@ -69,13 +70,11 @@ public class AuthenticationEndpoint {
             Algorithm algorithm = Algorithm.HMAC256("secret");
             token = JWT.create()
                     .withIssuer("auth0")
-                    .withClaim("email", username)
+                    .withClaim("id", user.getU_id().toString())
                     .withClaim("role", role)
                     .sign(algorithm);
-        } catch (UnsupportedEncodingException exception){
-            //UTF-8 encoding not supported
-        } catch (JWTCreationException exception){
-            //Invalid Signing configuration / Couldn't convert Claims.
+        } catch (UnsupportedEncodingException | JWTCreationException exception){
+            exception.printStackTrace();
         }
         return token;
     }

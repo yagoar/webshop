@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ShoppingCart} from "../../shared/models/shop/shopping-cart";
+import {CartCountService} from "../../shared/services/cart-count.service";
 
 @Component({
   selector: 'webshop-top-header',
@@ -9,15 +9,14 @@ export class TopHeaderComponent implements OnInit {
 
   itemsInCart: number;
 
-  constructor() { }
+  constructor(private cartCountService: CartCountService) {
+    this.cartCountService.getItemCount();
+  }
 
   ngOnInit() {
-    let shoppingCart:ShoppingCart = JSON.parse(localStorage.getItem('shopping-cart'));
-    if(shoppingCart !== null){
-      this.itemsInCart = shoppingCart.items.length;
-    } else {
-      this.itemsInCart = 0;
-    }
+    this.cartCountService.itemCountUpdate.subscribe((itemCount:number) => {
+      this.itemsInCart = itemCount;
+    });
   }
 
 }

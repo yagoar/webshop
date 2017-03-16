@@ -17,11 +17,6 @@ public class UserEndpointImpl implements UserEndpoint {
     private UserDao userDao;
 
     @Override
-    public String test() {
-        return "test";
-    }
-
-    @Override
     public Response register(User user) {
         if (userDao.findByEmail(user.getEmail()) == null) {
             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));

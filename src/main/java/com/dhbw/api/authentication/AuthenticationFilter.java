@@ -40,20 +40,14 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
 
         JWT decoded = JWT.decode(token);
-        String username = decoded.getClaim("email").asString();
+        String u_id = decoded.getClaim("id").asString();
 
         requestContext.setSecurityContext(new SecurityContext() {
 
             @Override
             public Principal getUserPrincipal() {
 
-                return new Principal() {
-
-                    @Override
-                    public String getName() {
-                        return username;
-                    }
-                };
+                return () -> u_id;
             }
 
             @Override

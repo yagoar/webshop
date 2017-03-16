@@ -11,56 +11,58 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingCartEndpoint {
 
-    @GET
-    @Path( "test" )
-    String test();
-
     /**
      * Gets current shopping cart of the user
      *
-     * @param userId id of the user
      * @return Response object with shopping cart
      */
     @GET
     @Secured
-    @Path( "{userId}" )
-    Response getShoppingCart(@PathParam("userId") Long userId);
+    @Path( "" )
+    Response getShoppingCart();
+
+    /**
+     * Gets current shopping cart of the user
+     *
+     * @return Response object with shopping cart
+     */
+    @GET
+    @Secured
+    @Path( "count" )
+    Response getItemCountShoppingCart();
 
     /**
      * Adds a new item with a quantity to the shopping cart
      *
-     * @param userId id of the user
      * @param itemAndQuantity ItemAndQuantity object which contains an item and the desired quantity
      * @return Response object with result of the operation
      */
     @POST
-    @Path( "{userId}" )
-    Response addItemToShoppingCart(@PathParam("userId") Long userId,
-                                   ItemAndQuantity itemAndQuantity);
+    @Secured
+    @Path( "" )
+    Response addItemToShoppingCart(ItemAndQuantity itemAndQuantity);
 
     /**
      * Deletes an item from the shopping cart
      *
-     * @param userId id of the user
      * @param itemId id of the item
      * @return Response object with result of the operation
      */
     @DELETE
-    @Path("{userId}/{itemId}")
-    Response removeItemFromShoppingCart(@PathParam("userId") Long userId,
-                                        @PathParam("itemId") Long itemId);
+    @Secured
+    @Path("{itemId}")
+    Response removeItemFromShoppingCart(@PathParam("itemId") Long itemId);
 
     /**
      * Updates the quantity of an item already in the shopping cart
      *
-     * @param userId id of the user
      * @param itemId id of the item to be updated
      * @param quantity new item quantity
      * @return Response object with result of the operation
      */
     @POST
-    @Path("{userId}/{itemId}")
-    Response updateItemQuantity(@PathParam("userId") Long userId,
-                                @PathParam("itemId") Long itemId,
+    @Secured
+    @Path("{itemId}")
+    Response updateItemQuantity(@PathParam("itemId") Long itemId,
                                 Integer quantity);
 }

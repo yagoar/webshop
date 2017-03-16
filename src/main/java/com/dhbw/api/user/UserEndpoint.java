@@ -13,10 +13,6 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface UserEndpoint {
 
-    @GET
-    @Path( "test" )
-    String test();
-
     /**
      * Registers a new user in the database.
      * If email is already in the database, an error is thrown

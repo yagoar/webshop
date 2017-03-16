@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef, DoCheck, KeyValueDiffers} from '@angular/core';
 import * as _ from 'lodash';
-import {ShoppingCart} from "../../../shared/models/shop/shopping-cart";
-import {ItemsAndQuantity} from "../../../shared/models/shop/items-quantity";
+import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
+
 
 @Component({
   selector: 'webshop-shopping-cart',
@@ -10,12 +10,10 @@ import {ItemsAndQuantity} from "../../../shared/models/shop/items-quantity";
 export class ShoppingCartComponent implements OnInit {
 
   shoppingCart: ShoppingCart;
-  total: number = 0;
+  total: number;
+  overviewBtnMessage: string = "Zur Kasse";
 
-  constructor() { }
-
-  ngOnInit() {
-
+  constructor() {
     this.shoppingCart= {
       items: [
         {
@@ -42,7 +40,7 @@ export class ShoppingCartComponent implements OnInit {
         },
         {
           item: {
-            i_id: 3,
+            i_id: 2,
             name: 'Noodles grün',
             dtype: 'single',
             articleNumber: 123453,
@@ -64,36 +62,11 @@ export class ShoppingCartComponent implements OnInit {
         }
       ]
     };
-
-    this.shoppingCart.items.forEach(i => {
-      this.total = this.total + (i.item.price * i.quantity);
-    });
   }
 
-  removeItem(itemq : ItemsAndQuantity) {
-    _.remove(this.shoppingCart.items, itemq);
+  ngOnInit() {
 
-    //API Call
   }
 
-  addOne(itemId : number) {
-    _.map(this.shoppingCart.items,function(scItem: ItemsAndQuantity){
-      if(scItem.item.i_id === itemId) {
-        scItem.quantity++;
-      }
-      return scItem;
-    })
-  }
-
-  removeOne(itemId : number) {
-    _.map(this.shoppingCart.items,function(scItem: ItemsAndQuantity){
-      if(scItem.item.i_id === itemId) {
-        if(scItem.quantity > 1) {
-          scItem.quantity--;
-        }
-      }
-      return scItem;
-    })
-  }
 
 }

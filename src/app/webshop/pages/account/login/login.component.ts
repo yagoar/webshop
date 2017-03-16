@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
-import {AuthenticationService} from "../../../../shared/services/authentication.service";
+import {AuthenticationService, Credentials} from "../../../../shared/services/authentication.service";
 import {User} from "../../../../shared/models/user";
 
 @Component({
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
 
     this.router.navigate(['/shop/account']);
-    this.authenticationService.login(this.model.username, this.model.password)
+    this.authenticationService.login(new Credentials(this.model.email, this.model.password))
         .subscribe(
             data => {
               this.loginFailed = false;

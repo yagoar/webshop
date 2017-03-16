@@ -12,10 +12,6 @@ import javax.ws.rs.core.Response;
 @Produces( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
 public interface ShoppingOrderEndpoint {
 
-    @GET
-    @Path( "test" )
-    String test();
-
     /**
      * Places an order using the current state of the user's shopping cart and addresses
      *
