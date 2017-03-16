@@ -80,6 +80,6 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
     private void validateToken(String token) throws Exception {
         JWT decoded = JWT.decode(token);
-        if(!decoded.getIssuer().equals("auth0")) throw new Exception("Token source not verified");
+        if(!decoded.getIssuer().equals("webshop")) throw new Exception("Token source not verified");
     }
 }

@@ -43,7 +43,7 @@ public class AuthenticationEndpoint {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return Response.status(Response.Status.UNAUTHORIZED).build();
+            return Response.status(Response.Status.UNAUTHORIZED).entity("Email oder Passwort falsch").build();
         }
     }
 
@@ -69,7 +69,7 @@ public class AuthenticationEndpoint {
         try {
             Algorithm algorithm = Algorithm.HMAC256("secret");
             token = JWT.create()
-                    .withIssuer("auth0")
+                    .withIssuer("webshop")
                     .withClaim("id", user.getU_id().toString())
                     .withClaim("role", role)
                     .sign(algorithm);

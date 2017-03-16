@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
@@ -27,23 +28,9 @@ public class UserEndpointImpl implements UserEndpoint {
         if (userDao.findByEmail(user.getEmail()) == null) {
             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
             userDao.save(user);
-            return Response.ok().build();
+            return Response.ok().entity("User erfolgreich angelegt. Sie können sich jetzt mit Ihrer Email-Adresse und Ihrem Passwort anmelden").build();
         } else return Response.status(Response.Status.BAD_REQUEST)
                 .entity("Benutzer existiert bereits").build();
-    }
-
-    @Override
-    public Response login(User user) {
-        User u = userDao.findByEmail(user.getEmail());
-        Response response = Response.status(Response.Status.UNAUTHORIZED)
-                .entity("Email oder Passwort falsch").build();
-
-        if (u != null) {
-            if (BCrypt.checkpw(user.getPassword(), u.getPassword())) {
-                return Response.status(Response.Status.OK).entity("Login erfolgreich").build();
-            }
-        }
-        return response;
     }
 
     @Override
@@ -66,7 +53,7 @@ public class UserEndpointImpl implements UserEndpoint {
     public Response getUserInfo() {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
-        return Response.status(Response.Status.OK).entity(userDao.findOne(userId)).build();
+        return Response.status(Response.Status.OK).entity(userDao.findOne(userId)).type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 
     @Override

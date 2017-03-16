@@ -26,16 +26,6 @@ public interface UserEndpoint {
     Response register(User user);
 
     /**
-     * Logs in an already registered user
-     *
-     * @param user User object with login credentials
-     * @return Response object with result of the operation
-     */
-    @PUT
-    @Path( "login" )
-    Response login(User user);
-
-    /**
      * Changes the password of the user
      *
      * @param resetPassword ResetPassword object, containing old and new password
