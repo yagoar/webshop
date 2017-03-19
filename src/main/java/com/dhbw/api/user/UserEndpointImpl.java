@@ -19,6 +19,8 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private AddressDao addressDao;
 
     @Context
     SecurityContext securityContext;
@@ -61,14 +63,23 @@ public class UserEndpointImpl implements UserEndpoint {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
         Set<Address> addresses = userDao.findOne(userId).getAddresses();
+        boolean alreadyExists = false;
         for(Address address : addresses) {
-            if(address.getAddressType().equals(AddressType.BILLING)) {
+            if(address.getAddressType()!= null && address.getAddressType().equals(AddressType.BILLING)) {
                 address = billingAddr;
                 address.setAddressType(AddressType.BILLING);
+                addressDao.save(address);
+                alreadyExists = true;
             }
         }
-        userDao.findOne(userId).setAddresses(addresses);
-        userDao.save(userDao.findOne(userId));
+        if(!alreadyExists) {
+            billingAddr.setAddressType(AddressType.BILLING);
+            addressDao.save(billingAddr);
+            addresses.add(billingAddr);
+        }
+        User user = userDao.findOne(userId);
+        user.setAddresses(addresses);
+        userDao.save(user);
         return Response.ok().build();
     }
 
@@ -77,14 +88,23 @@ public class UserEndpointImpl implements UserEndpoint {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
         Set<Address> addresses = userDao.findOne(userId).getAddresses();
+        boolean alreadyExists = false;
         for(Address address : addresses) {
-            if(address.getAddressType().equals(AddressType.SHIPPING)) {
+            if(address.getAddressType() != null && address.getAddressType().equals(AddressType.SHIPPING)) {
                 address = shippingAddr;
                 address.setAddressType(AddressType.SHIPPING);
+                addressDao.save(address);
+                alreadyExists = true;
             }
         }
-        userDao.findOne(userId).setAddresses(addresses);
-        userDao.save(userDao.findOne(userId));
+        if(!alreadyExists) {
+            shippingAddr.setAddressType(AddressType.BILLING);
+            addressDao.save(shippingAddr);
+            addresses.add(shippingAddr);
+        }
+        User user = userDao.findOne(userId);
+        user.setAddresses(addresses);
+        userDao.save(user);
         return Response.ok().build();
     }
 
