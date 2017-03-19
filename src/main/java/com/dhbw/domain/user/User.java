@@ -81,7 +81,6 @@ public class User implements Serializable {
         this.firstName = firstName;
     }
 
-    @XmlTransient
     public String getPassword() {
         return password;
     }

@@ -43,7 +43,7 @@ public class UserEndpointImpl implements UserEndpoint {
                     User user = userDao.findByEmail(resetPassword.getEmail());
                     user.setPassword(BCrypt.hashpw(resetPassword.getNewPassword(), BCrypt.gensalt()));
                     userDao.save(user);
-                    return Response.ok().build();
+                    return Response.ok().entity("Passwort erfolgreich geändert").build();
         }
         else return Response.status(Response.Status.UNAUTHORIZED)
                     .entity("Email oder Passwort falsch").build();
