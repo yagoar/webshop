@@ -41,6 +41,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
         JWT decoded = JWT.decode(token);
         String u_id = decoded.getClaim("id").asString();
+        String userRole = decoded.getClaim("role").asString();
 
         requestContext.setSecurityContext(new SecurityContext() {
 
@@ -52,7 +53,8 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
             @Override
             public boolean isUserInRole(String role) {
-                return true;
+                if(userRole.equals(role)) return true;
+                else return false;
             }
 
             @Override
