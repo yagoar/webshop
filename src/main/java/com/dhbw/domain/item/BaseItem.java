@@ -24,7 +24,7 @@ public class BaseItem {
 
     private String name;
 
-    @ManyToOne(targetEntity = Category.class, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Category.class, cascade = CascadeType.DETACH)
     private Category category;
 
     private String description;
@@ -32,6 +32,8 @@ public class BaseItem {
     private double price;
 
     private String pictureLink;
+
+    private boolean deleted;
 
     public String getName() {
         return name;
@@ -96,6 +98,14 @@ public class BaseItem {
     public Long getI_id() { return i_id; }
 
     public void setI_id(Long i_id) { this.i_id = i_id; }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
 
     @Override
     public boolean equals(Object o) {

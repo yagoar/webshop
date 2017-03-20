@@ -26,13 +26,13 @@ public class UploadFileService {
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail) {
 
-        String sRootPath = new File("src/main/resources/images").getAbsolutePath();
+        String sRootPath = new File("src/assets/images").getAbsolutePath();
         String uploadedFileLocation = sRootPath + File.separator + fileDetail.getFileName();
 
         // save it
         writeToFile(uploadedInputStream, uploadedFileLocation);
 
-        String output = "File uploaded to : " + uploadedFileLocation;
+        String output = uploadedFileLocation;
 
         return Response.status(200).entity(output).build();
 

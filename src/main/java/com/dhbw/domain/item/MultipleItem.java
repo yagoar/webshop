@@ -10,7 +10,7 @@ import java.util.List;
 @DiscriminatorValue("multiple")
 public class MultipleItem extends BaseItem {
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = SingleItem.class, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, targetEntity = SingleItem.class, cascade = CascadeType.DETACH)
     private List<SingleItem> items;
 
     public List<SingleItem> getItems() { return items; }

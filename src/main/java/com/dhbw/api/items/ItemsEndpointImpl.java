@@ -62,7 +62,7 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Override
     public Response getItemDetails(Long itemId) {
-        return Response.status(Response.Status.OK).entity(baseItemDao.findOne(itemId)).build();
+        return Response.status(Response.Status.OK).entity(baseItemDao.findOne(itemId)).type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 
 

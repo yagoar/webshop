@@ -22,6 +22,8 @@ public class Category {
 
     private String description;
 
+    private boolean deleted;
+
     public Long getC_id() {
         return c_id;
     }
@@ -53,6 +55,10 @@ public class Category {
     public void setParentCategory(Category parentCategory) {
         this.parentCategory = parentCategory;
     }
+
+    public boolean isDeleted() { return deleted; }
+
+    public void setDeleted(boolean deleted) { this.deleted = deleted; }
 
     @Override
     public boolean equals(Object o) {
