@@ -10,6 +10,7 @@ import {User} from "../../../../shared/models/user";
 export class LoginComponent implements OnInit {
   model: any = {};
   returnUrl: string;
+  loading = false;
   loginFailed: boolean = false;
 
   constructor(
@@ -26,17 +27,21 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-    this.router.navigate(['/shop/account']);
+    this.loading = true;
     this.authenticationService.login(new Credentials(this.model.email, this.model.password))
         .subscribe(
             data => {
               this.loginFailed = false;
-              this.router.navigate(['/shop/account']);
+              this.router.navigate([this.returnUrl]);
             },
             error => {
+              this.loading = false;
               this.loginFailed = true;
             });
 
+  }
+
+  registerRedirect() {
+      this.router.navigate(['/shop/register'], { queryParams: { returnUrl: this.returnUrl }});
   }
 }

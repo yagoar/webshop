@@ -1,3 +1,30 @@
-<p>
-  account works! <a (click)="logout()">Logout</a>
-</p>
+<h2 class="text-center">Kontoübersicht</h2>
+<div class="row">
+<a (click)="logout()">as</a>
+</div>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="order-conf-panel">
+      <h4>Benutzerinformationen</h4>
+      {{user.firstName}} {{user.lastName}} <br>
+      {{user.email}}
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="order-conf-panel">
+      <h4>Zahlungsart</h4>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="order-conf-panel">
+      <h4>Rechnungsadresse</h4>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="order-conf-panel">
+      <h4>Lieferadresse</h4>
+    </div>
+  </div>
+</div>

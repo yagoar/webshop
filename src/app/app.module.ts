@@ -15,7 +15,8 @@ import {CartCountService} from "./shared/services/cart-count.service";
 
 @NgModule({
   declarations: [
-    AppComponent],
+    AppComponent
+   ],
   imports: [
     WebshopModule,
     BrowserModule,

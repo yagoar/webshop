@@ -15,6 +15,6 @@
         <button [disabled]="loading" class="btn btn-primary">Anmelden</button>
       </div>
     </form>
-    <p>Sie haben noch kein Konto? <a href="#/shop/register"><button class="btn btn-secondary">Registrieren</button></a></p>
+    <p>Sie haben noch kein Konto? <button (click)="registerRedirect()" class="btn btn-secondary">Registrieren</button></p>
   </div>
 </div>

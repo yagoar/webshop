@@ -18,6 +18,8 @@ import {TreeViewComponent} from "../shared/tree-view/tree-view.component";
 import {TreeCategoryComponent} from "../shared/tree-view/tree-category";
 import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/order-confirmation.component";
 import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.component";
+import {SelectModule} from "ng2-select";
+import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.compone
     CollapseModule.forRoot(),
     AlertModule.forRoot(),
     AccordionModule.forRoot(),
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    SelectModule
   ],
   declarations: [
     routedComponents,
@@ -45,7 +48,8 @@ import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.compone
     AccountComponent,
     TreeViewComponent,
     TreeCategoryComponent,
-    OrderConfirmationComponent
+    OrderConfirmationComponent,
+    ItemDetailsComponent
   ]
 })
 export class WebshopModule { }

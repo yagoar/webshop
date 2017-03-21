@@ -9,13 +9,15 @@ import {AccountComponent} from "./pages/account/account.component";
 import {AuthGuard} from "../shared/authguard";
 import {ShoppingCartComponent} from "./pages/checkout/shopping-cart/shopping-cart.component";
 import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/order-confirmation.component";
+import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
 
 const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
         { path: '', component: HomeComponent },
         { path: 'category/:id', component: ItemsComponent },
+        { path: 'details/:id', component: ItemDetailsComponent },
         { path: 'cart', component: ShoppingCartComponent},
-        { path: 'checkout', component: OrderConfirmationComponent },
+        { path: 'checkout', component: OrderConfirmationComponent , canActivate: [AuthGuard]},
         { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
         { path: 'login', component: LoginComponent },
         { path: 'register', component: RegisterComponent }

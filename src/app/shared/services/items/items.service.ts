@@ -9,5 +9,10 @@ export class ItemsService {
         return this.http.get(`/api/v1/items/${catId}`).map((response: Response) => response.json());
     }
 
+    getItemDetails(itemId: number) {
+        return this.http.get(`/api/v1/items/details/${itemId}`).map((response: Response) => response.json());
+
+    }
+
 
 }

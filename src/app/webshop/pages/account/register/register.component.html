@@ -3,20 +3,71 @@
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
         <form (ngSubmit)="register()">
             <div class="form-group">
+                <label>Anrede</label>
+                <ng-select id="gender"
+                           [allowClear]="false"
+                           [items]="gender"
+                           [active]="[{id: 'FEMALE', text:'Frau'}]"
+                           (data)="setGender($event)"
+                           placeholder="Keine Anrede">
+                </ng-select>
+            </div>
+            <div class="form-group">
                 <label for="firstName">Vorname</label>
-                <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+                <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required />
             </div>
             <div class="form-group">
                 <label for="lastName">Nachname</label>
-                <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
+                <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="user.lastName" #lastName="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="lastName">Geburtsdatum</label>
+                <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" #dateOfBirth="ngModel" pattern="/^\d{1,2}\.\d{1,2}\.\d{4}$/" required />
             </div>
             <div class="form-group">
                 <label for="username">E-Mail</label>
-                <input type="text" class="form-control" name="username" [(ngModel)]="model.email" #username="ngModel" required />
+                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.email" #username="ngModel" required />
             </div>
             <div class="form-group">
                 <label for="password">Passwort</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" minlength="8" required />
+            </div>
+            <div class="form-group">
+                <label for="bilstreet">Straße</label>
+                <input type="text" class="form-control" id="bilstreet" name="bilstreet" [(ngModel)]="billingAddress.street" #bilstreet="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="bilno">Nr.</label>
+                <input type="text" class="form-control" id="bilno" name="bilno" [(ngModel)]="billingAddress.no" #bilno="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="bilcity">Stadt</label>
+                <input type="text" class="form-control" id="bilcity" name="bilcity" [(ngModel)]="billingAddress.city" #bilcity="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="bilzip">Postleitzahl</label>
+                <input type="text" class="form-control" id="bilzip" name="bilzip" [(ngModel)]="billingAddress.zip" #bilzip="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" name="diffAddress" [(ngModel)]="diffAddress" />Andere LieferAddresse</label>
+            </div>
+            <div *ngIf="diffAddress">
+                <div class="form-group">
+                    <label for="shistreet">Straße</label>
+                    <input type="text" class="form-control" id="shistreet" name="shistreet" [(ngModel)]="shippingAddress.street" #shistreet="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="shino">Nr.</label>
+                    <input type="text" class="form-control" id="shino" name="shino" [(ngModel)]="shippingAddress.no" #shino="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="shicity">Stadt</label>
+                    <input type="text" class="form-control" id="shicity" name="shicity" [(ngModel)]="shippingAddress.city" #shicity="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="shizip">Postleitzahl</label>
+                    <input type="text" class="form-control" id="shizip" name="shizip" [(ngModel)]="shippingAddress.zip" #shizip="ngModel" required />
+                </div>
             </div>
             <div class="form-group">
                 <button [disabled]="loading" class="btn btn-primary">Registrieren</button>

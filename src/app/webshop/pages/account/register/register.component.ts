@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/Rx';
 import {UserService} from "../../../../shared/services/user.service";
 
@@ -8,23 +8,59 @@ import {UserService} from "../../../../shared/services/user.service";
     templateUrl: './register.component.html'
 })
 
-export class RegisterComponent {
-    model: any = {};
-    loading = false;
+export class RegisterComponent implements OnInit {
 
-    constructor(
-        private router: Router,
-        private userService: UserService) { }
+    user: any = {};
+    returnUrl: string;
+    loading = false;
+    gender = [{id: 'FEMALE', text:'Frau'},
+        {id: 'MALE', text:'Herr'}];
+    diffAddress: boolean = false;
+    billingAddress: any = {};
+    shippingAddress: any = {};
+
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private userService: UserService) {
+
+    }
+
+    ngOnInit(): void {
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
 
     register() {
+
         this.loading = true;
-        this.userService.create(this.model)
+        this.setAddress();
+
+        this.userService.create(this.user)
             .subscribe(
                 data => {
-                    this.router.navigate(['/login']);
+                    this.loading = false;
+                    this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.returnUrl }});
                 },
                 error => {
                     this.loading = false;
                 });
+    }
+
+    setGender(value){
+        this.user.gender = value.id;
+    }
+
+    setAddress(){
+        this.user.adresses = [];
+
+        //If different address for shipping is given, add to user, else add billing address as shipping address too
+        if(!this.diffAddress) {
+            Object.assign(this.shippingAddress, this.billingAddress);
+        }
+
+        //Add addresses to the user
+        this.billingAddress.type = "BILLING";
+        this.shippingAddress.type = "SHIPPING";
+        this.user.adresses.push(this.billingAddress, this.shippingAddress);
     }
 }
