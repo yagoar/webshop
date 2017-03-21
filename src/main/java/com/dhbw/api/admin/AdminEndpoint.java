@@ -2,6 +2,7 @@ package com.dhbw.api.admin;
 
 import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.MultipleItem;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -19,7 +20,7 @@ public interface AdminEndpoint {
      * Request body contains BaseItem object
      *
      * @param item Item to be created
-     * @return Response object with BaseItem object
+     * @return Response object with the result of the operation
      */
     @PUT
     @Secured
@@ -31,13 +32,14 @@ public interface AdminEndpoint {
      * Updates an existing Item
      * Request body contains BaseItem object
      *
-     * @param item Item to be updated
-     * @return Response object with updated BaseItem object
+     * @param itemId Id of item to be updated
+     * @param item BaseItem object with updated information
+     * @return Response object with the result of the operation
      */
     @POST
     @Secured
-    @Path("item")
-    Response updateItem(BaseItem item);
+    @Path("item/{itemId}")
+    Response updateItem(@PathParam("itemId") Long itemId, BaseItem item);
 
 
     /**
@@ -45,7 +47,7 @@ public interface AdminEndpoint {
      * Request body contains BaseItem object
      *
      * @param itemId Item to be deleted
-     * @return Response object with response of the operation
+     * @return Response object with the result of the operation
      */
     @DELETE
     @Secured
@@ -58,7 +60,7 @@ public interface AdminEndpoint {
      * Request body contains BaseItem object
      *
      * @param itemSet ItemSet to be created
-     * @return Response object with ItemSet object (BaseItem)
+     * @return Response object with the result of the operation
      */
     @PUT
     @Secured
@@ -70,13 +72,14 @@ public interface AdminEndpoint {
      * Updates an existing ItemSet
      * Request body contains BaseItem object
      *
-     * @param itemSet Item to be updated
-     * @return Response object with updated BaseItem object
+     * @param itemSetId Item to be updated
+     * @param item Updated BaseItem object
+     * @return Response object with the result of the operation
      */
     @POST
     @Secured
-    @Path("itemSet")
-    Response updateItemSet(BaseItem itemSet);
+    @Path("itemSet/{itemSetId}")
+    Response updateItemSet(@PathParam("itemSetId") Long itemSetId, MultipleItem item);
 
 
     /**
@@ -84,7 +87,7 @@ public interface AdminEndpoint {
      * Request body contains BaseItem object
      *
      * @param itemSetId ItemSet to be deleted
-     * @return Response object with response of the operation
+     * @return Response object with the result of the operation
      */
     @DELETE
     @Secured
@@ -98,7 +101,7 @@ public interface AdminEndpoint {
      *
      * @param itemId Item to be added
      * @param ItemSetId Id of ItemSet
-     * @return Response object with response of the operation
+     * @return Response object with the result of the operation
      */
     @POST
     @Secured
@@ -112,7 +115,7 @@ public interface AdminEndpoint {
      *
      * @param itemId Item to be removed
      * @param ItemSetId Id of ItemSet
-     * @return Response object with response of the operation
+     * @return Response object with the result of the operation
      */
     @DELETE
     @Secured
