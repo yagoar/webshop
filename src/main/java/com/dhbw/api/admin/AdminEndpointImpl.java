@@ -1,9 +1,11 @@
 package com.dhbw.api.admin;
 
 import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.Category;
 import com.dhbw.domain.item.MultipleItem;
 import com.dhbw.domain.item.SingleItem;
 import com.dhbw.domain.item.repositories.BaseItemDao;
+import com.dhbw.domain.item.repositories.CategoryDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,8 @@ public class AdminEndpointImpl implements AdminEndpoint {
 
     @Autowired
     BaseItemDao baseItemDao;
+    @Autowired
+    CategoryDao categoryDao;
     @Context
     SecurityContext securityContext;
 
@@ -55,6 +59,36 @@ public class AdminEndpointImpl implements AdminEndpoint {
             toBeDeleted.setDeleted(true);
             baseItemDao.save(toBeDeleted);
             return Response.ok("Artikel erfolgreich gelöscht").build();
+        } else return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @Override
+    public Response createCategory(Category category) {
+        if (securityContext.isUserInRole("ADMIN")) {
+            categoryDao.save(category);
+            return Response.ok("Kategorie erfolgreich angelegt").build();
+        } else return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @Override
+    public Response updateCategory(Long categoryId, Category category) {
+        if (securityContext.isUserInRole("ADMIN")) {
+            Category old = categoryDao.findOne(categoryId);
+            old.setName(category.getName());
+            old.setDescription(category.getDescription());
+            old.setParentCategory(category.getParentCategory());
+            categoryDao.save(old);
+            return Response.ok("Kategorie erfolgreich geändert").build();
+        } else return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @Override
+    public Response deleteCategory(Long categoryId) {
+        if (securityContext.isUserInRole("ADMIN")) {
+            Category toBeDeleted = categoryDao.findOne(categoryId);
+            toBeDeleted.setDeleted(true);
+            categoryDao.save(toBeDeleted);
+            return Response.ok("Kategorie erfolgreich gelöscht").build();
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 

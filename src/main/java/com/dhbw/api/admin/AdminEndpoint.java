@@ -2,6 +2,7 @@ package com.dhbw.api.admin;
 
 import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.Category;
 import com.dhbw.domain.item.MultipleItem;
 
 import javax.ws.rs.*;
@@ -44,7 +45,6 @@ public interface AdminEndpoint {
 
     /**
      * Deletes an existing Item
-     * Request body contains BaseItem object
      *
      * @param itemId Item to be deleted
      * @return Response object with the result of the operation
@@ -53,6 +53,44 @@ public interface AdminEndpoint {
     @Secured
     @Path("item/{itemId}")
     Response deleteItem(@PathParam("itemId") Long itemId);
+
+    /**
+     * Creates a new Category
+     * Request body contains Category object
+     *
+     * @param category Category to be created
+     * @return Response object with the result of the operation
+     */
+    @PUT
+    @Secured
+    @Path("category")
+    Response createCategory(Category category);
+
+
+    /**
+     * Updates an existing Category
+     * Request body contains Category object
+     *
+     * @param categoryId Id of category to be updated
+     * @param category Category object with updated information
+     * @return Response object with the result of the operation
+     */
+    @POST
+    @Secured
+    @Path("category/{categoryId}")
+    Response updateCategory(@PathParam("categoryId") Long categoryId, Category category);
+
+
+    /**
+     * Deletes an existing Category
+     *
+     * @param categoryId Item to be deleted
+     * @return Response object with the result of the operation
+     */
+    @DELETE
+    @Secured
+    @Path("category/{categoryId}")
+    Response deleteCategory(@PathParam("categoryId") Long categoryId);
 
 
     /**
@@ -84,7 +122,6 @@ public interface AdminEndpoint {
 
     /**
      * Deletes an existing ItemSet
-     * Request body contains BaseItem object
      *
      * @param itemSetId ItemSet to be deleted
      * @return Response object with the result of the operation
@@ -111,7 +148,6 @@ public interface AdminEndpoint {
 
     /**
      * Removes an Item from an an existing ItemSet
-     * Request body contains BaseItem object
      *
      * @param itemId Item to be removed
      * @param ItemSetId Id of ItemSet
