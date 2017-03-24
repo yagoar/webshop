@@ -33,7 +33,7 @@
                                 <div *ngIf="filter.expanded">
                                     <ul>
                                         <li *ngFor="let option of filter.options">
-                                            <input type="checkbox" name="checked" [(ngModel)]="option.checked"/> {{option.name}}
+                                            <input type="checkbox" name="checked" [(ngModel)]="option.checked" (change)="addFilter(option)"/> {{option.name}}
                                         </li>
                                     </ul>
                                 </div>
@@ -42,6 +42,7 @@
                     </ul>
                 </div>
                 <button class="btn btn-primary" (click)="setFilters()">Filter übernehmen</button>
+                <button class="btn btn-secondary" (click)="resetFilters()">Filter löschen</button>
             </accordion-group>
         </accordion>
     </div>

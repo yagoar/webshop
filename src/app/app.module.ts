@@ -11,14 +11,15 @@ import { AuthenticationService } from "./shared/services/authentication.service"
 import { AuthGuard } from "./shared/authguard";
 import {PagerService} from "./shared/services/pager.service";
 import {ItemsService} from "./shared/services/items/items.service";
-import {CartCountService} from "./shared/services/cart-count.service";
-
+import {ShoppingCartService} from "./shared/services/shopping-cart.service";
+import {AdminModule} from "./admin/admin.module";
 @NgModule({
   declarations: [
     AppComponent
-   ],
+  ],
   imports: [
     WebshopModule,
+    AdminModule,
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -33,7 +34,7 @@ import {CartCountService} from "./shared/services/cart-count.service";
     UserService,
     PagerService,
     ItemsService,
-    CartCountService
+    ShoppingCartService
   ],
   bootstrap: [AppComponent]
 })

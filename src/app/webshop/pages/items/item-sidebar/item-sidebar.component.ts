@@ -1,9 +1,9 @@
-import {Component, OnInit, Input, Output} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as _ from 'lodash';
-import {SideBarFilter} from "./model/sidebar-filter";
 import {Category} from "../../../../shared/models/shop/category";
 import {Item} from "../../../../shared/models/shop/item";
 import {FilterOption} from "./model/filter-option";
+import {SideBarFilter} from "./model/sidebar-filter";
 
 @Component({
   selector: 'items-sidebar',
@@ -12,28 +12,36 @@ import {FilterOption} from "./model/filter-option";
 export class ItemsSidebarComponent implements OnInit {
 
   categoriesIsOpen: boolean = true;
-  checkedFilters: Array<any> = [];
   @Input()  categories: Category[];
-  @Input()  filters: SideBarFilter[];
-  @Output() filteredItems: Item[];
+  @Input()  filters: Array<SideBarFilter>;
+  @Output() filterEvent: EventEmitter<FilterOption[]> = new EventEmitter();
+  selectedFilters: FilterOption[] = [];
 
   ngOnInit() {
   }
 
   setFilters() {
-
-    this.checkedFilters.push({'brand' : []}, {'color' : []}, {'material' : []});
-
-    let selBrands: string[] = [];
-    let selColors: string[] = [];
-    let selMaterials: string[] = [];
-
-    this.filters.forEach(f => {
-      if(_.findIndex(f.options, {'filter': 'brand', 'checked' : true}) !== -1){
-        selBrands.push()
-      }
-    });
+    this.filterEvent.emit(this.selectedFilters);
   }
+
+  resetFilters() {
+    this.selectedFilters = [];
+    this.filterEvent.emit(this.selectedFilters);
+  }
+
+
+  addFilter(option: FilterOption) {
+
+    let optNotInArray = _.findIndex(this.selectedFilters, {name: option.name, filter: option.filter}) === -1;
+
+    if(option.checked && optNotInArray) {
+      this.selectedFilters.push(option)
+    } else if (!option.checked && !optNotInArray){
+      this.selectedFilters.splice(this.selectedFilters.indexOf(option))
+    }
+  }
+
+
 
 
 }

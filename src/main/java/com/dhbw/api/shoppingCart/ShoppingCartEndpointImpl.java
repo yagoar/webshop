@@ -72,7 +72,7 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
-        cart.reduceQuantityOfItemInCart(baseItemDao.findOne(itemId), quantity);
+        cart.updateQuantityOfItemInCart(baseItemDao.findOne(itemId), quantity);
         shoppingCartDao.save(cart);
         return Response.status(Response.Status.OK).entity("Menge angepasst").build();
     }

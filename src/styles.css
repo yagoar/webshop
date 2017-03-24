@@ -199,6 +199,7 @@ a:active{
 }
 
 .item-brand {
+    height: 22px;
     font-weight: 300;
     text-transform: uppercase;
     color: rgb(145, 145, 145);

@@ -1,5 +1,5 @@
-import {Component, OnInit, OnChanges, SimpleChanges, ChangeDetectorRef, DoCheck, KeyValueDiffers} from '@angular/core';
-import * as _ from 'lodash';
+import {Component, OnInit} from '@angular/core';
+import {ShoppingCartService} from "../../../../shared/services/shopping-cart.service";
 import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 
 
@@ -9,64 +9,19 @@ import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 })
 export class ShoppingCartComponent implements OnInit {
 
-  shoppingCart: ShoppingCart;
+  shoppingCart: ShoppingCart = {
+    items: []
+  };
   total: number;
   overviewBtnMessage: string = "Zur Kasse";
 
-  constructor() {
-    this.shoppingCart= {
-      items: [
-        {
-          item: {
-            i_id: 3,
-            name: 'Noodles grün',
-            dtype: 'single',
-            articleNumber: 123,
-            stock: 123,
-            category: {
-              c_id: 1,
-              name: 'Stricken',
-              description: 'Stricknadeln und Zubehör'
-            },
-            description: 'Textilgarn (Baumwolle)',
-            price: 12.5,
-            pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
-            brand: 'Stafil',
-            color: 'grün',
-            weight: 400,
-            material: 'Baumwolle'
-          },
-          quantity: 1
-        },
-        {
-          item: {
-            i_id: 2,
-            name: 'Noodles grün',
-            dtype: 'single',
-            articleNumber: 123453,
-            stock: 123,
-            category: {
-              c_id: 1,
-              name: 'Stricken',
-              description: 'Stricknadeln und Zubehör'
-            },
-            description: 'Textilgarn (Baumwolle)',
-            price: 12.5,
-            pictureLink: 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg',
-            brand: 'Stafil',
-            color: 'grün',
-            weight: 400,
-            material: 'Baumwolle'
-          },
-          quantity: 1
-        }
-      ]
-    };
-  }
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit() {
-
+    this.shoppingCartService.getShoppingCart().subscribe(
+        data => {
+          this.shoppingCart = data;
+        }
+    );
   }
-
-
 }

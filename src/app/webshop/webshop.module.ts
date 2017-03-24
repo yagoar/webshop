@@ -20,6 +20,7 @@ import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/or
 import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.component";
 import {SelectModule} from "ng2-select";
 import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
+import {ItemFilterPipe} from "./pages/items/item-filter.pipe";
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import {ItemDetailsComponent} from "./pages/item-details/item-details.component"
     TreeViewComponent,
     TreeCategoryComponent,
     OrderConfirmationComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    ItemFilterPipe
   ]
 })
 export class WebshopModule { }

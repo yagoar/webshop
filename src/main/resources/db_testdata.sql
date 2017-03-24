@@ -35,40 +35,40 @@ INSERT INTO webshop.user_addresses (user_u_id, addresses_a_id) VALUES (4, 4);
 INSERT INTO webshop.user_addresses (user_u_id, addresses_a_id) VALUES (5, 5);
 
 # Categories
-INSERT INTO webshop.category (description, name)
-VALUES ('Stricknadeln und Zubehör', 'Stricken');
-INSERT INTO webshop.category (description, name)
-VALUES ('Häkelnadeln und Zubehör', 'Häkeln');
-INSERT INTO webshop.category (description, name)
-VALUES ('Wolle', 'Wolle');
-INSERT INTO webshop.category (description, name, parent_category_c_id)
-VALUES ('Sets für Häkelprojekte', 'Häkelprojekte', 2);
-INSERT INTO webshop.category (description, name, parent_category_c_id)
-VALUES ('Sets für Strickprojekte', 'Strickprojekte', 1);
+INSERT INTO webshop.category (description, name, deleted)
+VALUES ('Stricknadeln und Zubehör', 'Stricken', false);
+INSERT INTO webshop.category (description, name, deleted)
+VALUES ('Häkelnadeln und Zubehör', 'Häkeln', false);
+INSERT INTO webshop.category (description, name, deleted)
+VALUES ('Wolle', 'Wolle', false);
+INSERT INTO webshop.category (description, name, parent_category_c_id, deleted)
+VALUES ('Sets für Häkelprojekte', 'Häkelprojekte', 2, false);
+INSERT INTO webshop.category (description, name, parent_category_c_id, deleted)
+VALUES ('Sets für Strickprojekte', 'Strickprojekte', 1, false);
 
 # SingleItem
-INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)
-VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles grün', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'grün', 'Baumwolle', 400, 1, 1202111, 86);
-INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)
-VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles blau', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'blau', 'Baumwolle', 400, 2, 1202112, 18);
-INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)
-VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles schwarz', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'schwarz', 'Baumwolle', 400, 3, 1202113, 25);
-INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)
-VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles gelb', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'gelb', 'Baumwolle', 400, 4, 1202114, 12);
-INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock)
-VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles grau', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'grau', 'Baumwolle', 400, 5, 1202115, 1);
+INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock, deleted)
+VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles grün', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'grün', 'Baumwolle', 400, 1, 1202111, 86, false);
+INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock, deleted)
+VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles blau', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'blau', 'Baumwolle', 400, 2, 1202112, 18, false);
+INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock, deleted)
+VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles schwarz', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'schwarz', 'Baumwolle', 400, 3, 1202113, 25, false);
+INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock, deleted)
+VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles gelb', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'gelb', 'Baumwolle', 400, 4, 1202114, 12, false);
+INSERT INTO webshop.base_item (dtype, description, name, picture_link, price, brand, color, material, weight, category_c_id, article_number, stock, deleted)
+VALUES ('single', 'Textilgarn (Baumwolle)', 'Noodles grau', 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 12.50, 'Stafil', 'grau', 'Baumwolle', 400, 5, 1202115, 1, false);
 
 # MultipleItem
-INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock)
-VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug blau/grün', 19.99, 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007648, 3);
-INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock)
-VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug grau', 19.99, 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007649, 9);
-INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock)
-VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug schwarz', 19.99, 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007650, 21);
-INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock)
-VALUES ('multiple', 'Häkelset Stuhlhusse', 'Husse grün', 19.99, 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007886, 14);
-INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock)
-VALUES ('multiple', 'Häkelset Stuhlhusse', 'Husse gelb', 19.99, 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007887, 22);
+INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock, deleted)
+VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug blau/grün', 19.99, 1, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007648, 3, false);
+INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock, deleted)
+VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug grau', 19.99, 2, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007649, 9, false);
+INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock, deleted)
+VALUES ('multiple', 'Häkelset Kissenbezug', 'Kissenbezug schwarz', 19.99, 3, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007650, 21, false);
+INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock, deleted)
+VALUES ('multiple', 'Häkelset Stuhlhusse', 'Husse grün', 19.99, 4, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007886, 14, false);
+INSERT INTO webshop.base_item (dtype, description, name, price, category_c_id, picture_link, article_number, stock, deleted)
+VALUES ('multiple', 'Häkelset Stuhlhusse', 'Husse gelb', 19.99, 5, 'http://res.cloudinary.com/stonespiccloud/image/upload/v1471006051/sample.jpg', 2007887, 22, false);
 
 INSERT INTO webshop.base_item_items (multiple_item_i_id, items_i_id)
 VALUES (6, 1);

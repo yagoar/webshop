@@ -101,4 +101,13 @@ public class ShoppingCart {
             }
         }
     }
+
+    public void updateQuantityOfItemInCart(BaseItem item, int quantity) {
+
+        for(ItemAndQuantity entry : items) {
+            if (entry.getItem().equals(item)) {
+                entry.setQuantity(quantity);
+            }
+        }
+    }
 }
