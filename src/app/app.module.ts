@@ -3,15 +3,15 @@ import {NgModule, LOCALE_ID} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { UserService } from "./shared/services/user.service";
+import { UserService } from "./shared/services/shop/user.service";
 import { routing } from "./app.routing";
 import { CollapseModule } from "ng2-bootstrap";
 import { WebshopModule } from "./webshop/webshop.module";
-import { AuthenticationService } from "./shared/services/authentication.service";
-import { AuthGuard } from "./shared/authguard";
-import {PagerService} from "./shared/services/pager.service";
-import {ItemsService} from "./shared/services/items/items.service";
-import {ShoppingCartService} from "./shared/services/shopping-cart.service";
+import { AuthenticationService } from "./shared/services/authentication/authentication.service";
+import { AuthGuard } from "./shared/services/authentication/authguard";
+import {PagerService} from "./shared/services/shop/pager.service";
+import {ItemsService} from "./shared/services/shop/items.service";
+import {ShoppingCartService} from "./shared/services/shop/shopping-cart.service";
 import {AdminModule} from "./admin/admin.module";
 @NgModule({
   declarations: [
