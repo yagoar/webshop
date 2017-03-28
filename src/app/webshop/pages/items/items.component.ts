@@ -5,7 +5,7 @@ import {Category} from '../../../shared/models/shop/category';
 import {FilterOption} from "./item-sidebar/model/filter-option";
 import {Item} from "../../../shared/models/shop/item";
 import {ActivatedRoute} from "@angular/router";
-import {ItemsService} from "../../../shared/services/items/items.service";
+import {ItemsService} from "../../../shared/services/shop/items.service";
 
 @Component({
   selector: 'items',

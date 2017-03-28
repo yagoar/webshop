@@ -2,7 +2,7 @@ import {Component, Input, EventEmitter, Output, DoCheck} from '@angular/core';
 import * as _ from 'lodash';
 import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 import {ItemsAndQuantity} from "../../../../shared/models/shop/items-quantity";
-import {ShoppingCartService} from "../../../../shared/services/shopping-cart.service";
+import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 
 @Component({
   selector: 'webshop-cart-items',
@@ -40,12 +40,7 @@ export class CartItemsComponent implements DoCheck {
         scItem.quantity++;
         newQuantity=scItem.quantity;
       }
-      console.log(newQuantity);
-      _this.shoppingCartService.updateItemQuantity(itemId,newQuantity).subscribe(
-          data => {
-            console.log(data);
-          }
-      );
+      _this.shoppingCartService.updateItemQuantity(itemId,newQuantity);
       return scItem;
     });
 
@@ -63,12 +58,7 @@ export class CartItemsComponent implements DoCheck {
           newQuantity=scItem.quantity;
         }
       }
-      _this.shoppingCartService.updateItemQuantity(itemId,newQuantity).subscribe(
-          data => {
-            console.log(data);
-          }
-      );
-
+      _this.shoppingCartService.updateItemQuantity(itemId,newQuantity);
       return scItem;
     });
 

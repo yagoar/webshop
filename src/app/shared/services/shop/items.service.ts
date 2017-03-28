@@ -9,6 +9,11 @@ export class ItemsService {
         return this.http.get(`/api/v1/items/${catId}`).map((response: Response) => response.json());
     }
 
+    getParentCategories() {
+        return this.http.get(`/api/v1/items/categories`).map((response: Response) => response.json());
+    }
+
+
     getCategory(catId: number) {
         return this.http.get(`/api/v1/items/category/${catId}`).map((response: Response) => response.json());
     }

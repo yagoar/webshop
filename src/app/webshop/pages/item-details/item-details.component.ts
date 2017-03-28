@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ItemsService} from "../../../shared/services/items/items.service";
+import {ItemsService} from "../../../shared/services/shop/items.service";
 
 @Component({
   selector: 'webshop-item-details',

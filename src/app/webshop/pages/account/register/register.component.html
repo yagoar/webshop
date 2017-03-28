@@ -33,12 +33,8 @@
                 <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" #password="ngModel" minlength="8" required />
             </div>
             <div class="form-group">
-                <label for="bilstreet">Straße</label>
-                <input type="text" class="form-control" id="bilstreet" name="bilstreet" [(ngModel)]="billingAddress.street" #bilstreet="ngModel" required />
-            </div>
-            <div class="form-group">
-                <label for="bilno">Nr.</label>
-                <input type="text" class="form-control" id="bilno" name="bilno" [(ngModel)]="billingAddress.no" #bilno="ngModel" required />
+                <label for="bilstreet">Straße Nr.</label>
+                <input type="text" class="form-control" id="bilstreet" name="bilstreet" [(ngModel)]="billingAddress.streetNo" #bilstreet="ngModel" required />
             </div>
             <div class="form-group">
                 <label for="bilcity">Stadt</label>
@@ -49,16 +45,34 @@
                 <input type="text" class="form-control" id="bilzip" name="bilzip" [(ngModel)]="billingAddress.zip" #bilzip="ngModel" required />
             </div>
             <div class="form-group">
+                <label for="shizip">Land</label>
+                <input type="text" class="form-control" id="bilcountry" name="bilcountry" [(ngModel)]="billingAddress.country" #shizip="ngModel" required />
+            </div>
+            <div class="form-group">
                 <label class="checkbox-inline"><input type="checkbox" name="diffAddress" [(ngModel)]="diffAddress" />Andere LieferAddresse</label>
             </div>
             <div *ngIf="diffAddress">
                 <div class="form-group">
-                    <label for="shistreet">Straße</label>
-                    <input type="text" class="form-control" id="shistreet" name="shistreet" [(ngModel)]="shippingAddress.street" #shistreet="ngModel" required />
+                    <label>Anrede</label>
+                    <ng-select id="gender"
+                               [allowClear]="false"
+                               [items]="gender"
+                               [active]="[{id: 'FEMALE', text:'Frau'}]"
+                               (data)="setAddrGender($event)"
+                               placeholder="Keine Anrede">
+                    </ng-select>
                 </div>
                 <div class="form-group">
-                    <label for="shino">Nr.</label>
-                    <input type="text" class="form-control" id="shino" name="shino" [(ngModel)]="shippingAddress.no" #shino="ngModel" required />
+                    <label for="firstName">Vorname</label>
+                    <input type="text" class="form-control" id="shiFirstName" name="shiFirstName" [(ngModel)]="shippingAddress.firstName" #firstName="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nachname</label>
+                    <input type="text" class="form-control" id="shiLastName" name="shiLastName" [(ngModel)]="shippingAddress.lastName" #lastName="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="shistreet">Straße Nr.</label>
+                    <input type="text" class="form-control" id="shistreet" name="shistreet" [(ngModel)]="shippingAddress.streetNo" #shistreet="ngModel" required />
                 </div>
                 <div class="form-group">
                     <label for="shicity">Stadt</label>
@@ -67,6 +81,10 @@
                 <div class="form-group">
                     <label for="shizip">Postleitzahl</label>
                     <input type="text" class="form-control" id="shizip" name="shizip" [(ngModel)]="shippingAddress.zip" #shizip="ngModel" required />
+                </div>
+                <div class="form-group">
+                    <label for="shizip">Land</label>
+                    <input type="text" class="form-control" id="shicountry" name="shicountry" [(ngModel)]="shippingAddress.country" #shizip="ngModel" required />
                 </div>
             </div>
             <div class="form-group">

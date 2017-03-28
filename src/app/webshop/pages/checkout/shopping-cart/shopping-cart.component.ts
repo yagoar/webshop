@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ShoppingCartService} from "../../../../shared/services/shopping-cart.service";
+import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 
 
@@ -15,13 +15,15 @@ export class ShoppingCartComponent implements OnInit {
   total: number;
   overviewBtnMessage: string = "Zur Kasse";
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
-
-  ngOnInit() {
-    this.shoppingCartService.getShoppingCart().subscribe(
+  constructor(private shoppingCartService: ShoppingCartService) {
+    this.shoppingCartService.shoppingCartUpdate.subscribe(
         data => {
           this.shoppingCart = data;
         }
     );
+  }
+
+  ngOnInit() {
+    this.shoppingCartService.getShoppingCart();
   }
 }

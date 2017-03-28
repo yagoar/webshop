@@ -6,7 +6,7 @@ import {RegisterComponent} from "./pages/account/register/register.component";
 import {LoginComponent} from "./pages/account/login/login.component";
 import {WebshopComponent} from "./webshop.component";
 import {AccountComponent} from "./pages/account/account.component";
-import {AuthGuard} from "../shared/authguard";
+import {AuthGuard} from "../shared/services/authentication/authguard";
 import {ShoppingCartComponent} from "./pages/checkout/shopping-cart/shopping-cart.component";
 import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/order-confirmation.component";
 import {ItemDetailsComponent} from "./pages/item-details/item-details.component";

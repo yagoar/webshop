@@ -4,28 +4,28 @@
  */
 
 # Users
-INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Peter', 'Lustig', 'peter@lustig.de', '$2a$10$aU9jmhzy7jsnIwQX6SnDh.py//24IDsSMLN8BluV4Q/Xpx4pmH/S6', CURDATE(), TRUE);
-INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Homer', 'Simpson', 'elhomo@springfield.de', '$2a$10$7E2ydJohkIX1k8xqJbR5JeQynNmlh/Yp3rr6KBeCeopHPo3uHC9fq', CURDATE(), FALSE);
-INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Donald', 'Trump', 'President@usgov.com', '$2a$10$qAGCerOSKAolFsdgs/f67OYn9cDBK6U9dXKp8NcetCLSpG9EdKejy', CURDATE(), FALSE);
-INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Sheldon', 'Cooper', 'shelly@gmail.com', '$2a$10$2bOJnU.NpqOaQxxjj8NA2.gAeMmEP6x6G4ybvYw6dHzeH4bF2XKG6', CURDATE(), TRUE);
-INSERT INTO webshop.user (first_name, last_name, email, password, date_of_birth, is_admin)
-VALUES ('Motgomery', 'Burns', 'monty@springfield.com', '$2a$10$PYmXSNe0MoivzOQLR1WLJuyF9dPvEYrtUkfpfQsfo98COjXl7PW4q', CURDATE(), TRUE);
+INSERT INTO webshop.user (first_name, last_name, gender, email, password, date_of_birth, is_admin)
+VALUES ('Peter', 'Lustig', 0, 'peter@lustig.de', '$2a$10$aU9jmhzy7jsnIwQX6SnDh.py//24IDsSMLN8BluV4Q/Xpx4pmH/S6', CURDATE(), TRUE);
+INSERT INTO webshop.user (first_name, last_name, gender, email, password, date_of_birth, is_admin)
+VALUES ('Homer', 'Simpson', 0, 'elhomo@springfield.de', '$2a$10$7E2ydJohkIX1k8xqJbR5JeQynNmlh/Yp3rr6KBeCeopHPo3uHC9fq', CURDATE(), FALSE);
+INSERT INTO webshop.user (first_name, last_name, gender, email, password, date_of_birth, is_admin)
+VALUES ('Donald', 'Trump', 0, 'President@usgov.com', '$2a$10$qAGCerOSKAolFsdgs/f67OYn9cDBK6U9dXKp8NcetCLSpG9EdKejy', CURDATE(), FALSE);
+INSERT INTO webshop.user (first_name, last_name, gender, email, password, date_of_birth, is_admin)
+VALUES ('Sheldon', 'Cooper', 0, 'shelly@gmail.com', '$2a$10$2bOJnU.NpqOaQxxjj8NA2.gAeMmEP6x6G4ybvYw6dHzeH4bF2XKG6', CURDATE(), TRUE);
+INSERT INTO webshop.user (first_name, last_name, gender, email, password, date_of_birth, is_admin)
+VALUES ('Motgomery', 'Burns', 0, 'monty@springfield.com', '$2a$10$PYmXSNe0MoivzOQLR1WLJuyF9dPvEYrtUkfpfQsfo98COjXl7PW4q', CURDATE(), TRUE);
 
 # Adresses
-INSERT INTO webshop.address (address_type, city, no, street, zip)
-VALUES (1, 'Stuttgart', 1, 'Königstr.', 70173);
-INSERT INTO webshop.address (address_type, city, no, street, zip)
-VALUES (0, 'Springfield', 742, 'Evergreen Terrace.', 00205);
-INSERT INTO webshop.address (address_type, city, no, street, zip)
-VALUES (1, 'Washington D.C', 1600, 'Pennsylvania Avenue', 20500);
-INSERT INTO webshop.address (address_type, city, no, street, zip)
-VALUES (1, 'Pasadens', 2311, 'Northern Los Robles Avenue', 91101);
-INSERT INTO webshop.address (address_type, city, no, street, zip)
-VALUES (0, 'Springfield', 1, 'Burns Mansion', 00205);
+INSERT INTO webshop.address (address_type, first_name, last_name, gender, city, street_no, zip, country)
+VALUES (1,'Peter', 'Lustig', 0, 'Stuttgart', 'Königstr. 1', 70173, 'Deutschland');
+INSERT INTO webshop.address (address_type, first_name, last_name, gender, city, street_no, zip, country)
+VALUES (0,'Homer', 'Simpson', 0, 'Springfield', 'Evergreen Terrace. 742', 00205, 'USA');
+INSERT INTO webshop.address (address_type, first_name, last_name, gender, city, street_no, zip, country)
+VALUES (1, 'Donald', 'Trump', 0, 'Washington D.C', 'Pennsylvania Avenue 1600', 20500, 'USA');
+INSERT INTO webshop.address (address_type, first_name, last_name, gender, city, street_no, zip, country)
+VALUES (1, 'Sheldon', 'Cooper', 0, 'Pasadens', 'Northern Los Robles Avenue 2311', 91101, 'USA');
+INSERT INTO webshop.address (address_type, first_name, last_name, gender, city, street_no, zip, country)
+VALUES (0, 'Motgomery', 'Burns', 0, 'Springfield', 'Burns Mansion 1', 00205, 'USA');
 
 # User_Address
 INSERT INTO webshop.user_addresses (user_u_id, addresses_a_id) VALUES (1, 1);

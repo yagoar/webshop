@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from "@angular/http";
+import {Router} from "@angular/router";
 
 export class Credentials {
     constructor(public username: string, public password: string) {}

@@ -33,10 +33,11 @@ export class RegisterComponent implements OnInit {
     register() {
 
         this.loading = true;
-        this.setAddress();
         if(this.user.gender == null) {
             this.user.gender = "FEMALE";
         }
+
+        this.setAddress();
 
         this.userService.create(this.user)
             .subscribe(
@@ -54,8 +55,17 @@ export class RegisterComponent implements OnInit {
         this.user.gender = value.id;
     }
 
+    setAddrGender(value){
+        this.shippingAddress.gender = value.id;
+    }
+
+
     setAddress(){
         this.user.addresses = [];
+
+        this.billingAddress.firstName = this.user.firstName;
+        this.billingAddress.lastName = this.user.lastName;
+        this.billingAddress.gender = this.user.gender;
 
         //If different address for shipping is given, add to user, else add billing address as shipping address too
         if(!this.diffAddress) {

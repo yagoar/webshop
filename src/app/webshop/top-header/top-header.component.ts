@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ShoppingCartService} from "../../shared/services/shopping-cart.service";
+import {ShoppingCartService} from "../../shared/services/shop/shopping-cart.service";
 
 @Component({
   selector: 'webshop-top-header',
@@ -14,7 +14,7 @@ export class TopHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shoppingCartService.itemCountUpdate.subscribe((itemCount:number) => {
+    this.shoppingCartService.itemCountUpdate.subscribe(itemCount => {
       this.itemsInCart = itemCount;
     });
   }

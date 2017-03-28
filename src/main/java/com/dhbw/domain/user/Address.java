@@ -19,13 +19,19 @@ public class Address {
 
     private AddressType addressType;
 
+    private String firstName;
+
+    private String lastName;
+
+    private Gender gender;
+
     private String city;
 
-    private String street;
-
-    private String no;
+    private String streetNo;
 
     private int zip;
+
+    private String country;
 
     public Long getA_id() {
         return a_id;
@@ -51,27 +57,51 @@ public class Address {
         this.city = city;
     }
 
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getNo() {
-        return no;
-    }
-
-    public void setNo(String no) {
-        this.no = no;
-    }
-
     public int getZip() {
         return zip;
     }
 
     public void setZip(int zip) {
         this.zip = zip;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getStreetNo() {
+        return streetNo;
+    }
+
+    public void setStreetNo(String streetNo) {
+        this.streetNo = streetNo;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

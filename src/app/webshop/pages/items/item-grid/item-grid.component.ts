@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {PagerService} from "../../../../shared/services/pager.service";
+import {PagerService} from "../../../../shared/services/shop/pager.service";
 import {Item} from "../../../../shared/models/shop/item";
-import {ShoppingCartService} from "../../../../shared/services/shopping-cart.service";
+import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 import {FilterOption} from "../item-sidebar/model/filter-option";
 
 @Component({
@@ -46,11 +46,7 @@ export class ItemsGridComponent implements OnChanges {
       item: item,
       quantity: 1
     };
-    this.shoppingCartService.addItemToShoppingCart(scItem).subscribe(
-        data => {
-          this.shoppingCartService.getItemCount();
-        }
-    )
+    this.shoppingCartService.addItemToShoppingCart(scItem);
   }
 
 }

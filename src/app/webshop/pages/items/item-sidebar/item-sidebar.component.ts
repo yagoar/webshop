@@ -1,7 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import * as _ from 'lodash';
 import {Category} from "../../../../shared/models/shop/category";
-import {Item} from "../../../../shared/models/shop/item";
 import {FilterOption} from "./model/filter-option";
 import {SideBarFilter} from "./model/sidebar-filter";
 

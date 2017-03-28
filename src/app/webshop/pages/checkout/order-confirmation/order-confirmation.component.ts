@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
-import {ShoppingCartService} from "../../../../shared/services/shopping-cart.service";
+import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 
 @Component({
   selector: 'app-order-confirmation',
@@ -15,14 +15,14 @@ export class OrderConfirmationComponent implements OnInit {
   overviewBtnMessage: string = "Kostenpflichtig bestellen";
 
   constructor(private shoppingCartService: ShoppingCartService) {
-
-  }
-
-  ngOnInit() {
-    this.shoppingCartService.getShoppingCart().subscribe(
+    this.shoppingCartService.shoppingCartUpdate.subscribe(
         data => {
           this.shoppingCart = data;
         }
     );
+  }
+
+  ngOnInit() {
+    this.shoppingCartService.getShoppingCart();
   }
 }
