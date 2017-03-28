@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/Rx';
-import {UserService} from "../../../../shared/services/user.service";
+import {UserService} from "../../../../shared/services/shop/user.service";
 
 @Component({
     selector: 'webshop-register',
@@ -34,6 +34,9 @@ export class RegisterComponent implements OnInit {
 
         this.loading = true;
         this.setAddress();
+        if(this.user.gender == null) {
+            this.user.gender = "FEMALE";
+        }
 
         this.userService.create(this.user)
             .subscribe(
@@ -43,6 +46,7 @@ export class RegisterComponent implements OnInit {
                 },
                 error => {
                     this.loading = false;
+                    console.log(error);
                 });
     }
 
@@ -51,7 +55,7 @@ export class RegisterComponent implements OnInit {
     }
 
     setAddress(){
-        this.user.adresses = [];
+        this.user.addresses = [];
 
         //If different address for shipping is given, add to user, else add billing address as shipping address too
         if(!this.diffAddress) {
@@ -59,8 +63,8 @@ export class RegisterComponent implements OnInit {
         }
 
         //Add addresses to the user
-        this.billingAddress.type = "BILLING";
-        this.shippingAddress.type = "SHIPPING";
-        this.user.adresses.push(this.billingAddress, this.shippingAddress);
+        this.billingAddress.addressType = "BILLING";
+        this.shippingAddress.addressType = "SHIPPING";
+        this.user.addresses.push(this.billingAddress, this.shippingAddress);
     }
 }
