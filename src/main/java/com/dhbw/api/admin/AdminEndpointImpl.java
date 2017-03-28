@@ -6,6 +6,8 @@ import com.dhbw.domain.item.MultipleItem;
 import com.dhbw.domain.item.SingleItem;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
+import com.dhbw.domain.user.User;
+import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +29,8 @@ public class AdminEndpointImpl implements AdminEndpoint {
     BaseItemDao baseItemDao;
     @Autowired
     CategoryDao categoryDao;
+    @Autowired
+    UserDao userDao;
     @Context
     SecurityContext securityContext;
 
@@ -151,6 +155,16 @@ public class AdminEndpointImpl implements AdminEndpoint {
             set.setItems(items);
             baseItemDao.save(set);
             return Response.ok("Artikel wurde vom Set entfernt").build();
+        } else return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @Override
+    public Response makeUserAdmin(String email) {
+        if (securityContext.isUserInRole("ADMIN")) {
+            User user = userDao.findByEmail(email);
+            user.setAdmin(true);
+            userDao.save(user);
+            return Response.ok("User ist jetzt Admin").build();
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 }

@@ -158,5 +158,14 @@ public interface AdminEndpoint {
     @Path("itemSet/{ItemSetId}/{itemId}")
     Response removeItemFromSet(@PathParam("ItemSetId") Long ItemSetId, @PathParam("itemId") Long itemId);
 
+    /**
+     * Grants an existing user admin rights
+     * @param email email-address of user
+     * @return Response object with the result of the operation
+     */
+    @POST
+    @Secured
+    @Path("users/admin")
+    Response makeUserAdmin(String email);
 
 }

@@ -36,6 +36,16 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     }
 
     @Override
+    public Response getChildCategories(Long categoryId) {
+        List<String> childCategoriesNames = new ArrayList<>();
+        List<Category> childCategories = categoryDao.getChildCategories(categoryDao.findOne(categoryId));
+        for(Category category : childCategories) {
+            childCategoriesNames.add(category.getName());
+        }
+        return Response.ok(childCategoriesNames).type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    @Override
     public Response getCategory(Long categoryId) {
         return Response.status(Response.Status.OK).entity(categoryDao.findOne(categoryId)).build();
     }
