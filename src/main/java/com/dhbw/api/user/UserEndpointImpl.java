@@ -1,5 +1,7 @@
 package com.dhbw.api.user;
 
+import com.dhbw.domain.item.ShoppingCart;
+import com.dhbw.domain.item.repositories.ShoppingCartDao;
 import com.dhbw.domain.user.*;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class UserEndpointImpl implements UserEndpoint {
     private UserDao userDao;
     @Autowired
     private AddressDao addressDao;
+    @Autowired
+    private ShoppingCartDao shoppingCartDao;
 
     @Context
     SecurityContext securityContext;
@@ -30,6 +34,9 @@ public class UserEndpointImpl implements UserEndpoint {
         if (userDao.findByEmail(user.getEmail()) == null) {
             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
             userDao.save(user);
+            ShoppingCart cart = new ShoppingCart();
+            cart.setUser(user);
+            shoppingCartDao.save(cart);
             return Response.ok().entity("User erfolgreich angelegt. Sie können sich jetzt mit Ihrer Email-Adresse und Ihrem Passwort anmelden").build();
         } else return Response.status(Response.Status.BAD_REQUEST)
                 .entity("Benutzer existiert bereits").build();

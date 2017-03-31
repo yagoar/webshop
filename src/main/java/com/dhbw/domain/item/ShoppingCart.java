@@ -26,6 +26,9 @@ public class ShoppingCart {
     @OneToOne(targetEntity = ShoppingOrder.class)
     private ShoppingOrder shoppingOrder;
 
+    public ShoppingCart() {
+    }
+
     public Long getSc_id() {
         return sc_id;
     }

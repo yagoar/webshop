@@ -7,6 +7,7 @@ import {AdminComponent} from "./admin.component";
 import {AdminLoginComponent} from "./pages/admin-login/admin-login.component";
 import {AdminHomeComponent} from "./pages/admin-home/admin-home.component";
 import {AdminNavigationComponent} from "./navigation/admin-nav.component";
+import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import {AdminNavigationComponent} from "./navigation/admin-nav.component";
     AdminComponent,
     AdminLoginComponent,
     AdminHomeComponent,
-    AdminNavigationComponent
+    AdminNavigationComponent,
+    AdminItemComponent
   ]
 })
 export class AdminModule { }

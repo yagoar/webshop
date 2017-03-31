@@ -1,0 +1,33 @@
+<h2 class="text-center">Artikel anlegen</h2>
+<br>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <form (ngSubmit)="createItem()">
+
+            <div class="form-group">
+                <label for="name">Name des Artikels</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="item.name" #name="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="articleNumber">Artikelnummer</label>
+                <input type="text" class="form-control" id="articleNumber" name="articleNumber" [(ngModel)]="item.articleNumber" #articleNumber="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="stock">Lagebestand</label>
+                <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="item.stock" #stock="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="description">Beschreibung</label>
+                <input type="text" class="form-control" id="description" name="description" [(ngModel)]="item.description" #description="ngModel" required />
+            </div>
+            <div class="form-group">
+                <label for="price">Preis</label>
+                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="loading" class="btn btn-primary">Artikel speichern</button>
+            </div>
+        </form>
+    </div>
+</div>
