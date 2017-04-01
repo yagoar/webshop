@@ -52,14 +52,14 @@ public class DaoTest {
         User user = userDao.findByEmail("peter@lustig.de");
         ShoppingCart cart = shoppingCartDao.findByUser(user);
         BaseItem it = baseItemDao.findByName("Noodles grau");
-        cart.addItemToCart(it, 5);
+        cart.addItemToCart(it);
         shoppingCartDao.save(cart);
         Assert.assertTrue(cart.isItemInCart(it));
         cart.removeItemFromCart(it);
         shoppingCartDao.save(cart);
         Assert.assertFalse(cart.isItemInCart(it));
         BaseItem it2 = baseItemDao.findByName("Kissenbezug grau");
-        cart.addItemToCart(it2, 1);
+        cart.addItemToCart(it2);
         shoppingCartDao.save(cart);
         Assert.assertTrue(cart.isItemInCart(it2));
         cart.removeItemFromCart(it2);
@@ -94,8 +94,8 @@ public class DaoTest {
     public void ShoppingOrderDaoTest() {
 
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findByEmail("monty@springfield.com"));
-        cart.addItemToCart(baseItemDao.findOne(1L), 1);
-        cart.addItemToCart(baseItemDao.findOne(9L), 1);
+        cart.addItemToCart(baseItemDao.findOne(1L));
+        cart.addItemToCart(baseItemDao.findOne(9L));
         shoppingCartDao.placeOrder(cart);
         shoppingCartDao.save(cart);
         Assert.assertTrue(cart.getItems().isEmpty());

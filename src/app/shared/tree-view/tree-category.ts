@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {Category} from "../models/shop/category";
 import {ItemsService} from "../services/shop/items.service";
 

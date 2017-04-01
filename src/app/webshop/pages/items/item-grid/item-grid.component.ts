@@ -46,7 +46,7 @@ export class ItemsGridComponent implements OnChanges {
       item: item,
       quantity: 1
     };
-    this.shoppingCartService.addItemToShoppingCart(scItem);
+    this.shoppingCartService.addItemToShoppingCart(scItem.item);
   }
 
 }

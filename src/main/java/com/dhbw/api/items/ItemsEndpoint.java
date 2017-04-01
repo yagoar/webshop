@@ -19,15 +19,6 @@ public interface ItemsEndpoint {
     Response getParentCategories();
 
     /**
-     * Gets all child categories
-     *
-     * @return Response object with categories (only names needed)
-     */
-    @GET
-    @Path("categories/{categoryId}")
-    Response getChildCategories(@PathParam("categoryId") Long categoryId);
-
-    /**
      * Gets a category by its id
      *
      * @param categoryId id of the selected category, items in child categories should appear too

@@ -3,6 +3,7 @@
     <items-sidebar [categories]="categories" [filters]="filters" (filterEvent)="setFilter($event)"></items-sidebar>
   </div>
   <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+    <div></div>
     <items-grid [items]="items" [selFilters]="selectedFilters"></items-grid>
   </div>
 </div>

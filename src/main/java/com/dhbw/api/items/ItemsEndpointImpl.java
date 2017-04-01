@@ -29,13 +29,13 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     }
 
     @Override
-    public Response getChildCategories(Long categoryId) {
+    public Response getCategory(Long categoryId) {
         Category parentCategory = categoryDao.findOne(categoryId);
-        parentCategory = childCategoriesHelper(parentCategory);
-        return Response.ok(parentCategory.getChildrenCategories()).type(MediaType.APPLICATION_JSON_TYPE).build();
+        parentCategory = getChildCategories(parentCategory);
+        return Response.status(Response.Status.OK).entity(parentCategory).build();
     }
 
-    private Category childCategoriesHelper(Category parentCategory) {
+    private Category getChildCategories(Category parentCategory) {
         parentCategory.setChildrenCategories(new ArrayList<>());
         List<Category> childCategories = categoryDao.getChildCategories(parentCategory);
         if(childCategories.size() == 0) {
@@ -43,17 +43,12 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
         } else {
             parentCategory.setChildrenCategories(childCategories);
             for(Category c : childCategories) {
-                childCategoriesHelper(c);
+                getChildCategories(c);
             }
         }
 
         return parentCategory;
 
-    }
-
-    @Override
-    public Response getCategory(Long categoryId) {
-        return Response.status(Response.Status.OK).entity(categoryDao.findOne(categoryId)).build();
     }
 
     @Override
