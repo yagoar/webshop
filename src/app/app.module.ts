@@ -13,6 +13,8 @@ import {PagerService} from "./shared/services/shop/pager.service";
 import {ItemsService} from "./shared/services/shop/items.service";
 import {ShoppingCartService} from "./shared/services/shop/shopping-cart.service";
 import {AdminModule} from "./admin/admin.module";
+import { OrderDetailsComponent } from './webshop/pages/account/order-details/order-details.component';
+
 @NgModule({
   declarations: [
     AppComponent

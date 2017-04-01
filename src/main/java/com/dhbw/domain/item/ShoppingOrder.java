@@ -18,12 +18,12 @@ public class ShoppingOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long so_id;
+    private Long soId;
 
     @OneToOne
     private User user;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Date date;
 
     private boolean paid;
@@ -39,10 +39,6 @@ public class ShoppingOrder {
         this.date = date;
         this.items = items;
     }
-
-    public Long getSo_id() { return so_id; }
-
-    public void setSo_id(Long so_id) { this.so_id = so_id; }
 
     public Date getDate() {
         return date;
@@ -74,5 +70,13 @@ public class ShoppingOrder {
 
     public void setItems(Set<ItemAndQuantity> items) {
         this.items = items;
+    }
+
+    public Long getSoId() {
+        return soId;
+    }
+
+    public void setSoId(Long soId) {
+        this.soId = soId;
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {AuthenticationService, Credentials} from "../../../../shared/services/authentication/authentication.service";
-import {User} from "../../../../shared/models/user";
+import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 
 @Component({
   selector: 'webshop-login',
@@ -16,11 +16,13 @@ export class LoginComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private authenticationService: AuthenticationService) { }
+      private authenticationService: AuthenticationService,
+      private shoppincartService: ShoppingCartService) { }
 
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
+      this.shoppincartService.getItemCount();
 
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
             data => {
               this.loginFailed = false;
+              this.shoppincartService.getItemCount();
               this.router.navigate([this.returnUrl]);
             },
             error => {

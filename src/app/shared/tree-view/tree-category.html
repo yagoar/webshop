@@ -1,5 +1,5 @@
 <li>
-    <div *ngIf="category.childCategories.length > 0">
+    <div *ngIf="category.childrenCategories.length > 0">
         <button (click)="toggle()" class="node-icon">
         <i *ngIf="!expanded" class="fa fa-chevron-right" aria-hidden="true"></i>
         <i *ngIf="expanded" class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -7,15 +7,15 @@
         <a href="#/shop/category/{{category.c_id}}" class="node-name">{{ category.name }}</a>
         <div *ngIf="expanded">
             <ul>
-                <div *ngFor="let child of category.childCategories">
+                <div *ngFor="let child of category.childrenCategories">
                     <tree-category [category]="child"></tree-category>
                 </div>
             </ul>
         </div>
     </div>
 
-    <div *ngIf="category.childCategories.length == 0">
-        <a href="#/shop/category/{{category.c_id}}" class="node-name no-icon">{{ category.name }}</a>
+    <div *ngIf="category.childrenCategories.length == 0">
+        <a (click)="selectChildCategory(catgory.c_id)" class="node-name no-icon">{{ category.name }}</a>
     </div>
 
 </li>

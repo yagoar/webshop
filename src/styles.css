@@ -376,6 +376,7 @@ a:active{
 
 #sc-overview>h4 {
     margin-top: 0;
+    font-weight:700;
 }
 
 #sc-overview>a {
@@ -396,6 +397,7 @@ a:active{
 
 .order-conf-panel>h4 {
     margin-top: 0;
+    font-weight:700;
 }
 
 /********************************************************
@@ -425,4 +427,26 @@ a:active{
 
 .item-description {
     margin-top: 15px;
+}
+
+/********************************************************
+ * Account page *
+********************************************************/
+
+#change-email-btn {
+    margin-top: 12px;
+}
+
+.order-history h4 {
+    margin-top: 0;
+    font-weight:700;
+}
+
+.order {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0;
+}
+
+.order-col {
+    padding-top: 6px;
 }

@@ -76,6 +76,15 @@ export class ShoppingCartService {
 
     }
 
+    placeOrder() {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(`/api/v1/shopping-order`, options).map((response: Response) => response.text());
+
+    }
+
     getItemCount() {
         if(this.authenticationService.token != null){
             // add authorization header with jwt token
@@ -97,6 +106,7 @@ export class ShoppingCartService {
 
     resetItemCount() {
         this.itemCount = 0;
+        this.itemCountUpdate.next(this.itemCount);
     }
 
 }

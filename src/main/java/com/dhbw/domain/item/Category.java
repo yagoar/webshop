@@ -2,6 +2,7 @@ package com.dhbw.domain.item;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -23,6 +24,9 @@ public class Category {
     private String description;
 
     private boolean deleted;
+
+    @Transient
+    private List<Category> childrenCategories;
 
     public Long getC_id() {
         return c_id;
@@ -73,5 +77,13 @@ public class Category {
     @Override
     public int hashCode() {
         return c_id.hashCode();
+    }
+
+    public List<Category> getChildrenCategories() {
+        return childrenCategories;
+    }
+
+    public void setChildrenCategories(List<Category> childrenCategories) {
+        this.childrenCategories = childrenCategories;
     }
 }

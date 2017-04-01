@@ -27,13 +27,23 @@ export class ItemsComponent implements OnInit {
     //Subscribe to id parameter in URL and get items
     this.route.params.subscribe(param => {
       this.categoryId = param['id'];
-      this.getItemsinCategory();
-      this.getCategoy();
+      this.getItemsinCategory(this.categoryId);
+      this.getCategory();
+      this.getChildCategories();
     });
+
+    this.itemsService.selectedChildCategory.subscribe(
+        childCatId => {
+          if(childCatId != null) {
+            console.log(childCatId);
+            this.getItemsinCategory(childCatId);
+          }
+        }
+    )
   }
 
-  getItemsinCategory() {
-    this.itemsService.getItemsInCategory(this.categoryId).subscribe(
+  getItemsinCategory(catId) {
+    this.itemsService.getItemsInCategory(catId).subscribe(
         data => {
           this.items = data;
           this.getFilters();
@@ -43,17 +53,23 @@ export class ItemsComponent implements OnInit {
         });
   }
 
-  getCategoy() {
+  getCategory() {
     this.itemsService.getCategory(this.categoryId).subscribe(
         data => {
           this.category = data;
-          this.categories = this.category.childCategories;
         },
         error => {
-
+          console.log(error);
         });
   }
 
+  getChildCategories() {
+    this.itemsService.getChildCategories(this.categoryId).subscribe(
+        data => {
+          this.categories = data;
+        }
+    );
+  }
 
   getFilters() {
 
@@ -102,7 +118,7 @@ export class ItemsComponent implements OnInit {
 
   setFilter(filters) {
     this.selectedFilters = filters;
-    this.getItemsinCategory();
+    this.getItemsinCategory(this.categoryId);
   }
 
 

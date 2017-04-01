@@ -16,5 +16,6 @@ import java.util.List;
 public interface ShoppingOrderDao extends JpaRepository<ShoppingOrder, Long> {
 
     List<ShoppingOrder> findByUser(User user);
+    ShoppingOrder findBySoId(Long orderId);
 
 }

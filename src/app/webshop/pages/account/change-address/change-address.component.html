@@ -1,0 +1,46 @@
+<h2 class="text-center">
+  <span *ngIf="addressType == 'BILLING'"> Rechnungsadresse</span>
+  <span *ngIf="addressType == 'SHIPPING'">Versandadresse</span>
+  ändern</h2>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <form (ngSubmit)="changeAddress()">
+      <div class="form-group">
+        <label>Anrede</label>
+        <ng-select id="gender"
+                   [allowClear]="false"
+                   [items]="gender"
+                   [active]="[{id: 'FEMALE', text:'Frau'}]"
+                   (data)="setAddrGender($event)"
+                   placeholder="Keine Anrede">
+        </ng-select>
+      </div>
+      <div class="form-group">
+        <label for="firstname">Vorname</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="address.firstName" #firstname="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="lastname">Nachname</label>
+        <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="address.lastName" #lastname="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="street">Straße Nr.</label>
+        <input type="text" class="form-control" id="street" name="street" [(ngModel)]="address.streetNo" #street="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="city">Stadt</label>
+        <input type="text" class="form-control" id="city" name="city" [(ngModel)]="address.city" #city="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="zip">Postleitzahl</label>
+        <input type="text" class="form-control" id="zip" name="zip" [(ngModel)]="address.zip" #zip="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="zip">Land</label>
+        <input type="text" class="form-control" id="country" name="country" [(ngModel)]="address.country" #country="ngModel" required />
+      </div>
+      <button class="btn btn-secondary" type="submit">Ändern</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelChangeAddr()">Abbrechen</button>
+  </form>
+  </div>
+</div>

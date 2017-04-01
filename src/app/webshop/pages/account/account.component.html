@@ -1,6 +1,8 @@
 <h2 class="text-center">Kontoübersicht</h2>
 <div class="row">
-<a (click)="logout()">as</a>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+    <button class="btn btn-primary pull-right" (click)="logout()">Abmelden</button>
+  </div>
 </div>
 <div class="row">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -8,24 +10,66 @@
       <h4>Benutzerinformationen</h4>
       {{user.firstName}} {{user.lastName}} <br>
       {{user.email}}<br>
-      {{user.dateOfBirth}}
+      <br>
+      <button class="btn btn-primary" (click)="changePassword=true" [disabled]="changePassword">Passwort ändern</button> <br>
+      <div *ngIf="changePassword">
+        <form (ngSubmit)="changePW()">
+          <div class="form-group">
+            <label for="oldPassword">Altes Passwort</label>
+            <input type="password" class="form-control" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" #oldPW="ngModel" required />
+          </div>
+          <div class="form-group">
+            <label for="oldPassword">Neues Passwort</label>
+            <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="newPassword" minlength="8" #newPW="ngModel" required />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-secondary">Ändern</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelChangePassword()">Abbrechen</button>
+          </div>
+        </form>
+      </div>
+      <button id="change-email-btn" class="btn btn-primary" (click)="changeEmail=true" [disabled]="changeEmail">E-Mail ändern</button>
+      <div *ngIf="changeEmail">
+        <form (ngSubmit)="changeEmailAddr()">
+          <div class="form-group">
+            <label for="newEmail">Neue E-Mail</label>
+            <input type="password" class="form-control" id="newEmail" name="newEmail" [(ngModel)]="newEmail" #newMail="ngModel" required />
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-secondary">Ändern</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelChangeEmail()">Abbrechen</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
     <div class="order-conf-panel">
       <h4>Rechnungsadresse</h4>
-      {{billingAddr.street}} {{billingAddr.no}} <br>
-      {{billingAddr.zip}} {{billingAddr.city}}
+      <span *ngIf="billingAddr.gender=='FEMALE'">Frau</span>
+      <span *ngIf="billingAddr.gender=='MALE'">Herr</span>
+      {{billingAddr.firstName}} {{billingAddr.lastName}} <br>
+      {{billingAddr.streetNo}}<br>
+      {{billingAddr.zip}} {{billingAddr.city}}<br>
+      {{billingAddr.country}}<br>
+      <br>
+      <button class="btn btn-primary" (click)="changeAddress(billingAddr.addressType)">Rechnungsadresse ändern</button>
     </div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
     <div class="order-conf-panel">
       <h4>Lieferadresse</h4>
-      {{shippingAddr.street}} {{shippingAddr.no}} <br>
-      {{shippingAddr.zip}} {{shippingAddr.city}}
+      <span *ngIf="shippingAddr.gender=='FEMALE'">Frau</span>
+      <span *ngIf="shippingAddr.gender=='MALE'">Herr</span>
+      {{shippingAddr.firstName}} {{shippingAddr.lastName}} <br>
+      {{shippingAddr.streetNo}} <br>
+      {{shippingAddr.zip}} {{shippingAddr.city}}<br>
+      {{shippingAddr.country}}<br>
+      <br>
+      <button class="btn btn-primary" (click)="changeAddress(shippingAddr.addressType)">Lieferadresse ändern</button>
     </div>
   </div>
 </div>
-<div class="row">
 
-</div>
+<!-- Order history -->
+<order-history></order-history>

@@ -4,16 +4,9 @@ import com.dhbw.domain.item.BaseItem;
 import com.dhbw.domain.item.Category;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
-import com.dhbw.domain.item.ItemFilter;
-import com.dhbw.domain.item.repositories.ShoppingOrderDao;
-import com.dhbw.domain.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 
-import javax.swing.*;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -37,12 +30,25 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
 
     @Override
     public Response getChildCategories(Long categoryId) {
-        List<String> childCategoriesNames = new ArrayList<>();
-        List<Category> childCategories = categoryDao.getChildCategories(categoryDao.findOne(categoryId));
-        for(Category category : childCategories) {
-            childCategoriesNames.add(category.getName());
+        Category parentCategory = categoryDao.findOne(categoryId);
+        parentCategory = childCategoriesHelper(parentCategory);
+        return Response.ok(parentCategory.getChildrenCategories()).type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    private Category childCategoriesHelper(Category parentCategory) {
+        parentCategory.setChildrenCategories(new ArrayList<>());
+        List<Category> childCategories = categoryDao.getChildCategories(parentCategory);
+        if(childCategories.size() == 0) {
+            return parentCategory;
+        } else {
+            parentCategory.setChildrenCategories(childCategories);
+            for(Category c : childCategories) {
+                childCategoriesHelper(c);
+            }
         }
-        return Response.ok(childCategoriesNames).type(MediaType.APPLICATION_JSON_TYPE).build();
+
+        return parentCategory;
+
     }
 
     @Override

@@ -33,4 +33,14 @@ public interface ShoppingOrderEndpoint {
     @Secured
     @Path("")
     Response getOrderHistory();
+
+    /**
+     * Gets all orders performed by the user as a Pageable object
+     *
+     * @return Response object containing a List with the order history
+     */
+    @GET
+    @Secured
+    @Path("{orderId}")
+    Response getOrder(@PathParam("orderId") Long orderId);
 }

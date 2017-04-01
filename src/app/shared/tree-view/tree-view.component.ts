@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {Category} from "../models/shop/category";
 
 @Component({
@@ -7,6 +7,7 @@ import {Category} from "../models/shop/category";
 })
 
 export class TreeViewComponent {
+
   @Input() categories: Array<Category>;
 
 }
