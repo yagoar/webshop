@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import java.util.ArrayList;
@@ -165,6 +166,13 @@ public class AdminEndpointImpl implements AdminEndpoint {
             user.setAdmin(true);
             userDao.save(user);
             return Response.ok("User ist jetzt Admin").build();
+        } else return Response.status(Response.Status.FORBIDDEN).build();
+    }
+
+    @Override
+    public Response getAdmins() {
+        if (securityContext.isUserInRole("ADMIN")) {
+            return Response.ok(userDao.findByIsAdminTrue()).type(MediaType.APPLICATION_JSON_TYPE).build();
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 }

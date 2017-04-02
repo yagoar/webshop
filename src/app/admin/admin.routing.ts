@@ -3,11 +3,13 @@ import {NgModule} from "@angular/core";
 import {AdminHomeComponent} from "./pages/admin-home/admin-home.component";
 import {AdminComponent} from "./admin.component";
 import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
+import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component";
 
 const routes: Routes = [
     { path: 'admin', component: AdminComponent, children: [
         { path: '', component: AdminHomeComponent },
         { path: 'new-item', component: AdminItemComponent },
+        { path: 'users', component: AdminAdminsComponent }
     ]},
 ];
 
@@ -17,4 +19,4 @@ const routes: Routes = [
 })
 export class AdminRoutingModule { }
 
-export const routedComponents = [AdminHomeComponent, AdminItemComponent];
+export const routedComponents = [AdminHomeComponent, AdminItemComponent, AdminAdminsComponent];

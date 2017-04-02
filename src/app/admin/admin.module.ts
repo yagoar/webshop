@@ -9,6 +9,7 @@ import {AdminHomeComponent} from "./pages/admin-home/admin-home.component";
 import {AdminNavigationComponent} from "./navigation/admin-nav.component";
 import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
 import {AdminService} from "../shared/services/admin/admin.service";
+import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component";
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import {AdminService} from "../shared/services/admin/admin.service";
     AdminHomeComponent,
     AdminNavigationComponent,
     AdminItemComponent,
+    AdminAdminsComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "de-DE" },

@@ -24,6 +24,10 @@
                 <label for="price">Preis</label>
                 <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
             </div>
+            <div class="form-group">
+                <label for="pic">Bild</label>
+                <input type="file" class="form-control" id="pic" name="pic" [(ngModel)]="item.pictureLink" #price="ngModel" required />
+            </div>
 
             <div class="form-group">
                 <button type="submit" [disabled]="loading" class="btn btn-primary">Artikel speichern</button>
