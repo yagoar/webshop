@@ -50,4 +50,18 @@ public class ShoppingOrderEndpointImpl implements ShoppingOrderEndpoint {
         List<ShoppingOrder> orders = shoppingOrderDao.findByUser(userDao.findOne(userId));
         return Response.status(Response.Status.OK).entity(orders).type(MediaType.APPLICATION_JSON).build();
     }
+
+    @Override
+    public Response getOrder(Long orderId) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
+        ShoppingOrder order = shoppingOrderDao.findBySoId(orderId);
+        if(order != null && (userId).equals(order.getUser().getU_id())) {
+            return Response.status(Response.Status.OK).entity(order).type(MediaType.APPLICATION_JSON).build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
+    }
+
+
 }

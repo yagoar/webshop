@@ -1,5 +1,6 @@
 package com.dhbw.api.shoppingCart;
 
+import com.dhbw.domain.item.BaseItem;
 import com.dhbw.domain.item.ItemAndQuantity;
 import com.dhbw.domain.item.ShoppingCart;
 import com.dhbw.domain.item.repositories.BaseItemDao;
@@ -48,11 +49,11 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     }
 
     @Override
-    public Response addItemToShoppingCart(ItemAndQuantity itemAndQuantity) {
+    public Response addItemToShoppingCart(BaseItem item) {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
         ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
-        cart.addItemToCart(itemAndQuantity.getItem(), itemAndQuantity.getQuantity());
+        cart.addItemToCart(item);
         shoppingCartDao.save(cart);
         return Response.status(Response.Status.OK).entity("Artikel wurde dem Warenkorb hinzugefügt").build();
     }

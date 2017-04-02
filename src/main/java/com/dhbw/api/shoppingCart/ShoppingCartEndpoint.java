@@ -1,7 +1,7 @@
 package com.dhbw.api.shoppingCart;
 
 import com.dhbw.api.authentication.Secured;
-import com.dhbw.domain.item.ItemAndQuantity;
+import com.dhbw.domain.item.BaseItem;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -32,15 +32,15 @@ public interface ShoppingCartEndpoint {
     Response getItemCountShoppingCart();
 
     /**
-     * Adds a new item with a quantity to the shopping cart
+     * Adds a new item to the shopping cart
      *
-     * @param itemAndQuantity ItemAndQuantity object which contains an item and the desired quantity
+     * @param item BaseItem object which contains an item
      * @return Response object with result of the operation
      */
     @POST
     @Secured
     @Path( "" )
-    Response addItemToShoppingCart(ItemAndQuantity itemAndQuantity);
+    Response addItemToShoppingCart(BaseItem item);
 
     /**
      * Deletes an item from the shopping cart

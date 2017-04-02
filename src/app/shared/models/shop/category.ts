@@ -1,7 +1,9 @@
 export interface Category {
     c_id?: number;
     name: string;
-    childCategories?: Array<Category>;
+    parentCategory?: number;
+    childrenCategories?: Array<Category>;
     description?: string;
+    deleted?: boolean;
 
 }

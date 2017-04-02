@@ -21,6 +21,9 @@ import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.compone
 import {SelectModule} from "ng2-select";
 import {ItemDetailsComponent} from "./pages/item-details/item-details.component";
 import {ItemFilterPipe} from "./pages/items/item-filter.pipe";
+import {OrderHistoryComponent} from "./pages/account/order-history/order-history.component";
+import {ChangeAddressComponent} from "./pages/account/change-address/change-address.component";
+import {OrderDetailsComponent} from "./pages/account/order-details/order-details.component";
 
 @NgModule({
   imports: [
@@ -51,7 +54,10 @@ import {ItemFilterPipe} from "./pages/items/item-filter.pipe";
     TreeCategoryComponent,
     OrderConfirmationComponent,
     ItemDetailsComponent,
-    ItemFilterPipe
+    ItemFilterPipe,
+    OrderHistoryComponent,
+    ChangeAddressComponent,
+    OrderDetailsComponent
   ]
 })
 export class WebshopModule { }

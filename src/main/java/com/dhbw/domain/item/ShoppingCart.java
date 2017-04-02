@@ -63,23 +63,23 @@ public class ShoppingCart {
 
         boolean result = false;
         for(ItemAndQuantity entry : items) {
-            if(entry.getItem().equals(item)) result = true;
+            if(entry.getItem().getI_id().equals(item.getI_id())) result = true;
         }
         return result;
     }
 
-    public void addItemToCart(BaseItem item, int quantity) {
+    public void addItemToCart(BaseItem item) {
 
         if(!isItemInCart(item)) {
             ItemAndQuantity toAdd = new ItemAndQuantity();
             toAdd.setItem(item);
-            toAdd.setQuantity(quantity);
+            toAdd.setQuantity(1);
             items.add(toAdd);
         }
         else {
             for(ItemAndQuantity entry : items) {
-                if (entry.getItem().equals(item)) {
-                    entry.setQuantity(entry.getQuantity() + quantity);
+                if (entry.getItem().getI_id().equals(item.getI_id())) {
+                    entry.setQuantity(entry.getQuantity() + 1);
                 }
             }
         }

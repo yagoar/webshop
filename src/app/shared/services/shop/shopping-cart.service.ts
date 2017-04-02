@@ -5,6 +5,7 @@ import {AuthenticationService} from '../authentication/authentication.service';
 import {BehaviorSubject} from 'rxjs';
 import {ShoppingCart} from "../../models/shop/shopping-cart";
 import * as _ from 'lodash';
+import {Item} from "../../models/shop/item";
 
 @Injectable()
 export class ShoppingCartService {
@@ -39,7 +40,7 @@ export class ShoppingCartService {
         }
     }
 
-    addItemToShoppingCart(item: ItemsAndQuantity): void {
+    addItemToShoppingCart(item: Item): void {
         if(this.authenticationService.token != null) {
             // add authorization header with jwt token
             let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
@@ -52,7 +53,7 @@ export class ShoppingCartService {
                     }
                 );
         } else {
-            this.shoppingCart.items.filter(i => i.iq_id === item.item.i_id);
+            this.shoppingCart.items.filter(i => i.item.i_id === item.i_id);
         }
 
     }
@@ -73,6 +74,15 @@ export class ShoppingCartService {
 
             this.http.post(`/api/v1/shopping-cart/${itemId}`, quantity, options).map((response: Response) => response.text());
         }
+
+    }
+
+    placeOrder() {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(`/api/v1/shopping-order`, options).map((response: Response) => response.text());
 
     }
 
@@ -97,6 +107,7 @@ export class ShoppingCartService {
 
     resetItemCount() {
         this.itemCount = 0;
+        this.itemCountUpdate.next(this.itemCount);
     }
 
 }

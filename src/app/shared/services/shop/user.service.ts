@@ -3,6 +3,8 @@ import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {User} from "../../models/user";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {Observable} from "rxjs";
+import {ResetPassword} from "../../models/reset-password";
+import {Address} from "../../models/address";
 
 @Injectable()
 export class UserService {
@@ -19,6 +21,40 @@ export class UserService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.get('/api/v1/user/profile', options)
+            .map((response: Response) => response.json());
+    }
+
+    changeBillingAddress(newBillingAddr : Address) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/v1/user/profile/billing', newBillingAddr, options);
+    }
+
+    changeShippingAddress(newShippingAddr : Address) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/v1/user/profile/shipping', newShippingAddr, options);
+    }
+
+    getUserOrders() : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.get('/api/v1/shopping-order', options)
+            .map((response: Response) => response.json());
+    }
+
+    getOrder(orderId: number) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.get(`/api/v1/shopping-order/${orderId}`, options)
             .map((response: Response) => response.json());
     }
 
