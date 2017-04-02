@@ -168,4 +168,13 @@ public interface AdminEndpoint {
     @Path("users/admin")
     Response makeUserAdmin(String email);
 
+    /**
+     * Gets all current admin users
+     * @return Response object with a list of all current admin users
+     */
+    @GET
+    @Secured
+    @Path("users/admin")
+    Response getAdmins();
+
 }
