@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {NgModule, LOCALE_ID} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {routedComponents, AdminRoutingModule} from "./admin.routing";
 import {FormsModule} from "@angular/forms";
@@ -8,6 +8,7 @@ import {AdminLoginComponent} from "./pages/admin-login/admin-login.component";
 import {AdminHomeComponent} from "./pages/admin-home/admin-home.component";
 import {AdminNavigationComponent} from "./navigation/admin-nav.component";
 import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
+import {AdminService} from "../shared/services/admin/admin.service";
 
 @NgModule({
   imports: [
@@ -22,7 +23,11 @@ import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
     AdminLoginComponent,
     AdminHomeComponent,
     AdminNavigationComponent,
-    AdminItemComponent
-  ]
+    AdminItemComponent,
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: "de-DE" },
+    AdminService
+  ],
 })
 export class AdminModule { }

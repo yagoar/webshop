@@ -7,7 +7,7 @@ import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
 const routes: Routes = [
     { path: 'admin', component: AdminComponent, children: [
         { path: '', component: AdminHomeComponent },
-        { path: 'new-item', component: AdminItemComponent }
+        { path: 'new-item', component: AdminItemComponent },
     ]},
 ];
 
