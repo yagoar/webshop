@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from "../../../shared/services/admin/admin.service";
+import {ItemsService} from "../../../shared/services/shop/items.service";
 
 @Component({
     selector: 'admin-item',

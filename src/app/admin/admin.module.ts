@@ -12,6 +12,7 @@ import {AdminService} from "../shared/services/admin/admin.service";
 import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component";
 import {AlertModule} from "ng2-bootstrap";
 import {AdminItemsetComponent} from "./pages/admin-itemset/admin-itemset.component";
+import {AdminManageComponent} from "./pages/admin-manage/admin-manage.component";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {AdminItemsetComponent} from "./pages/admin-itemset/admin-itemset.compone
     AdminNavigationComponent,
     AdminItemComponent,
     AdminItemsetComponent,
+    AdminManageComponent,
     AdminAdminsComponent
   ],
   providers: [

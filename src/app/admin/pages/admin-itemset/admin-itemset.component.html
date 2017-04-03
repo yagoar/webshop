@@ -26,9 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="pic">Bild</label>
-                <div ng-controller="MyCtrl">
-                    <input type="file" id="pic" ngf-select="onFileSelect($files)" multiple [(ngModel)]="item.pictureLink" #pictureLink="ngModel" required>
-                </div>
+                <input type="file" id="pic" [(ngModel)]="item.pictureLink" #pictureLink="ngModel" required />
             </div>
 
             <div class="form-group">
