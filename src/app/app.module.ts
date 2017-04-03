@@ -14,6 +14,7 @@ import {ItemsService} from "./shared/services/shop/items.service";
 import {ShoppingCartService} from "./shared/services/shop/shopping-cart.service";
 import {AdminModule} from "./admin/admin.module";
 import { OrderDetailsComponent } from './webshop/pages/account/order-details/order-details.component';
+import {AdminAuthGuard} from "./shared/services/authentication/admin-authguard";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OrderDetailsComponent } from './webshop/pages/account/order-details/ord
   providers: [
     { provide: LOCALE_ID, useValue: "de-DE" },
     AuthGuard,
+    AdminAuthGuard,
     AuthenticationService,
     UserService,
     PagerService,

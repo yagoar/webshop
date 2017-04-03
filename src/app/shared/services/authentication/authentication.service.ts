@@ -39,6 +39,41 @@ export class AuthenticationService {
         });
   }
 
+    adminLogin(credentials: Credentials) {
+        return this.http.post('/api/v1/authentication', credentials)
+            .map((response: Response) => {
+                // login successful if there's a jwt token in the response
+                let token = response.text();
+                if (token) {
+                    // set token property
+                    this.token = token;
+                    if(this.adminCheck(this.token)) {
+                        // store username and jwt token in local storage to keep user logged in between page refreshes
+                        localStorage.setItem('currentUser', JSON.stringify({
+                            username: credentials.username,
+                            token: token
+                        }));
+
+                        // return true to indicate successful login
+                        return true;
+                    }
+                    else return false;
+                } else {
+                    // return false to indicate failed login
+                    return false;
+                }
+            });
+    }
+
+    adminCheck(token: String) {
+      return this.http.put('/api/v1/authentication', token)
+          .map((response: Response) => {
+            let role = response.text();
+            if(role === "ADMIN") return true;
+            else return false;
+          })
+    }
+
   logout() {
       // clear token remove user from local storage to log user out
       this.token = null;

@@ -10,13 +10,16 @@ import {AdminNavigationComponent} from "./navigation/admin-nav.component";
 import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
 import {AdminService} from "../shared/services/admin/admin.service";
 import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component";
+import {AlertModule} from "ng2-bootstrap";
+import {AdminItemsetComponent} from "./pages/admin-itemset/admin-itemset.component";
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    AlertModule.forRoot(),
   ],
   declarations: [
     routedComponents,
@@ -25,6 +28,7 @@ import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component"
     AdminHomeComponent,
     AdminNavigationComponent,
     AdminItemComponent,
+    AdminItemsetComponent,
     AdminAdminsComponent
   ],
   providers: [

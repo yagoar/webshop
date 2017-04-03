@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from "../../../shared/services/admin/admin.service";
 
 @Component({
-    selector: 'admin-item',
-    templateUrl: 'admin-item.component.html'
+    selector: 'admin-itemset',
+    templateUrl: 'admin-itemset.component.html'
 })
-export class AdminItemComponent implements OnInit {
+export class AdminItemsetComponent implements OnInit {
 
     item: any = {};
     loading = false;
@@ -18,10 +18,10 @@ export class AdminItemComponent implements OnInit {
     ngOnInit() {
     }
 
-    createItem() {
+    createItemset() {
         console.log(this.item);
         this.loading = true;
-        this.adminService.createItem(this.item).subscribe(
+        this.adminService.createItemset(this.item).subscribe(
             data => {
                 console.log(data);
             },

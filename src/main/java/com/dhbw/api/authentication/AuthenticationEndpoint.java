@@ -3,6 +3,7 @@ package com.dhbw.api.authentication;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.interfaces.Claim;
 import com.dhbw.domain.user.Credentials;
 import com.dhbw.domain.user.User;
 import com.dhbw.domain.user.UserDao;
@@ -45,6 +46,14 @@ public class AuthenticationEndpoint {
             e.printStackTrace();
             return Response.status(Response.Status.UNAUTHORIZED).entity("Email oder Passwort falsch").build();
         }
+    }
+
+    @PUT
+    public Response isUserAdmin(String token) {
+        JWT userToken = JWT.decode(token);
+        Claim role  = userToken.getClaim("role");
+        if(role.asString().equals("ADMIN")) return Response.ok("ADMIN").build();
+        else return Response.status(Response.Status.UNAUTHORIZED).entity("User ist kein Admin").build();
     }
 
     private void authenticate(String username, String password) throws Exception {
