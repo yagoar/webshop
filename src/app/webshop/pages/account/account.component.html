@@ -12,14 +12,16 @@
       {{user.email}}<br>
       <br>
       <button class="btn btn-primary" (click)="changePassword=true" [disabled]="changePassword">Passwort ändern</button> <br>
-      <div *ngIf="changePassword">
+      <div *ngIf="changePassword" id="change-pw">
+        <alert *ngIf="changePWFailed"  type="danger" dismissible="true" (click)="changePWFailed = false">Passwort ändern fehlgeschlagen</alert>
+        <alert *ngIf="changePWSuccess"  type="success" dismissible="true" (click)="changePWSuccess = false">Passwort erfolgreich geändert</alert>
         <form (ngSubmit)="changePW()">
           <div class="form-group">
-            <label for="oldPassword">Altes Passwort</label>
-            <input type="password" class="form-control" id="oldPassword" name="oldPassword" [(ngModel)]="oldPassword" #oldPW="ngModel" required />
+            <label for="previousPassword">Altes Passwort</label>
+            <input type="password" class="form-control" id="previousPassword" name="previousPassword" [(ngModel)]="previousPassword" #oldPW="ngModel" required />
           </div>
           <div class="form-group">
-            <label for="oldPassword">Neues Passwort</label>
+            <label for="newPassword">Neues Passwort</label>
             <input type="password" class="form-control" id="newPassword" name="newPassword" [(ngModel)]="newPassword" minlength="8" #newPW="ngModel" required />
           </div>
           <div class="form-group">

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.*;
@@ -20,14 +21,17 @@ import java.io.*;
 public class UploadFileService {
 
     @POST
-    @Path("/upload")
+    @Path("upload/{artNo}")
     @Consumes({MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_JSON})
     public Response uploadFile(
             @FormDataParam("file") InputStream uploadedInputStream,
-            @FormDataParam("file") FormDataContentDisposition fileDetail) {
+            @FormDataParam("file") FormDataContentDisposition fileDetail,
+            @PathParam("artNo") int artNo) {
 
-        String sRootPath = new File("src/assets/images").getAbsolutePath();
-        String uploadedFileLocation = sRootPath + File.separator + fileDetail.getFileName();
+        String sRootPath = new File("src/main/resources/images").getAbsolutePath();
+        String uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
+
+        //if(fileDetail.getName().endsWith(".jpg"))
 
         // save it
         writeToFile(uploadedInputStream, uploadedFileLocation);

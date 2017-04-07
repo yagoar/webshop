@@ -1,8 +1,12 @@
 package com.dhbw.domain.user;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Created by jgerle on 06.03.2017.
  */
+
+@XmlRootElement
 public class ResetPassword {
 
     private String email;

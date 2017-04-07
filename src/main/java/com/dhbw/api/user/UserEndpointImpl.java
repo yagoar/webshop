@@ -33,9 +33,9 @@ public class UserEndpointImpl implements UserEndpoint {
     public Response register(User user) {
         if (userDao.findByEmail(user.getEmail()) == null) {
             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
-            userDao.save(user);
             ShoppingCart cart = new ShoppingCart();
             cart.setUser(user);
+            userDao.save(user);
             shoppingCartDao.save(cart);
             return Response.ok().entity("User erfolgreich angelegt. Sie können sich jetzt mit Ihrer Email-Adresse und Ihrem Passwort anmelden").build();
         } else return Response.status(Response.Status.BAD_REQUEST)
@@ -55,7 +55,7 @@ public class UserEndpointImpl implements UserEndpoint {
                     return Response.ok().entity("Passwort erfolgreich geändert").build();
         }
         else return Response.status(Response.Status.UNAUTHORIZED)
-                    .entity("Email oder Passwort falsch").build();
+                    .entity("Altes Passwort falsch").build();
     }
 
     @Override

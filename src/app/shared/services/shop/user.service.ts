@@ -11,8 +11,7 @@ export class UserService {
     constructor(private http: Http, private authenticationService: AuthenticationService) { }
 
     create(user: User) : Observable<any> {
-        return this.http.put('/api/v1/user/register', user).map((response: Response) => response.text()
-        );
+        return this.http.put('/api/v1/user/register', user).map((response: Response) => response.text());
     }
 
     getUserInfo() : Observable<any> {
@@ -22,6 +21,14 @@ export class UserService {
 
         return this.http.get('/api/v1/user/profile', options)
             .map((response: Response) => response.json());
+    }
+
+    changePassword(resetPassword: ResetPassword) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/v1/user/profile/password', resetPassword, options).map((response: Response) => response.text());
     }
 
     changeBillingAddress(newBillingAddr : Address) : Observable<any> {

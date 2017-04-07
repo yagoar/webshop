@@ -7,7 +7,7 @@ export class AdminAuthGuard implements CanActivate {
     constructor(private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (localStorage.getItem('currentUser')) {
+        if (localStorage.getItem('currentAdmin')) {
             // logged in so return true
             return true;
         }

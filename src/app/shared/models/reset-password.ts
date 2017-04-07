@@ -1,3 +1,3 @@
 export class ResetPassword {
-    constructor(public oldPassword, public newPassword){}
+    constructor(public previousPassword, public newPassword, public email){}
 }

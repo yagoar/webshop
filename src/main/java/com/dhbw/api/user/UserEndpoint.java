@@ -34,6 +34,7 @@ public interface UserEndpoint {
     @POST
     @Secured
     @Path( "profile/password" )
+    @Consumes( { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML } )
     Response resetPassword(ResetPassword resetPassword);
 
     /**

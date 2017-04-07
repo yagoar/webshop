@@ -4,6 +4,7 @@ import {UserService} from "../../../shared/services/shop/user.service";
 import {Router, RouterStateSnapshot} from "@angular/router";
 import {Address} from "../../../shared/models/address";
 import {ShoppingCartService} from "../../../shared/services/shop/shopping-cart.service";
+import {ResetPassword} from "../../../shared/models/reset-password";
 
 @Component({
   selector: 'webshop-account',
@@ -19,8 +20,11 @@ export class AccountComponent implements OnInit {
   changeEmail: boolean = false;
   changePassword: boolean = false;
   newEmail: string;
-  oldPassword: string;
+
+  previousPassword: string;
   newPassword: string;
+  changePWFailed: boolean = false;
+  changePWSuccess: boolean = false;
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
@@ -51,12 +55,25 @@ export class AccountComponent implements OnInit {
   }
 
   changePW() {
-
-}
+    let resetPassword = new ResetPassword(this.previousPassword, this.newPassword, this.user.email);
+    console.log(resetPassword);
+    this.userService.changePassword(resetPassword).subscribe(
+        data => {
+          this.changePWSuccess = true;
+          this.previousPassword = '';
+          this.newPassword = '';
+        },
+        error => {
+          this.changePWFailed = true;
+          this.previousPassword = '';
+          this.newPassword = '';
+        }
+    );
+  }
 
   cancelChangePassword() {
     this.changePassword = false;
-    this.oldPassword = '';
+    this.previousPassword = '';
     this.newPassword = '';
   }
 

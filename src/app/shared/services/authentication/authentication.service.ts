@@ -10,36 +10,16 @@ export class Credentials {
 @Injectable()
 export class AuthenticationService {
 
-  token: string;
+    token: string;
+    adminToken: string;
 
-  constructor(private http: Http) {
-      // set token if saved in local storage
-      let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      this.token = currentUser && currentUser.token;
-  }
+    constructor(private http: Http) {
+        // set token if saved in local storage
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = currentUser && currentUser.token;
+    }
 
-  login(credentials: Credentials) {
-    return this.http.post('/api/v1/authentication', credentials)
-        .map((response: Response) => {
-            // login successful if there's a jwt token in the response
-            let token = response.text();
-            if (token) {
-                // set token property
-                this.token = token;
-
-                // store username and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify({ username: credentials.username, token: token }));
-
-                // return true to indicate successful login
-                return true;
-            } else {
-                // return false to indicate failed login
-                return false;
-            }
-        });
-  }
-
-    adminLogin(credentials: Credentials) {
+    login(credentials: Credentials) {
         return this.http.post('/api/v1/authentication', credentials)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
@@ -47,17 +27,12 @@ export class AuthenticationService {
                 if (token) {
                     // set token property
                     this.token = token;
-                    if(this.adminCheck(this.token)) {
-                        // store username and jwt token in local storage to keep user logged in between page refreshes
-                        localStorage.setItem('currentUser', JSON.stringify({
-                            username: credentials.username,
-                            token: token
-                        }));
 
-                        // return true to indicate successful login
-                        return true;
-                    }
-                    else return false;
+                    // store username and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentUser', JSON.stringify({ username: credentials.username, token: token }));
+
+                    // return true to indicate successful login
+                    return true;
                 } else {
                     // return false to indicate failed login
                     return false;
@@ -65,19 +40,43 @@ export class AuthenticationService {
             });
     }
 
-    adminCheck(token: String) {
-      return this.http.put('/api/v1/authentication', token)
-          .map((response: Response) => {
-            let role = response.text();
-            if(role === "ADMIN") return true;
-            else return false;
-          })
+    adminLogin(credentials: Credentials) {
+        return this.http.post('/api/v1/authentication/admin', credentials)
+            .map((response: Response) => {
+                // login successful if there's a jwt token in the response
+                let token = response.text();
+                console.log("response:" + token);
+
+                if (token) {
+                    // set token property
+                    this.adminToken = token;
+                    console.log("admin token:" + this.adminToken);
+                    // store username and jwt token in local storage to keep user logged in between page refreshes
+                    localStorage.setItem('currentAdmin', JSON.stringify({
+                        username: credentials.username,
+                        token: token
+                    }));
+
+                    // return true to indicate successful login
+                    return true;
+                } else {
+                    // return false to indicate failed login
+                    return false;
+                }
+            });
     }
 
-  logout() {
-      // clear token remove user from local storage to log user out
-      this.token = null;
-      localStorage.removeItem('currentUser');
-  }
+
+    logout() {
+        // clear token remove user from local storage to log user out
+        this.token = null;
+        localStorage.removeItem('currentUser');
+    }
+
+    adminLogout() {
+        // clear token remove admin from local storage to log admin out
+        //this.adminToken = null;
+        localStorage.removeItem('currentAdmin');
+    }
 
 }

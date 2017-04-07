@@ -36,15 +36,21 @@ export class AdminItemComponent implements OnInit {
         this.loading = true;
         var formData = new FormData();
         formData.append("file", this.item.pictureLink);
-        this.adminService.upload(formData).subscribe(
+        this.adminService.upload(formData, this.item.articleNumber).subscribe(
             data => {
                 this.fileLocation = data;
                 this.item.pictureLink = data;
+                this.createItem();
             },
             error => {
                 console.log(error);
             }
         );
+    }
+
+    fileChangeEvent(event) {
+        let file = event.srcElement.files;
+        console.log(file);
     }
 
 }

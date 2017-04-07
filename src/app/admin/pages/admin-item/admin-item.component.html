@@ -2,7 +2,7 @@
 <br>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <form (ngSubmit)="createItem()">
+        <form (ngSubmit)="upload()">
 
             <div class="form-group">
                 <label for="name">Name des Artikels</label>
@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="articleNumber" name="articleNumber" [(ngModel)]="item.articleNumber" #articleNumber="ngModel" required />
             </div>
             <div class="form-group">
-                <label for="stock">Lagebestand</label>
+                <label for="stock">Lagerbestand</label>
                 <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="item.stock" #stock="ngModel" required />
             </div>
             <div class="form-group">
@@ -26,9 +26,8 @@
             </div>
             <div class="form-group">
                 <label for="pic">Bild</label>
-                    <input type="file" id="pic" [(ngModel)]="item.pictureLink" #pictureLink="ngModel" required />
+                    <input type="file" id="pic" name="pictureLink" (change)="fileChangeEvent($event)" required />
             </div>
-
             <div class="form-group">
                 <button type="submit" [disabled]="loading" class="btn btn-primary">Artikel speichern</button>
             </div>

@@ -24,9 +24,10 @@ public class AuthenticationEndpoint {
     UserDao userDao;
 
     @POST
+    @Path("{role}")
     @Produces("application/json")
     @Consumes("application/json")
-    public Response authenticateUser(Credentials credentials) {
+    public Response authenticateUser(Credentials credentials, @PathParam("role")  String role) {
 
         try {
 
@@ -34,7 +35,11 @@ public class AuthenticationEndpoint {
             String username = credentials.getUsername();
             String password = credentials.getPassword();
 
-            authenticate(username, password);
+            if(("admin").equals(role)){
+                authenticateAdmin(username, password);
+            } else {
+                authenticate(username, password);
+            }
 
             // Issue a token for the user
             String token = issueToken(username);
@@ -48,18 +53,21 @@ public class AuthenticationEndpoint {
         }
     }
 
-    @PUT
-    public Response isUserAdmin(String token) {
-        JWT userToken = JWT.decode(token);
-        Claim role  = userToken.getClaim("role");
-        if(role.asString().equals("ADMIN")) return Response.ok("ADMIN").build();
-        else return Response.status(Response.Status.UNAUTHORIZED).entity("User ist kein Admin").build();
-    }
-
     private void authenticate(String username, String password) throws Exception {
         User user = userDao.findByEmail(username);
 
         if(user != null) {
+            if(!BCrypt.checkpw(password, user.getPassword())) {
+                throw new Exception("Authentication failed");
+            }
+        }
+        else throw new Exception("User not found");
+    }
+
+    private void authenticateAdmin(String username, String password) throws Exception {
+        User user = userDao.findByEmail(username);
+
+        if(user != null && user.isAdmin()) {
             if(!BCrypt.checkpw(password, user.getPassword())) {
                 throw new Exception("Authentication failed");
             }
