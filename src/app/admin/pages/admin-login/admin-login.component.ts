@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {AuthenticationService, Credentials} from "../../../shared/services/authentication/authentication.service";
+import {Credentials} from "../../../shared/services/authentication/authentication.service";
+import {AdminAuthenticationService} from "../../../shared/services/authentication/admin-authentication.service";
 
 @Component({
   selector: 'admin-login',
@@ -16,11 +17,11 @@ export class AdminLoginComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private authenticationService: AuthenticationService) { }
+      private adminAuthService: AdminAuthenticationService) { }
 
   ngOnInit() {
     // reset login status
-    this.authenticationService.logout();
+    this.adminAuthService.adminLogout();
 
     // get return url from route parameters or default to '/admin'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/admin';
@@ -28,7 +29,7 @@ export class AdminLoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-    this.authenticationService.adminLogin(new Credentials(this.model.email, this.model.password))
+    this.adminAuthService.adminLogin(new Credentials(this.model.email, this.model.password))
         .subscribe(
             data => {
               this.loginFailed = false;

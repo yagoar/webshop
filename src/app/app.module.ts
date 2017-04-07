@@ -15,6 +15,7 @@ import {ShoppingCartService} from "./shared/services/shop/shopping-cart.service"
 import {AdminModule} from "./admin/admin.module";
 import { OrderDetailsComponent } from './webshop/pages/account/order-details/order-details.component';
 import {AdminAuthGuard} from "./shared/services/authentication/admin-authguard";
+import {AdminAuthenticationService} from "./shared/services/authentication/admin-authentication.service";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {AdminAuthGuard} from "./shared/services/authentication/admin-authguard";
     AuthGuard,
     AdminAuthGuard,
     AuthenticationService,
+    AdminAuthenticationService,
     UserService,
     PagerService,
     ItemsService,

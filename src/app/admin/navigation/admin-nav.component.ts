@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../shared/services/authentication/authentication.service";
+import {AdminAuthenticationService} from "../../shared/services/authentication/admin-authentication.service";
 
 @Component({
     selector: 'admin-nav',
@@ -7,13 +7,13 @@ import {AuthenticationService} from "../../shared/services/authentication/authen
 })
 export class AdminNavigationComponent implements OnInit {
 
-    constructor(private authService: AuthenticationService) { }
+    constructor(private adminAuthService: AdminAuthenticationService) { }
 
     ngOnInit() {
     }
 
     logout() {
-        this.authService.adminLogout();
+        this.adminAuthService.adminLogout();
     }
 
 }
