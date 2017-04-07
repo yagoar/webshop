@@ -19,7 +19,7 @@ export class AuthenticationService {
     }
 
     login(credentials: Credentials) {
-        return this.http.post('/api/v1/authentication', credentials)
+        return this.http.post('/api/v1/authentication/user', credentials)
             .map((response: Response) => {
                 // login successful if there's a jwt token in the response
                 let token = response.text();

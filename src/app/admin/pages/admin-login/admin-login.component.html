@@ -12,7 +12,7 @@
         <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
       </div>
       <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Anmelden</button>
+        <button [disabled]="loading" class="btn btn-primary"><i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Anmelden</button>
       </div>
     </form>
   </div>

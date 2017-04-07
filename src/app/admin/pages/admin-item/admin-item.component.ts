@@ -20,10 +20,10 @@ export class AdminItemComponent implements OnInit {
     }
 
     createItem() {
-        console.log(this.item);
         this.loading = true;
         this.adminService.createItem(this.item).subscribe(
             data => {
+                this.loading=false;
                 console.log(data);
             },
             error => {
@@ -46,11 +46,6 @@ export class AdminItemComponent implements OnInit {
                 console.log(error);
             }
         );
-    }
-
-    fileChangeEvent(event) {
-        let file = event.srcElement.files;
-        console.log(file);
     }
 
 }

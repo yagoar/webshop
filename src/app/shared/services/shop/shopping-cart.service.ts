@@ -31,6 +31,7 @@ export class ShoppingCartService {
                 .subscribe(
                     data => {
                         this.shoppingCart = data;
+                        this.shoppingCart.items = _.sortBy(this.shoppingCart.items, ['iq_id']);
                         this.shoppingCartUpdate.next(this.shoppingCart);
                     },
                     error => {
@@ -66,13 +67,21 @@ export class ShoppingCartService {
         return this.http.delete(`/api/v1/shopping-cart/${itemId}`, options).map((response: Response) => response.text());
     }
 
-    updateItemQuantity(itemId: number, quantity: number):void {
+    updateItemQuantity(itemId: number, quantity: number) {
         if(this.authenticationService.token != null) {
             // add authorization header with jwt token
             let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
             let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart/${itemId}`, quantity, options).map((response: Response) => response.text());
+            this.http.post(`/api/v1/shopping-cart/quantity/${quantity}`, quantity, options).map((response: Response) => response.text())
+                .subscribe(
+                    data => {
+                        console.log(data);
+                    },
+                    error => {
+                        console.log(error);
+                    }
+                );
         }
 
     }
@@ -82,7 +91,7 @@ export class ShoppingCartService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(`/api/v1/shopping-order`, options).map((response: Response) => response.text());
+        return this.http.put(`/api/v1/shopping-order`, this.shoppingCart, options).map((response: Response) => response.text());
 
     }
 

@@ -2,7 +2,7 @@
 <br>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <form (ngSubmit)="upload()">
+        <form (ngSubmit)="createItem()">
 
             <div class="form-group">
                 <label for="name">Name des Artikels</label>
@@ -26,10 +26,10 @@
             </div>
             <div class="form-group">
                 <label for="pic">Bild</label>
-                    <input type="file" id="pic" name="pictureLink" (change)="fileChangeEvent($event)" required />
+                    <input type="file" id="pic" name="pictureLink" required />
             </div>
             <div class="form-group">
-                <button type="submit" [disabled]="loading" class="btn btn-primary">Artikel speichern</button>
+                <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Artikel speichern</button>
             </div>
         </form>
     </div>

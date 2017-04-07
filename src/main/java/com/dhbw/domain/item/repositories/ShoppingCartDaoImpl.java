@@ -30,7 +30,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDaoCustom {
             it.setStock(it.getStock() - item.getQuantity());
             baseItemDao.save(it);
         }
-        cart.setShoppingOrder(order);
+        //TODO fix shopping order save
         shoppingOrderDao.save(order);
         cart.getItems().clear();
     }

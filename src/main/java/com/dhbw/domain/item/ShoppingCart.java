@@ -23,8 +23,6 @@ public class ShoppingCart {
     @OneToMany(fetch = FetchType.EAGER, targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
     private Set<ItemAndQuantity> items;
 
-    @OneToOne(targetEntity = ShoppingOrder.class)
-    private ShoppingOrder shoppingOrder;
 
     public ShoppingCart() {
     }
@@ -44,12 +42,6 @@ public class ShoppingCart {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public ShoppingOrder getShoppingOrder() {
-        return shoppingOrder;
-    }
-
-    public void setShoppingOrder(ShoppingOrder shoppingOrder) { this.shoppingOrder = shoppingOrder; }
 
     public Set<ItemAndQuantity> getItems() {
         return items;

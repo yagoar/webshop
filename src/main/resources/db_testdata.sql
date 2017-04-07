@@ -105,11 +105,11 @@ INSERT INTO webshop.shopping_order (date, paid, user_u_id) VALUES (CURDATE(), 1,
 INSERT INTO webshop.shopping_order (date, paid, user_u_id) VALUES (CURDATE(), 0, 5);
 
 # ShoppingCarts
-INSERT INTO webshop.shopping_cart (shopping_order_so_id, user_u_id) VALUES (1, 1);
-INSERT INTO webshop.shopping_cart (shopping_order_so_id, user_u_id) VALUES (3, 2);
-INSERT INTO webshop.shopping_cart (shopping_order_so_id, user_u_id) VALUES (NULL, 3);
-INSERT INTO webshop.shopping_cart (shopping_order_so_id, user_u_id) VALUES (5, 4);
-INSERT INTO webshop.shopping_cart (shopping_order_so_id, user_u_id) VALUES (7, 5);
+INSERT INTO webshop.shopping_cart (user_u_id) VALUES ( 1);
+INSERT INTO webshop.shopping_cart (user_u_id) VALUES ( 2);
+INSERT INTO webshop.shopping_cart (user_u_id) VALUES ( 3);
+INSERT INTO webshop.shopping_cart (user_u_id) VALUES ( 4);
+INSERT INTO webshop.shopping_cart (user_u_id) VALUES ( 5);
 
 # ItemAndQuantity
 INSERT INTO webshop.item_and_quantity (quantity, item_i_id)

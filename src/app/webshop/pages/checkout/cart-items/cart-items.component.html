@@ -1,38 +1,26 @@
-<div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-        <div *ngIf="shoppingCart.items.length == 0">Warenkorb leer</div>
-        <div class="sc-item" *ngFor="let scItem of shoppingCart.items">
-            <div class="row clearfix">
-                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                    <img class="img-responsive" src="../../../../assets/lovewool_hellblau.jpg"/>
-                    <span class="item-name">{{scItem.item.name}}</span>
-                    <br>
-                    <span>Artikel-Nr.: {{scItem.item.articleNumber}}</span>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <span class="sc-item-delete pull-right">
-                        <button><i class="fa fa-times" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="removeItem(scItem)"></i></button>
-                    </span>
-                    <span class="sc-item-price pull-right">
-                        {{scItem.item.price | currency:'EUR':true}}
-                    </span>
-                    <div class="sc-item-quantity pull-right">
-                        <button><i class="fa fa-minus" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="removeOne(scItem.item.i_id)"></i></button>
-                        <input title="Artikelmenge" type="text" [(ngModel)]="scItem.quantity"/>
-                        <button><i class="fa fa-plus" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="addOne(scItem.item.i_id)"></i></button>
-                    </div>
-
-                </div>
-            </div>
+<div *ngIf="shoppingCart.items.length == 0">Warenkorb leer</div>
+<div class="sc-item" *ngFor="let scItem of shoppingCart.items">
+    <div class="row clearfix">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <img class="img-responsive" src="../../../../assets/lovewool_hellblau.jpg"/>
+            <span class="item-name">{{scItem.item.name}}</span>
+            <br>
+            <span>Artikel-Nr.: {{scItem.item.articleNumber}}</span>
         </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <div id="sc-overview">
-            <h4>Zusammenfassung</h4>
-            Summe: <span class="pull-right">{{total | currency:'EUR':true}}</span><br>
-            Versandkosten: <span class="pull-right">{{0 | currency:'EUR':true}}</span><br>
-            <b>Gesamtsumme: <span class="pull-right">{{total | currency:'EUR':true}}</span></b><br>
-            <a href="#/shop/checkout" class="btn btn-primary">{{overviewBtnMessage}}  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+        <div class="col-lg-4 col-md-4 col-xs-12">
+            <span class="sc-item-delete pull-right">
+                <button><i class="fa fa-times" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="removeItem(scItem)"></i></button>
+            </span>
+            <span class="sc-item-price pull-right">
+                {{scItem.item.price | currency:'EUR':true}}
+            </span>
+            <div class="sc-item-quantity pull-right">
+                <button><i class="fa fa-minus" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="removeOne(scItem.item.i_id)"></i></button>
+                <input title="Artikelmenge" type="text" [(ngModel)]="scItem.quantity"/>
+                <button><i class="fa fa-plus" aria-hidden="true" title="Artikel aus Warenkorb entfernen" (click)="addOne(scItem.item.i_id)"></i></button>
+            </div>
+
         </div>
     </div>
 </div>
+

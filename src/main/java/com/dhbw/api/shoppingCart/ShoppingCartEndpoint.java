@@ -39,7 +39,7 @@ public interface ShoppingCartEndpoint {
      */
     @POST
     @Secured
-    @Path( "" )
+    @Path( "new-item" )
     Response addItemToShoppingCart(BaseItem item);
 
     /**
@@ -62,7 +62,7 @@ public interface ShoppingCartEndpoint {
      */
     @POST
     @Secured
-    @Path("{itemId}")
+    @Path("quantity/{itemId}")
     Response updateItemQuantity(@PathParam("itemId") Long itemId,
                                 Integer quantity);
 }

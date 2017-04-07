@@ -28,7 +28,7 @@ public class ShoppingOrder {
 
     private boolean paid;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = ItemAndQuantity.class, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = ItemAndQuantity.class, cascade = CascadeType.DETACH)
     private Set<ItemAndQuantity> items;
 
     public ShoppingOrder() {

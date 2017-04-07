@@ -33,6 +33,7 @@ export class AdminLoginComponent implements OnInit {
         .subscribe(
             data => {
               this.loginFailed = false;
+              this.loading = false;
               this.router.navigate([this.returnUrl]);
             },
             error => {
