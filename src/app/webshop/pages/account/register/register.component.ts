@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
     billingAddress: any = {};
     shippingAddress: any = {};
 
+    datepicker: boolean = false;
+
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private userService: UserService) {
@@ -47,8 +49,16 @@ export class RegisterComponent implements OnInit {
                 },
                 error => {
                     this.loading = false;
-                    console.log(error);
                 });
+    }
+
+    showDatepicker() {
+        this.datepicker = true;
+    }
+
+    hideDatepicker() {
+        this.user.dateOfBirth =
+        this.datepicker = false;
     }
 
     setGender(value){
@@ -59,22 +69,19 @@ export class RegisterComponent implements OnInit {
         this.shippingAddress.gender = value.id;
     }
 
-
     setAddress(){
-        this.user.addresses = [];
 
+        this.billingAddress.gender = this.user.gender;
         this.billingAddress.firstName = this.user.firstName;
         this.billingAddress.lastName = this.user.lastName;
-        this.billingAddress.gender = this.user.gender;
 
         //If different address for shipping is given, add to user, else add billing address as shipping address too
         if(!this.diffAddress) {
             Object.assign(this.shippingAddress, this.billingAddress);
         }
 
-        //Add addresses to the user
-        this.billingAddress.addressType = "BILLING";
-        this.shippingAddress.addressType = "SHIPPING";
-        this.user.addresses.push(this.billingAddress, this.shippingAddress);
+        this.user.billingAddress = this.billingAddress;
+        this.user.shippingAddress = this.shippingAddress;
+
     }
 }

@@ -66,53 +66,24 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
-    public Response updateBillingAddress(Address billingAddr) {
+    public Response updateAddress(Address newAddress, String addressType) {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());
-        Set<Address> addresses = userDao.findOne(userId).getAddresses();
-        boolean alreadyExists = false;
-        for(Address address : addresses) {
-            if(address.getAddressType()!= null && address.getAddressType().equals(AddressType.BILLING)) {
-                address = billingAddr;
-                address.setAddressType(AddressType.BILLING);
-                addressDao.save(address);
-                alreadyExists = true;
-            }
-        }
-        if(!alreadyExists) {
-            billingAddr.setAddressType(AddressType.BILLING);
-            addressDao.save(billingAddr);
-            addresses.add(billingAddr);
-        }
         User user = userDao.findOne(userId);
-        user.setAddresses(addresses);
-        userDao.save(user);
-        return Response.ok().build();
-    }
-
-    @Override
-    public Response updateShippingAddress(Address shippingAddr) {
-        Principal principal = securityContext.getUserPrincipal();
-        Long userId = Long.valueOf(principal.getName());
-        Set<Address> addresses = userDao.findOne(userId).getAddresses();
-        boolean alreadyExists = false;
-        for(Address address : addresses) {
-            if(address.getAddressType() != null && address.getAddressType().equals(AddressType.SHIPPING)) {
-                address = shippingAddr;
-                address.setAddressType(AddressType.SHIPPING);
-                addressDao.save(address);
-                alreadyExists = true;
-            }
+        Address address = null;
+        if(("billing").equals(addressType)){
+            address = addressDao.findOne(user.getBillingAddress().getA_id());
+        } else if (("shipping").equals(addressType)) {
+            address = addressDao.findOne(user.getShippingAddress().getA_id());
         }
-        if(!alreadyExists) {
-            shippingAddr.setAddressType(AddressType.BILLING);
-            addressDao.save(shippingAddr);
-            addresses.add(shippingAddr);
+        if(address != null) {
+            address.updateFields(newAddress);
+            addressDao.save(address);
+            return Response.ok().build();
+        } else {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity("Adresse nicht gefunden").build();
         }
-        User user = userDao.findOne(userId);
-        user.setAddresses(addresses);
-        userDao.save(user);
-        return Response.ok().build();
     }
 
 }

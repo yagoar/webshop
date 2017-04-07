@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../shared/services/authentication/authentication.service";
 import {UserService} from "../../../shared/services/shop/user.service";
-import {Router, RouterStateSnapshot} from "@angular/router";
-import {Address} from "../../../shared/models/address";
+import {Router} from "@angular/router";
 import {ShoppingCartService} from "../../../shared/services/shop/shopping-cart.service";
 import {ResetPassword} from "../../../shared/models/reset-password";
 
@@ -15,8 +14,9 @@ export class AccountComponent implements OnInit {
   gender = [{id: 'FEMALE', text:'Frau'},
     {id: 'MALE', text:'Herr'}];
   user: any = {};
-  billingAddr: any = {};
-  shippingAddr: any = {};
+  billingAddress:any = {};
+  shippingAddress:any = {};
+
   changeEmail: boolean = false;
   changePassword: boolean = false;
   newEmail: string;
@@ -44,13 +44,8 @@ export class AccountComponent implements OnInit {
   getUserInfo() {
     this.userService.getUserInfo().subscribe(data => {
       this.user = data;
-      this.user.addresses.forEach((a:Address) => {
-        if(a.addressType === "BILLING") {
-          this.billingAddr = a;
-        } else {
-          this.shippingAddr = a;
-        }
-      })
+      this.billingAddress = this.user.billingAddress;
+      this.shippingAddress = this.user.shippingAddress;
     })
   }
 
@@ -60,19 +55,21 @@ export class AccountComponent implements OnInit {
     this.userService.changePassword(resetPassword).subscribe(
         data => {
           this.changePWSuccess = true;
-          this.previousPassword = '';
-          this.newPassword = '';
+          this.resetPWInputs();
         },
         error => {
           this.changePWFailed = true;
-          this.previousPassword = '';
-          this.newPassword = '';
+          this.resetPWInputs();
         }
     );
   }
 
   cancelChangePassword() {
     this.changePassword = false;
+    this.resetPWInputs();
+  }
+
+  resetPWInputs() {
     this.previousPassword = '';
     this.newPassword = '';
   }

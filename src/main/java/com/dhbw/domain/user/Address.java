@@ -17,8 +17,6 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long a_id;
 
-    private AddressType addressType;
-
     private String firstName;
 
     private String lastName;
@@ -39,14 +37,6 @@ public class Address {
 
     public void setA_id(Long a_id) {
         this.a_id = a_id;
-    }
-
-    public AddressType getAddressType() {
-        return addressType;
-    }
-
-    public void setAddressType(AddressType addressType) {
-        this.addressType = addressType;
     }
 
     public String getCity() {
@@ -103,5 +93,15 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public void updateFields(Address newAddress) {
+        this.firstName = newAddress.getFirstName();
+        this.lastName = newAddress.getLastName();
+        this.gender = newAddress.getGender();
+        this.city = newAddress.getCity();
+        this.streetNo = newAddress.getStreetNo();
+        this.zip = newAddress.getZip();
+        this.country = newAddress.getCountry();
     }
 }

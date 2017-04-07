@@ -31,20 +31,12 @@ export class UserService {
         return this.http.post('/api/v1/user/profile/password', resetPassword, options).map((response: Response) => response.text());
     }
 
-    changeBillingAddress(newBillingAddr : Address) : Observable<any> {
+    changeAddress(newAddress : Address, type: string) : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post('/api/v1/user/profile/billing', newBillingAddr, options);
-    }
-
-    changeShippingAddress(newShippingAddr : Address) : Observable<any> {
-        // add authorization header with jwt token
-        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        let options = new RequestOptions({ headers: headers });
-
-        return this.http.post('/api/v1/user/profile/shipping', newShippingAddr, options);
+        return this.http.post(`/api/v1/user/profile/${type}`, newAddress, options);
     }
 
     getUserOrders() : Observable<any> {

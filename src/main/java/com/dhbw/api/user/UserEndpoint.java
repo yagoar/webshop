@@ -48,25 +48,14 @@ public interface UserEndpoint {
     Response getUserInfo();
 
     /**
-     * Updates the user's billing address using in an order
+     * Updates the user's billing / shipping address using in an order
      *
-     * @param billingAddr Address object with new address information
+     * @param newAddress Address object with new address information
      * @return Response object with result of the operation
      */
     @POST
     @Secured
-    @Path( "profile/billing" )
-    Response updateBillingAddress(Address billingAddr);
-
-    /**
-     * Updates the user's shipping address using in an order
-     *
-     * @param shippingAddr Address object with new address information
-     * @return Response object with result of the operation
-     */
-    @POST
-    @Secured
-    @Path( "profile/shipping" )
-    Response updateShippingAddress(Address shippingAddr);
+    @Path( "profile/{addressType}" )
+    Response updateAddress(Address newAddress, @PathParam("addressType") String addressType);
 
 }

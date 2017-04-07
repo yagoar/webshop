@@ -37,8 +37,11 @@ public class User implements Serializable {
 
     private boolean isAdmin;
 
-    @OneToMany(fetch = FetchType.EAGER, targetEntity = Address.class, cascade = CascadeType.ALL)
-    private Set<Address> addresses;
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Address.class, cascade = CascadeType.ALL)
+    private Address shippingAddress;
+
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Address.class, cascade = CascadeType.ALL)
+    private Address billingAddress;
 
 
     public Long getU_id() {
@@ -105,12 +108,19 @@ public class User implements Serializable {
         isAdmin = admin;
     }
 
-    public Set<Address> getAddresses() {
-        return addresses;
+    public Address getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setAddresses(Set<Address> addresses) {
-        this.addresses = addresses;
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
+    }
 }

@@ -10,6 +10,8 @@ export class ChangeAddressComponent implements OnInit {
 
   addressType: string;
   address: any = {};
+  gender = [{id: 'FEMALE', text:'Frau'},
+    {id: 'MALE', text:'Herr'}];
   returnUrl: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
@@ -20,21 +22,16 @@ export class ChangeAddressComponent implements OnInit {
   }
 
   changeAddress() {
-    this.address.addressType = this.addressType;
 
     if(this.address.gender == null) {
       this.address.gender = "FEMALE";
     }
 
-    if(this.addressType === 'BILLING') {
-      this.userService.changeBillingAddress(this.address).subscribe(
-          data => {
-            console.log(data);
-          }
-      );
-    } else {
-      this.userService.changeShippingAddress(this.address);
-    }
+    this.userService.changeAddress(this.address, this.addressType).subscribe(
+        data => {
+          this.router.navigate(['/shop/account'], { queryParams: { successAddrChange: this.addressType }});
+        }
+    );
   }
 
   setAddrGender(value){

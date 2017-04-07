@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="lastName">Geburtsdatum</label>
-                <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" [(ngModel)]="user.dateOfBirth" #dateOfBirth="ngModel" required />
+                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="tt.mm.jjjj" [(ngModel)]="user.dateOfBirth" (focus)="showDatepicker()" #dateOfBirth="ngModel"  required />
             </div>
             <div class="form-group">
                 <label for="username">E-Mail</label>
@@ -49,7 +49,7 @@
                 <input type="text" class="form-control" id="bilcountry" name="bilcountry" [(ngModel)]="billingAddress.country" #shizip="ngModel" required />
             </div>
             <div class="form-group">
-                <label class="checkbox-inline"><input type="checkbox" name="diffAddress" [(ngModel)]="diffAddress" />Andere LieferAddresse</label>
+                <label class="checkbox-inline"><input type="checkbox" name="diffAddress" [(ngModel)]="diffAddress" />Andere Lieferaddresse</label>
             </div>
             <div *ngIf="diffAddress">
                 <div class="form-group">
