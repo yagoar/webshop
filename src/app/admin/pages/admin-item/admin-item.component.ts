@@ -11,6 +11,7 @@ export class AdminItemComponent implements OnInit {
     item: any = {};
     loading = false;
     fileLocation: string;
+    userfile: any;
 
     constructor(private adminService: AdminService) {
 
@@ -35,7 +36,7 @@ export class AdminItemComponent implements OnInit {
     upload() {
         this.loading = true;
         var formData = new FormData();
-        formData.append("file", this.item.pictureLink);
+        formData.append("file", this.userfile, this.userfile.name);
         this.adminService.upload(formData, this.item.articleNumber).subscribe(
             data => {
                 this.fileLocation = data;
@@ -46,6 +47,11 @@ export class AdminItemComponent implements OnInit {
                 console.log(error);
             }
         );
+    }
+
+    fileChangeEvent(event: any) {
+        this.userfile = event.target.files[0];
+        console.log(this.userfile);
     }
 
 }
