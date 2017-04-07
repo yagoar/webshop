@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Item} from "../../models/shop/item";
 import {Observable} from "rxjs";
+import {AuthenticationService} from "../authentication/authentication.service";
 import {AdminAuthenticationService} from "../authentication/admin-authentication.service";
 
 @Injectable()
