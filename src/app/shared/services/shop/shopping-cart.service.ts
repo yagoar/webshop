@@ -123,7 +123,11 @@ export class ShoppingCartService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(`/api/v1/shopping-order`, this.shoppingCart, options).map((response: Response) => response.text());
+        this.http.put(`/api/v1/shopping-order`, this.shoppingCart, options).map((response: Response) => response.text()).subscribe(
+            data => {
+                this.getItemCount();
+            }
+        );
 
     }
 

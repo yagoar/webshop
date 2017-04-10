@@ -33,8 +33,6 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
   }
 
   placeOrder() {
-    this.shoppingCartService.placeOrder().subscribe(
-        data => {console.log(data);}
-    );
+    this.shoppingCartService.placeOrder();
   }
 }
