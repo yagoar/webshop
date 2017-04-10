@@ -2,6 +2,7 @@ package com.dhbw.api.shoppingCart;
 
 import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.ShoppingCart;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -41,6 +42,17 @@ public interface ShoppingCartEndpoint {
     @Secured
     @Path( "new-item" )
     Response addItemToShoppingCart(BaseItem item);
+
+    /**
+     * Merges the local shopping cart
+     *
+     * @param shoppingCart BaseItem object which contains an item
+     * @return Response object with result of the operation
+     */
+    @POST
+    @Secured
+    @Path( "merge" )
+    Response mergeShoppingCart(ShoppingCart shoppingCart);
 
     /**
      * Deletes an item from the shopping cart

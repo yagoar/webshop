@@ -59,6 +59,18 @@ public class ShoppingCartEndpointImpl implements ShoppingCartEndpoint {
     }
 
     @Override
+    public Response mergeShoppingCart(ShoppingCart shoppingCart) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
+        ShoppingCart cart = shoppingCartDao.findByUser(userDao.findOne(userId));
+        for(ItemAndQuantity itemAndQuantity : shoppingCart.getItems()) {
+            cart.addItemToCart(itemAndQuantity.getItem());
+        }
+        shoppingCartDao.save(cart);
+        return Response.status(Response.Status.OK).build();
+    }
+
+    @Override
     public Response removeItemFromShoppingCart(Long itemId) {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());

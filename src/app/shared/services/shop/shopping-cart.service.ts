@@ -6,6 +6,7 @@ import {BehaviorSubject} from 'rxjs';
 import {ShoppingCart} from "../../models/shop/shopping-cart";
 import * as _ from 'lodash';
 import {Item} from "../../models/shop/item";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
 export class ShoppingCartService {
@@ -38,6 +39,22 @@ export class ShoppingCartService {
                         console.log(error);
                     }
                 );
+        } else {
+            this.shoppingCartUpdate.next(this.shoppingCart);
+        }
+    }
+
+    mergeShoppingCart() {
+        if(this.authenticationService.token != null) {
+            // add authorization header with jwt token
+            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+            let options = new RequestOptions({ headers: headers });
+
+            this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
+                if(response.ok) {
+                    this.getItemCount();
+                }
+            });
         }
     }
 
@@ -47,14 +64,25 @@ export class ShoppingCartService {
             let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
             let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart`, item, options).map((response: Response) => response.text())
+            this.http.post(`/api/v1/shopping-cart/new-item`, item, options).map((response: Response) => response.text())
                 .subscribe(
                     data => {
                         this.getItemCount();
                     }
                 );
         } else {
-            this.shoppingCart.items.filter(i => i.item.i_id === item.i_id);
+
+            let itemInSC = this.shoppingCart.items.filter(i => i.item.i_id === item.i_id)[0];
+            if(itemInSC == null) {
+                this.shoppingCart.items.push({item: item, quantity: 1});
+                this.getItemCount();
+            } else {
+                this.shoppingCart.items.forEach(i => {
+                    if(i.item.i_id == item.i_id) {
+                        i.quantity++;
+                    }
+                })
+            }
         }
 
     }
@@ -73,15 +101,19 @@ export class ShoppingCartService {
             let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
             let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart/quantity/${quantity}`, quantity, options).map((response: Response) => response.text())
+            this.http.post(`/api/v1/shopping-cart/quantity/${itemId}`, quantity, options).map((response: Response) => response.text())
                 .subscribe(
                     data => {
-                        console.log(data);
                     },
                     error => {
-                        console.log(error);
                     }
                 );
+        } else {
+            this.shoppingCart.items.forEach(i => {
+                if(i.item.i_id == itemId) {
+                    i.quantity = quantity;
+                }
+            })
         }
 
     }
@@ -110,6 +142,7 @@ export class ShoppingCartService {
                     }
                 );
         } else{
+            this.itemCount = this.shoppingCart.items.length;
             this.itemCountUpdate.next(this.itemCount);
         }
     }
