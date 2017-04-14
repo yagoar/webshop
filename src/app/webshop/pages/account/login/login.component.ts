@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         .subscribe(
             data => {
               this.loginFailed = false;
-              this.shoppincartService.getItemCount();
+              this.shoppincartService.mergeShoppingCart();
               this.router.navigate([this.returnUrl]);
             },
             error => {

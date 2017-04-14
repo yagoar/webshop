@@ -14,6 +14,7 @@ import {ItemsService} from "../../../shared/services/shop/items.service";
 export class ItemsComponent implements OnInit {
 
   categoryId: number;
+  childCategoryId: number;
   category: Category;
   items: Item[] = [];
   categories: Array<Category> = [];
@@ -27,17 +28,15 @@ export class ItemsComponent implements OnInit {
     //Subscribe to id parameter in URL and get items
     this.route.params.subscribe(param => {
       this.categoryId = param['id'];
-      this.getItemsinCategory(this.categoryId);
+      if(param['childId'] != null) {
+        this.childCategoryId = param['childId'];
+        this.getItemsinCategory(this.childCategoryId);
+      } else {
+        this.getItemsinCategory(this.categoryId);
+      }
       this.getCategory();
     });
 
-    this.itemsService.selectedChildCategory.subscribe(
-        childCatId => {
-          if(childCatId != null) {
-            this.getItemsinCategory(childCatId);
-          }
-        }
-    )
   }
 
   getItemsinCategory(catId) {
@@ -109,7 +108,6 @@ export class ItemsComponent implements OnInit {
 
   setFilter(filters) {
     this.selectedFilters = filters;
-    this.getItemsinCategory(this.categoryId);
   }
 
 

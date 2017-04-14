@@ -14,7 +14,7 @@ export class AdminAuthenticationService {
 
     constructor(private http: Http) {
         // set token if saved in local storage
-        let currentUser = JSON.parse(localStorage.getItem('currentAdmin'));
+        let currentUser = JSON.parse(sessionStorage.getItem('currentAdmin'));
         this.adminToken = currentUser && currentUser.token;
     }
 
@@ -28,7 +28,7 @@ export class AdminAuthenticationService {
                     this.adminToken = token;
 
                     // store username and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentAdmin', JSON.stringify({ username: credentials.username, token: token }));
+                    sessionStorage.setItem('currentAdmin', JSON.stringify({ username: credentials.username, token: token }));
 
                     // return true to indicate successful login
                     return true;
@@ -42,7 +42,7 @@ export class AdminAuthenticationService {
     adminLogout() {
         // clear token remove admin from local storage to log admin out
         this.adminToken = null;
-        localStorage.removeItem('currentAdmin');
+        sessionStorage.removeItem('currentAdmin');
     }
 
 }

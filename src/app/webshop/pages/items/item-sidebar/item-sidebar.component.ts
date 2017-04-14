@@ -25,6 +25,7 @@ export class ItemsSidebarComponent implements OnInit {
 
   resetFilters() {
     this.selectedFilters = [];
+    console.log(this.selectedFilters);
     this.filterEvent.emit(this.selectedFilters);
   }
 
@@ -39,8 +40,4 @@ export class ItemsSidebarComponent implements OnInit {
       this.selectedFilters.splice(this.selectedFilters.indexOf(option))
     }
   }
-
-
-
-
 }

@@ -24,6 +24,7 @@ import {ItemFilterPipe} from "./pages/items/item-filter.pipe";
 import {OrderHistoryComponent} from "./pages/account/order-history/order-history.component";
 import {ChangeAddressComponent} from "./pages/account/change-address/change-address.component";
 import {OrderDetailsComponent} from "./pages/account/order-details/order-details.component";
+import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success.component";
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import {OrderDetailsComponent} from "./pages/account/order-details/order-details
     ItemFilterPipe,
     OrderHistoryComponent,
     ChangeAddressComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    OrderSuccessComponent
   ]
 })
 export class WebshopModule { }

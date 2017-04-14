@@ -40,7 +40,15 @@ export class ShoppingCartService {
                     }
                 );
         } else {
+            this.getLocalShoppingCart();
             this.shoppingCartUpdate.next(this.shoppingCart);
+        }
+    }
+
+    getLocalShoppingCart() {
+        let localShoppingCart = JSON.parse(localStorage.getItem('local-cart'));
+        if(localShoppingCart != null) {
+            this.shoppingCart = localShoppingCart;
         }
     }
 
@@ -50,11 +58,20 @@ export class ShoppingCartService {
             let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
             let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
-                if(response.ok) {
-                    this.getItemCount();
-                }
-            });
+            this.getLocalShoppingCart();
+
+            console.log(this.shoppingCart);
+
+            if(this.shoppingCart.items.length > 0){
+                this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
+                    if(response.ok) {
+                        localStorage.setItem('local-cart', null); //Reset local cart
+                        this.getItemCount();
+                    }
+                });
+            } else {
+                this.getItemCount();
+            }
         }
     }
 
@@ -83,6 +100,8 @@ export class ShoppingCartService {
                     }
                 })
             }
+
+            localStorage.setItem('local-cart', JSON.stringify(this.shoppingCart));
         }
 
     }
@@ -123,11 +142,13 @@ export class ShoppingCartService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.put(`/api/v1/shopping-order`, this.shoppingCart, options).map((response: Response) => response.text()).subscribe(
-            data => {
+        return this.http.put(`/api/v1/shopping-order`, this.shoppingCart, options).map((response: Response) => {
+            if(response.ok){
                 this.getItemCount();
             }
-        );
+
+            return response.text();
+        });
 
     }
 

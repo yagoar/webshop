@@ -3,16 +3,31 @@
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
    <div class="order-conf-panel">
      <h4>Rechnungsadresse</h4>
+     <span *ngIf="billingAddress.gender=='FEMALE'">Frau</span>
+     <span *ngIf="billingAddress.gender=='MALE'">Herr</span>
+     {{billingAddress.firstName}} {{billingAddress.lastName}} <br>
+     {{billingAddress.streetNo}}<br>
+     {{billingAddress.zip}} {{billingAddress.city}}<br>
+     {{billingAddress.country}}<br>
+     <button class="btn btn-primary" (click)="changeAddress('billing')">Rechnungsadresse ändern</button>
    </div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
     <div class="order-conf-panel">
       <h4>Lieferadresse</h4>
+      <span *ngIf="shippingAddress.gender=='FEMALE'">Frau</span>
+      <span *ngIf="shippingAddress.gender=='MALE'">Herr</span>
+      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>
+      {{shippingAddress.streetNo}} <br>
+      {{shippingAddress.zip}} {{shippingAddress.city}}<br>
+      {{shippingAddress.country}}<br>
+      <button class="btn btn-primary" (click)="changeAddress('shipping')">Lieferadresse ändern</button>
     </div>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
     <div class="order-conf-panel">
       <h4>Zahlungsart</h4>
+      Rechnung
     </div>
   </div>
 </div>
