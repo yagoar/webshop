@@ -3,7 +3,12 @@ jdk:
  - oraclejdk8
 
 before_script:
- - npm install -g angular-cli
- - npm install -g karma
+ - npm install -g @angular/cli
  - npm install
  - ng build
+
+deploy:
+ provider: heroku
+ api-key:
+  secure: c8e184c6-1cae-4029-bdad-27b1a4c566ea
+ app: studienarbeit-webshop
