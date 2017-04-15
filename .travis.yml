@@ -18,10 +18,10 @@ before_deploy:
   - git config --global user.email "yaiza.alt@gmail.com"
   - git config --global user.name "yagoar"
   - git commit -m "Static resources"
-  - git push heroku master
 
 deploy:
  provider: heroku
  api-key:
   secure: c8e184c6-1cae-4029-bdad-27b1a4c566ea
+ strategy: git
  app: studienarbeit-webshop
