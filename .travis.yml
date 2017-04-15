@@ -15,6 +15,7 @@ script: ng build
 
 before_deploy:
   - git add .
+  -  git config --global user.name "yagoar"
   - git commit -m "Static resources"
   - git push heroku master
 
