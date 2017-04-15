@@ -13,6 +13,11 @@ install:
 
 script: ng build
 
+before_deploy:
+  - git config --global user.email "yaiza.alt@gmail.com"
+  - git config --global user.name "yagoar"
+  - git commit -a
+
 deploy:
  provider: heroku
  api-key:
