@@ -13,7 +13,7 @@ public class JerseyConfig extends ResourceConfig
 
   public JerseyConfig() {
 
-    packages("com.dhbw.api");
+    packages("com.dhbw.api.*");
     register(MultiPartFeature.class);
   }
 
