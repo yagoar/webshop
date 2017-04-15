@@ -17,7 +17,7 @@ before_deploy:
   - git config --global user.email "yaiza.alt@gmail.com"
   - git config --global user.name "yagoar"
   - git add .
-  - git commit
+  - git commit -m "Static resources Travis build"
 
 deploy:
  provider: heroku
