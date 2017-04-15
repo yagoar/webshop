@@ -1,4 +1,7 @@
 sudo: true
+language: java
+jdk:
+ - oraclejdk8
 
 env:
   - TRAVIS_NODE_VERSION="7"
@@ -9,16 +12,6 @@ install:
   - npm install
 
 script: ng build
-
-before_deploy:
-  - git add .
-  - git config --global user.email "yaiza.alt@gmail.com"
-  - git config --global user.name "yagoar"
-  - git commit -m "Static resources"
-
-language: java
-jdk:
- - oraclejdk8
 
 deploy:
  provider: heroku
