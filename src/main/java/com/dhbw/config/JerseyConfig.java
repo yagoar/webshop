@@ -2,6 +2,7 @@ package com.dhbw.config;
 
 import com.dhbw.api.admin.AdminEndpointImpl;
 import com.dhbw.api.authentication.AuthenticationEndpoint;
+import com.dhbw.api.authentication.AuthenticationFilter;
 import com.dhbw.api.fileUpload.UploadFileService;
 import com.dhbw.api.items.ItemsEndpointImpl;
 import com.dhbw.api.shoppingCart.ShoppingCartEndpointImpl;
@@ -26,6 +27,9 @@ public class JerseyConfig extends ResourceConfig
     register(ShoppingCartEndpointImpl.class);
     register(ShoppingOrderEndpointImpl.class);
     register(UserEndpointImpl.class);
+
+    //Register providers
+    register(AuthenticationFilter.class);
 
     register(MultiPartFeature.class);
   }
