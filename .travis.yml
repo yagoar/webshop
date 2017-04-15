@@ -13,6 +13,11 @@ install:
 
 script: ng build
 
+before_deploy:
+  - git add .
+  - git commmit
+  - git push heroku master
+
 deploy:
  provider: heroku
  api-key:
