@@ -15,7 +15,7 @@ script: ng build
 
 before_deploy:
   - git add .
-  - git commmit
+  - git commit -m "Static resources"
   - git push heroku master
 
 deploy:
