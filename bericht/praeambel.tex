@@ -2,6 +2,13 @@
 
 \usepackage[english,ngerman]{babel}
 
+% Schriftart
+\usepackage{upquote}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[scaled]{helvet}
+\renewcommand*{\familydefault}{\sfdefault}
+
 %Inhaltsverzeichnis
 \setcounter{tocdepth}{2}
 \usepackage{tocvsec2}
@@ -43,11 +50,6 @@
 \definecolor{maroon}{rgb}{0.5,0,0}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 
-% Schriftart
-\usepackage{fontspec}
-\usepackage{upquote}
-\setmainfont{Arial}
-
 %Abschnitte
 \usepackage[compact]{titlesec}
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -65,6 +67,7 @@
 
 \fancyhf{} 
 \fancyfoot[L]{ \today }
+\fancyhead[R]{\includegraphics[width=0.2\textwidth]{bilder/dhbw_logo.jpg}}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}

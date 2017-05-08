@@ -44,6 +44,8 @@ target/
 *.synctex.gz
 *.bcf
 *.run.xml
+.bib.bak
+.bib.sav
 
 # compiled output
 /dist
