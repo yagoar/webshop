@@ -1,13 +1,31 @@
-Admin admins
 
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 ">
+        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+            <h4 class="order">User</h4>
+        </div>
+        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+            <h4 class="order">Admin</h4>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 ">
         <div *ngFor="let user of admins" class="order">
             <div class="row">
                 <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
-                    <label *ngIf="innerWidth < 768">Email: </label> {{user.email}}
+                    {{user.email}}
+                </div>
+                <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+                    <input type="checkbox" data-md-icheck [checked]="user.admin" (change)="adminToggle(user.email, $event)"/>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br />
+<br />
+
+<p>
+    Hier können Sie für bestehende User auswählen, ob sie Admin-Rechte haben sollen.
+</p>

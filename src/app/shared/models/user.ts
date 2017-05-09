@@ -7,5 +7,6 @@ export interface User {
     lastName: string;
     dateOfBirth: Date;
     gender: string;
+    admin: boolean;
     addresses: Array<Address>
 }

@@ -163,16 +163,23 @@ public class AdminEndpointImpl implements AdminEndpoint {
     public Response makeUserAdmin(String email) {
         if (securityContext.isUserInRole("ADMIN")) {
             User user = userDao.findByEmail(email);
-            user.setAdmin(true);
-            userDao.save(user);
-            return Response.ok("User ist jetzt Admin").build();
+            if(user.isAdmin()) {
+                user.setAdmin(false);
+                userDao.save(user);
+                return Response.ok("User ist jetzt nicht mehr Admin").build();
+            }
+            else {
+                user.setAdmin(true);
+                userDao.save(user);
+                return Response.ok("User ist jetzt Admin").build();
+            }
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 
     @Override
-    public Response getAdmins() {
+    public Response getUser() {
         if (securityContext.isUserInRole("ADMIN")) {
-            return Response.ok(userDao.findByIsAdminTrue()).type(MediaType.APPLICATION_JSON_TYPE).build();
+            return Response.ok(userDao.findAll()).type(MediaType.APPLICATION_JSON_TYPE).build();
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 }

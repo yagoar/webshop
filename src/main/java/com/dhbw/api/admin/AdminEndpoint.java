@@ -175,6 +175,6 @@ public interface AdminEndpoint {
     @GET
     @Secured
     @Path("users/admin")
-    Response getAdmins();
+    Response getUser();
 
 }

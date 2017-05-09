@@ -4,6 +4,7 @@ import {Item} from "../../models/shop/item";
 import {Observable} from "rxjs";
 import {AuthenticationService} from "../authentication/authentication.service";
 import {AdminAuthenticationService} from "../authentication/admin-authentication.service";
+import {User} from "../../models/user";
 
 @Injectable()
 export class AdminService {
@@ -25,7 +26,7 @@ export class AdminService {
         return this.http.put('/api/v1/admin/itemSet', item, options).map((response: Response) => response.text());
     }
 
-    getAllAdmins() : Observable<any> {
+    getAllUsers() : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         let options = new RequestOptions({ headers: headers });
@@ -41,6 +42,14 @@ export class AdminService {
         console.log(this.adminAuthService.adminToken);
 
         return this.http.post(`/api/v1/file/upload/${artNo}`, file, options).map((response: Response) => response.text());
+    }
+
+    makeAdmin(email: String) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/v1/admin/users/admin', email, options).map((response: Response) => response.json());
     }
 
 }
