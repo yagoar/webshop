@@ -28,9 +28,43 @@ Die Anwendungsfälle werden im Anschluss im Einzelnen betrachtet.
 \end{figure}
 
 \subsubsection{Benutzer- bzw. Kunden-Anwendungsfälle}
-\paragraph{Register}
-Ein Benutzer soll sich durch Angabe seiner Email-Adresse, einem Passwort, sowie persönlichen Daten beim System registrieren können
+\paragraph{Register (Registrierung)}
+Ein Benutzer soll sich durch Angabe seiner persönlichen Daten beim System registrieren können.
+Die dafür nötigen Pflichtangaben sind:
+\begin{itemize}
+\item Anrede
+\item Vorname
+\item Nachname
+\item Geburtsdatum
+\item E-Mail-Adresse
+\item Passwort
+\item Straße und Hausnummer
+\item Stadt
+\item Postleitzahl
+\item Land
+\end{itemize}
+Zusätzlich soll es bei der Registrierung möglich sein, eine abweichende Lieferadresse einzugeben.
+Nach der Registrierung muss es dem Benutzer möglich sein, sich am System anzumelden.
+Um Artikel anschauen zu können und sie in den Warenkorb zu legen, muss ein Besucher der Seite nicht registriert oder angemeldet sein.
 
+\paragraph{Login/Logout}
+Registrierte Nutzer können sich durch die Eingabe ihrer E-Mail-Adresse und ihrem Passwort im Shop einloggen.
+Bei einer fehlerhaften Eingabe soll eine Meldung ausgegeben werden.
+Der Login ist Voraussetzung für folgende weitere Use Cases: Anzeigen/Bearbeiten der persönlichen Informationen, Bestellung aufgeben und Bestellhistorie einsehen.
+Außerdem muss beim Einloggen auch der Warenkorb des jeweiligen Benutzers geladen werden, da dieser Artikel enthalten kann, die der User beim letzten Besuch des Shops hineingelegt hat.
+Beim Logout wird der Benutzer wieder abgemledet und kann ohne einen erneuten Login nicht mehr auf seine Daten zugreifen oder die benutzerspezifischen Anwendungsfälle ausführen.
+
+\paragraph{Show/edit user details (Anzeigen/Bearbeiten der persönlichen Informationen)}
+Einem eingeloggten Benutzer soll es möglich sein, seine persönlichen Daten einzusehen und zu ändern.
+Eine übersichtliche Seite mit allen Informationen und Funktionalitäten soll ihm dafür zur Verfügung stehen.
+
+\paragraph{Show shopping cart (Warenkorb anzeigen)}
+\paragraph{Add to shopping cart (Zum Warenkorb hinzufügen)}
+\paragraph{Place order (Bstellung aufgeben)}
+\paragraph{Show order history (Bestellhistorie einsehen)}
+\paragraph{Search products (Artikelsuche)}
+\paragraph{Filter products (Artikel filtern)}
+\paragraph{Show product details (Detailansicht eines Artikels)}
 
 \subsubsection{Administrator-Anwendungsfälle}
 \subsection{System-Abgrenzung}
