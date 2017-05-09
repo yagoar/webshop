@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Pipe} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ItemsService} from "../../../shared/services/shop/items.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'webshop-item-details',
@@ -25,10 +26,20 @@ export class ItemDetailsComponent implements OnInit {
       this.itemsService.getItemDetails(this.itemId).subscribe(
           data => {
               this.item = data;
+              this.item.description = this.item.description.replace(/\n/g, "<br />");
           }
       );
   }
 
+}
 
+@Pipe({name: 'safeHtml'})
+export class SafePipe {
+    constructor(private sanitizer:DomSanitizer){}
 
+    transform(style) {
+        return this.sanitizer.bypassSecurityTrustHtml(style);
+        //return this.sanitizer.bypassSecurityTrustStyle(style);
+        // return this.sanitizer.bypassSecurityTrustXxx(style); - see docs
+    }
 }
