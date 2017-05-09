@@ -27,6 +27,7 @@ public class BaseItem {
     @ManyToOne(targetEntity = Category.class, cascade = CascadeType.DETACH)
     private Category category;
 
+    @Column(length = 1023)
     private String description;
 
     private double price;
