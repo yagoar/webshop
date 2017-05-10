@@ -14,7 +14,7 @@ export class ItemsGridComponent implements OnChanges {
   @Input() selFilters: Array<FilterOption>;
   pagedItems: Item[];
   pager: any = {};
-  pageSize: number = 5;
+  pageSize: number = 6;
 
   constructor(private pagerService: PagerService, private shoppingCartService: ShoppingCartService) { }
 
