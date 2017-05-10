@@ -191,10 +191,6 @@ input[type="date"]::-webkit-input-placeholder{
  * Home page *
 ********************************************************/
 
-.carousel-image {
-
-}
-
 .carousel-caption {
     background-color:  rgba(0, 0, 0, 0.3)
 }
