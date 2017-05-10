@@ -9,7 +9,6 @@
       "outDir": "src/main/resources/static",
       "assets": [
         "assets",
-        "images",
         "favicon.ico"
       ],
       "index": "index.html",
