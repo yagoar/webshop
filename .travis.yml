@@ -18,7 +18,7 @@ before_deploy:
   - git config --global user.name "yagoar"
   - git add -A
   - git commit -m "Static resources Travis build"
-  - git push origin master
+  - git push origin HEAD:master
 
 deploy:
  provider: heroku
