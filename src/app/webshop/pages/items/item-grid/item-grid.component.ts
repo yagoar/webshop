@@ -23,7 +23,7 @@ export class ItemsGridComponent implements OnChanges {
   }
 
   setPageSize(size: number) {
-    this.pageSize = size;
+    this.pageSize = size; //not used yet
   }
 
   setPage(page: number) {
