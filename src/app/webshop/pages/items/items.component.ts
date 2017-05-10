@@ -15,7 +15,7 @@ export class ItemsComponent implements OnInit {
 
   categoryId: number;
   childCategoryId: number;
-  category: Category;
+  category: Category = {name: ''};
   items: Item[] = [];
   categories: Array<Category> = [];
   filters: Array<SideBarFilter>;

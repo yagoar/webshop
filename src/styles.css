@@ -284,6 +284,10 @@ input[type="date"]::-webkit-input-placeholder{
     padding-left: 20px;
 }
 
+.node-name {
+    cursor: pointer;
+}
+
 /********************************************************
  * Shopping cart page *
 ********************************************************/
