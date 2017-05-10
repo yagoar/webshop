@@ -4,7 +4,7 @@
     <div class="sc-item" *ngFor="let orderItem of order.items">
       <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <img class="img-responsive" src="../../../../assets/lovewool_hellblau.jpg"/>
+          <img class="img-responsive" [src]="orderItem.item.pictureLink"/>
           <span class="item-name">{{orderItem.item.name}}</span>
           <br>
           <span>Artikel-Nr.: {{orderItem.item.articleNumber}}</span>
