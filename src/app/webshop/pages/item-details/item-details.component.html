@@ -17,7 +17,7 @@
           <div class="item-stock-low" *ngIf="item.stock <= 10 && item.stock > 0"><i class="fa fa-circle" aria-hidden="true"></i> Nur noch {{item.stock}} auf Lager</div>
           <div class="item-not-in-stock" *ngIf="item.stock == 0"><i class="fa fa-circle" aria-hidden="true"></i> Nicht auf Lager</div>
           <br>
-          <button class="btn btn-primary"><i class="fa fa-shopping-basket" aria-hidden="true"></i> In den Warenkorb</button>
+          <button class="btn btn-primary" (click)="addToCart(item)"><i class="fa fa-shopping-basket" aria-hidden="true"></i> In den Warenkorb</button>
         </div>
       </div>
     </div>

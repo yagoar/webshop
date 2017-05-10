@@ -2,7 +2,7 @@
 <div class="sc-item" *ngFor="let scItem of shoppingCart.items">
     <div class="row clearfix">
         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <img class="img-responsive" src="../../../../assets/lovewool_hellblau.jpg"/>
+            <img class="img-responsive" [src]="scItem.item.pictureLink"/>
             <span class="item-name">{{scItem.item.name}}</span>
             <br>
             <span>Artikel-Nr.: {{scItem.item.articleNumber}}</span>

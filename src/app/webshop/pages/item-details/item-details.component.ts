@@ -2,6 +2,8 @@ import {Component, OnInit, Pipe} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ItemsService} from "../../../shared/services/shop/items.service";
 import {DomSanitizer} from "@angular/platform-browser";
+import {Item} from "../../../shared/models/shop/item";
+import {ShoppingCartService} from "../../../shared/services/shop/shopping-cart.service";
 
 @Component({
   selector: 'webshop-item-details',
@@ -12,7 +14,7 @@ export class ItemDetailsComponent implements OnInit {
   itemId: number;
   item: any = {};
 
-  constructor(private route: ActivatedRoute, private itemsService : ItemsService) { }
+  constructor(private route: ActivatedRoute, private itemsService : ItemsService, private shoppingCartService : ShoppingCartService) { }
 
   ngOnInit() {
     //Subscribe to id parameter in URL and get item details
@@ -30,6 +32,14 @@ export class ItemDetailsComponent implements OnInit {
           }
       );
   }
+
+    public addToCart(item:Item) {
+        let scItem = {
+            item: item,
+            quantity: 1
+        };
+        this.shoppingCartService.addItemToShoppingCart(scItem.item);
+    }
 
 }
 
