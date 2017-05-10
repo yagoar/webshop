@@ -15,7 +15,7 @@ script: ng build
 
 before_deploy:
   - git config --global user.email "yaiza.alt@gmail.com"
-  - git config --global user.name "yagoar"
+  - git config --global user.name "Travis CI"
   - git stash save
   - git checkout master
   - git stash pop
