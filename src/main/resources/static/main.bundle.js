@@ -71,7 +71,7 @@ var AdminService = (function () {
     return AdminService;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin.service.js.map
 
 /***/ }),
 
@@ -140,7 +140,7 @@ var AdminAuthenticationService = (function () {
     return AdminAuthenticationService;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-authentication.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-authentication.service.js.map
 
 /***/ }),
 
@@ -192,7 +192,7 @@ var ItemsService = (function () {
     return ItemsService;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/items.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/items.service.js.map
 
 /***/ }),
 
@@ -251,7 +251,7 @@ var PagerService = (function () {
     };
     return PagerService;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/pager.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/pager.service.js.map
 
 /***/ }),
 
@@ -285,7 +285,7 @@ var AdminComponent = (function () {
     ], AdminComponent);
     return AdminComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin.component.js.map
 
 /***/ }),
 
@@ -341,7 +341,7 @@ var AdminAdminsComponent = (function () {
     return AdminAdminsComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-admins.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-admins.component.js.map
 
 /***/ }),
 
@@ -375,7 +375,7 @@ var AdminHomeComponent = (function () {
     ], AdminHomeComponent);
     return AdminHomeComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-home.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-home.component.js.map
 
 /***/ }),
 
@@ -442,7 +442,7 @@ var AdminItemComponent = (function () {
     return AdminItemComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-item.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-item.component.js.map
 
 /***/ }),
 
@@ -508,7 +508,7 @@ var AdminItemsetComponent = (function () {
     return AdminItemsetComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-itemset.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-itemset.component.js.map
 
 /***/ }),
 
@@ -572,7 +572,7 @@ var AdminLoginComponent = (function () {
     return AdminLoginComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-login.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-login.component.js.map
 
 /***/ }),
 
@@ -606,7 +606,7 @@ var AdminManageComponent = (function () {
     ], AdminManageComponent);
     return AdminManageComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-manage.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-manage.component.js.map
 
 /***/ }),
 
@@ -648,7 +648,7 @@ var AdminAuthGuard = (function () {
     return AdminAuthGuard;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-authguard.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-authguard.js.map
 
 /***/ }),
 
@@ -690,7 +690,7 @@ var AuthGuard = (function () {
     return AuthGuard;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/authguard.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/authguard.js.map
 
 /***/ }),
 
@@ -791,7 +791,7 @@ var AccountComponent = (function () {
     return AccountComponent;
     var _a, _b, _c, _d;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/account.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/account.component.js.map
 
 /***/ }),
 
@@ -853,7 +853,7 @@ var ChangeAddressComponent = (function () {
     return ChangeAddressComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/change-address.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/change-address.component.js.map
 
 /***/ }),
 
@@ -922,7 +922,7 @@ var LoginComponent = (function () {
     return LoginComponent;
     var _a, _b, _c, _d;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/login.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/login.component.js.map
 
 /***/ }),
 
@@ -984,7 +984,7 @@ var OrderDetailsComponent = (function () {
     return OrderDetailsComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/order-details.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/order-details.component.js.map
 
 /***/ }),
 
@@ -1060,7 +1060,7 @@ var OrderConfirmationComponent = (function () {
     return OrderConfirmationComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/order-confirmation.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/order-confirmation.component.js.map
 
 /***/ }),
 
@@ -1092,7 +1092,7 @@ var OrderSuccessComponent = (function () {
     ], OrderSuccessComponent);
     return OrderSuccessComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/order-success.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/order-success.component.js.map
 
 /***/ }),
 
@@ -1150,7 +1150,7 @@ var ShoppingCartComponent = (function () {
     return ShoppingCartComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/shopping-cart.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/shopping-cart.component.js.map
 
 /***/ }),
 
@@ -1234,7 +1234,7 @@ var SafePipe = (function () {
     return SafePipe;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/item-details.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/item-details.component.js.map
 
 /***/ }),
 
@@ -1356,7 +1356,7 @@ var ItemsComponent = (function () {
     return ItemsComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/items.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/items.component.js.map
 
 /***/ }),
 
@@ -1444,7 +1444,7 @@ var WebshopComponent = (function () {
     ], WebshopComponent);
     return WebshopComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/webshop.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/webshop.component.js.map
 
 /***/ }),
 
@@ -1624,7 +1624,7 @@ var ShoppingCartService = (function () {
     return ShoppingCartService;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/shopping-cart.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/shopping-cart.service.js.map
 
 /***/ }),
 
@@ -1657,7 +1657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["enableProdMode"])();
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/main.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/main.js.map
 
 /***/ }),
 
@@ -1729,7 +1729,7 @@ var UserService = (function () {
     return UserService;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/user.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/user.service.js.map
 
 /***/ }),
 
@@ -1809,7 +1809,7 @@ var AdminModule = (function () {
     ], AdminModule);
     return AdminModule;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin.module.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin.module.js.map
 
 /***/ }),
 
@@ -1874,7 +1874,7 @@ var AdminRoutingModule = (function () {
 }());
 var routedComponents = [__WEBPACK_IMPORTED_MODULE_2__pages_admin_home_admin_home_component__["a" /* AdminHomeComponent */], __WEBPACK_IMPORTED_MODULE_4__pages_admin_item_admin_item_component__["a" /* AdminItemComponent */], __WEBPACK_IMPORTED_MODULE_5__pages_admin_admins_admin_admins_component__["a" /* AdminAdminsComponent */],
     __WEBPACK_IMPORTED_MODULE_7__pages_admin_login_admin_login_component__["a" /* AdminLoginComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_admin_itemset_admin_itemset_component__["a" /* AdminItemsetComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_admin_manage_admin_manage_component__["a" /* AdminManageComponent */]];
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin.routing.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin.routing.js.map
 
 /***/ }),
 
@@ -1915,7 +1915,7 @@ var AdminNavigationComponent = (function () {
     return AdminNavigationComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-nav.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/admin-nav.component.js.map
 
 /***/ }),
 
@@ -1949,7 +1949,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/app.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/app.component.js.map
 
 /***/ }),
 
@@ -2036,7 +2036,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/app.module.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/app.module.js.map
 
 /***/ }),
 
@@ -2054,7 +2054,7 @@ var appRoutes = [
     { path: '**', redirectTo: '' }
 ];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* RouterModule */].forRoot(appRoutes, { useHash: true });
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/app.routing.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/app.routing.js.map
 
 /***/ }),
 
@@ -2088,7 +2088,7 @@ var HeaderComponent = (function () {
     ], HeaderComponent);
     return HeaderComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/header.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/header.component.js.map
 
 /***/ }),
 
@@ -2105,21 +2105,21 @@ var ResetPassword = (function () {
     }
     return ResetPassword;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/reset-password.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/reset-password.js.map
 
 /***/ }),
 
 /***/ 743:
 /***/ (function(module, exports) {
 
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/category.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/category.js.map
 
 /***/ }),
 
 /***/ 744:
 /***/ (function(module, exports) {
 
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/shopping-cart.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/shopping-cart.js.map
 
 /***/ }),
 
@@ -2177,7 +2177,7 @@ var TreeCategoryComponent = (function () {
     return TreeCategoryComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/tree-category.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/tree-category.js.map
 
 /***/ }),
 
@@ -2213,7 +2213,7 @@ var TreeViewComponent = (function () {
     ], TreeViewComponent);
     return TreeViewComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/tree-view.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/tree-view.component.js.map
 
 /***/ }),
 
@@ -2257,7 +2257,7 @@ var MenuComponent = (function () {
     return MenuComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/menu.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/menu.component.js.map
 
 /***/ }),
 
@@ -2329,7 +2329,7 @@ var OrderHistoryComponent = (function () {
     return OrderHistoryComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/order-history.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/order-history.component.js.map
 
 /***/ }),
 
@@ -2423,7 +2423,7 @@ var RegisterComponent = (function () {
     return RegisterComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/register.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/register.component.js.map
 
 /***/ }),
 
@@ -2500,7 +2500,7 @@ var CartItemsComponent = (function () {
     return CartItemsComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/cart-items.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/cart-items.component.js.map
 
 /***/ }),
 
@@ -2537,7 +2537,7 @@ var HomeComponent = (function () {
     ], HomeComponent);
     return HomeComponent;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/home.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/home.component.js.map
 
 /***/ }),
 
@@ -2591,7 +2591,7 @@ var ItemFilterPipe = (function () {
     ], ItemFilterPipe);
     return ItemFilterPipe;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/item-filter.pipe.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/item-filter.pipe.js.map
 
 /***/ }),
 
@@ -2665,7 +2665,7 @@ var ItemsGridComponent = (function () {
     return ItemsGridComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/item-grid.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/item-grid.component.js.map
 
 /***/ }),
 
@@ -2735,7 +2735,7 @@ var ItemsSidebarComponent = (function () {
     return ItemsSidebarComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/item-sidebar.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/item-sidebar.component.js.map
 
 /***/ }),
 
@@ -2755,7 +2755,7 @@ var FilterOption = (function () {
     };
     return FilterOption;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/filter-option.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/filter-option.js.map
 
 /***/ }),
 
@@ -2775,7 +2775,7 @@ var SideBarFilter = (function () {
     };
     return SideBarFilter;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/sidebar-filter.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/sidebar-filter.js.map
 
 /***/ }),
 
@@ -2818,7 +2818,7 @@ var TopHeaderComponent = (function () {
     return TopHeaderComponent;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/top-header.component.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/top-header.component.js.map
 
 /***/ }),
 
@@ -2938,7 +2938,7 @@ var WebshopModule = (function () {
     ], WebshopModule);
     return WebshopModule;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/webshop.module.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/webshop.module.js.map
 
 /***/ }),
 
@@ -3016,7 +3016,7 @@ var WebshopRoutingModule = (function () {
     return WebshopRoutingModule;
 }());
 var routedComponents = [__WEBPACK_IMPORTED_MODULE_2__pages_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_3__pages_items_items_component__["a" /* ItemsComponent */], __WEBPACK_IMPORTED_MODULE_4__pages_account_register_register_component__["a" /* RegisterComponent */], __WEBPACK_IMPORTED_MODULE_5__pages_account_login_login_component__["a" /* LoginComponent */]];
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/webshop.routing.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/webshop.routing.js.map
 
 /***/ }),
 
@@ -3056,7 +3056,7 @@ var routedComponents = [__WEBPACK_IMPORTED_MODULE_2__pages_home_home_component__
  * Needed for: All but Chrome, Firefox, Edge, IE11 and Safari 10
  */
 // import 'intl';  // Run `npm install --save intl`.
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/polyfills.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/polyfills.js.map
 
 /***/ }),
 
@@ -3324,21 +3324,21 @@ module.exports = ""
 /***/ 846:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"content-container\" class=\"container-fluid\">\n  <div class=\"row\">\n    <div class=\"col-lg-4\">\n      <admin-nav></admin-nav>\n    </div>\n    <div class=\"col-lg-8\">\n      <router-outlet></router-outlet>\n    </div>\n  </div>\n</div>"
+module.exports = "<div id=\"content-container\" class=\"container-fluid\">\r\n  <div class=\"row\">\r\n    <div class=\"col-lg-4\">\r\n      <admin-nav></admin-nav>\r\n    </div>\r\n    <div class=\"col-lg-8\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 847:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <a href=\"#/admin/new-item\">Artikel hinzufügen</a> <br>\n    <a href=\"#/admin/new-set\">Set hinzufügen</a><br>\n    <a href=\"#/admin/manage\">Artikel/Set verwalten</a><br>\n    <a href=\"#/admin/users\">Admin-Benutzer verwalten</a><br>\n    <a (click)=\"logout()\">Abmelden</a><br>\n</div>"
+module.exports = "<div>\r\n    <a href=\"#/admin/new-item\">Artikel hinzufügen</a> <br>\r\n    <a href=\"#/admin/new-set\">Set hinzufügen</a><br>\r\n    <a href=\"#/admin/manage\">Artikel/Set verwalten</a><br>\r\n    <a href=\"#/admin/users\">Admin-Benutzer verwalten</a><br>\r\n    <a (click)=\"logout()\">Abmelden</a><br>\r\n</div>"
 
 /***/ }),
 
 /***/ 848:
 /***/ (function(module, exports) {
 
-module.exports = "\n<div class=\"row\">\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\n        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n            <h4 class=\"order\">User</h4>\n        </div>\n        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n            <h4 class=\"order\">Admin</h4>\n        </div>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\n        <div *ngFor=\"let user of admins\" class=\"order\">\n            <div class=\"row\">\n                <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                    {{user.email}}\n                </div>\n                <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                    <input type=\"checkbox\" data-md-icheck [checked]=\"user.admin\" (change)=\"adminToggle(user.email, $event)\"/>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n<br />\n<br />\n\n<p>\n    Hier können Sie für bestehende User auswählen, ob sie Admin-Rechte haben sollen.\n</p>"
+module.exports = "\r\n<div class=\"row\">\r\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\r\n        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\r\n            <h4 class=\"order\">User</h4>\r\n        </div>\r\n        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\r\n            <h4 class=\"order\">Admin</h4>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\r\n        <div *ngFor=\"let user of admins\" class=\"order\">\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\r\n                    {{user.email}}\r\n                </div>\r\n                <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\r\n                    <input type=\"checkbox\" data-md-icheck [checked]=\"user.admin\" (change)=\"adminToggle(user.email, $event)\"/>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<br />\r\n<br />\r\n\r\n<p>\r\n    Hier können Sie für bestehende User auswählen, ob sie Admin-Rechte haben sollen.\r\n</p>"
 
 /***/ }),
 
@@ -3414,28 +3414,28 @@ var AuthenticationService = (function () {
     return AuthenticationService;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/authentication.service.js.map
+//# sourceMappingURL=C:/Users/yalt/Documents/DHBW/webshop/src/authentication.service.js.map
 
 /***/ }),
 
 /***/ 850:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"upload()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required ></textarea>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                    <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Artikel speichern</button>\n            </div>\n        </form>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\r\n<br>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n        <form (ngSubmit)=\"upload()\">\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"name\">Name des Artikels</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"articleNumber\">Artikelnummer</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"stock\">Lagerbestand</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"description\">Beschreibung</label>\r\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required ></textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"price\">Preis</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"pic\">Bild</label>\r\n                    <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Artikel speichern</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 851:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"upload()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\n            </div>\n        </form>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\r\n<br>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n        <form (ngSubmit)=\"upload()\">\r\n\r\n            <div class=\"form-group\">\r\n                <label for=\"name\">Name des Artikels</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"articleNumber\">Artikelnummer</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"stock\">Lagerbestand</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"description\">Beschreibung</label>\r\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"price\">Preis</label>\r\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"pic\">Bild</label>\r\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\r\n            </div>\r\n\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\r\n            </div>\r\n        </form>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 852:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Login</h2>\n<div class=\"row\">\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n    <alert *ngIf=\"loginFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"loginFailed = false\">Login fehlgeschlagen</alert>\n    <form (ngSubmit)=\"login()\">\n      <div class=\"form-group\">\n        <label for=\"email\">E-Mail</label>\n        <input type=\"text\" class=\"form-control\" id=\"email\" name=\"email\" [(ngModel)]=\"model.email\" #username=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"password\">Passwort</label>\n        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Anmelden</button>\n      </div>\n    </form>\n  </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Login</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n    <alert *ngIf=\"loginFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"loginFailed = false\">Login fehlgeschlagen</alert>\r\n    <form (ngSubmit)=\"login()\">\r\n      <div class=\"form-group\">\r\n        <label for=\"email\">E-Mail</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"email\" name=\"email\" [(ngModel)]=\"model.email\" #username=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"password\">Passwort</label>\r\n        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Anmelden</button>\r\n      </div>\r\n    </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -3463,140 +3463,140 @@ module.exports = "<a href=\"#\"><img src=\"../../assets/webshop%20logo.png\" cla
 /***/ 856:
 /***/ (function(module, exports) {
 
-module.exports = "<li>\n    <div *ngIf=\"category.childrenCategories.length > 0\">\n        <button (click)=\"toggle()\" class=\"node-icon\">\n        <i *ngIf=\"!expanded\" class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>\n        <i *ngIf=\"expanded\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>\n      </button>\n        <a (click)=\"selectChildCategory(category.c_id)\" class=\"node-name\">{{ category.name }}</a>\n        <div *ngIf=\"expanded\">\n            <ul>\n                <div *ngFor=\"let child of category.childrenCategories\">\n                    <tree-category [category]=\"child\"></tree-category>\n                </div>\n            </ul>\n        </div>\n    </div>\n\n    <div *ngIf=\"category.childrenCategories.length == 0\">\n        <a (click)=\"selectChildCategory(category.c_id)\" class=\"node-name no-icon\">{{ category.name }}</a>\n    </div>\n\n</li>"
+module.exports = "<li>\r\n    <div *ngIf=\"category.childrenCategories.length > 0\">\r\n        <button (click)=\"toggle()\" class=\"node-icon\">\r\n        <i *ngIf=\"!expanded\" class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>\r\n        <i *ngIf=\"expanded\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>\r\n      </button>\r\n        <a (click)=\"selectChildCategory(category.c_id)\" class=\"node-name\">{{ category.name }}</a>\r\n        <div *ngIf=\"expanded\">\r\n            <ul>\r\n                <div *ngFor=\"let child of category.childrenCategories\">\r\n                    <tree-category [category]=\"child\"></tree-category>\r\n                </div>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n\r\n    <div *ngIf=\"category.childrenCategories.length == 0\">\r\n        <a (click)=\"selectChildCategory(category.c_id)\" class=\"node-name no-icon\">{{ category.name }}</a>\r\n    </div>\r\n\r\n</li>"
 
 /***/ }),
 
 /***/ 857:
 /***/ (function(module, exports) {
 
-module.exports = "<ul>\n  <div *ngFor=\"let cat of categories\">\n    <tree-category [category]=\"cat\"></tree-category>\n  </div>\n</ul>"
+module.exports = "<ul>\r\n  <div *ngFor=\"let cat of categories\">\r\n    <tree-category [category]=\"cat\"></tree-category>\r\n  </div>\r\n</ul>"
 
 /***/ }),
 
 /***/ 858:
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\" id=\"webshop-nav\">\n   <div class=\"navbar-header\">\n     <button type=\"button\" class=\"navbar-toggle collapsed\" (click)=\"isCollapsed = !isCollapsed\">\n       <span class=\"sr-only\">Toggle navigation</span>\n       <span class=\"icon-bar\"></span>\n       <span class=\"icon-bar\"></span>\n       <span class=\"icon-bar\"></span>\n     </button>\n   </div>\n\n   <div class=\"collapse navbar-collapse\" [collapse]=\"isCollapsed\">\n     <ul class=\"nav navbar-nav\">\n       <li><a href=\"#\">Home</a></li>\n       <li *ngFor=\"let category of parentCategories\"><a href=\"#/shop/category/{{category.c_id}}\">{{category.name}}</a></li>\n\n     </ul>\n   </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-default\" id=\"webshop-nav\">\r\n   <div class=\"navbar-header\">\r\n     <button type=\"button\" class=\"navbar-toggle collapsed\" (click)=\"isCollapsed = !isCollapsed\">\r\n       <span class=\"sr-only\">Toggle navigation</span>\r\n       <span class=\"icon-bar\"></span>\r\n       <span class=\"icon-bar\"></span>\r\n       <span class=\"icon-bar\"></span>\r\n     </button>\r\n   </div>\r\n\r\n   <div class=\"collapse navbar-collapse\" [collapse]=\"isCollapsed\">\r\n     <ul class=\"nav navbar-nav\">\r\n       <li><a href=\"#\">Home</a></li>\r\n       <li *ngFor=\"let category of parentCategories\"><a href=\"#/shop/category/{{category.c_id}}\">{{category.name}}</a></li>\r\n\r\n     </ul>\r\n   </div>\r\n</nav>\r\n"
 
 /***/ }),
 
 /***/ 859:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Kontoübersicht</h2>\n<div class=\"row\">\n  <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12 \">\n    <button class=\"btn btn-primary pull-right\" (click)=\"logout()\">Abmelden</button>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Benutzerinformationen</h4>\n      {{user.firstName}} {{user.lastName}} <br>\n      {{user.email}}<br>\n      <br>\n      <button class=\"btn btn-primary\" (click)=\"changePassword=true\" [disabled]=\"changePassword\">Passwort ändern</button> <br>\n      <div *ngIf=\"changePassword\" id=\"change-pw\">\n        <alert *ngIf=\"changePWFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"changePWFailed = false\">Passwort ändern fehlgeschlagen</alert>\n        <alert *ngIf=\"changePWSuccess\"  type=\"success\" dismissible=\"true\" (click)=\"changePWSuccess = false\">Passwort erfolgreich geändert</alert>\n        <form (ngSubmit)=\"changePW()\">\n          <div class=\"form-group\">\n            <label for=\"previousPassword\">Altes Passwort</label>\n            <input type=\"password\" class=\"form-control\" id=\"previousPassword\" name=\"previousPassword\" [(ngModel)]=\"previousPassword\" #oldPW=\"ngModel\" required />\n          </div>\n          <div class=\"form-group\">\n            <label for=\"newPassword\">Neues Passwort</label>\n            <input type=\"password\" class=\"form-control\" id=\"newPassword\" name=\"newPassword\" [(ngModel)]=\"newPassword\" minlength=\"8\" #newPW=\"ngModel\" required />\n          </div>\n          <div class=\"form-group\">\n            <button type=\"submit\" class=\"btn btn-secondary\">Ändern</button>\n            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangePassword()\">Abbrechen</button>\n          </div>\n        </form>\n      </div>\n      <button id=\"change-email-btn\" class=\"btn btn-primary\" (click)=\"changeEmail=true\" [disabled]=\"changeEmail\">E-Mail ändern</button>\n      <div *ngIf=\"changeEmail\">\n        <form (ngSubmit)=\"changeEmailAddr()\">\n          <div class=\"form-group\">\n            <label for=\"newEmail\">Neue E-Mail</label>\n            <input type=\"password\" class=\"form-control\" id=\"newEmail\" name=\"newEmail\" [(ngModel)]=\"newEmail\" #newMail=\"ngModel\" required />\n          </div>\n          <div class=\"form-group\">\n            <button type=\"submit\" class=\"btn btn-secondary\">Ändern</button>\n            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangeEmail()\">Abbrechen</button>\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Rechnungsadresse</h4>\n      <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\n      <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\n      {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\n      {{billingAddress.streetNo}}<br>\n      {{billingAddress.zip}} {{billingAddress.city}}<br>\n      {{billingAddress.country}}<br>\n      <br>\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\n    </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Lieferadresse</h4>\n      <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\n      <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\n      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\n      {{shippingAddress.streetNo}} <br>\n      {{shippingAddress.zip}} {{shippingAddress.city}}<br>\n      {{shippingAddress.country}}<br>\n      <br>\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\n    </div>\n  </div>\n</div>\n\n<!-- Order history -->\n<order-history></order-history>"
+module.exports = "<h2 class=\"text-center\">Kontoübersicht</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12 \">\r\n    <button class=\"btn btn-primary pull-right\" (click)=\"logout()\">Abmelden</button>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div class=\"order-conf-panel\">\r\n      <h4>Benutzerinformationen</h4>\r\n      {{user.firstName}} {{user.lastName}} <br>\r\n      {{user.email}}<br>\r\n      <br>\r\n      <button class=\"btn btn-primary\" (click)=\"changePassword=true\" [disabled]=\"changePassword\">Passwort ändern</button> <br>\r\n      <div *ngIf=\"changePassword\" id=\"change-pw\">\r\n        <alert *ngIf=\"changePWFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"changePWFailed = false\">Passwort ändern fehlgeschlagen</alert>\r\n        <alert *ngIf=\"changePWSuccess\"  type=\"success\" dismissible=\"true\" (click)=\"changePWSuccess = false\">Passwort erfolgreich geändert</alert>\r\n        <form (ngSubmit)=\"changePW()\">\r\n          <div class=\"form-group\">\r\n            <label for=\"previousPassword\">Altes Passwort</label>\r\n            <input type=\"password\" class=\"form-control\" id=\"previousPassword\" name=\"previousPassword\" [(ngModel)]=\"previousPassword\" #oldPW=\"ngModel\" required />\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <label for=\"newPassword\">Neues Passwort</label>\r\n            <input type=\"password\" class=\"form-control\" id=\"newPassword\" name=\"newPassword\" [(ngModel)]=\"newPassword\" minlength=\"8\" #newPW=\"ngModel\" required />\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <button type=\"submit\" class=\"btn btn-secondary\">Ändern</button>\r\n            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangePassword()\">Abbrechen</button>\r\n          </div>\r\n        </form>\r\n      </div>\r\n      <button id=\"change-email-btn\" class=\"btn btn-primary\" (click)=\"changeEmail=true\" [disabled]=\"changeEmail\">E-Mail ändern</button>\r\n      <div *ngIf=\"changeEmail\">\r\n        <form (ngSubmit)=\"changeEmailAddr()\">\r\n          <div class=\"form-group\">\r\n            <label for=\"newEmail\">Neue E-Mail</label>\r\n            <input type=\"password\" class=\"form-control\" id=\"newEmail\" name=\"newEmail\" [(ngModel)]=\"newEmail\" #newMail=\"ngModel\" required />\r\n          </div>\r\n          <div class=\"form-group\">\r\n            <button type=\"submit\" class=\"btn btn-secondary\">Ändern</button>\r\n            <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangeEmail()\">Abbrechen</button>\r\n          </div>\r\n        </form>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div class=\"order-conf-panel\">\r\n      <h4>Rechnungsadresse</h4>\r\n      <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\r\n      <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\r\n      {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\r\n      {{billingAddress.streetNo}}<br>\r\n      {{billingAddress.zip}} {{billingAddress.city}}<br>\r\n      {{billingAddress.country}}<br>\r\n      <br>\r\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div class=\"order-conf-panel\">\r\n      <h4>Lieferadresse</h4>\r\n      <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\r\n      <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\r\n      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\r\n      {{shippingAddress.streetNo}} <br>\r\n      {{shippingAddress.zip}} {{shippingAddress.city}}<br>\r\n      {{shippingAddress.country}}<br>\r\n      <br>\r\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<!-- Order history -->\r\n<order-history></order-history>"
 
 /***/ }),
 
 /***/ 860:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">\n  <span *ngIf=\"addressType == 'billing'\"> Rechnungsadresse</span>\n  <span *ngIf=\"addressType == 'shipping'\">Versandadresse</span>\n  ändern</h2>\n<div class=\"row\">\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n    <form (ngSubmit)=\"changeAddress()\">\n      <div class=\"form-group\">\n        <label>Anrede</label>\n        <ng-select id=\"gender\"\n                   [allowClear]=\"false\"\n                   [items]=\"gender\"\n                   [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                   (data)=\"setAddrGender($event)\"\n                   placeholder=\"Keine Anrede\">\n        </ng-select>\n      </div>\n      <div class=\"form-group\">\n        <label for=\"firstname\">Vorname</label>\n        <input type=\"text\" class=\"form-control\" id=\"firstname\" name=\"firstname\" [(ngModel)]=\"address.firstName\" #firstname=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"lastname\">Nachname</label>\n        <input type=\"text\" class=\"form-control\" id=\"lastname\" name=\"lastname\" [(ngModel)]=\"address.lastName\" #lastname=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"street\">Straße Nr.</label>\n        <input type=\"text\" class=\"form-control\" id=\"street\" name=\"street\" [(ngModel)]=\"address.streetNo\" #street=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"city\">Stadt</label>\n        <input type=\"text\" class=\"form-control\" id=\"city\" name=\"city\" [(ngModel)]=\"address.city\" #city=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"zip\">Postleitzahl</label>\n        <input type=\"text\" class=\"form-control\" id=\"zip\" name=\"zip\" [(ngModel)]=\"address.zip\" #zip=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"zip\">Land</label>\n        <input type=\"text\" class=\"form-control\" id=\"country\" name=\"country\" [(ngModel)]=\"address.country\" #country=\"ngModel\" required />\n      </div>\n      <button class=\"btn btn-secondary\" type=\"submit\">Ändern</button>\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangeAddr()\">Abbrechen</button>\n  </form>\n  </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">\r\n  <span *ngIf=\"addressType == 'billing'\"> Rechnungsadresse</span>\r\n  <span *ngIf=\"addressType == 'shipping'\">Versandadresse</span>\r\n  ändern</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n    <form (ngSubmit)=\"changeAddress()\">\r\n      <div class=\"form-group\">\r\n        <label>Anrede</label>\r\n        <ng-select id=\"gender\"\r\n                   [allowClear]=\"false\"\r\n                   [items]=\"gender\"\r\n                   [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\r\n                   (data)=\"setAddrGender($event)\"\r\n                   placeholder=\"Keine Anrede\">\r\n        </ng-select>\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"firstname\">Vorname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"firstname\" name=\"firstname\" [(ngModel)]=\"address.firstName\" #firstname=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"lastname\">Nachname</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"lastname\" name=\"lastname\" [(ngModel)]=\"address.lastName\" #lastname=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"street\">Straße Nr.</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"street\" name=\"street\" [(ngModel)]=\"address.streetNo\" #street=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"city\">Stadt</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"city\" name=\"city\" [(ngModel)]=\"address.city\" #city=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"zip\">Postleitzahl</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"zip\" name=\"zip\" [(ngModel)]=\"address.zip\" #zip=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"zip\">Land</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"country\" name=\"country\" [(ngModel)]=\"address.country\" #country=\"ngModel\" required />\r\n      </div>\r\n      <button class=\"btn btn-secondary\" type=\"submit\">Ändern</button>\r\n      <button type=\"button\" class=\"btn btn-secondary\" (click)=\"cancelChangeAddr()\">Abbrechen</button>\r\n  </form>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 861:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Login</h2>\n<div class=\"row\">\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n    <alert *ngIf=\"loginFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"loginFailed = false\">Login fehlgeschlagen</alert>\n    <form (ngSubmit)=\"login()\">\n      <div class=\"form-group\">\n        <label for=\"email\">E-Mail</label>\n        <input type=\"text\" class=\"form-control\" id=\"email\" name=\"email\" [(ngModel)]=\"model.email\" #username=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <label for=\"password\">Passwort</label>\n        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\n      </div>\n      <div class=\"form-group\">\n        <button [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Anmelden</button>\n      </div>\n    </form>\n    <p>Sie haben noch kein Konto? <button (click)=\"registerRedirect()\" class=\"btn btn-secondary\">Registrieren</button></p>\n  </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Login</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n    <alert *ngIf=\"loginFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"loginFailed = false\">Login fehlgeschlagen</alert>\r\n    <form (ngSubmit)=\"login()\">\r\n      <div class=\"form-group\">\r\n        <label for=\"email\">E-Mail</label>\r\n        <input type=\"text\" class=\"form-control\" id=\"email\" name=\"email\" [(ngModel)]=\"model.email\" #username=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <label for=\"password\">Passwort</label>\r\n        <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"model.password\" #password=\"ngModel\" required />\r\n      </div>\r\n      <div class=\"form-group\">\r\n        <button [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Anmelden</button>\r\n      </div>\r\n    </form>\r\n    <p>Sie haben noch kein Konto? <button (click)=\"registerRedirect()\" class=\"btn btn-secondary\">Registrieren</button></p>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 862:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Bestellung Nr. {{order.soId}}</h2>\n<div class=\"row\">\n  <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n    <div class=\"sc-item\" *ngFor=\"let orderItem of order.items\">\n      <div class=\"row clearfix\">\n        <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\n          <img class=\"img-responsive\" [src]=\"orderItem.item.pictureLink\"/>\n          <span class=\"item-name\">{{orderItem.item.name}}</span>\n          <br>\n          <span>Artikel-Nr.: {{orderItem.item.articleNumber}}</span>\n          <br>\n          <span>Preis: {{orderItem.item.price | currency:'EUR':true}}</span>\n          <br>\n          <span>Anzahl: {{orderItem.quantity}}</span>\n        </div>\n      </div>\n    </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div id=\"sc-overview\">\n      <h4>Zusammenfassung</h4>\n      Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\n      Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\n      <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\n    </div>\n  </div>\n</div>"
+module.exports = "<h2 class=\"text-center\">Bestellung Nr. {{order.soId}}</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\r\n    <div class=\"sc-item\" *ngFor=\"let orderItem of order.items\">\r\n      <div class=\"row clearfix\">\r\n        <div class=\"col-lg-12 col-md-12 col-sm-12 col-xs-12\">\r\n          <img class=\"img-responsive\" [src]=\"orderItem.item.pictureLink\"/>\r\n          <span class=\"item-name\">{{orderItem.item.name}}</span>\r\n          <br>\r\n          <span>Artikel-Nr.: {{orderItem.item.articleNumber}}</span>\r\n          <br>\r\n          <span>Preis: {{orderItem.item.price | currency:'EUR':true}}</span>\r\n          <br>\r\n          <span>Anzahl: {{orderItem.quantity}}</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div id=\"sc-overview\">\r\n      <h4>Zusammenfassung</h4>\r\n      Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\r\n      Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\r\n      <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 863:
 /***/ (function(module, exports) {
 
-module.exports = "<h3 class=\"text-center\">Bestellhistorie</h3>\n\n<div class=\"order-history\">\n<div *ngIf=\"innerWidth >= 768\" class=\"row\">\n  <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4\">\n    <h4>Datum</h4>\n  </div>\n  <div class=\"col-lg-2 col-md-2 col-sm-2\">\n    <h4>Best.-Nr.</h4>\n  </div>\n  <div class=\"col-lg-5 col-md-6 col-sm-6\">\n    <h4>Status</h4>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-12 col-md-12 col-sm-12 \">\n  <div *ngFor=\"let order of pagedOrders\" class=\"order\">\n    <div class=\"row\">\n    <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n      <label *ngIf=\"innerWidth < 768\">Datum: </label> {{order.date | date:'medium'}}\n    </div>\n    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12 order-col\">\n      <label *ngIf=\"innerWidth < 768\">Best.-Nr.: </label> {{order.soId}}\n    </div>\n    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12 order-col\">\n      <label *ngIf=\"innerWidth < 768\">Status: </label> {{order.paid}}\n    </div>\n    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12\">\n      <button class=\"btn btn-secondary\"><a href=\"/#/shop/order-details/{{order.soId}}\">Details</a></button>\n    </div>\n    </div>\n  </div>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"text-center\">\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"orders.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n  </div>\n</div>\n</div>"
+module.exports = "<h3 class=\"text-center\">Bestellhistorie</h3>\r\n\r\n<div class=\"order-history\">\r\n<div *ngIf=\"innerWidth >= 768\" class=\"row\">\r\n  <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4\">\r\n    <h4>Datum</h4>\r\n  </div>\r\n  <div class=\"col-lg-2 col-md-2 col-sm-2\">\r\n    <h4>Best.-Nr.</h4>\r\n  </div>\r\n  <div class=\"col-lg-5 col-md-6 col-sm-6\">\r\n    <h4>Status</h4>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-12 col-md-12 col-sm-12 \">\r\n  <div *ngFor=\"let order of pagedOrders\" class=\"order\">\r\n    <div class=\"row\">\r\n    <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\r\n      <label *ngIf=\"innerWidth < 768\">Datum: </label> {{order.date | date:'medium'}}\r\n    </div>\r\n    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12 order-col\">\r\n      <label *ngIf=\"innerWidth < 768\">Best.-Nr.: </label> {{order.soId}}\r\n    </div>\r\n    <div class=\"col-lg-3 col-md-3 col-sm-3 col-xs-12 order-col\">\r\n      <label *ngIf=\"innerWidth < 768\">Status: </label> {{order.paid}}\r\n    </div>\r\n    <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12\">\r\n      <button class=\"btn btn-secondary\"><a href=\"/#/shop/order-details/{{order.soId}}\">Details</a></button>\r\n    </div>\r\n    </div>\r\n  </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n  <div class=\"text-center\">\r\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"orders.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\r\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\r\n  </div>\r\n</div>\r\n</div>"
 
 /***/ }),
 
 /***/ 864:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Registrierung</h2>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"register()\">\n            <div class=\"form-group\">\n                <label>Anrede</label>\n                <ng-select id=\"gender\"\n                           [allowClear]=\"false\"\n                           [items]=\"gender\"\n                           [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                           (data)=\"setGender($event)\"\n                           placeholder=\"Keine Anrede\">\n                </ng-select>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"firstName\">Vorname</label>\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" [(ngModel)]=\"user.firstName\" #firstName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Nachname</label>\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" [(ngModel)]=\"user.lastName\" #lastName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Geburtsdatum</label>\n                <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"tt.mm.jjjj\" [(ngModel)]=\"user.dateOfBirth\" (focus)=\"showDatepicker()\" #dateOfBirth=\"ngModel\"  required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"username\">E-Mail</label>\n                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"user.email\" #username=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Passwort</label>\n                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"user.password\" #password=\"ngModel\" minlength=\"8\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilstreet\">Straße Nr.</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilstreet\" name=\"bilstreet\" [(ngModel)]=\"billingAddress.streetNo\" #bilstreet=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilcity\">Stadt</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcity\" name=\"bilcity\" [(ngModel)]=\"billingAddress.city\" #bilcity=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilzip\">Postleitzahl</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilzip\" name=\"bilzip\" [(ngModel)]=\"billingAddress.zip\" #bilzip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"shizip\">Land</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcountry\" name=\"bilcountry\" [(ngModel)]=\"billingAddress.country\" #shizip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"diffAddress\" [(ngModel)]=\"diffAddress\" />Andere Lieferaddresse</label>\n            </div>\n            <div *ngIf=\"diffAddress\">\n                <div class=\"form-group\">\n                    <label>Anrede</label>\n                    <ng-select id=\"gender\"\n                               [allowClear]=\"false\"\n                               [items]=\"gender\"\n                               [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                               (data)=\"setAddrGender($event)\"\n                               placeholder=\"Keine Anrede\">\n                    </ng-select>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"firstName\">Vorname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiFirstName\" name=\"shiFirstName\" [(ngModel)]=\"shippingAddress.firstName\" #firstName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"lastName\">Nachname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiLastName\" name=\"shiLastName\" [(ngModel)]=\"shippingAddress.lastName\" #lastName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shistreet\">Straße Nr.</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shistreet\" name=\"shistreet\" [(ngModel)]=\"shippingAddress.streetNo\" #shistreet=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shicity\">Stadt</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicity\" name=\"shicity\" [(ngModel)]=\"shippingAddress.city\" #shicity=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Postleitzahl</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shizip\" name=\"shizip\" [(ngModel)]=\"shippingAddress.zip\" #shizip=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Land</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicountry\" name=\"shicountry\" [(ngModel)]=\"shippingAddress.country\" #shizip=\"ngModel\" required />\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Registrieren</button>\n            </div>\n        </form>\n        <p>Sie haben bereits ein Konto? <a href=\"#/shop/login\"><button class=\"btn btn-secondary\">Anmelden</button></a></p>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Registrierung</h2>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n        <form (ngSubmit)=\"register()\">\r\n            <div class=\"form-group\">\r\n                <label>Anrede</label>\r\n                <ng-select id=\"gender\"\r\n                           [allowClear]=\"false\"\r\n                           [items]=\"gender\"\r\n                           [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\r\n                           (data)=\"setGender($event)\"\r\n                           placeholder=\"Keine Anrede\">\r\n                </ng-select>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"firstName\">Vorname</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" [(ngModel)]=\"user.firstName\" #firstName=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"lastName\">Nachname</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" [(ngModel)]=\"user.lastName\" #lastName=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"lastName\">Geburtsdatum</label>\r\n                <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"tt.mm.jjjj\" [(ngModel)]=\"user.dateOfBirth\" (focus)=\"showDatepicker()\" #dateOfBirth=\"ngModel\"  required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"username\">E-Mail</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"user.email\" #username=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"password\">Passwort</label>\r\n                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"user.password\" #password=\"ngModel\" minlength=\"8\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"bilstreet\">Straße Nr.</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"bilstreet\" name=\"bilstreet\" [(ngModel)]=\"billingAddress.streetNo\" #bilstreet=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"bilcity\">Stadt</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"bilcity\" name=\"bilcity\" [(ngModel)]=\"billingAddress.city\" #bilcity=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"bilzip\">Postleitzahl</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"bilzip\" name=\"bilzip\" [(ngModel)]=\"billingAddress.zip\" #bilzip=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label for=\"shizip\">Land</label>\r\n                <input type=\"text\" class=\"form-control\" id=\"bilcountry\" name=\"bilcountry\" [(ngModel)]=\"billingAddress.country\" #shizip=\"ngModel\" required />\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"diffAddress\" [(ngModel)]=\"diffAddress\" />Andere Lieferaddresse</label>\r\n            </div>\r\n            <div *ngIf=\"diffAddress\">\r\n                <div class=\"form-group\">\r\n                    <label>Anrede</label>\r\n                    <ng-select id=\"gender\"\r\n                               [allowClear]=\"false\"\r\n                               [items]=\"gender\"\r\n                               [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\r\n                               (data)=\"setAddrGender($event)\"\r\n                               placeholder=\"Keine Anrede\">\r\n                    </ng-select>\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"firstName\">Vorname</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shiFirstName\" name=\"shiFirstName\" [(ngModel)]=\"shippingAddress.firstName\" #firstName=\"ngModel\" required />\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"lastName\">Nachname</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shiLastName\" name=\"shiLastName\" [(ngModel)]=\"shippingAddress.lastName\" #lastName=\"ngModel\" required />\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"shistreet\">Straße Nr.</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shistreet\" name=\"shistreet\" [(ngModel)]=\"shippingAddress.streetNo\" #shistreet=\"ngModel\" required />\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"shicity\">Stadt</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shicity\" name=\"shicity\" [(ngModel)]=\"shippingAddress.city\" #shicity=\"ngModel\" required />\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"shizip\">Postleitzahl</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shizip\" name=\"shizip\" [(ngModel)]=\"shippingAddress.zip\" #shizip=\"ngModel\" required />\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <label for=\"shizip\">Land</label>\r\n                    <input type=\"text\" class=\"form-control\" id=\"shicountry\" name=\"shicountry\" [(ngModel)]=\"shippingAddress.country\" #shizip=\"ngModel\" required />\r\n                </div>\r\n            </div>\r\n            <div class=\"form-group\">\r\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Registrieren</button>\r\n            </div>\r\n        </form>\r\n        <p>Sie haben bereits ein Konto? <a href=\"#/shop/login\"><button class=\"btn btn-secondary\">Anmelden</button></a></p>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 865:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"shoppingCart.items.length == 0\">Warenkorb leer</div>\n<div class=\"sc-item\" *ngFor=\"let scItem of shoppingCart.items\">\n    <div class=\"row clearfix\">\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n            <img class=\"img-responsive\" [src]=\"scItem.item.pictureLink\"/>\n            <span class=\"item-name\">{{scItem.item.name}}</span>\n            <br>\n            <span>Artikel-Nr.: {{scItem.item.articleNumber}}</span>\n        </div>\n        <div class=\"col-lg-4 col-md-4 col-xs-12\">\n            <span class=\"sc-item-delete pull-right\">\n                <button><i class=\"fa fa-times\" aria-hidden=\"true\" title=\"Artikel aus Warenkorb entfernen\" (click)=\"removeItem(scItem)\"></i></button>\n            </span>\n            <span class=\"sc-item-price pull-right\">\n                {{scItem.item.price | currency:'EUR':true}}\n            </span>\n            <div class=\"sc-item-quantity pull-right\">\n                <button><i class=\"fa fa-minus\" aria-hidden=\"true\" title=\"Menge verringern\" (click)=\"removeOne(scItem.item.i_id)\"></i></button>\n                <input title=\"Artikelmenge\" type=\"text\" [(ngModel)]=\"scItem.quantity\"/>\n                <button><i class=\"fa fa-plus\" aria-hidden=\"true\" title=\"Menge erhöhen\" (click)=\"addOne(scItem.item.i_id)\"></i></button>\n            </div>\n\n        </div>\n    </div>\n</div>\n\n"
+module.exports = "<div *ngIf=\"shoppingCart.items.length == 0\">Warenkorb leer</div>\r\n<div class=\"sc-item\" *ngFor=\"let scItem of shoppingCart.items\">\r\n    <div class=\"row clearfix\">\r\n        <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\r\n            <img class=\"img-responsive\" [src]=\"scItem.item.pictureLink\"/>\r\n            <span class=\"item-name\">{{scItem.item.name}}</span>\r\n            <br>\r\n            <span>Artikel-Nr.: {{scItem.item.articleNumber}}</span>\r\n        </div>\r\n        <div class=\"col-lg-4 col-md-4 col-xs-12\">\r\n            <span class=\"sc-item-delete pull-right\">\r\n                <button><i class=\"fa fa-times\" aria-hidden=\"true\" title=\"Artikel aus Warenkorb entfernen\" (click)=\"removeItem(scItem)\"></i></button>\r\n            </span>\r\n            <span class=\"sc-item-price pull-right\">\r\n                {{scItem.item.price | currency:'EUR':true}}\r\n            </span>\r\n            <div class=\"sc-item-quantity pull-right\">\r\n                <button><i class=\"fa fa-minus\" aria-hidden=\"true\" title=\"Menge verringern\" (click)=\"removeOne(scItem.item.i_id)\"></i></button>\r\n                <input title=\"Artikelmenge\" type=\"text\" [(ngModel)]=\"scItem.quantity\"/>\r\n                <button><i class=\"fa fa-plus\" aria-hidden=\"true\" title=\"Menge erhöhen\" (click)=\"addOne(scItem.item.i_id)\"></i></button>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
 /***/ 866:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Bestellung prüfen</h2>\n<div class=\"row\">\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n   <div class=\"order-conf-panel\">\n     <h4>Rechnungsadresse</h4>\n     <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\n     <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\n     {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\n     {{billingAddress.streetNo}}<br>\n     {{billingAddress.zip}} {{billingAddress.city}}<br>\n     {{billingAddress.country}}<br>\n     <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\n   </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Lieferadresse</h4>\n      <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\n      <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\n      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\n      {{shippingAddress.streetNo}} <br>\n      {{shippingAddress.zip}} {{shippingAddress.city}}<br>\n      {{shippingAddress.country}}<br>\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\n    </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Zahlungsart</h4>\n      Rechnung\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n    <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div id=\"sc-overview\">\n      <h4>Zusammenfassung</h4>\n      Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\n      Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\n      <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\n      <a (click)=\"placeOrder()\" class=\"btn btn-primary\">Kostenpflichtig bestellen  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Bestellung prüfen</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n   <div class=\"order-conf-panel\">\r\n     <h4>Rechnungsadresse</h4>\r\n     <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\r\n     <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\r\n     {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\r\n     {{billingAddress.streetNo}}<br>\r\n     {{billingAddress.zip}} {{billingAddress.city}}<br>\r\n     {{billingAddress.country}}<br>\r\n     <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\r\n   </div>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div class=\"order-conf-panel\">\r\n      <h4>Lieferadresse</h4>\r\n      <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\r\n      <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\r\n      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\r\n      {{shippingAddress.streetNo}} <br>\r\n      {{shippingAddress.zip}} {{shippingAddress.city}}<br>\r\n      {{shippingAddress.country}}<br>\r\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div class=\"order-conf-panel\">\r\n      <h4>Zahlungsart</h4>\r\n      Rechnung\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\r\n    <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n    <div id=\"sc-overview\">\r\n      <h4>Zusammenfassung</h4>\r\n      Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\r\n      Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\r\n      <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\r\n      <a (click)=\"placeOrder()\" class=\"btn btn-primary\">Kostenpflichtig bestellen  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 867:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Bestellung erfolgreich</h2>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <p>Ihre Bestellung wurde erfolgreich übermittelt.</p>\n        <p>Den Status Ihrer Bestellung können Sie im <a href=\"#/shop/account\">Benutzerbereich</a> einsehen</p>\n    </div>\n</div>"
+module.exports = "<h2 class=\"text-center\">Bestellung erfolgreich</h2>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\r\n        <p>Ihre Bestellung wurde erfolgreich übermittelt.</p>\r\n        <p>Den Status Ihrer Bestellung können Sie im <a href=\"#/shop/account\">Benutzerbereich</a> einsehen</p>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 868:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Warenkorb</h2>\n<div class=\"row\">\n    <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n        <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\n    </div>\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n        <div id=\"sc-overview\">\n            <h4>Zusammenfassung</h4>\n            Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\n            Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\n            <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\n            <a *ngIf=\"shoppingCart.items.length === 0\" href=\"#/shop/checkout\" class=\"btn btn-primary disabled\">Zur Kasse  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\n            <a *ngIf=\"shoppingCart.items.length !== 0\" href=\"#/shop/checkout\" class=\"btn btn-primary\">Zur Kasse  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\n        </div>\n    </div>\n</div>"
+module.exports = "<h2 class=\"text-center\">Warenkorb</h2>\r\n<div class=\"row\">\r\n    <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\r\n        <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\r\n    </div>\r\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\r\n        <div id=\"sc-overview\">\r\n            <h4>Zusammenfassung</h4>\r\n            Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\r\n            Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\r\n            <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\r\n            <a *ngIf=\"shoppingCart.items.length === 0\" href=\"#/shop/checkout\" class=\"btn btn-primary disabled\">Zur Kasse  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\r\n            <a *ngIf=\"shoppingCart.items.length !== 0\" href=\"#/shop/checkout\" class=\"btn btn-primary\">Zur Kasse  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
 /***/ 869:
 /***/ (function(module, exports) {
 
-module.exports = "<carousel>\n  <slide>\n    <img class=\"carousel-image\" src=\"assets/banner1.jpg\" alt=\"First slide\">\n    <div class=\"carousel-caption\">\n      <h3>Produkte höchster Qualität</h3>\n      <p>Bei uns finden Sie eine Kollektion der Besten Materialien für Ihr Hobby</p>\n    </div>\n  </slide>\n  <slide>\n    <img class=\"carousel-image\" src=\"assets/banner2.jpg\" alt=\"Second slide\">\n    <div class=\"carousel-caption\">\n      <h3>Große Auswahl an Produkten</h3>\n      <p>Egal ob einfarbig oder kunterbunt, bei uns finden Sie alles was Sie für Ihre Projekte suchen</p>\n    </div>\n  </slide>\n  <slide>\n    <img class=\"carousel-image\" src=\"assets/banner3.jpg\" alt=\"Third slide\">\n    <div class=\"carousel-caption\">\n      <h3>Für Anfänger und Fortgeschrittene</h3>\n      <p>Sind Sie Anfänger und Sie wissen nicht wo Sie anfangen möchten? Wir haben die perfekten Produksets für Ihren Start.</p>\n    </div>\n  </slide>\n  <slide>\n    <img class=\"carousel-image\" src=\"assets/banner4.jpg\" alt=\"Third slide\">\n    <div class=\"carousel-caption\">\n      <h3>Third slide label</h3>\n      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>\n    </div>\n  </slide>\n</carousel>"
+module.exports = "<carousel>\r\n  <slide>\r\n    <img class=\"carousel-image\" src=\"assets/banner1.jpg\" alt=\"First slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Produkte höchster Qualität</h3>\r\n      <p>Bei uns finden Sie eine Kollektion der Besten Materialien für Ihr Hobby</p>\r\n    </div>\r\n  </slide>\r\n  <slide>\r\n    <img class=\"carousel-image\" src=\"assets/banner2.jpg\" alt=\"Second slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Große Auswahl an Produkten</h3>\r\n      <p>Egal ob einfarbig oder kunterbunt, bei uns finden Sie alles was Sie für Ihre Projekte suchen</p>\r\n    </div>\r\n  </slide>\r\n  <slide>\r\n    <img class=\"carousel-image\" src=\"assets/banner3.jpg\" alt=\"Third slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Für Anfänger und Fortgeschrittene</h3>\r\n      <p>Sind Sie Anfänger und Sie wissen nicht wo Sie anfangen möchten? Wir haben die perfekten Produksets für Ihren Start.</p>\r\n    </div>\r\n  </slide>\r\n  <slide>\r\n    <img class=\"carousel-image\" src=\"assets/banner4.jpg\" alt=\"Third slide\">\r\n    <div class=\"carousel-caption\">\r\n      <h3>Third slide label</h3>\r\n      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>\r\n    </div>\r\n  </slide>\r\n</carousel>"
 
 /***/ }),
 
 /***/ 870:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-6\">\n    <img class=\"img-responsive details-pic center-block\" [src]=\"item.pictureLink\">\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-6\">\n    <div class=\"row\">\n      <div class=\"col-lg-12\">\n        <br>\n        <div class=\"item-brand\">{{item.brand}}</div>\n        <div class=\"item-name\"><h2>{{item.name}}</h2></div>\n      </div>\n      <div class=\"col-lg-12\">\n        <h3 class=\"item-price\">{{item.price | currency:'EUR':true}}</h3>\n        Artikelnr.: {{item.articleNumber}}\n        <div class=\"stock\">\n          <div class=\"item-in-stock\" *ngIf=\"item.stock > 10\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Auf Lager</div>\n          <div class=\"item-stock-low\" *ngIf=\"item.stock <= 10 && item.stock > 0\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Nur noch {{item.stock}} auf Lager</div>\n          <div class=\"item-not-in-stock\" *ngIf=\"item.stock == 0\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Nicht auf Lager</div>\n          <br>\n          <button class=\"btn btn-primary\" (click)=\"addToCart(item)\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> In den Warenkorb</button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 item-description\">\n    <br>\n    <h4>Beschreibung</h4>\n    <div [innerHTML]= \"item.description | safeHtml\" ></div>\n\n\n  </div>\n</div>\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-lg-4 col-lg-offset-2 col-md-4 col-md-offset-2 col-sm-6\">\r\n    <img class=\"img-responsive details-pic center-block\" [src]=\"item.pictureLink\">\r\n  </div>\r\n  <div class=\"col-lg-4 col-md-4 col-sm-6\">\r\n    <div class=\"row\">\r\n      <div class=\"col-lg-12\">\r\n        <br>\r\n        <div class=\"item-brand\">{{item.brand}}</div>\r\n        <div class=\"item-name\"><h2>{{item.name}}</h2></div>\r\n      </div>\r\n      <div class=\"col-lg-12\">\r\n        <h3 class=\"item-price\">{{item.price | currency:'EUR':true}}</h3>\r\n        Artikelnr.: {{item.articleNumber}}\r\n        <div class=\"stock\">\r\n          <div class=\"item-in-stock\" *ngIf=\"item.stock > 10\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Auf Lager</div>\r\n          <div class=\"item-stock-low\" *ngIf=\"item.stock <= 10 && item.stock > 0\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Nur noch {{item.stock}} auf Lager</div>\r\n          <div class=\"item-not-in-stock\" *ngIf=\"item.stock == 0\"><i class=\"fa fa-circle\" aria-hidden=\"true\"></i> Nicht auf Lager</div>\r\n          <br>\r\n          <button class=\"btn btn-primary\" (click)=\"addToCart(item)\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> In den Warenkorb</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 item-description\">\r\n    <br>\r\n    <h4>Beschreibung</h4>\r\n    <div [innerHTML]= \"item.description | safeHtml\" ></div>\r\n\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 871:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"\">\n\n  </div>\n</div>\n\n<div class=\"row item-grid\">\n  <div *ngFor=\"let item of pagedItems | itemFilter:selFilters \">\n    <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\">\n      <a href=\"/#/shop/details/{{item.i_id}}\">\n        <div class=\"item-grid-img-wrapper\">\n        <img class=\"img-responsive center-block\" [src]=\"item.pictureLink\"/>\n        </div>\n      </a>\n      <div class=\"item-info\">\n        <div class=\"item-name\"><a href=\"/#/shop/details/{{item.i_id}}\"><b>{{item.name}}</b></a></div>\n        <div class=\"item-brand\">{{item.brand}}</div>\n        <div class=\"item-price\">\n          <button type=\"button\" (click)=\"addToCart(item)\" class=\"btn btn-secondary\">\n            <i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> <b>{{item.price | currency:'EUR':true}}</b>\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"text-center\">\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"items.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row\">\r\n  <div class=\"\">\r\n\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row item-grid\">\r\n  <div *ngFor=\"let item of pagedItems | itemFilter:selFilters \">\r\n    <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\">\r\n      <a href=\"/#/shop/details/{{item.i_id}}\">\r\n        <div class=\"item-grid-img-wrapper\">\r\n        <img class=\"img-responsive center-block\" [src]=\"item.pictureLink\"/>\r\n        </div>\r\n      </a>\r\n      <div class=\"item-info\">\r\n        <div class=\"item-name\"><a href=\"/#/shop/details/{{item.i_id}}\"><b>{{item.name}}</b></a></div>\r\n        <div class=\"item-brand\">{{item.brand}}</div>\r\n        <div class=\"item-price\">\r\n          <button type=\"button\" (click)=\"addToCart(item)\" class=\"btn btn-secondary\">\r\n            <i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> <b>{{item.price | currency:'EUR':true}}</b>\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n  <div class=\"text-center\">\r\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"items.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\r\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
 /***/ 872:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"items-sidebar\">\n    <div >\n        <accordion>\n            <accordion-group #categoriesAcc id=\"categories-acc\" [isOpen]=\"categoriesIsOpen\">\n                <div accordion-heading class=\"sidebar-heading\">\n                    Kategorien\n                    <i class=\"pull-right float-xs-right glyphicon\"\n                       [ngClass]=\"{'glyphicon-chevron-down': categoriesAcc?.isOpen, 'glyphicon-chevron-right': !categoriesAcc?.isOpen}\"></i>\n                </div>\n                <tree-view class=\"toggle-list\"[categories]=\"categories\"></tree-view>\n            </accordion-group>\n        </accordion>\n    </div>\n    <div >\n        <accordion>\n            <accordion-group #filterAcc>\n                <div accordion-heading class=\"sidebar-heading\">\n                    Filter\n                    <i class=\"pull-right float-xs-right glyphicon\"\n                       [ngClass]=\"{'glyphicon-chevron-down': filterAcc?.isOpen, 'glyphicon-chevron-right': !filterAcc?.isOpen}\"></i>\n                </div>\n                <div class=\"toggle-list\">\n                    <ul>\n                        <li *ngFor=\"let filter of filters\">\n\n                            <div *ngIf=\"filter.options.length > 0\">\n                                <button (click)=\"filter.toggle()\" class=\"node-icon\">\n                                    <i *ngIf=\"!filter.expanded\" class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>\n                                    <i *ngIf=\"filter.expanded\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>\n                                    <span class=\"node-name\">{{filter.name}}</span>\n                                </button>\n                                <div *ngIf=\"filter.expanded\">\n                                    <ul>\n                                        <li *ngFor=\"let option of filter.options\">\n                                            <input type=\"checkbox\" name=\"checked\" [(ngModel)]=\"option.checked\" (change)=\"addFilter(option)\"/> {{option.name}}\n                                        </li>\n                                    </ul>\n                                </div>\n                            </div>\n                        </li>\n                    </ul>\n                </div>\n                <button class=\"btn btn-primary\" (click)=\"setFilters()\">Filter übernehmen</button>\n                <button class=\"btn btn-secondary\" (click)=\"resetFilters()\">Filter löschen</button>\n            </accordion-group>\n        </accordion>\n    </div>\n</div>\n"
+module.exports = "<div class=\"items-sidebar\">\r\n    <div >\r\n        <accordion>\r\n            <accordion-group #categoriesAcc id=\"categories-acc\" [isOpen]=\"categoriesIsOpen\">\r\n                <div accordion-heading class=\"sidebar-heading\">\r\n                    Kategorien\r\n                    <i class=\"pull-right float-xs-right glyphicon\"\r\n                       [ngClass]=\"{'glyphicon-chevron-down': categoriesAcc?.isOpen, 'glyphicon-chevron-right': !categoriesAcc?.isOpen}\"></i>\r\n                </div>\r\n                <tree-view class=\"toggle-list\"[categories]=\"categories\"></tree-view>\r\n            </accordion-group>\r\n        </accordion>\r\n    </div>\r\n    <div >\r\n        <accordion>\r\n            <accordion-group #filterAcc>\r\n                <div accordion-heading class=\"sidebar-heading\">\r\n                    Filter\r\n                    <i class=\"pull-right float-xs-right glyphicon\"\r\n                       [ngClass]=\"{'glyphicon-chevron-down': filterAcc?.isOpen, 'glyphicon-chevron-right': !filterAcc?.isOpen}\"></i>\r\n                </div>\r\n                <div class=\"toggle-list\">\r\n                    <ul>\r\n                        <li *ngFor=\"let filter of filters\">\r\n\r\n                            <div *ngIf=\"filter.options.length > 0\">\r\n                                <button (click)=\"filter.toggle()\" class=\"node-icon\">\r\n                                    <i *ngIf=\"!filter.expanded\" class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>\r\n                                    <i *ngIf=\"filter.expanded\" class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>\r\n                                    <span class=\"node-name\">{{filter.name}}</span>\r\n                                </button>\r\n                                <div *ngIf=\"filter.expanded\">\r\n                                    <ul>\r\n                                        <li *ngFor=\"let option of filter.options\">\r\n                                            <input type=\"checkbox\" name=\"checked\" [(ngModel)]=\"option.checked\" (change)=\"addFilter(option)\"/> {{option.name}}\r\n                                        </li>\r\n                                    </ul>\r\n                                </div>\r\n                            </div>\r\n                        </li>\r\n                    </ul>\r\n                </div>\r\n                <button class=\"btn btn-primary\" (click)=\"setFilters()\">Filter übernehmen</button>\r\n                <button class=\"btn btn-secondary\" (click)=\"resetFilters()\">Filter löschen</button>\r\n            </accordion-group>\r\n        </accordion>\r\n    </div>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 873:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">{{category.name}}</h2>\n<div class=\"row\">\n  <div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12\">\n    <items-sidebar [categories]=\"categories\" [filters]=\"filters\" (filterEvent)=\"setFilter($event)\"></items-sidebar>\n  </div>\n  <div class=\"col-lg-9 col-md-9 col-sm-8 col-xs-12\">\n    <div></div>\n    <items-grid [items]=\"items\" [selFilters]=\"selectedFilters\"></items-grid>\n  </div>\n</div>\n\n"
+module.exports = "<h2 class=\"text-center\">{{category.name}}</h2>\r\n<div class=\"row\">\r\n  <div class=\"col-lg-3 col-md-3 col-sm-4 col-xs-12\">\r\n    <items-sidebar [categories]=\"categories\" [filters]=\"filters\" (filterEvent)=\"setFilter($event)\"></items-sidebar>\r\n  </div>\r\n  <div class=\"col-lg-9 col-md-9 col-sm-8 col-xs-12\">\r\n    <div></div>\r\n    <items-grid [items]=\"items\" [selFilters]=\"selectedFilters\"></items-grid>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
 /***/ 874:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\" id=\"top-header\">\n  <div class=\"col-xs-12\">\n    <a href=\"#/shop/account\" class=\"top-header-link\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i> Mein Konto</a>\n    <a href=\"#/shop/cart\" class=\"top-header-link\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> Warenkorb <span class=\"badge\">{{itemsInCart}}</span></a>\n  </div>\n\n</div>\n"
+module.exports = "<div class=\"row\" id=\"top-header\">\r\n  <div class=\"col-xs-12\">\r\n    <a href=\"#/shop/account\" class=\"top-header-link\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i> Mein Konto</a>\r\n    <a href=\"#/shop/cart\" class=\"top-header-link\"><i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> Warenkorb <span class=\"badge\">{{itemsInCart}}</span></a>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 875:
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"pattern-container\">\n    <div class=\"container-fluid\">\n        <webshop-top-header></webshop-top-header>\n        <webshop-header></webshop-header>\n        <webshop-menu></webshop-menu>\n    </div>\n</div>\n<div id=\"content-container\" class=\"container-fluid\">\n    <router-outlet></router-outlet>\n</div>\n\n"
+module.exports = "<div id=\"pattern-container\">\r\n    <div class=\"container-fluid\">\r\n        <webshop-top-header></webshop-top-header>\r\n        <webshop-header></webshop-header>\r\n        <webshop-menu></webshop-menu>\r\n    </div>\r\n</div>\r\n<div id=\"content-container\" class=\"container-fluid\">\r\n    <router-outlet></router-outlet>\r\n</div>\r\n\r\n"
 
 /***/ })
 
