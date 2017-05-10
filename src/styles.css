@@ -204,6 +204,21 @@ input[type="date"]::-webkit-input-placeholder{
     padding-top: 15px;
 }
 
+.item-grid-img-wrapper{
+    width: 100%;
+    padding-bottom: 70%; /* your aspect ratio here! */
+    position: relative;
+}
+
+.item-grid-img-wrapper img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+}
+
 .item-info {
     text-align: center;
     padding: 15px;
@@ -224,10 +239,6 @@ input[type="date"]::-webkit-input-placeholder{
 }
 
 
-.item-grid .col-xs-12>.img-responsive {
-    max-width: 60% !important;
-    padding: 15px;
-}
 
 /* - Pagination - */
 
