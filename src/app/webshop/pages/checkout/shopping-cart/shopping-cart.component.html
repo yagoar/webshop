@@ -9,7 +9,8 @@
             Summe: <span class="pull-right">{{total | currency:'EUR':true}}</span><br>
             Versandkosten: <span class="pull-right">{{0 | currency:'EUR':true}}</span><br>
             <b>Gesamtsumme: <span class="pull-right">{{total | currency:'EUR':true}}</span></b><br>
-            <a href="#/shop/checkout" class="btn btn-primary">Zur Kasse  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            <a *ngIf="shoppingCart.items.length === 0" href="#/shop/checkout" class="btn btn-primary disabled">Zur Kasse  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            <a *ngIf="shoppingCart.items.length !== 0" href="#/shop/checkout" class="btn btn-primary">Zur Kasse  <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
