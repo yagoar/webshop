@@ -20,7 +20,7 @@ before_deploy:
   - git checkout master
   - git stash pop
   - git add -A
-  - git commit -m "Static resources Travis build"
+  - git commit -m "Travis build [ci skip]"
   - git push origin master
 
 deploy:
