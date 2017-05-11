@@ -16,9 +16,9 @@ script: ng build
 before_deploy:
   - git config --global user.email "yaiza.alt@gmail.com"
   - git config --global user.name "Travis CI"
-  - git stash save
+  - STASH_SAVE = $(git stash save)
   - git checkout master
-  - git stash pop
+  - if [[ "$STASH_SAVE" != "No local changes to save" ]]; then git stash pop; fi
   - git add -A
   - git commit -m "Travis build [ci skip]"
   - git push origin master
