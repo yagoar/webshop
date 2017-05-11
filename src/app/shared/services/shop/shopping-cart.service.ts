@@ -6,7 +6,6 @@ import {BehaviorSubject} from 'rxjs';
 import {ShoppingCart} from "../../models/shop/shopping-cart";
 import * as _ from 'lodash';
 import {Item} from "../../models/shop/item";
-import {forEach} from "@angular/router/src/utils/collection";
 
 @Injectable()
 export class ShoppingCartService {
@@ -59,9 +58,7 @@ export class ShoppingCartService {
             let options = new RequestOptions({ headers: headers });
 
             this.getLocalShoppingCart();
-
-            console.log(this.shoppingCart);
-
+            
             if(this.shoppingCart.items.length > 0){
                 this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
                     if(response.ok) {
@@ -107,11 +104,29 @@ export class ShoppingCartService {
     }
 
     removeItemFromShoppingCart(itemId: number) {
-        // add authorization header with jwt token
-        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        let options = new RequestOptions({ headers: headers });
 
-        return this.http.delete(`/api/v1/shopping-cart/${itemId}`, options).map((response: Response) => response.text());
+        if(this.authenticationService.token != null) {
+            // add authorization header with jwt token
+            let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+            let options = new RequestOptions({headers: headers});
+
+            this.http.delete(`/api/v1/shopping-cart/${itemId}`, options).map((response: Response) => response.text())
+                .subscribe(
+                    data => {
+                        this.getItemCount();
+                    }
+                );
+        } else {
+            let itemInSC = this.shoppingCart.items.filter(i => i.item.i_id === itemId)[0];
+            if(itemInSC != null) {
+                let index = this.shoppingCart.items.indexOf(itemInSC);
+                if (index !== -1) {
+                    this.shoppingCart.items.splice(index, 1);
+                }
+            }
+            localStorage.setItem('local-cart', JSON.stringify(this.shoppingCart));
+            this.getItemCount();
+        }
     }
 
     updateItemQuantity(itemId: number, quantity: number) {

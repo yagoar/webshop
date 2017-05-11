@@ -7,7 +7,11 @@
 <div class="row item-grid">
   <div *ngFor="let item of pagedItems | itemFilter:selFilters ">
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-      <a href="/#/shop/details/{{item.i_id}}"><img class="img-responsive center-block" [src]="item.pictureLink"/></a>
+      <a href="/#/shop/details/{{item.i_id}}">
+        <div class="item-grid-img-wrapper">
+        <img class="img-responsive center-block" [src]="item.pictureLink"/>
+        </div>
+      </a>
       <div class="item-info">
         <div class="item-name"><a href="/#/shop/details/{{item.i_id}}"><b>{{item.name}}</b></a></div>
         <div class="item-brand">{{item.brand}}</div>
@@ -23,7 +27,7 @@
 
 <div class="row">
   <div class="text-center">
-    <pagination [itemsPerPage]="pageSize" [boundaryLinks]="true" [totalItems]="items.length" [maxSize]="6" [(ngModel)]="pager.currentPage" class=" pagination-sm"
+    <pagination [itemsPerPage]="pageSize" [boundaryLinks]="true" [totalItems]="pagedItems.length" [maxSize]="6" [(ngModel)]="pager.currentPage" class=" pagination-sm"
                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="onPageChange($event)"></pagination>
   </div>
 </div>

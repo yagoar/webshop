@@ -188,6 +188,13 @@ input[type="date"]::-webkit-input-placeholder{
 }
 
 /********************************************************
+ * Home page *
+********************************************************/
+.carousel-caption {
+    background-color:  rgba(0, 0, 0, 0.3)
+}
+
+/********************************************************
  * Products page *
 ********************************************************/
 
@@ -195,6 +202,21 @@ input[type="date"]::-webkit-input-placeholder{
 
 .item-grid {
     padding-top: 15px;
+}
+
+.item-grid-img-wrapper{
+    width: 100%;
+    padding-bottom: 70%; /* your aspect ratio here! */
+    position: relative;
+}
+
+.item-grid-img-wrapper img{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 200px;
 }
 
 .item-info {
@@ -217,10 +239,6 @@ input[type="date"]::-webkit-input-placeholder{
 }
 
 
-.item-grid .col-xs-12>.img-responsive {
-    max-width: 60% !important;
-    padding: 15px;
-}
 
 /* - Pagination - */
 
@@ -275,6 +293,10 @@ input[type="date"]::-webkit-input-placeholder{
 
 .toggle-list .no-icon {
     padding-left: 20px;
+}
+
+.node-name {
+    cursor: pointer;
 }
 
 /********************************************************
