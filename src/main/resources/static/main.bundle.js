@@ -333,6 +333,7 @@ var AdminHomeComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_admin_service__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminItemComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -345,13 +346,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var AdminItemComponent = (function () {
-    function AdminItemComponent(adminService) {
+    function AdminItemComponent(adminService, itemService) {
         this.adminService = adminService;
+        this.itemService = itemService;
         this.item = {};
         this.loading = false;
+        this.categories = [];
     }
     AdminItemComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.itemService.getAllCategories().subscribe(function (data) {
+            _this.categories = data;
+        }, function (error) {
+            console.log(error);
+        });
     };
     AdminItemComponent.prototype.createItem = function () {
         var _this = this;
@@ -380,15 +390,18 @@ var AdminItemComponent = (function () {
         this.userfile = event.target.files[0];
         console.log(this.userfile);
     };
+    AdminItemComponent.prototype.onCategorySelectionChange = function (cat) {
+        this.item.category = cat;
+    };
     AdminItemComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'admin-item',
             template: __webpack_require__(849)
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_admin_service__["a" /* AdminService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__shared_services_admin_admin_service__["a" /* AdminService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__["a" /* ItemsService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__["a" /* ItemsService */]) === 'function' && _b) || Object])
     ], AdminItemComponent);
     return AdminItemComponent;
-    var _a;
+    var _a, _b;
 }());
 //# sourceMappingURL=/home/travis/build/yagoar/webshop/src/admin-item.component.js.map
 
@@ -466,7 +479,7 @@ var AdminItemsetComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_authentication_authentication_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_authentication_authentication_service__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_authentication_admin_authentication_service__ = __webpack_require__(164);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdminLoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -647,8 +660,8 @@ var AuthGuard = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_authentication_authentication_service__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_authentication_authentication_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_models_reset_password__ = __webpack_require__(742);
@@ -749,7 +762,7 @@ var AccountComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangeAddressComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -811,7 +824,7 @@ var ChangeAddressComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_authentication_authentication_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_authentication_authentication_service__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -879,7 +892,7 @@ var LoginComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(23);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetailsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -943,7 +956,7 @@ var OrderDetailsComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderConfirmationComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1130,7 +1143,7 @@ var ShoppingCartComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemDetailsComponent; });
@@ -1218,7 +1231,7 @@ var SafePipe = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__item_sidebar_model_sidebar_filter__ = __webpack_require__(755);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__item_sidebar_model_filter_option__ = __webpack_require__(754);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1426,7 +1439,7 @@ var WebshopComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(116);
@@ -1653,7 +1666,67 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ItemsService = (function () {
+    function ItemsService(http) {
+        this.http = http;
+        this.selectedChildCategory = new __WEBPACK_IMPORTED_MODULE_2_rxjs__["BehaviorSubject"](null);
+        this.selectedFilters = new __WEBPACK_IMPORTED_MODULE_2_rxjs__["BehaviorSubject"]([]);
+    }
+    ItemsService.prototype.getItemsInCategory = function (catId) {
+        return this.http.get("/api/v1/items/" + catId).map(function (response) { return response.json(); });
+    };
+    ItemsService.prototype.getParentCategories = function () {
+        return this.http.get("/api/v1/items/categories").map(function (response) { return response.json(); });
+    };
+    ItemsService.prototype.getCategory = function (catId) {
+        return this.http.get("/api/v1/items/category/" + catId).map(function (response) { return response.json(); });
+    };
+    ItemsService.prototype.getAllCategories = function () {
+        return this.http.get('/api/v1/items/categories/all').map(function (response) { return response.json(); });
+    };
+    ItemsService.prototype.getItemDetails = function (itemId) {
+        return this.http.get("/api/v1/items/details/" + itemId).map(function (response) { return response.json(); });
+    };
+    ItemsService.prototype.selectChildCategory = function (catId) {
+        this.selectedChildCategory.next(catId);
+    };
+    ItemsService.prototype.setFilters = function (selectedFilters) {
+        //Emit Event with all selected filters
+        this.selectedFilters.next(selectedFilters);
+    };
+    ItemsService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
+    ], ItemsService);
+    return ItemsService;
+    var _a;
+}());
+//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/items.service.js.map
+
+/***/ }),
+
+/***/ 72:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(86);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1948,14 +2021,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(69);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(738);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_routing__ = __webpack_require__(740);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_bootstrap__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__webshop_webshop_module__ = __webpack_require__(757);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_services_authentication_authentication_service__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_services_authentication_authentication_service__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_services_authentication_authguard__ = __webpack_require__(388);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_services_shop_pager_service__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__admin_admin_module__ = __webpack_require__(735);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_services_authentication_admin_authguard__ = __webpack_require__(387);
@@ -2208,7 +2281,7 @@ var TreeViewComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2253,7 +2326,7 @@ var MenuComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_pager_service__ = __webpack_require__(239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderHistoryComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2327,7 +2400,7 @@ var OrderHistoryComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(281);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_user_service__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_user_service__ = __webpack_require__(72);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2531,7 +2604,7 @@ var HomeComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_services_shop_pager_service__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_shopping_cart_service__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsGridComponent; });
@@ -2652,7 +2725,7 @@ var ItemsGridComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__ = __webpack_require__(86);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shared_services_shop_items_service__ = __webpack_require__(71);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsSidebarComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3329,76 +3402,7 @@ module.exports = "Admin Home"
 /***/ 849:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"upload()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required ></textarea>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                    <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Artikel speichern</button>\n            </div>\n        </form>\n    </div>\n</div>\n"
-
-/***/ }),
-
-/***/ 85:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(69);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Credentials; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var Credentials = (function () {
-    function Credentials(username, password) {
-        this.username = username;
-        this.password = password;
-    }
-    return Credentials;
-}());
-var AuthenticationService = (function () {
-    function AuthenticationService(http) {
-        this.http = http;
-        // set token if saved in local storage
-        var currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token;
-    }
-    AuthenticationService.prototype.login = function (credentials) {
-        var _this = this;
-        return this.http.post('/api/v1/authentication/user', credentials)
-            .map(function (response) {
-            // login successful if there's a jwt token in the response
-            var token = response.text();
-            if (token) {
-                // set token property
-                _this.token = token;
-                // store username and jwt token in local storage to keep user logged in between page refreshes
-                sessionStorage.setItem('currentUser', JSON.stringify({ username: credentials.username, token: token }));
-                // return true to indicate successful login
-                return true;
-            }
-            else {
-                // return false to indicate failed login
-                return false;
-            }
-        });
-    };
-    AuthenticationService.prototype.logout = function () {
-        // clear token remove user from local storage to log user out
-        this.token = null;
-        sessionStorage.removeItem('currentUser');
-    };
-    AuthenticationService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
-    ], AuthenticationService);
-    return AuthenticationService;
-    var _a;
-}());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/authentication.service.js.map
+module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"upload()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\"\n                       required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\"\n                       [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\"\n                       #stock=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\"\n                          [(ngModel)]=\"item.description\" #description=\"ngModel\" required></textarea>\n            </div>\n            <div class=\"form-group\" id=\"categories\">\n                <label for=\"categories\">Kategorie</label>\n                <div *ngFor=\"let cat of categories; let idx=index\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{cat.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"radio\" name=\"radiogroup\" [value]=\"cat.name\" (change)=\"onCategorySelectionChange(cat)\" required/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"brand\">Marke</label>\n                <input type=\"text\" class=\"form-control\" id=\"brand\" name=\"brand\" [(ngModel)]=\"item.brand\"\n                       #price=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"color\">Farbe</label>\n                <input type=\"text\" class=\"form-control\" id=\"color\" name=\"color\" [(ngModel)]=\"item.color\"\n                       #price=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"weight\">Gewicht</label>\n                <input type=\"number\" class=\"form-control\" id=\"weight\" name=\"weight\" [(ngModel)]=\"item.weight\"\n                       #price=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"material\">Material</label>\n                <input type=\"text\" class=\"form-control\" id=\"material\" name=\"material\" [(ngModel)]=\"item.material\"\n                       #price=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\"\n                       #price=\"ngModel\" required/>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change)=\"fileChangeEvent($event)\" required/>\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\"\n                                                                                      class=\"fa fa-spinner fa-spin\"></i>\n                    Artikel speichern\n                </button>\n            </div>\n        </form>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -3478,9 +3482,8 @@ module.exports = "<h2 class=\"text-center\">\n  <span *ngIf=\"addressType == 'bi
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Credentials; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthenticationService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3492,40 +3495,53 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-var ItemsService = (function () {
-    function ItemsService(http) {
-        this.http = http;
-        this.selectedChildCategory = new __WEBPACK_IMPORTED_MODULE_2_rxjs__["BehaviorSubject"](null);
-        this.selectedFilters = new __WEBPACK_IMPORTED_MODULE_2_rxjs__["BehaviorSubject"]([]);
+var Credentials = (function () {
+    function Credentials(username, password) {
+        this.username = username;
+        this.password = password;
     }
-    ItemsService.prototype.getItemsInCategory = function (catId) {
-        return this.http.get("/api/v1/items/" + catId).map(function (response) { return response.json(); });
+    return Credentials;
+}());
+var AuthenticationService = (function () {
+    function AuthenticationService(http) {
+        this.http = http;
+        // set token if saved in local storage
+        var currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+        this.token = currentUser && currentUser.token;
+    }
+    AuthenticationService.prototype.login = function (credentials) {
+        var _this = this;
+        return this.http.post('/api/v1/authentication/user', credentials)
+            .map(function (response) {
+            // login successful if there's a jwt token in the response
+            var token = response.text();
+            if (token) {
+                // set token property
+                _this.token = token;
+                // store username and jwt token in local storage to keep user logged in between page refreshes
+                sessionStorage.setItem('currentUser', JSON.stringify({ username: credentials.username, token: token }));
+                // return true to indicate successful login
+                return true;
+            }
+            else {
+                // return false to indicate failed login
+                return false;
+            }
+        });
     };
-    ItemsService.prototype.getParentCategories = function () {
-        return this.http.get("/api/v1/items/categories").map(function (response) { return response.json(); });
+    AuthenticationService.prototype.logout = function () {
+        // clear token remove user from local storage to log user out
+        this.token = null;
+        sessionStorage.removeItem('currentUser');
     };
-    ItemsService.prototype.getCategory = function (catId) {
-        return this.http.get("/api/v1/items/category/" + catId).map(function (response) { return response.json(); });
-    };
-    ItemsService.prototype.getItemDetails = function (itemId) {
-        return this.http.get("/api/v1/items/details/" + itemId).map(function (response) { return response.json(); });
-    };
-    ItemsService.prototype.selectChildCategory = function (catId) {
-        this.selectedChildCategory.next(catId);
-    };
-    ItemsService.prototype.setFilters = function (selectedFilters) {
-        //Emit Event with all selected filters
-        this.selectedFilters.next(selectedFilters);
-    };
-    ItemsService = __decorate([
+    AuthenticationService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
-    ], ItemsService);
-    return ItemsService;
+    ], AuthenticationService);
+    return AuthenticationService;
     var _a;
 }());
-//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/items.service.js.map
+//# sourceMappingURL=/home/travis/build/yagoar/webshop/src/authentication.service.js.map
 
 /***/ }),
 
