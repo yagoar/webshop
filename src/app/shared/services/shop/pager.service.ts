@@ -47,4 +47,6 @@ export class PagerService {
             pages: pages
         };
     }
+
+
 }

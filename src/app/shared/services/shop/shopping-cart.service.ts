@@ -58,7 +58,7 @@ export class ShoppingCartService {
             let options = new RequestOptions({ headers: headers });
 
             this.getLocalShoppingCart();
-            
+
             if(this.shoppingCart.items.length > 0){
                 this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
                     if(response.ok) {

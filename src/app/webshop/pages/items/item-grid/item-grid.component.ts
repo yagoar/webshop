@@ -1,44 +1,96 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {PagerService} from "../../../../shared/services/shop/pager.service";
 import {Item} from "../../../../shared/models/shop/item";
 import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 import {FilterOption} from "../item-sidebar/model/filter-option";
+import {ItemsService} from "../../../../shared/services/shop/items.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'items-grid',
   templateUrl: './item-grid.component.html'
 })
-export class ItemsGridComponent implements OnChanges {
+export class ItemsGridComponent implements OnInit, OnChanges {
 
   @Input() items: Item[] = [];
-  @Input() selFilters: Array<FilterOption>;
+  selectedFilters: Array<FilterOption> = [];
+  filteredItems: Item[] = [];
   pagedItems: Item[];
   pager: any = {};
   pageSize: number = 6;
 
-  constructor(private pagerService: PagerService, private shoppingCartService: ShoppingCartService) { }
+  constructor(private pagerService: PagerService, private shoppingCartService: ShoppingCartService, private itemsService: ItemsService) {
 
-  ngOnChanges(changes: SimpleChanges) {
+  }
+
+  ngOnInit() {
+    //this.filteredItems = this.items;
+    this.itemsService.selectedFilters.subscribe(selectedFilters => {
+      this.selectedFilters = selectedFilters;
+      //check if there are any filters selected
+      if(this.selectedFilters.length > 0) {
+        this.applyFilters();
+      } else {
+        this.resetFilters();
+      }
+    });
+  }
+
+  ngOnChanges() {
+    this.resetFilters();
+  }
+
+  applyFilters() {
+    this.filteredItems = [];
+
+    let brandFilters = _.filter(this.selectedFilters, {filter: 'brand'});
+    let colorFilters = _.filter(this.selectedFilters, {filter: 'color'});
+    let materialFilters = _.filter(this.selectedFilters, {filter: 'material'});
+
+    //search for items that match the filters
+    this.items.forEach(i => {
+      let brandMatch: boolean = true;
+      let colorMatch: boolean = true;
+      let materialMatch: boolean = true;
+
+      if(brandFilters.length > 0) {
+        brandMatch = _.filter(brandFilters, {name: i.brand}).length > 0;
+      }
+      if(colorFilters.length > 0) {
+        colorMatch = _.filter(colorFilters, {name: i.color}).length > 0;
+      }
+      if(materialFilters.length > 0) {
+        materialMatch = _.filter(materialFilters, {name: i.material}).length > 0;
+      }
+
+      //Only show elements that match all filters 
+      if(brandMatch && colorMatch && materialMatch ) {
+        this.filteredItems.push(i);
+      }
+    });
+
+    this.setPage(1);
+  }
+
+  resetFilters() {
+    this.filteredItems = this.items;
     this.setPage(1);
   }
 
   setPageSize(size: number) {
-    this.pageSize = size; //not used yet
+    this.pageSize = size; //not used
   }
 
   setPage(page: number) {
     // get pager object from service
-    this.pager = this.pagerService.getPager(this.items.length, page, this.pageSize);
+    this.pager = this.pagerService.getPager(this.filteredItems.length, page, this.pageSize);
     // get current page of items
-    this.pagedItems = this.items.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    this.pagedItems = this.filteredItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 
   }
 
   onPageChange(event:any) {
-      this.setPage(event.page);
-  }
-
-  public openDetailPage(id:number) {
+    this.setPage(event.page);
   }
 
   public addToCart(item:Item) {
