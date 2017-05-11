@@ -1021,6 +1021,9 @@ var OrderConfirmationComponent = (function () {
         };
         this.billingAddress = {};
         this.shippingAddress = {};
+        this.allGood = true;
+        this.unavailable = [];
+        this.unavailableMessage = "";
         this.shoppingCartService.shoppingCartUpdate.subscribe(function (data) {
             _this.shoppingCart = data;
         });
@@ -1039,6 +1042,25 @@ var OrderConfirmationComponent = (function () {
         this.shoppingCart.items.forEach(function (i) {
             _this.total = _this.total + (i.item.price * i.quantity);
         });
+    };
+    OrderConfirmationComponent.prototype.preOrderAvailabilityCheck = function () {
+        var _this = this;
+        this.unavailableMessage = "";
+        this.unavailable = [];
+        this.shoppingCart.items.forEach(function (i) {
+            if (i.item.stock < i.quantity) {
+                _this.allGood = false;
+                _this.unavailable.push({ item: i.item, quantity: i.item.stock });
+            }
+        });
+        if (this.allGood) {
+            this.placeOrder();
+        }
+        else {
+            this.unavailable.forEach(function (i) {
+                _this.unavailableMessage += "Der Artikel " + i.item.name + " ist nur noch " + i.quantity + " mal verfügbar.<br>";
+            });
+        }
     };
     OrderConfirmationComponent.prototype.placeOrder = function () {
         var _this = this;
@@ -3544,7 +3566,7 @@ module.exports = "<div *ngIf=\"shoppingCart.items.length == 0\">Warenkorb leer</
 /***/ 866:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Bestellung prüfen</h2>\n<div class=\"row\">\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n   <div class=\"order-conf-panel\">\n     <h4>Rechnungsadresse</h4>\n     <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\n     <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\n     {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\n     {{billingAddress.streetNo}}<br>\n     {{billingAddress.zip}} {{billingAddress.city}}<br>\n     {{billingAddress.country}}<br>\n     <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\n   </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Lieferadresse</h4>\n      <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\n      <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\n      {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\n      {{shippingAddress.streetNo}} <br>\n      {{shippingAddress.zip}} {{shippingAddress.city}}<br>\n      {{shippingAddress.country}}<br>\n      <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\n    </div>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div class=\"order-conf-panel\">\n      <h4>Zahlungsart</h4>\n      Rechnung\n    </div>\n  </div>\n</div>\n<div class=\"row\">\n  <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n    <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\n  </div>\n  <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n    <div id=\"sc-overview\">\n      <h4>Zusammenfassung</h4>\n      Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\n      Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\n      <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\n      <a (click)=\"placeOrder()\" class=\"btn btn-primary\">Kostenpflichtig bestellen  <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Bestellung prüfen</h2>\n<div class=\"row\">\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n        <div class=\"order-conf-panel\">\n            <h4>Rechnungsadresse</h4>\n            <span *ngIf=\"billingAddress.gender=='FEMALE'\">Frau</span>\n            <span *ngIf=\"billingAddress.gender=='MALE'\">Herr</span>\n            {{billingAddress.firstName}} {{billingAddress.lastName}} <br>\n            {{billingAddress.streetNo}}<br>\n            {{billingAddress.zip}} {{billingAddress.city}}<br>\n            {{billingAddress.country}}<br>\n            <button class=\"btn btn-primary\" (click)=\"changeAddress('billing')\">Rechnungsadresse ändern</button>\n        </div>\n    </div>\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n        <div class=\"order-conf-panel\">\n            <h4>Lieferadresse</h4>\n            <span *ngIf=\"shippingAddress.gender=='FEMALE'\">Frau</span>\n            <span *ngIf=\"shippingAddress.gender=='MALE'\">Herr</span>\n            {{shippingAddress.firstName}} {{shippingAddress.lastName}} <br>\n            {{shippingAddress.streetNo}} <br>\n            {{shippingAddress.zip}} {{shippingAddress.city}}<br>\n            {{shippingAddress.country}}<br>\n            <button class=\"btn btn-primary\" (click)=\"changeAddress('shipping')\">Lieferadresse ändern</button>\n        </div>\n    </div>\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n        <div class=\"order-conf-panel\">\n            <h4>Zahlungsart</h4>\n            Rechnung\n        </div>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-8 col-md-8 col-sm-8 col-xs-12\">\n        <webshop-cart-items [shoppingCart]=\"shoppingCart\"></webshop-cart-items>\n    </div>\n    <div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n        <div id=\"sc-overview\">\n            <h4>Zusammenfassung</h4>\n            Summe: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span><br>\n            Versandkosten: <span class=\"pull-right\">{{0 | currency:'EUR':true}}</span><br>\n            <b>Gesamtsumme: <span class=\"pull-right\">{{total | currency:'EUR':true}}</span></b><br>\n            <a (click)=\"preOrderAvailabilityCheck()\" class=\"btn btn-primary\">Kostenpflichtig bestellen <i\n                    class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i></a>\n            <alert *ngIf=\"allGood === false\" type=\"danger\" dismissible=\"true\" (click)=\"allGood = true\" >\n                <strong>Upps!</strong>\n                <br>\n                <div [innerHTML]=\"unavailableMessage | safeHtml\"></div>\n                <br>\n                Bitte passen Sie Ihre Bestellung an.\n            </alert>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
