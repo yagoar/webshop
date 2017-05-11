@@ -28,7 +28,7 @@ public class UploadFileService {
             @FormDataParam("file") FormDataContentDisposition fileDetail,
             @PathParam("artNo") int artNo) {
 
-        String sRootPath = new File("src/images").getAbsolutePath();
+        String sRootPath = new File("images").getAbsolutePath();
         String uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
 
         //if(fileDetail.getName().endsWith(".jpg"))
