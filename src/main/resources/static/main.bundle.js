@@ -1518,7 +1518,6 @@ var ShoppingCartService = (function () {
             var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.authenticationService.token });
             var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
             this.getLocalShoppingCart();
-            console.log(this.shoppingCart);
             if (this.shoppingCart.items.length > 0) {
                 this.http.post("/api/v1/shopping-cart/merge", this.shoppingCart, options).map(function (response) {
                     if (response.ok) {
@@ -1560,10 +1559,27 @@ var ShoppingCartService = (function () {
         }
     };
     ShoppingCartService.prototype.removeItemFromShoppingCart = function (itemId) {
-        // add authorization header with jwt token
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.delete("/api/v1/shopping-cart/" + itemId, options).map(function (response) { return response.text(); });
+        var _this = this;
+        if (this.authenticationService.token != null) {
+            // add authorization header with jwt token
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+            var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+            this.http.delete("/api/v1/shopping-cart/" + itemId, options).map(function (response) { return response.text(); })
+                .subscribe(function (data) {
+                _this.getItemCount();
+            });
+        }
+        else {
+            var itemInSC = this.shoppingCart.items.filter(function (i) { return i.item.i_id === itemId; })[0];
+            if (itemInSC != null) {
+                var index = this.shoppingCart.items.indexOf(itemInSC);
+                if (index !== -1) {
+                    this.shoppingCart.items.splice(index, 1);
+                }
+            }
+            localStorage.setItem('local-cart', JSON.stringify(this.shoppingCart));
+            this.getItemCount();
+        }
     };
     ShoppingCartService.prototype.updateItemQuantity = function (itemId, quantity) {
         if (this.authenticationService.token != null) {
@@ -1649,14 +1665,12 @@ webpackEmptyContext.id = 617;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_polyfills__ = __webpack_require__(760);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(705);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(739);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(739);
 
 
 
-
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__angular_core__["enableProdMode"])();
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
+//enableProdMode();
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */]);
 //# sourceMappingURL=/home/travis/build/yagoar/webshop/src/main.js.map
 
 /***/ }),
@@ -2456,11 +2470,8 @@ var CartItemsComponent = (function () {
         this.shoppingCartService = shoppingCartService;
     }
     CartItemsComponent.prototype.removeItem = function (itemq) {
-        var _this = this;
         __WEBPACK_IMPORTED_MODULE_1_lodash__["remove"](this.shoppingCart.items, itemq);
-        this.shoppingCartService.removeItemFromShoppingCart(itemq.item.i_id).subscribe(function (data) {
-            _this.shoppingCartService.getItemCount();
-        });
+        this.shoppingCartService.removeItemFromShoppingCart(itemq.item.i_id);
     };
     CartItemsComponent.prototype.addOne = function (itemId) {
         var newQuantity = 0;
