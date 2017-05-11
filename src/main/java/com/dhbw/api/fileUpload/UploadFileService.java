@@ -28,7 +28,7 @@ public class UploadFileService {
             @FormDataParam("file") FormDataContentDisposition fileDetail,
             @PathParam("artNo") int artNo) {
 
-        String sRootPath = new File("src/assets/images").getAbsolutePath();
+        String sRootPath = new File("src/images").getAbsolutePath();
         String uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
 
         //if(fileDetail.getName().endsWith(".jpg"))
@@ -52,7 +52,6 @@ public class UploadFileService {
             int read = 0;
             byte[] bytes = new byte[1024];
 
-            //out = new FileOutputStream(new File(uploadedFileLocation));
             while ((read = uploadedInputStream.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }

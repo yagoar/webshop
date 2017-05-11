@@ -6,30 +6,71 @@
 
             <div class="form-group">
                 <label for="name">Name des Artikels</label>
-                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="item.name" #name="ngModel" required />
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="item.name" #name="ngModel"
+                       required/>
             </div>
             <div class="form-group">
                 <label for="articleNumber">Artikelnummer</label>
-                <input type="text" class="form-control" id="articleNumber" name="articleNumber" [(ngModel)]="item.articleNumber" #articleNumber="ngModel" required />
+                <input type="text" class="form-control" id="articleNumber" name="articleNumber"
+                       [(ngModel)]="item.articleNumber" #articleNumber="ngModel" required/>
             </div>
             <div class="form-group">
                 <label for="stock">Lagerbestand</label>
-                <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="item.stock" #stock="ngModel" required />
+                <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="item.stock"
+                       #stock="ngModel" required/>
             </div>
             <div class="form-group">
                 <label for="description">Beschreibung</label>
-                <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="item.description" #description="ngModel" required ></textarea>
+                <textarea type="text" class="form-control" id="description" name="description"
+                          [(ngModel)]="item.description" #description="ngModel" required></textarea>
+            </div>
+            <div class="form-group" id="categories">
+                <label for="categories">Kategorie</label>
+                <div *ngFor="let cat of categories; let idx=index" class="order">
+                    <div class="row">
+                        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+                            {{cat.name}}
+                        </div>
+                        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+                            <input type="radio" name="radiogroup" [value]="cat.name" (change)="onCategorySelectionChange(cat)" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="brand">Marke</label>
+                <input type="text" class="form-control" id="brand" name="brand" [(ngModel)]="item.brand"
+                       #price="ngModel" required/>
+            </div>
+            <div class="form-group">
+                <label for="color">Farbe</label>
+                <input type="text" class="form-control" id="color" name="color" [(ngModel)]="item.color"
+                       #price="ngModel" required/>
+            </div>
+            <div class="form-group">
+                <label for="weight">Gewicht</label>
+                <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="item.weight"
+                       #price="ngModel" required/>
+            </div>
+            <div class="form-group">
+                <label for="material">Material</label>
+                <input type="text" class="form-control" id="material" name="material" [(ngModel)]="item.material"
+                       #price="ngModel" required/>
             </div>
             <div class="form-group">
                 <label for="price">Preis</label>
-                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
+                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price"
+                       #price="ngModel" required/>
             </div>
             <div class="form-group">
                 <label for="pic">Bild</label>
-                    <input type="file" id="pic" name="pictureLink" (change) = "fileChangeEvent($event)" required />
+                <input type="file" id="pic" name="pictureLink" (change)="fileChangeEvent($event)" required/>
             </div>
             <div class="form-group">
-                <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Artikel speichern</button>
+                <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading"
+                                                                                      class="fa fa-spinner fa-spin"></i>
+                    Artikel speichern
+                </button>
             </div>
         </form>
     </div>

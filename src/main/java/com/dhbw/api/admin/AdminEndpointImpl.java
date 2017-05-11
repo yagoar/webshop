@@ -36,7 +36,7 @@ public class AdminEndpointImpl implements AdminEndpoint {
     SecurityContext securityContext;
 
     @Override
-    public Response createItem(BaseItem item) {
+    public Response createItem(SingleItem item) {
         if (securityContext.isUserInRole("ADMIN")) {
             BaseItem toBeCreated = item;
             toBeCreated.setDtype("single");
@@ -46,7 +46,7 @@ public class AdminEndpointImpl implements AdminEndpoint {
     }
 
     @Override
-    public Response updateItem(Long itemId, BaseItem item) {
+    public Response updateItem(Long itemId, SingleItem item) {
         if (securityContext.isUserInRole("ADMIN")) {
             BaseItem old = baseItemDao.findOne(itemId);
             old.setDeleted(true);
@@ -98,7 +98,7 @@ public class AdminEndpointImpl implements AdminEndpoint {
     }
 
     @Override
-    public Response createSet(BaseItem itemSet) {
+    public Response createSet(MultipleItem itemSet) {
         if (securityContext.isUserInRole("ADMIN")) {
             BaseItem set = itemSet;
             set.setDtype("multiple");

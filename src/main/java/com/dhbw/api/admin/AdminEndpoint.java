@@ -4,6 +4,7 @@ import com.dhbw.api.authentication.Secured;
 import com.dhbw.domain.item.BaseItem;
 import com.dhbw.domain.item.Category;
 import com.dhbw.domain.item.MultipleItem;
+import com.dhbw.domain.item.SingleItem;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -18,7 +19,7 @@ public interface AdminEndpoint {
 
     /**
      * Creates a new Item
-     * Request body contains BaseItem object
+     * Request body contains SingleItem object
      *
      * @param item Item to be created
      * @return Response object with the result of the operation
@@ -26,12 +27,12 @@ public interface AdminEndpoint {
     @PUT
     @Secured
     @Path("item")
-    Response createItem(BaseItem item);
+    Response createItem(SingleItem item);
 
 
     /**
      * Updates an existing Item
-     * Request body contains BaseItem object
+     * Request body contains SingleItem object
      *
      * @param itemId Id of item to be updated
      * @param item BaseItem object with updated information
@@ -40,7 +41,7 @@ public interface AdminEndpoint {
     @POST
     @Secured
     @Path("item/{itemId}")
-    Response updateItem(@PathParam("itemId") Long itemId, BaseItem item);
+    Response updateItem(@PathParam("itemId") Long itemId, SingleItem item);
 
 
     /**
@@ -95,7 +96,7 @@ public interface AdminEndpoint {
 
     /**
      * Creates a new ItemSet
-     * Request body contains BaseItem object
+     * Request body contains MultipleItem object
      *
      * @param itemSet ItemSet to be created
      * @return Response object with the result of the operation
@@ -103,7 +104,7 @@ public interface AdminEndpoint {
     @PUT
     @Secured
     @Path("itemSet")
-    Response createSet(BaseItem itemSet);
+    Response createSet(MultipleItem itemSet);
 
 
     /**

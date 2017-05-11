@@ -21,6 +21,10 @@ export class ItemsService {
         return this.http.get(`/api/v1/items/category/${catId}`).map((response: Response) => response.json());
     }
 
+    getAllCategories() {
+        return this.http.get('/api/v1/items/categories/all').map((response: Response) => response.json());
+    }
+
     getItemDetails(itemId: number) {
         return this.http.get(`/api/v1/items/details/${itemId}`).map((response: Response) => response.json());
     }
