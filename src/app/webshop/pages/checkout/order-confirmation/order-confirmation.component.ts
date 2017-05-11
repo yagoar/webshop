@@ -3,6 +3,7 @@ import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
 import {Router} from "@angular/router";
 import {UserService} from "../../../../shared/services/shop/user.service";
+import {ItemsAndQuantity} from "../../../../shared/models/shop/items-quantity";
 
 @Component({
   selector: 'app-order-confirmation',
@@ -16,6 +17,10 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
   total: number;
   billingAddress: any = {};
   shippingAddress:any = {};
+
+  allGood: boolean = true;
+  unavailable: ItemsAndQuantity[] = [];
+  unavailableMessage: string = "";
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router, private userService: UserService) {
     this.shoppingCartService.shoppingCartUpdate.subscribe(
@@ -40,6 +45,24 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
     this.shoppingCart.items.forEach(i => {
       this.total = this.total + (i.item.price * i.quantity);
     });
+  }
+
+  preOrderAvailabilityCheck() {
+      this.unavailableMessage = "";
+      this.unavailable = [];
+      this.shoppingCart.items.forEach(i => {
+          if(i.item.stock < i.quantity) {
+              this.allGood = false;
+              this.unavailable.push({item: i.item, quantity: i.item.stock});
+          }})
+          if(this.allGood) {
+              this.placeOrder();
+          }
+          else {
+              this.unavailable.forEach(i => {
+                  this.unavailableMessage += "Der Artikel " + i.item.name + " ist nur noch " + i.quantity + " mal verfügbar.<br>";
+              })
+          }
   }
 
   placeOrder() {
