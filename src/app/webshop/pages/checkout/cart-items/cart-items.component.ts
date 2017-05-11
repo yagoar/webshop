@@ -16,11 +16,7 @@ export class CartItemsComponent {
 
   removeItem(itemq : ItemsAndQuantity) {
     _.remove(this.shoppingCart.items, itemq);
-    this.shoppingCartService.removeItemFromShoppingCart(itemq.item.i_id).subscribe(
-        data => {
-          this.shoppingCartService.getItemCount();
-        }
-    );
+    this.shoppingCartService.removeItemFromShoppingCart(itemq.item.i_id);
   }
 
   addOne(itemId : number) {
