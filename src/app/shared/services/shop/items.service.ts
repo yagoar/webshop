@@ -1,11 +1,13 @@
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
 import {BehaviorSubject} from "rxjs";
+import {FilterOption} from "../../../webshop/pages/items/item-sidebar/model/filter-option";
 
 @Injectable()
 export class ItemsService {
 
-    selectedChildCategory: BehaviorSubject<number> = new BehaviorSubject(null);
+    selectedChildCategory: BehaviorSubject<number> = new BehaviorSubject<number>(null);
+    selectedFilters: BehaviorSubject<FilterOption[]> = new BehaviorSubject<FilterOption[]>([]);
 
     constructor(private http: Http) { }
 
@@ -29,5 +31,8 @@ export class ItemsService {
         this.selectedChildCategory.next(catId);
     }
 
-
+    setFilters(selectedFilters: FilterOption[]) {
+        //Emit Event with all selected filters
+        this.selectedFilters.next(selectedFilters);
+    }
 }

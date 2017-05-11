@@ -23,7 +23,6 @@ import {OrderConfirmationComponent} from "./pages/checkout/order-confirmation/or
 import {CartItemsComponent} from "./pages/checkout/cart-items/cart-items.component";
 import {SelectModule} from "ng2-select";
 import {ItemDetailsComponent, SafePipe} from "./pages/item-details/item-details.component";
-import {ItemFilterPipe} from "./pages/items/item-filter.pipe";
 import {OrderHistoryComponent} from "./pages/account/order-history/order-history.component";
 import {ChangeAddressComponent} from "./pages/account/change-address/change-address.component";
 import {OrderDetailsComponent} from "./pages/account/order-details/order-details.component";
@@ -60,7 +59,6 @@ import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success
     TreeCategoryComponent,
     OrderConfirmationComponent,
     ItemDetailsComponent,
-    ItemFilterPipe,
     SafePipe,
     OrderHistoryComponent,
     ChangeAddressComponent,

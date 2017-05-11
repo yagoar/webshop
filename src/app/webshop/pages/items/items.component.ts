@@ -21,7 +21,9 @@ export class ItemsComponent implements OnInit {
   filters: Array<SideBarFilter>;
   selectedFilters: Array<FilterOption> = [];
 
-  constructor(private route: ActivatedRoute, private itemsService : ItemsService) {}
+  constructor(private route: ActivatedRoute, private itemsService : ItemsService) {
+
+  }
 
   ngOnInit() {
 
@@ -35,6 +37,11 @@ export class ItemsComponent implements OnInit {
         this.getItemsinCategory(this.categoryId);
       }
       this.getCategory();
+    });
+
+    //subscribe to filter changes
+    this.itemsService.selectedFilters.subscribe(selFilters => {
+      this.selectedFilters = selFilters;
     });
 
   }
@@ -69,6 +76,7 @@ export class ItemsComponent implements OnInit {
     let colors: Array<FilterOption> = [];
     let materials: Array<FilterOption> = [];
 
+    //for all items fetch available brands, colors and materials to use in the sidebar filter
     this.items.forEach(i => {
 
       if( i.brand != null && _.findIndex(brands, {name:  i.brand}) === -1) {
@@ -106,9 +114,6 @@ export class ItemsComponent implements OnInit {
 
   }
 
-  setFilter(filters) {
-    this.selectedFilters = filters;
-  }
 
 
 
