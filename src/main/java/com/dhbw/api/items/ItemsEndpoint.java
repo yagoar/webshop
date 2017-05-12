@@ -20,11 +20,19 @@ public interface ItemsEndpoint {
 
     /**
      * Gets all categories
-     * @return Response object with all categori
+     * @return Response object with all categories
      */
     @GET
     @Path("categories/all")
     Response getAllCategories();
+
+    /**
+     * Gets all items
+     * @return Response object with all items
+     */
+    @GET
+    @Path("categories/allItems")
+    Response getAllItems();
 
     /**
      * Gets a category by its id
@@ -56,5 +64,10 @@ public interface ItemsEndpoint {
     @GET
     @Path("details/{itemId}")
     Response getItemDetails(@PathParam("itemId") Long itemId);
+
+    @GET
+    @Path("images/{itemId}")
+    @Produces("image/jpg")
+    Response getImage(@PathParam("itemId") Long itemId);
 
 }

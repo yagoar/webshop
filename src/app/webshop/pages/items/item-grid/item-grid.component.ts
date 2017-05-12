@@ -101,4 +101,8 @@ export class ItemsGridComponent implements OnInit, OnChanges {
     this.shoppingCartService.addItemToShoppingCart(scItem.item);
   }
 
+  getImage(id:number) {
+    return 'data:image/jpg;base64,' + this.itemsService.getImage(id);
+  }
+
 }

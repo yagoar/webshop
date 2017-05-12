@@ -1,8 +1,11 @@
 package com.dhbw.api.fileUpload;
 
 
+import com.dhbw.domain.item.BaseItem;
+import com.dhbw.domain.item.repositories.BaseItemDao;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Consumes;
@@ -20,55 +23,37 @@ import java.io.*;
 @Path("file")
 public class UploadFileService {
 
+    @Autowired
+    BaseItemDao baseItemDao;
+
     @POST
-    @Path("upload/{artNo}")
+    @Path("upload/{itemName}")
     @Consumes({MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_JSON})
     public Response uploadFile(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail,
-            @PathParam("artNo") int artNo) {
-
-        String sRootPath = new File("src/images").getAbsolutePath();
-        String uploadedFileLocation = "";
-
-        if(fileDetail.getFileName().endsWith(".jpg")) {
-            uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
-        }
-        else if(fileDetail.getFileName().endsWith(".png")) {
-            uploadedFileLocation = sRootPath + File.separator + artNo + ".png";
-        }
-        else {
-            return Response.status(Response.Status.UNSUPPORTED_MEDIA_TYPE).entity("Bitte .jpg oder .png Datei verwenden.").build();
-        }
-
-        // save it
-        writeToFile(uploadedInputStream, uploadedFileLocation);
-
-        String output = uploadedFileLocation;
-
-        return Response.status(200).entity(output).build();
-
-    }
-
-    // save uploaded file to new location
-    private void writeToFile(InputStream uploadedInputStream,
-                             String uploadedFileLocation) {
+            @PathParam("itemName") String itemName) {
 
         try {
-            OutputStream out = new FileOutputStream(new File(
-                    uploadedFileLocation));
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
             int read = 0;
             byte[] bytes = new byte[1024];
 
             while ((read = uploadedInputStream.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
+            BaseItem item = baseItemDao.findByName(itemName);
+            item.setImage(out.toByteArray());
+            baseItemDao.save(item);
             out.flush();
             out.close();
         } catch (IOException e) {
 
             e.printStackTrace();
         }
+
+        return Response.status(200).entity("File Upload successful").build();
+
     }
 }
 

@@ -35,6 +35,12 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     }
 
     @Override
+    public Response getAllItems() {
+        List<BaseItem> items = baseItemDao.findAll();
+        return Response.status(Response.Status.OK).entity(items).type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    @Override
     public Response getCategory(Long categoryId) {
         Category parentCategory = categoryDao.findOne(categoryId);
         parentCategory = getChildCategories(parentCategory);
@@ -78,5 +84,8 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
         return Response.status(Response.Status.OK).entity(baseItemDao.findOne(itemId)).type(MediaType.APPLICATION_JSON_TYPE).build();
     }
 
-
+    @Override
+    public Response getImage(Long itemId) {
+        return Response.status(Response.Status.OK).entity(baseItemDao.findOne(itemId).getImage()).build();
+    }
 }

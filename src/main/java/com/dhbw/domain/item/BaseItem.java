@@ -2,6 +2,7 @@ package com.dhbw.domain.item;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Created by jgerle on 28.02.2017.
@@ -32,9 +33,11 @@ public class BaseItem {
 
     private double price;
 
-    private String pictureLink;
-
     private boolean deleted;
+
+    @XmlTransient
+    @Lob
+    private byte[] image;
 
     public String getName() {
         return name;
@@ -68,14 +71,6 @@ public class BaseItem {
         this.price = price;
     }
 
-    public String getPictureLink() {
-        return pictureLink;
-    }
-
-    public void setPictureLink(String pictureLink) {
-        this.pictureLink = pictureLink;
-    }
-
     public String getDtype() {
         return dtype;
     }
@@ -106,6 +101,14 @@ public class BaseItem {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     @Override

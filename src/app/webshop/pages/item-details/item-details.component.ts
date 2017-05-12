@@ -45,11 +45,18 @@ export class ItemDetailsComponent implements OnInit {
 
 @Pipe({name: 'safeHtml'})
 export class SafePipe {
-    constructor(private sanitizer:DomSanitizer){}
+    constructor(private sanitizer: DomSanitizer) {
+    }
 
     transform(style) {
         return this.sanitizer.bypassSecurityTrustHtml(style);
-        //return this.sanitizer.bypassSecurityTrustStyle(style);
-        // return this.sanitizer.bypassSecurityTrustXxx(style); - see docs
+    }
+}
+@Pipe({name: 'safeUrl'})
+export class SafePipeUrl {
+    constructor(private sanitizer:DomSanitizer){}
+
+    transform(style) {
+        return this.sanitizer.bypassSecurityTrustUrl(style);
     }
 }

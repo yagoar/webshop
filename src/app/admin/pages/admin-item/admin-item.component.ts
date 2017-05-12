@@ -11,7 +11,6 @@ export class AdminItemComponent implements OnInit {
 
     item: any = {};
     loading = false;
-    fileLocation: string;
     userfile: any;
     categories: Array<Category> = [];
 
@@ -29,28 +28,26 @@ export class AdminItemComponent implements OnInit {
             });
     }
 
-    createItem() {
+    create() {
         this.loading = true;
         this.adminService.createItem(this.item).subscribe(
             data => {
-                this.loading=false;
-                console.log(data);
+                this.item = data;
             },
             error => {
                 console.log(error);
             }
         );
+        this.uploadFile();
     }
 
-    upload() {
-        this.loading = true;
+    uploadFile() {
         var formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
-        this.adminService.upload(formData, this.item.articleNumber).subscribe(
+        this.adminService.upload(formData, this.item.name).subscribe(
             data => {
-                this.fileLocation = data;
-                this.item.pictureLink = data;
-                this.createItem();
+                this.loading = false;
+                console.log(data);
             },
             error => {
                 console.log(error);

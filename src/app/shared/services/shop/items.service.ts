@@ -27,6 +27,10 @@ export class ItemsService {
         return this.http.get('/api/v1/items/categories/all').map((response: Response) => response.json());
     }
 
+    getAllItems() {
+
+    }
+
     getItemDetails(itemId: number) {
         return this.http.get(`/api/v1/items/details/${itemId}`).map((response: Response) => response.json());
     }
@@ -38,5 +42,9 @@ export class ItemsService {
     setFilters(selectedFilters: FilterOption[]) {
         //Emit Event with all selected filters
         this.selectedFilters.next(selectedFilters);
+    }
+
+    getImage(itemId: number) {
+        return this.http.get(`/api/v1/items/images/${itemId}`).map((response: Response) => response.text());
     }
 }

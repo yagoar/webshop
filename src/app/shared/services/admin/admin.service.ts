@@ -34,14 +34,14 @@ export class AdminService {
         return this.http.get('/api/v1/admin/users/admin', options).map((response: Response) => response.json());
     }
 
-    upload(file: FormData, artNo: number) : Observable<any> {
+    upload(file: FormData, itemName: string) : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         let options = new RequestOptions({ headers: headers });
 
         console.log(this.adminAuthService.adminToken);
 
-        return this.http.post(`/api/v1/file/upload/${artNo}`, file, options).map((response: Response) => response.text());
+        return this.http.post(`/api/v1/file/upload/${itemName}`, file, options).map((response: Response) => response.text());
     }
 
     makeAdmin(email: String) : Observable<any> {

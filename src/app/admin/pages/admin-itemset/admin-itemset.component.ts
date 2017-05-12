@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminService} from "../../../shared/services/admin/admin.service";
+import {Category} from "../../../shared/models/shop/category";
+import {ItemsService} from "../../../shared/services/shop/items.service";
+import {Item} from "../../../shared/models/shop/item";
 
 @Component({
     selector: 'admin-itemset',
@@ -11,12 +14,28 @@ export class AdminItemsetComponent implements OnInit {
     loading = false;
     fileLocation: string;
     userfile: any;
+    categories: Array<Category> = [];
+    items: Array<Item> = [];
 
-    constructor(private adminService: AdminService) {
+    constructor(private adminService: AdminService, private itemService: ItemsService) {
 
     }
 
     ngOnInit() {
+        this.itemService.getAllCategories().subscribe(
+            data => {
+                this.categories = data;
+            },
+            error => {
+                console.log(error);
+            });
+        /*this.itemService.getAllItems().subscribe(
+            data => {
+                this.items = data;
+            },
+            error => {
+                console.log(error);
+            });*/
     }
 
     createItemset() {
@@ -51,6 +70,10 @@ export class AdminItemsetComponent implements OnInit {
     fileChangeEvent(event: any) {
         this.userfile = event.target.files[0];
         console.log(this.userfile);
+    }
+
+    onCategorySelectionChange(cat: Category) {
+        this.item.category = cat;
     }
 
 }
