@@ -28,10 +28,18 @@ public class UploadFileService {
             @FormDataParam("file") FormDataContentDisposition fileDetail,
             @PathParam("artNo") int artNo) {
 
-        String sRootPath = new File("images").getAbsolutePath();
-        String uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
+        String sRootPath = new File("src/images").getAbsolutePath();
+        String uploadedFileLocation = "";
 
-        //if(fileDetail.getName().endsWith(".jpg"))
+        if(fileDetail.getFileName().endsWith(".jpg")) {
+            uploadedFileLocation = sRootPath + File.separator + artNo + ".jpg";
+        }
+        else if(fileDetail.getFileName().endsWith(".png")) {
+            uploadedFileLocation = sRootPath + File.separator + artNo + ".png";
+        }
+        else {
+            return Response.status(Response.Status.UNSUPPORTED_MEDIA_TYPE).entity("Bitte .jpg oder .png Datei verwenden.").build();
+        }
 
         // save it
         writeToFile(uploadedInputStream, uploadedFileLocation);
