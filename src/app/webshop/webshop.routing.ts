@@ -15,8 +15,6 @@ import {ChangeAddressComponent} from "./pages/account/change-address/change-addr
 import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success.component";
 import {ImprintComponent} from "./pages/imprint/imprint.component";
 import {AgbComponent} from "./pages/agb/agb.component";
-import {ContactComponent} from "./pages/contact/contact.component";
-import {ShippingInfoComponent} from "./pages/shipping-info/shipping-info.component";
 
 const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
