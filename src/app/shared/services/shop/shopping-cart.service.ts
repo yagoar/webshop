@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {Http, Response, RequestOptions, Headers} from '@angular/http';
-import {ItemsAndQuantity} from '../../models/shop/items-quantity';
-import {AuthenticationService} from '../authentication/authentication.service';
-import {BehaviorSubject} from 'rxjs';
+import {Injectable} from "@angular/core";
+import {Http, Response, RequestOptions, Headers} from "@angular/http";
+import {AuthenticationService} from "../authentication/authentication.service";
+import {BehaviorSubject} from "rxjs";
 import {ShoppingCart} from "../../models/shop/shopping-cart";
-import * as _ from 'lodash';
+import * as _ from "lodash";
 import {Item} from "../../models/shop/item";
+import {ItemsAndQuantity} from "../../models/shop/items-quantity";
 
 @Injectable()
 export class ShoppingCartService {
@@ -16,139 +16,74 @@ export class ShoppingCartService {
     shoppingCartUpdate:BehaviorSubject<ShoppingCart> = new BehaviorSubject<ShoppingCart>(this.shoppingCart);
     itemCount:number;
     itemCountUpdate: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+    tempItemStore: Item = null;
 
     constructor(private http: Http, private authenticationService: AuthenticationService) {
         this.itemCount = 0;
     }
 
     getShoppingCart() {
-        if(this.authenticationService.token != null) {
-            // add authorization header with jwt token
-            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-            let options = new RequestOptions({ headers: headers });
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
 
-            this.http.get(`/api/v1/shopping-cart`, options).map((response: Response) => response.json())
-                .subscribe(
-                    data => {
-                        this.shoppingCart = data;
-                        this.shoppingCart.items = _.sortBy(this.shoppingCart.items, ['iq_id']);
-                        this.shoppingCartUpdate.next(this.shoppingCart);
-                    },
-                    error => {
-                        console.log(error);
-                    }
-                );
-        } else {
-            this.getLocalShoppingCart();
-            this.shoppingCartUpdate.next(this.shoppingCart);
-        }
-    }
-
-    getLocalShoppingCart() {
-        let localShoppingCart = JSON.parse(localStorage.getItem('local-cart'));
-        if(localShoppingCart != null) {
-            this.shoppingCart = localShoppingCart;
-        }
-    }
-
-    mergeShoppingCart() {
-        if(this.authenticationService.token != null) {
-            // add authorization header with jwt token
-            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-            let options = new RequestOptions({ headers: headers });
-
-            this.getLocalShoppingCart();
-
-            if(this.shoppingCart.items.length > 0){
-                this.http.post(`/api/v1/shopping-cart/merge`, this.shoppingCart, options).map((response: Response) => {
-                    if(response.ok) {
-                        localStorage.setItem('local-cart', null); //Reset local cart
-                        this.getItemCount();
-                    }
-                });
-            } else {
-                this.getItemCount();
-            }
-        }
+        this.http.get(`/api/v1/shopping-cart`, options).map((response: Response) => response.json())
+            .subscribe(
+                data => {
+                    this.shoppingCart = data;
+                    this.shoppingCart.items = _.sortBy(this.shoppingCart.items, ['iq_id']);
+                    this.shoppingCartUpdate.next(this.shoppingCart);
+                },
+                error => {
+                    console.log(error);
+                }
+            );
     }
 
     addItemToShoppingCart(item: Item): void {
-        if(this.authenticationService.token != null) {
-            // add authorization header with jwt token
-            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-            let options = new RequestOptions({ headers: headers });
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart/new-item`, item, options).map((response: Response) => response.text())
-                .subscribe(
-                    data => {
-                        this.getItemCount();
-                    }
-                );
-        } else {
+        this.http.post(`/api/v1/shopping-cart/new-item`, item, options).map((response: Response) => response.text())
+            .subscribe(
+                data => {
+                    this.getItemCount();
+                }
+            );
+    }
 
-            let itemInSC = this.shoppingCart.items.filter(i => i.item.i_id === item.i_id)[0];
-            if(itemInSC == null) {
-                this.shoppingCart.items.push({item: item, quantity: 1});
-                this.getItemCount();
-            } else {
-                this.shoppingCart.items.forEach(i => {
-                    if(i.item.i_id == item.i_id) {
-                        i.quantity++;
-                    }
-                })
-            }
-
-            localStorage.setItem('local-cart', JSON.stringify(this.shoppingCart));
-        }
-
+    tempStoreItem(item: Item) {
+        this.tempItemStore = item;
     }
 
     removeItemFromShoppingCart(itemId: number) {
+        // add authorization header with jwt token
+        let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+        let options = new RequestOptions({headers: headers});
 
-        if(this.authenticationService.token != null) {
-            // add authorization header with jwt token
-            let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
-            let options = new RequestOptions({headers: headers});
+        this.http.delete(`/api/v1/shopping-cart/${itemId}`, options).map((response: Response) => response.text())
+            .subscribe(
+                data => {
+                    this.getItemCount();
+                });
 
-            this.http.delete(`/api/v1/shopping-cart/${itemId}`, options).map((response: Response) => response.text())
-                .subscribe(
-                    data => {
-                        this.getItemCount();
-                    }
-                );
-        } else {
-            let itemInSC = this.shoppingCart.items.filter(i => i.item.i_id === itemId)[0];
-            if(itemInSC != null) {
-                let index = this.shoppingCart.items.indexOf(itemInSC);
-                if (index !== -1) {
-                    this.shoppingCart.items.splice(index, 1);
-                }
-            }
-            localStorage.setItem('local-cart', JSON.stringify(this.shoppingCart));
-            this.getItemCount();
-        }
     }
 
     updateItemQuantity(itemId: number, quantity: number) {
-        if(this.authenticationService.token != null) {
-            // add authorization header with jwt token
-            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-            let options = new RequestOptions({ headers: headers });
 
-            this.http.post(`/api/v1/shopping-cart/quantity/${itemId}`, quantity, options).map((response: Response) => response.text())
-                .subscribe(
-                    data => {
-                    },
-                    error => {
-                    }
-                );
-        } else {
-            this.shoppingCart.items.forEach(i => {
-                if(i.item.i_id == itemId) {
-                    i.quantity = quantity;
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        this.http.post(`/api/v1/shopping-cart/quantity/${itemId}`, quantity, options).map((response: Response) => response.text())
+            .subscribe(
+                data => {
+                },
+                error => {
                 }
-            })
-        }
+            );
+
 
     }
 
@@ -168,10 +103,10 @@ export class ShoppingCartService {
     }
 
     getItemCount() {
-        if(this.authenticationService.token != null){
+        if(this.authenticationService.token != null) {
             // add authorization header with jwt token
-            let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
-            let options = new RequestOptions({ headers: headers });
+            let headers = new Headers({'Authorization': 'Bearer ' + this.authenticationService.token});
+            let options = new RequestOptions({headers: headers});
 
             this.http.get('/api/v1/shopping-cart/count', options)
                 .map((response: Response) => response.text())
@@ -181,9 +116,6 @@ export class ShoppingCartService {
                         this.itemCountUpdate.next(this.itemCount);
                     }
                 );
-        } else{
-            this.itemCount = this.shoppingCart.items.length;
-            this.itemCountUpdate.next(this.itemCount);
         }
     }
 

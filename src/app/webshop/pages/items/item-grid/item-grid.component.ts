@@ -5,6 +5,8 @@ import {ShoppingCartService} from "../../../../shared/services/shop/shopping-car
 import {FilterOption} from "../item-sidebar/model/filter-option";
 import {ItemsService} from "../../../../shared/services/shop/items.service";
 import * as _ from 'lodash';
+import {AuthenticationService} from "../../../../shared/services/authentication/authentication.service";
+import {RouterStateSnapshot, Router, RouterState} from "@angular/router";
 
 @Component({
   selector: 'items-grid',
@@ -18,9 +20,17 @@ export class ItemsGridComponent implements OnInit, OnChanges {
   pagedItems: Item[];
   pager: any = {};
   pageSize: number = 6;
+  snapshot: any;
 
-  constructor(private pagerService: PagerService, private shoppingCartService: ShoppingCartService, private itemsService: ItemsService) {
-
+  constructor(private pagerService: PagerService,
+              private shoppingCartService: ShoppingCartService,
+              private itemsService: ItemsService,
+              private authenticationService: AuthenticationService,
+              private router: Router
+  ) {
+    const state: RouterState = router.routerState;
+    const snapshot: RouterStateSnapshot = state.snapshot;
+    this.snapshot = snapshot;
   }
 
   ngOnInit() {
@@ -93,12 +103,13 @@ export class ItemsGridComponent implements OnInit, OnChanges {
     this.setPage(event.page);
   }
 
-  public addToCart(item:Item) {
-    let scItem = {
-      item: item,
-      quantity: 1
-    };
-    this.shoppingCartService.addItemToShoppingCart(scItem.item);
+  addToCart(item:Item) {
+    if(this.authenticationService.token != null) {
+      this.shoppingCartService.addItemToShoppingCart(item);
+    } else {
+      this.shoppingCartService.tempStoreItem(item);
+      this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.snapshot.url }});
+    }
   }
 
   getImage(id:number) {

@@ -34,14 +34,15 @@ export class LoginComponent implements OnInit {
         .subscribe(
             data => {
               this.loginFailed = false;
-              this.shoppincartService.mergeShoppingCart();
+              if(this.shoppincartService.tempItemStore != null) {
+                  this.shoppincartService.addItemToShoppingCart(this.shoppincartService.tempItemStore);
+              }
               this.router.navigate([this.returnUrl]);
             },
             error => {
               this.loading = false;
               this.loginFailed = true;
             });
-
   }
 
   registerRedirect() {
