@@ -13,6 +13,10 @@ import {ItemDetailsComponent} from "./pages/item-details/item-details.component"
 import {OrderDetailsComponent} from "./pages/account/order-details/order-details.component";
 import {ChangeAddressComponent} from "./pages/account/change-address/change-address.component";
 import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success.component";
+import {ImprintComponent} from "./pages/imprint/imprint.component";
+import {AgbComponent} from "./pages/agb/agb.component";
+import {ContactComponent} from "./pages/contact/contact.component";
+import {ShippingInfoComponent} from "./pages/shipping-info/shipping-info.component";
 
 const routes: Routes = [
     { path: 'shop', component: WebshopComponent, children: [
@@ -27,9 +31,10 @@ const routes: Routes = [
         { path: 'order-success', component: OrderSuccessComponent},
         { path: 'change-address', component: ChangeAddressComponent, canActivate: [AuthGuard] },
         { path: 'login', component: LoginComponent },
-        { path: 'register', component: RegisterComponent }
-    ]},
-
+        { path: 'register', component: RegisterComponent },
+        { path: 'imprint', component: ImprintComponent },
+        { path: 'agb', component: AgbComponent }
+        ]},
 ];
 
 @NgModule({

@@ -27,6 +27,9 @@ import {OrderHistoryComponent} from "./pages/account/order-history/order-history
 import {ChangeAddressComponent} from "./pages/account/change-address/change-address.component";
 import {OrderDetailsComponent} from "./pages/account/order-details/order-details.component";
 import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success.component";
+import {FooterComponent} from "./footer/footer.component";
+import {ImprintComponent} from "./pages/imprint/imprint.component";
+import {AgbComponent} from "./pages/agb/agb.component";
 
 @NgModule({
   imports: [
@@ -46,6 +49,7 @@ import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success
     routedComponents,
     WebshopComponent,
     HeaderComponent,
+    FooterComponent,
     MenuComponent,
     ItemsSidebarComponent,
     LoginComponent,
@@ -64,7 +68,9 @@ import {OrderSuccessComponent} from "./pages/checkout/order-result/order-success
     OrderHistoryComponent,
     ChangeAddressComponent,
     OrderDetailsComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    ImprintComponent,
+    AgbComponent
   ]
 })
 export class WebshopModule { }
