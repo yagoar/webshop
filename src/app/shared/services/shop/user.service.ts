@@ -8,6 +8,10 @@ import {Address} from "../../models/address";
 
 @Injectable()
 export class UserService {
+
+    currentShippingAddress: any;
+    currentBillingAddress: any;
+
     constructor(private http: Http, private authenticationService: AuthenticationService) { }
 
     create(user: User) : Observable<any> {
@@ -56,6 +60,5 @@ export class UserService {
         return this.http.get(`/api/v1/shopping-order/${orderId}`, options)
             .map((response: Response) => response.json());
     }
-
 
 }

@@ -51,7 +51,6 @@ export class AccountComponent implements OnInit {
 
   changePW() {
     let resetPassword = new ResetPassword(this.previousPassword, this.newPassword, this.user.email);
-    console.log(resetPassword);
     this.userService.changePassword(resetPassword).subscribe(
         data => {
           this.changePWSuccess = true;
@@ -84,6 +83,8 @@ export class AccountComponent implements OnInit {
   }
 
   changeAddress(type: string) {
+    this.userService.currentShippingAddress = this.shippingAddress;
+    this.userService.currentBillingAddress = this.billingAddress;
     this.router.navigate(['/shop/change-address'], { queryParams: { type: type }});
   }
 

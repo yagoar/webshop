@@ -12,6 +12,7 @@ export class ChangeAddressComponent implements OnInit {
   address: any = {};
   gender = [{id: 'FEMALE', text:'Frau'},
     {id: 'MALE', text:'Herr'}];
+  activeGender: any = [{id: 'FEMALE', text:'Frau'}];
   returnUrl: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) { }
@@ -19,7 +20,21 @@ export class ChangeAddressComponent implements OnInit {
   ngOnInit() {
     //Get address type from route params
     this.addressType = this.route.snapshot.queryParams['type'];
+
+    //Get current address from user service
+    if(this.addressType == "billing"){
+      this.address = this.userService.currentBillingAddress;
+    } else if(this.addressType == "shipping"){
+      this.address = this.userService.currentShippingAddress;
+    }
+
+    if(this.address.gender === "MALE") {
+      this.activeGender = [{id: 'MALE', text:'Herr'}];
+    }
+
   }
+
+
 
   changeAddress() {
 

@@ -10,7 +10,7 @@
         <ng-select id="gender"
                    [allowClear]="false"
                    [items]="gender"
-                   [active]="[{id: 'FEMALE', text:'Frau'}]"
+                   [active]="activeGender"
                    (data)="setAddrGender($event)"
                    placeholder="Keine Anrede">
         </ng-select>
