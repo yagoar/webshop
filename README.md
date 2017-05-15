@@ -1,8 +1,23 @@
 # Studienarbeit: Erstellen eines Webshops
+Angular 2 App builden: 
 
-Tomcat Server starten: ```WebshopApplication ``` Klasse ausführen
+ 1 - Konsolenfenster im root Ordner öffnen
+ 
+ 2 - ```npm install``` ausführen
+ 
+ 2 - ```ng build``` ausführen
+ 
+ ---------------------------------------------------
 
-Angular 2 App mit live reload starten: 
+Tomcat Server starten: 
+
+ 1 - ```WebshopApplication ``` Klasse ausführen
+
+ 2 - ```http://localhost:8080/ ``` im Browser öffnen
+
+---------------------------------------------------
+
+Angular 2 App mit live reload starten (Server muss bereits laufen): 
 
  1 - Konsolenfenster im root Ordner öffnen
  

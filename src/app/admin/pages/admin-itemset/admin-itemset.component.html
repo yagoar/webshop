@@ -2,7 +2,7 @@
 <br>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <form (ngSubmit)="upload()">
+        <form (ngSubmit)="createItemset()">
 
             <div class="form-group">
                 <label for="name">Name des Artikels</label>
@@ -24,11 +24,26 @@
                 <label for="categories">Kategorie</label>
                 <div *ngFor="let cat of categories; let idx=index" class="order">
                     <div class="row">
-                        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+                        <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col">
                             {{cat.name}}
                         </div>
-                        <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col">
                             <input type="radio" name="radiogroup" [value]="cat.name" (change)="onCategorySelectionChange(cat)" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="items">
+                <label for="items">Einzelartikel</label>
+                <div *ngFor="let item of items" class="order">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col">
+                            {{item.articleNumber}}
+                            <br>
+                            {{item.name}}
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col">
+                            <input type="checkbox" data-md-icheck (change)="onItemSelect(item, $event)"/>
                         </div>
                     </div>
                 </div>
