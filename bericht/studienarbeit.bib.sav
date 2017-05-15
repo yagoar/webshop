@@ -1,0 +1,63 @@
+% Encoding: UTF-8
+
+@Book{Conallen2000,
+  author  = {Jim Conallen},
+  title   = {Building Web applications with UML},
+  year    = {2000},
+  urldate = {2017-05-08},
+}
+
+@WWW{Techopedia2017,
+  author  = {Techopedia},
+  title   = {Three-Tier Architecture},
+  year    = {2017},
+  url     = {https://www.techopedia.com/definition/24649/three-tier-architecture},
+  urldate = {2017-05-08},
+}
+
+@Book{Saternos2014,
+  author  = {Casimir Saternos},
+  title   = {Client-Server Web Apps with JavaScript and Java},
+  year    = {2014},
+  urldate = {2017-05-08},
+}
+
+@Booklet{School2016,
+  editor  = {Code School},
+  title   = {Beginner's Guide to Web Development},
+  year    = {2016},
+  urldate = {2017-05-15},
+}
+
+@WWW{Rouse2012,
+  author  = {Margaret Rouse},
+  title   = {Web server},
+  year    = {2012},
+  url     = {http://whatis.techtarget.com/definition/Web-server},
+  urldate = {2017-05-15},
+}
+
+@WWW{ITWissen.info2013,
+  editor  = {ITWissen.info},
+  title   = {Web Application Server},
+  year    = {2013},
+  url     = {http://www.itwissen.info/Web-Application-Server-web-application-server.html},
+  urldate = {2017-05-15},
+}
+
+@WWW{Webb2013,
+  author  = {Phil Webb},
+  title   = {Spring Boot – Simplifying Spring for Everyone},
+  date    = {2013-08-06},
+  url     = {https://spring.io/blog/2013/08/06/spring-boot-simplifying-spring-for-everyone},
+  urldate = {2017-05-15},
+}
+
+@Book{Walls2015,
+  author  = {Craig Walls},
+  title   = {Spring Boot in Action},
+  year    = {2015},
+  urldate = {2017-05-15},
+}
+
+@Comment{jabref-meta: databaseType:biblatex;}

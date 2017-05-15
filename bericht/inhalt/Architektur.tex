@@ -1,4 +1,6 @@
 \section{Architektur von Webanwendungen}\label{web_architecture}
+
+
 Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden\cite{Saternos2014}.
 
 Ein Modell dieser Architektur ist die Three-Tier-Architektur, ein dreischichtiges Modell. Hierbei ist die Anwendung in drei logische Schichten unterteilt\cite{Techopedia2017}:
@@ -18,17 +20,29 @@ Ein Modell dieser Architektur ist die Three-Tier-Architektur, ein dreischichtige
 \end{figure}
 
 \subsection{Serverseite}
-Sprachen und Technologien
+Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Antworten von Anfragen aus dem Client, sowie die Kommunikation mit der Datenbank (falls vorhanden). Welche Sprache hierfür gewählt wird bestimmt auch die Frameworks und weitere Technologien die entsprechend zur Verfügung stehen. Im Folgenden sind einige der beliebtesten Sprachen für die Server-Programmierung, sowie jeweils die Frameworks welche oft im Rahmen der Web-Entwicklung damit verwendet werden aufgelistet\cite{School2016}:
+
+\begin{itemize}
+	\item \textbf{C\#}. Objektorientiert, von Microsoft für die .NET Common Language Runtime entwickelt. \textit{Framework: ASP.NET}
+	\item \textbf{Java.} Objektorientiert, universell einsetzbar und robust. \textit{Framework: Spring}
+	\item \textbf{Node.js.} Entstand durch die wachsende Popularität von JavaScript in der Web-Programmierung. Hierbei wird die JavaScript-Syntax für Clients auch im Server benutzt. \textit{Frameworks: Express und Hapi}
+	\item \textbf{PHP.} Wurde von Anfang an für die Entwicklung dynamischer Webanwendungen konzipiert und ist die verbreitetste Programmiersprache Zwecke in diesem Bereich. \textit{Frameworks: Laravel und Symfony}
+	\item \textbf{Ruby.} Gewann deutlich Popularität nach der Veröffentlichung des Frameworks Ruby on Rails. \textit{Framework: Ruby on Rails}
+\end{itemize}
 
 \subsubsection{Webserver}
-Was macht ein Webserver? Welche gibt es?
+Die Aufgabe eines Webservers ist die Inhalte einer Webseite per HTTP an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also HTML-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
+
+Die verbreitetsten Webserver-Produkte sind Apache HTTP Server, Microsoft Internet Information Server (ISS) und nginx\cite{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
 
 \subsubsection{Applikationsserver}
-Was macht ein Applikationsserver? Welche Applikationsserver gibt es?
+Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \cite{ITWissen.info2013}
+
+%TODO Welche AppServer gibt es?
 
 \subsubsection{Datenbank}
-Welche Datenbanken gibt es? Relational, NoSQL + mögliche Produkte
-ORM
+%TODO Welche Datenbanken gibt es? Relational, NoSQL + mögliche Produkte
+%TODO ORM
 
 \subsection{Clientseite}
 Sprachen und frameworks
