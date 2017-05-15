@@ -1,6 +1,8 @@
 import {Component, OnInit, NgZone} from '@angular/core';
 import {PagerService} from "../../../../shared/services/shop/pager.service";
 import {UserService} from "../../../../shared/services/shop/user.service";
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'order-history',
@@ -33,7 +35,7 @@ export class OrderHistoryComponent implements OnInit {
 
   getUserOrders() {
     this.userService.getUserOrders().subscribe(data => {
-      this.orders = data;
+      this.orders = _.orderBy(data, ['date'], ['desc']);
       this.setPage(1);
     })
   }
