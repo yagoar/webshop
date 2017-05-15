@@ -28,7 +28,7 @@ Die Anwendungsfälle werden im Anschluss im Einzelnen betrachtet.
 \end{figure}
 
 \subsubsection{Benutzer- bzw. Kunden-Anwendungsfälle}
-\paragraph{Register (Registrierung)}
+\paragraph{Register (Registrierung)}$\;$ \\
 Ein Benutzer soll sich durch Angabe seiner persönlichen Daten beim System registrieren können.
 Die dafür nötigen Pflichtangaben sind:
 \begin{itemize}
@@ -47,24 +47,30 @@ Zusätzlich soll es bei der Registrierung möglich sein, eine abweichende Liefer
 Nach der Registrierung muss es dem Benutzer möglich sein, sich am System anzumelden.
 Um Artikel anschauen zu können und sie in den Warenkorb zu legen, muss ein Besucher der Seite nicht registriert oder angemeldet sein.
 
-\paragraph{Login/Logout}
+\paragraph{Login/Logout}$\;$ \\
 Registrierte Nutzer können sich durch die Eingabe ihrer E-Mail-Adresse und ihrem Passwort im Shop einloggen.
 Bei einer fehlerhaften Eingabe soll eine Meldung ausgegeben werden.
 Der Login ist Voraussetzung für folgende weitere Use Cases: Anzeigen/Bearbeiten der persönlichen Informationen, Bestellung aufgeben und Bestellhistorie einsehen.
 Außerdem muss beim Einloggen auch der Warenkorb des jeweiligen Benutzers geladen werden, da dieser Artikel enthalten kann, die der User beim letzten Besuch des Shops hineingelegt hat.
 Beim Logout wird der Benutzer wieder abgemledet und kann ohne einen erneuten Login nicht mehr auf seine Daten zugreifen oder die benutzerspezifischen Anwendungsfälle ausführen.
 
-\paragraph{Show/edit user details (Anzeigen/Bearbeiten der persönlichen Informationen)}
+\paragraph{Show/edit user details (Anzeigen/Bearbeiten der persönlichen Informationen)}$\;$ \\
 Einem eingeloggten Benutzer soll es möglich sein, seine persönlichen Daten einzusehen und zu ändern.
-Eine übersichtliche Seite mit allen Informationen und Funktionalitäten soll ihm dafür zur Verfügung stehen.
+Dafür soll ihm eine übersichtliche Seite mit allen Informationen und Funktionalitäten zur Verfügung stehen.
 
-\paragraph{Show shopping cart (Warenkorb anzeigen)}
-\paragraph{Add to shopping cart (Zum Warenkorb hinzufügen)}
-\paragraph{Place order (Bstellung aufgeben)}
-\paragraph{Show order history (Bestellhistorie einsehen)}
-\paragraph{Search products (Artikelsuche)}
-\paragraph{Filter products (Artikel filtern)}
-\paragraph{Show product details (Detailansicht eines Artikels)}
+\paragraph{Show shopping cart (Warenkorb anzeigen)}$\;$ \\
+Der Warenkorb soll jederzeit über einen Button am oberen Rand der Seite erreichbar sein.
+Über einen Klick auf den Button wird eine detaillierte Auflistung der Artikel, die dem Warenkorb hinzugefügt wurden, sowie der Gesamtwert des Warenkorbs angezeigt.
+In der Detailansicht soll auch eine Anpassung der Menge für jeden Artikel und das Entfernen eines Artikels aus dem Warenkorb möglich sein.
+Für registrierte, angemeldete Benutzer wird der Warenkorb gespeichert, so dass der Einkauf zu einem späteren Zeitpunkt fortgesetzt werden kann.
+\paragraph{Add to shopping cart (Zum Warenkorb hinzufügen)}$\;$ \\
+Artikel sollen jederzeit zum Warenkorb hinzugefügt werden können. Sowohl in einer Übersicht über mehrere Artikel als auch in der Detailansicht eines Artikels soll dies möglich sein.
+\paragraph{Place order (Bestellung aufgeben)}$\;$ \\
+Über die Detailansicht des Warenkorbs sollen Bestellungen aufgegeben werden können.
+\paragraph{Show order history (Bestellhistorie einsehen)}$\;$ \\
+\paragraph{Search products (Artikelsuche)}$\;$ \\
+\paragraph{Filter products (Artikel filtern)}$\;$ \\
+\paragraph{Show product details (Detailansicht eines Artikels)}$\;$ \\
 
 \subsubsection{Administrator-Anwendungsfälle}
 \subsection{System-Abgrenzung}
