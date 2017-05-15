@@ -12,10 +12,10 @@ export class AdminItemsetComponent implements OnInit {
 
     item: any = {};
     loading = false;
-    fileLocation: string;
     userfile: any;
     categories: Array<Category> = [];
     items: Array<Item> = [];
+    selectedItems: Array<Item> = [];
 
     constructor(private adminService: AdminService, private itemService: ItemsService) {
 
@@ -29,37 +29,36 @@ export class AdminItemsetComponent implements OnInit {
             error => {
                 console.log(error);
             });
-        /*this.itemService.getAllItems().subscribe(
+        this.itemService.getAllItems().subscribe(
             data => {
                 this.items = data;
             },
             error => {
                 console.log(error);
-            });*/
+            });
     }
 
     createItemset() {
-        console.log(this.item);
         this.loading = true;
+        this.item.items = this.selectedItems;
         this.adminService.createItemset(this.item).subscribe(
             data => {
-                console.log(data);
+                this.item = data;
             },
             error => {
                 console.log(error);
             }
         );
+        this.uploadFile();
     }
 
-    upload() {
+    uploadFile() {
         this.loading = true;
         var formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
-        this.adminService.upload(formData, this.item.articleNumber).subscribe(
+        this.adminService.upload(formData, this.item.name).subscribe(
             data => {
-                this.fileLocation = data;
-                this.item.pictureLink = data;
-                this.createItemset();
+                console.log(data);
             },
             error => {
                 console.log(error);
@@ -74,6 +73,18 @@ export class AdminItemsetComponent implements OnInit {
 
     onCategorySelectionChange(cat: Category) {
         this.item.category = cat;
+    }
+
+    onItemSelect(item: Item, event: any) {
+        if(event.target.checked) {
+            this.selectedItems.push(item);
+        }
+        else {
+            var index = this.selectedItems.indexOf(item);
+            if(index > -1) {
+                this.selectedItems.splice(index, 1);
+            }
+        }
     }
 
 }
