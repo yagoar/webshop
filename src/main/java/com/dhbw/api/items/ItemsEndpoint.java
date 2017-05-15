@@ -65,6 +65,11 @@ public interface ItemsEndpoint {
     @Path("details/{itemId}")
     Response getItemDetails(@PathParam("itemId") Long itemId);
 
+    /**
+     * Gets the image for an item from the database
+     * @param itemId The Id of the item
+     * @return Response object with the image blob
+     */
     @GET
     @Path("images/{itemId}")
     @Produces("image/jpg")

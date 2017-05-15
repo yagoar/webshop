@@ -433,6 +433,7 @@ var AdminItemsetComponent = (function () {
         this.loading = false;
         this.categories = [];
         this.items = [];
+        this.selectedItems = [];
     }
     AdminItemsetComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -441,32 +442,29 @@ var AdminItemsetComponent = (function () {
         }, function (error) {
             console.log(error);
         });
-        /*this.itemService.getAllItems().subscribe(
-            data => {
-                this.items = data;
-            },
-            error => {
-                console.log(error);
-            });*/
-    };
-    AdminItemsetComponent.prototype.createItemset = function () {
-        console.log(this.item);
-        this.loading = true;
-        this.adminService.createItemset(this.item).subscribe(function (data) {
-            console.log(data);
+        this.itemService.getAllItems().subscribe(function (data) {
+            _this.items = data;
         }, function (error) {
             console.log(error);
         });
     };
-    AdminItemsetComponent.prototype.upload = function () {
+    AdminItemsetComponent.prototype.createItemset = function () {
         var _this = this;
+        this.loading = true;
+        this.item.items = this.selectedItems;
+        this.adminService.createItemset(this.item).subscribe(function (data) {
+            _this.item = data;
+        }, function (error) {
+            console.log(error);
+        });
+        this.uploadFile();
+    };
+    AdminItemsetComponent.prototype.uploadFile = function () {
         this.loading = true;
         var formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
-        this.adminService.upload(formData, this.item.articleNumber).subscribe(function (data) {
-            _this.fileLocation = data;
-            _this.item.pictureLink = data;
-            _this.createItemset();
+        this.adminService.upload(formData, this.item.name).subscribe(function (data) {
+            console.log(data);
         }, function (error) {
             console.log(error);
         });
@@ -477,6 +475,17 @@ var AdminItemsetComponent = (function () {
     };
     AdminItemsetComponent.prototype.onCategorySelectionChange = function (cat) {
         this.item.category = cat;
+    };
+    AdminItemsetComponent.prototype.onItemSelect = function (item, event) {
+        if (event.target.checked) {
+            this.selectedItems.push(item);
+        }
+        else {
+            var index = this.selectedItems.indexOf(item);
+            if (index > -1) {
+                this.selectedItems.splice(index, 1);
+            }
+        }
     };
     AdminItemsetComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1712,6 +1721,7 @@ var ItemsService = (function () {
         return this.http.get('/api/v1/items/categories/all').map(function (response) { return response.json(); });
     };
     ItemsService.prototype.getAllItems = function () {
+        return this.http.get('/api/v1/items/categories/allItems').map(function (response) { return response.json(); });
     };
     ItemsService.prototype.getItemDetails = function (itemId) {
         return this.http.get("/api/v1/items/details/" + itemId).map(function (response) { return response.json(); });
@@ -3590,7 +3600,7 @@ module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div cla
 /***/ 853:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"upload()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\n            </div>\n            <div class=\"form-group\" id=\"categories\">\n                <label for=\"categories\">Kategorie</label>\n                <div *ngFor=\"let cat of categories; let idx=index\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{cat.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"radio\" name=\"radiogroup\" [value]=\"cat.name\" (change)=\"onCategorySelectionChange(cat)\" required/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\n            </div>\n        </form>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"createItemset()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\n            </div>\n            <div class=\"form-group\" id=\"categories\">\n                <label for=\"categories\">Kategorie</label>\n                <div *ngFor=\"let cat of categories; let idx=index\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{cat.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"radio\" name=\"radiogroup\" [value]=\"cat.name\" (change)=\"onCategorySelectionChange(cat)\" required/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\" id=\"items\">\n                <label for=\"items\">Einzelartikel</label>\n                <div *ngFor=\"let item of items\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{item.articleNumber}}\n                            <br>\n                            {{item.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"checkbox\" data-md-icheck (change)=\"onItemSelect(item, $event)\"/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\n            </div>\n        </form>\n    </div>\n</div>\n"
 
 /***/ }),
 
