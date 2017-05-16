@@ -50,33 +50,50 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     private Category getChildCategories(Category parentCategory) {
         parentCategory.setChildrenCategories(new ArrayList<>());
         List<Category> childCategories = categoryDao.getChildCategories(parentCategory);
-        if(childCategories.size() == 0) {
+        if (childCategories.size() == 0) {
             return parentCategory;
         } else {
             parentCategory.setChildrenCategories(childCategories);
-            for(Category c : childCategories) {
+            for (Category c : childCategories) {
                 getChildCategories(c);
             }
         }
-
         return parentCategory;
-
     }
 
     @Override
     public Response getItemsInCategory(Long categoryId) {
-        List<BaseItem> ownItems = baseItemDao.findByCategory(categoryDao.findOne(categoryId));
-        List<Category> children = categoryDao.findByParentCategory(categoryDao.findOne(categoryId));
-        List<BaseItem> childrensItems = new ArrayList<>();
-        if (!children.isEmpty()) {
-            for (Category category : children) {
-                childrensItems.addAll(baseItemDao.findByCategory(category));
-            }
-            if (!childrensItems.isEmpty()) {
-                ownItems.addAll(childrensItems);
+        Category parentCategory = categoryDao.findOne(categoryId);
+        List<BaseItem> all = baseItemDao.findByCategory(parentCategory);
+        parentCategory = getChildCategories(parentCategory);
+        parentCategory = allChildItems(parentCategory);
+        List<Category> cats = parentCategory.getChildrenCategories();
+        for(Category cat : cats) {
+            if(cat.getChildrenItems() != null) {
+                all.addAll(cat.getChildrenItems());
             }
         }
-        return Response.status(Response.Status.OK).entity(ownItems).type(MediaType.APPLICATION_JSON_TYPE).build();
+        return Response.status(Response.Status.OK).entity(all).type(MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
+    private Category allChildItems(Category parentCategory) {
+        parentCategory.setChildrenItems(baseItemDao.findByCategory(parentCategory));
+        parentCategory = getChildCategories(parentCategory);
+        List<Category> allChildren = parentCategory.getChildrenCategories();
+        if(allChildren.isEmpty()) {
+            return parentCategory;
+        }
+        else {
+            for(Category cat : allChildren) {
+                List<BaseItem> previous = new ArrayList<>();
+                if(baseItemDao.findByCategory(cat) != null) {
+                    previous.addAll(baseItemDao.findByCategory(cat));
+                    parentCategory.setChildrenItems(previous);
+                }
+                allChildItems(cat);
+            }
+        }
+        return parentCategory;
     }
 
     @Override

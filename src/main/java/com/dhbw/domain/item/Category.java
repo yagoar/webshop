@@ -28,6 +28,9 @@ public class Category {
     @Transient
     private List<Category> childrenCategories;
 
+    @Transient
+    private List<BaseItem> childrenItems;
+
     public Long getC_id() {
         return c_id;
     }
@@ -86,4 +89,8 @@ public class Category {
     public void setChildrenCategories(List<Category> childrenCategories) {
         this.childrenCategories = childrenCategories;
     }
+
+    public List<BaseItem> getChildrenItems() { return childrenItems; }
+
+    public void setChildrenItems(List<BaseItem> childrenItems) { this.childrenItems = childrenItems; }
 }
