@@ -3,7 +3,7 @@
 
 Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden\cite{Saternos2014}.
 
-Ein Modell dieser Architektur ist die Three-Tier-Architektur, ein dreischichtiges Modell. Hierbei ist die Anwendung in drei logische Schichten unterteilt\cite{Techopedia2017}:
+Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt\cite{Techopedia2017}:
 \begin{itemize}
 	\item \textit{Tier 1: Präsentationsschicht.} Ist für die Darstellung der Daten und allgemein der Benutzerschnittstelle verantwortlich.
 	\item \textit{Tier 2: Anwendungsschicht.} Auch Businesslogik-Schicht genannt, kontrolliert diese Schicht die eigentliche Funktionalität der Anwendung.
@@ -31,9 +31,9 @@ Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passend
 \end{itemize}
 
 \subsubsection{Webserver}
-Die Aufgabe eines Webservers ist die Inhalte einer Webseite per HTTP an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also HTML-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
+Die Aufgabe eines Webservers ist die Inhalte einer Webseite per \acs{HTTP} an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also \acs{HTML}-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
 
-Die verbreitetsten Webserver-Produkte sind Apache HTTP Server, Microsoft Internet Information Server (ISS) und nginx\cite{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
+Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx\cite{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
 
 \subsubsection{Applikationsserver}
 Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \cite{ITWissen.info2013}
