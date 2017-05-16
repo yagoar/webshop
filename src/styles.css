@@ -47,6 +47,22 @@ body {
     box-shadow: none !important;
 }
 
+/* - Input fields - */
+.input-field {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+    box-shadow: none !important;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+
+}
+
+.input-field:focus, .input-field:active {
+    border-color: #7c0d34;
+    outline: none;
+}
+
 /* - Forms - */
 .form-control{
     -webkit-border-radius: 25px;
@@ -518,9 +534,9 @@ footer {
 }
 
 /********************************************************
- * Imprint page *
+ * Admin manage *
 ********************************************************/
 
-.imprint-container {
-
+#article-number-filter {
+    width: 100%;
 }

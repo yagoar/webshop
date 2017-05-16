@@ -26,6 +26,14 @@ export class AdminService {
         return this.http.put('/api/v1/admin/itemSet', item, options).map((response: Response) => response.text());
     }
 
+    deleteItem(itemId) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.put(`/api/v1/admin/item/${itemId}`, options).map((response: Response) => response.text());
+    }
+
     getAllUsers() : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
