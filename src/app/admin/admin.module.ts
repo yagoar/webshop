@@ -10,9 +10,11 @@ import {AdminNavigationComponent} from "./navigation/admin-nav.component";
 import {AdminItemComponent} from "./pages/admin-item/admin-item.component";
 import {AdminService} from "../shared/services/admin/admin.service";
 import {AdminAdminsComponent} from "./pages/admin-admins/admin-admins.component";
-import {AlertModule} from "ng2-bootstrap";
+import {AlertModule, PaginationModule} from "ng2-bootstrap";
 import {AdminItemsetComponent} from "./pages/admin-itemset/admin-itemset.component";
 import {AdminManageComponent} from "./pages/admin-manage/admin-manage.component";
+import {EditItemComponent} from "./pages/admin-manage/edit-item/edit-item.component";
+import {EditItemSetComponent} from "./pages/admin-manage/edit-item-set/edit-item-set.component";
 
 @NgModule({
   imports: [
@@ -21,6 +23,7 @@ import {AdminManageComponent} from "./pages/admin-manage/admin-manage.component"
     FormsModule,
     BrowserModule,
     AlertModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   declarations: [
     routedComponents,
@@ -31,7 +34,9 @@ import {AdminManageComponent} from "./pages/admin-manage/admin-manage.component"
     AdminItemComponent,
     AdminItemsetComponent,
     AdminManageComponent,
-    AdminAdminsComponent
+    AdminAdminsComponent,
+    EditItemComponent,
+    EditItemSetComponent
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "de-DE" },
