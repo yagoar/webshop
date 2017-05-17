@@ -48,6 +48,7 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
   }
 
   preOrderAvailabilityCheck() {
+      this.allGood = true;
       this.unavailableMessage = "";
       this.unavailable = [];
       this.shoppingCart.items.forEach(i => {
