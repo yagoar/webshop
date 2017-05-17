@@ -85,10 +85,9 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
         }
         else {
             for(Category cat : allChildren) {
-                List<BaseItem> previous = new ArrayList<>();
-                if(baseItemDao.findByCategory(cat) != null) {
-                    previous.addAll(baseItemDao.findByCategory(cat));
-                    parentCategory.setChildrenItems(previous);
+                List<BaseItem> catItems = baseItemDao.findByCategory(cat);
+                if(catItems != null) {
+                    parentCategory.setChildrenItems(catItems);
                 }
                 allChildItems(cat);
             }
