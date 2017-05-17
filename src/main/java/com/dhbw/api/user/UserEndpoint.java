@@ -38,6 +38,18 @@ public interface UserEndpoint {
     Response resetPassword(ResetPassword resetPassword);
 
     /**
+     * Changes the email of the user
+     *
+     * @param resetPassword ResetPassword object, containing old and new email
+     * @return Response object with result of the operation
+     */
+    @POST
+    @Secured
+    @Path("profile/email")
+    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    Response resetEmail(ResetPassword resetPassword);
+
+    /**
      * Gets the user information (name, email, pw, addresses...)
      *
      * @return Response object containing a User object with all the information

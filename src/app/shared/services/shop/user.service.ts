@@ -35,6 +35,14 @@ export class UserService {
         return this.http.post('/api/v1/user/profile/password', resetPassword, options).map((response: Response) => response.text());
     }
 
+    changeEmail(resetPassword: ResetPassword) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post('/api/v1/user/profile/email', resetPassword, options).map((response: Response) => response.text());
+    }
+
     changeAddress(newAddress : Address, type: string) : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });

@@ -12,9 +12,9 @@
       {{user.email}}<br>
       <br>
       <button class="btn btn-primary" (click)="changePassword=true" [disabled]="changePassword">Passwort ändern</button> <br>
+      <alert *ngIf="changePWFailed"  type="danger" dismissible="true" (click)="changePWFailed = false">Passwort ändern fehlgeschlagen</alert>
+      <alert *ngIf="changePWSuccess"  type="success" dismissible="true" (click)="changePWSuccess = false">Passwort erfolgreich geändert</alert>
       <div *ngIf="changePassword" id="change-pw">
-        <alert *ngIf="changePWFailed"  type="danger" dismissible="true" (click)="changePWFailed = false">Passwort ändern fehlgeschlagen</alert>
-        <alert *ngIf="changePWSuccess"  type="success" dismissible="true" (click)="changePWSuccess = false">Passwort erfolgreich geändert</alert>
         <form (ngSubmit)="changePW()">
           <div class="form-group">
             <label for="previousPassword">Altes Passwort</label>
@@ -31,11 +31,14 @@
         </form>
       </div>
       <button id="change-email-btn" class="btn btn-primary" (click)="changeEmail=true" [disabled]="changeEmail">E-Mail ändern</button>
+      <br>
+      <alert *ngIf="changeEmailFailed"  type="danger" dismissible="true" (click)="changeEmailFailed = false">E-Mail-Adresse ändern fehlgeschlagen</alert>
+      <alert *ngIf="changeEmailSuccess"  type="success" dismissible="true" (click)="changeEmailSuccess = false">E-Mail-Adresse erfolgreich geändert</alert>
       <div *ngIf="changeEmail">
         <form (ngSubmit)="changeEmailAddr()">
           <div class="form-group">
             <label for="newEmail">Neue E-Mail</label>
-            <input type="password" class="form-control" id="newEmail" name="newEmail" [(ngModel)]="newEmail" #newMail="ngModel" required />
+            <input type="text" class="form-control" id="newEmail" name="newEmail" [(ngModel)]="newEmail" #newMail="ngModel" required />
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-secondary">Ändern</button>

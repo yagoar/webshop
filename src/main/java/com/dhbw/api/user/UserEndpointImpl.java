@@ -59,6 +59,16 @@ public class UserEndpointImpl implements UserEndpoint {
     }
 
     @Override
+    public Response resetEmail(ResetPassword resetPassword) {
+        Principal principal = securityContext.getUserPrincipal();
+        Long userId = Long.valueOf(principal.getName());
+        User user = userDao.findByEmail(resetPassword.getEmail());
+        user.setEmail(resetPassword.getNewEmail());
+        userDao.save(user);
+        return Response.ok().entity("E-Mail erfolgreich geändert.").build();
+    }
+
+    @Override
     public Response getUserInfo() {
         Principal principal = securityContext.getUserPrincipal();
         Long userId = Long.valueOf(principal.getName());

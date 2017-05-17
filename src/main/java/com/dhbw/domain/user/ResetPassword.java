@@ -11,6 +11,8 @@ public class ResetPassword {
 
     private String email;
 
+    private String newEmail;
+
     private String previousPassword;
 
     private String newPassword;
@@ -38,4 +40,8 @@ public class ResetPassword {
     public void setNewPassword(String newPassword) {
         this.newPassword = newPassword;
     }
+
+    public String getNewEmail() { return newEmail; }
+
+    public void setNewEmail(String newEmail) { this.newEmail = newEmail; }
 }

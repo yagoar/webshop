@@ -25,6 +25,8 @@ export class AccountComponent implements OnInit {
   newPassword: string;
   changePWFailed: boolean = false;
   changePWSuccess: boolean = false;
+  changeEmailFailed: boolean = false;
+  changeEmailSuccess: boolean = false;
 
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
@@ -50,11 +52,12 @@ export class AccountComponent implements OnInit {
   }
 
   changePW() {
-    let resetPassword = new ResetPassword(this.previousPassword, this.newPassword, this.user.email);
+    let resetPassword = new ResetPassword(this.previousPassword, this.newPassword, this.user.email, null);
     this.userService.changePassword(resetPassword).subscribe(
         data => {
           this.changePWSuccess = true;
           this.resetPWInputs();
+          this.changePassword = false;
         },
         error => {
           this.changePWFailed = true;
@@ -74,7 +77,18 @@ export class AccountComponent implements OnInit {
   }
 
   changeEmailAddr() {
-
+    let resetPassword = new ResetPassword(null, null, this.user.email, this.newEmail);
+    this.userService.changeEmail(resetPassword).subscribe(
+        data => {
+          this.user.email = this.newEmail;
+          this.changeEmailSuccess = true;
+          this.changeEmail = false;
+        },
+        error => {
+          this.cancelChangeEmail();
+          this.changeEmailFailed = true;
+        }
+    );
   }
 
   cancelChangeEmail() {
