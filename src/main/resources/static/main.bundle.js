@@ -1248,6 +1248,7 @@ var OrderConfirmationComponent = (function () {
     };
     OrderConfirmationComponent.prototype.preOrderAvailabilityCheck = function () {
         var _this = this;
+        this.allGood = true;
         this.unavailableMessage = "";
         this.unavailable = [];
         this.shoppingCart.items.forEach(function (i) {
@@ -2994,9 +2995,6 @@ var ItemsGridComponent = (function () {
             this.shoppingCartService.tempStoreItem(item);
             this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.snapshot.url } });
         }
-    };
-    ItemsGridComponent.prototype.getImage = function (id) {
-        return 'data:image/jpg;base64,' + this.itemsService.getImage(id);
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
