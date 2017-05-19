@@ -79,3 +79,4 @@ testem.log
 Thumbs.db
 bericht/aux/
 bericht/quellen/
+*.bak

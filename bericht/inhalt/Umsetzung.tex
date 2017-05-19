@@ -16,8 +16,8 @@ Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring B
 
 \cref{fig:spring-initializr} zeigt die gewählte Konfiguration für das Grundprojekt. Links sind die Metadaten für das Deployment definiert und rechts die Abhängigkeiten. Diese sind initial:
 \begin{itemize}
-	\item Spring Web. Benötigt um eine Webanwendung mit eingebetteten Tomcat-Server zu implementieren.
-	\item Jersey. 
+	\item \textit{Spring Web}. Benötigt um eine Webanwendung mit eingebetteten Tomcat-Server zu implementieren.
+	\item \textit{Jersey}. Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen. Für die Darstellung dieser Ressourcen verwendet JAX-RS standardmäßig die Implementierung von JAXB (Java Architecture for XML Binding). Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder JSON Darstellung umgewandelt werden. Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt. Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings.
 \end{itemize}
 
 
