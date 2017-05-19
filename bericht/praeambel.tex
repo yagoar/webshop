@@ -2,13 +2,20 @@
 
 \usepackage[english,ngerman]{babel}
 
+% Seitenlayout
+\usepackage[onehalfspacing]{setspace}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\setlength{\emergencystretch}{\textwidth}
+\renewcommand{\baselinestretch}{1.5}\normalsize
+
 % Schriftart
 \usepackage{upquote}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[scaled]{helvet}
 \renewcommand*{\familydefault}{\sfdefault}
-
 
 %Inhaltsverzeichnis
 \setcounter{tocdepth}{2}
@@ -30,18 +37,13 @@
 \usepackage[titletoc]{appendix}
 \newcommand*{\Appendixautorefname}{Anhang}
 
-% Seitenlayout
-\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-\setlength{\emergencystretch}{\textwidth}
-\renewcommand{\baselinestretch}{1.5}\normalsize
+
 
 %Graphiken / Tabellen
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{caption}
-\captionsetup[figure]{font=small,skip=0pt}
+\captionsetup[figure]{font=small,skip=3pt}
 \captionsetup[table]{font=small,skip=3pt}
 \usepackage{array}
 \renewcommand{\arraystretch}{1.5}
