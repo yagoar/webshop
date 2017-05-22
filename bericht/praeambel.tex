@@ -4,7 +4,7 @@
 
 % Seitenlayout
 \usepackage[onehalfspacing]{setspace}
-\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=3cm,bottom=3cm]{geometry}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
 \setlength{\emergencystretch}{\textwidth}
@@ -37,8 +37,6 @@
 \usepackage[titletoc]{appendix}
 \newcommand*{\Appendixautorefname}{Anhang}
 
-
-
 %Graphiken / Tabellen
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -58,11 +56,15 @@
 
 %Abschnitte
 \usepackage[compact]{titlesec}
-\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-\titlespacing\subsection{0pt}{*0}{0pt plus 2pt minus 2pt}
-\titlespacing\subsubsection{0pt}{*0}{0pt plus 2pt minus 2pt}
 \let\subsectionautorefname\sectionautorefname
 \let\subsubsectionautorefname\sectionautorefname
+\titleformat{\section}
+{\normalfont\sffamily\Huge\bfseries}
+{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\sffamily\Large\bfseries}
+{\thesubsection}{1em}{}
+
 
 %Abstract
 \usepackage{abstract}
@@ -79,17 +81,26 @@
 
 \fancypagestyle{fancynopage}{
 	\fancyhf{} 
-	\fancyfoot[L]{ \today }
+	\fancyfoot[L]{\today}
 	\renewcommand{\headrulewidth}{0pt}
 	\renewcommand{\footrulewidth}{0pt}
 }
 
-\fancypagestyle{mystyle}{
+\fancypagestyle{fullstyle}{
 \fancyhf{} 
-\fancyfoot[L]{ \today }
+\fancyhead[L]{\rightmark}
+\fancyfoot[L]{\today}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+}
+
+\fancypagestyle{nomarkstyle}{
+	\fancyhf{} 
+	\fancyfoot[L]{\today}
+	\fancyfoot[R]{\thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0pt}
 }
 
 \fancypagestyle{plain}{
