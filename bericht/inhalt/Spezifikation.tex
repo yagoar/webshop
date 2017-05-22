@@ -9,7 +9,7 @@ Dafür ist die Implementierung eines Rollensystems nötig, um die Benutzergruppe
 
 Für die Bestellung von Artikeln ist es nötig, dass sich ein Benutzer in der Anwendung registrieren und seine persönlichen Daten angeben kann.
 Um eine Bestellung aufzugeben muss sich der registrierte Benutzer am System anmelden können.
-Die detaillierte Beschreibung der dafür benötigten Anwendungsfälle findet sich in Kapitel \ref{usecases}.
+Die detaillierte Beschreibung der für diese Funktionalitäten benötigten Anwendungsfälle findet sich in Kapitel \ref{usecases}.
 \subsection{Nichtfunktionale Anforderungen}
 Die Anwendung sollte von allen gängigen Browsern in neueren Versionen sowie auf mobilen Geräten darstellbar sein.
 Sensible Daten, wie die persönlichen Daten der Anwender, müssen vor unbefugtem Zugriff geschützt sein.
@@ -45,18 +45,25 @@ Die dafür nötigen Pflichtangaben sind:
 \end{itemize}
 Zusätzlich soll es bei der Registrierung möglich sein, eine abweichende Lieferadresse einzugeben.
 Nach der Registrierung muss es dem Benutzer möglich sein, sich am System anzumelden.
-Um Artikel anschauen zu können und sie in den Warenkorb zu legen, muss ein Besucher der Seite nicht registriert oder angemeldet sein.
+Um Artikel anschauen zu können, muss ein Besucher der Seite nicht registriert oder angemeldet sein.
 
 \paragraph{Login/Logout}$\;$ \\
 Registrierte Nutzer können sich durch die Eingabe ihrer E-Mail-Adresse und ihrem Passwort im Shop einloggen.
 Bei einer fehlerhaften Eingabe soll eine Meldung ausgegeben werden.
-Der Login ist Voraussetzung für folgende weitere Use Cases: Anzeigen/Bearbeiten der persönlichen Informationen, Bestellung aufgeben und Bestellhistorie einsehen.
+Der Login ist Voraussetzung für folgende weitere Use Cases: Anzeigen/Bearbeiten der persönlichen Informationen, Zum Warenkorb hinzufügen, Bestellung aufgeben und Bestellhistorie einsehen.
 Außerdem muss beim Einloggen auch der Warenkorb des jeweiligen Benutzers geladen werden, da dieser Artikel enthalten kann, die der User beim letzten Besuch des Shops hineingelegt hat.
 Beim Logout wird der Benutzer wieder abgemledet und kann ohne einen erneuten Login nicht mehr auf seine Daten zugreifen oder die benutzerspezifischen Anwendungsfälle ausführen.
 
 \paragraph{Show/edit user details (Anzeigen/Bearbeiten der persönlichen Informationen)}$\;$ \\
 Einem eingeloggten Benutzer soll es möglich sein, seine persönlichen Daten einzusehen und zu ändern.
 Dafür soll ihm eine übersichtliche Seite mit allen Informationen und Funktionalitäten zur Verfügung stehen.
+Folgende Änderungen sollen möglich sein:
+\begin{itemize}
+\item Adressdaten (Liefer- und Rechnungsadresse)
+\item E-Mail-Adresse
+\item Passwort
+\end{itemize}
+Für eine Passwort-Änderung muss auch das bisherige Passwort eingegeben werden.
 
 \paragraph{Show shopping cart (Warenkorb anzeigen)}$\;$ \\
 Der Warenkorb soll jederzeit über einen Button am oberen Rand der Seite erreichbar sein.
@@ -64,15 +71,39 @@ Der Warenkorb soll jederzeit über einen Button am oberen Rand der Seite erreich
 In der Detailansicht soll auch eine Anpassung der Menge für jeden Artikel und das Entfernen eines Artikels aus dem Warenkorb möglich sein.
 Für registrierte, angemeldete Benutzer wird der Warenkorb gespeichert, so dass der Einkauf zu einem späteren Zeitpunkt fortgesetzt werden kann.
 \paragraph{Add to shopping cart (Zum Warenkorb hinzufügen)}$\;$ \\
-Artikel sollen jederzeit zum Warenkorb hinzugefügt werden können. Sowohl in einer Übersicht über mehrere Artikel als auch in der Detailansicht eines Artikels soll dies möglich sein.
+Artikel sollen jederzeit zum Warenkorb hinzugefügt werden können, wenn ein Benutzer eigeloggt ist. Sowohl in einer Übersicht über mehrere Artikel als auch in der Detailansicht eines Artikels soll dies möglich sein.
+Das Hinzufügen eines Artikels zum Warenkorb soll dem Benutzer rückgemeldet werden, damit er erkennt, dass die Aktion erfolgreich war.
 \paragraph{Place order (Bestellung aufgeben)}$\;$ \\
 Über die Detailansicht des Warenkorbs sollen Bestellungen aufgegeben werden können.
+Vor der tatsächlichen Auslösung der Bestellung soll dem Benutzer eine Zusammenfassung gezeigt werden, die neben den einzelnen Artikeln auch seine Adressdaten, und den Gesamtwert der Bestellung enthält.
+In dieser Übersicht soll auch die Menge für die einzelnen Artikel angepasst werden können.
+Nach der Bestätigung durch den Nutzer soll die Bestellung ausgelöst und eine entsprechende Meldung ausgegeben werden.
 \paragraph{Show order history (Bestellhistorie einsehen)}$\;$ \\
+Sämtliche getätigte Bestellungen sollen dem Benutzer jederzeit einsehbar sein.
+Dafür soll eine Liste mit den Bestellungen aufgeführt werden, für die über einen Button am Ende der Zeile die Details der jeweiligen Bestellung eingesehen werden können.
 \paragraph{Search products (Artikelsuche)}$\;$ \\
+Die Suche nach Artikeln im Shop soll über eine hierarchische Unterteilung in Kategorien realisiert werden.
+Unter den Hauptkategorien kann der Benutzer in Unterkategorien auswählen, wonach er suchen möchte.
+Dadurch kann erreicht werden, dass ein Nutzer seinen Wunsch so weit präzisieren kann, dass er nur noch eine überschaubare Menge an Artikeln gezeigt bekommt, die seinen Kriterien entsprechen.
 \paragraph{Filter products (Artikel filtern)}$\;$ \\
+Um die Suche nach Artikeln weiter zu unterstützen, soll eine Filterung möglich sein, die eine Auswahl nach verschiedenen Artikelmerkmalen bietet.
+So soll der Benutzer beispielsweise nach der Marke filtern können, um nur Produkte dieser Marke angezeigt zu bekommen.
 \paragraph{Show product details (Detailansicht eines Artikels)}$\;$ \\
-
+Durch einen Klick auf den Namen oder das Vorschaubild eines Artikels, soll dessen Detailansicht erscheinen, die alle verfügbaren Informationen zu diesem Artikel zeigt.
 \subsubsection{Administrator-Anwendungsfälle}
+Anwendungsfälle für Administratoren sind nur für Benutzer zugänglich, die über die entsprechende Rolle verfügen. Relaisiert werden soll das über eine Markierung der Nutzer, die Administrator-Rechte haben.
+Der Bereich für alle derartigen Operationen soll getrennt vom restlichen Shop sein und ist vor unbefugtem Zugriff zu schützen.
+\paragraph{Login/Logout}$\;$ \\
+Die Anmeldung für Administratoren soll über eine gesonderte URL erfolgen, die nicht im Shop verlinkt ist.
+Sie erfolgt ebenfalls über die E-Mail-Adresse und ein Passwort. Zusätzlich muss geprüft werden, ob der Benutzer über Administrator-Rechte verfügt.
+Erst nach erfolgreicher Authentifizierung und Verifikation der Rolle sollen die anderen Funktionen erreicht werden können.
+\paragraph{Create new Admin (Neuen Admin hinzufügen)}$\;$ \\
+Die Rolle des Admin kann nur von einem bestehenden Admin vergeben werden.
+Voraussetzung ist ein bestehendes Nutzerkonto (Anmeldung beim Shop) für den Benutzer, der künftig Administrator sein soll.
+Über eine Liste mit allen registrierten Nutzern, soll ausgewählt werden können, welcher Benutzer zu einem Admin gemacht werden soll.
+In gleicher Weise kann einem bestehenden Admin auch seine Rolle entzogen werden.
+\paragraph{Add/edit product (Artikel hinzufügen/ändern)}$\;$ \\
+
 \subsection{System-Abgrenzung}
 Diagramm, Grenzen stecken
 \subsection{Inhaltliche Definition}
