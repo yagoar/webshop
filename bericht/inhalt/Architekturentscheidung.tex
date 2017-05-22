@@ -12,7 +12,11 @@ Die Gründe für die Verwendung von Spring Boot als serverseitige Anwendung des 
 
 \subsection{Angular 2 Frontend}
 
-Warum Angular 2? OO Programmierung mit Typescript, Möglichkeit die Anwendung modular und erweiterbar zu gestalten, Experimentierung/Interesse (relativ neues Framework), Komponenten Lifecycle, rx.js - subscription für asynchrone aufrufe (kein Callback Hell), angular cli für scaffolding und deployment
+Angular 2 ist die neue, komplett umgebaute Version des Angular 1.x Frameworks. Diese Version liefert eine brandneue Architektur basierend auf Komponenten die in TypeScript implementiert werden. Bei TypeScript handelt es sich wiederum um ein von Microsoft entwickeltes Superset von JavaScript. TypeScript führt ein optionales Typsystem ein, sowie mehrere ECMAScript 6 Funktionalitäten, wie zum Beispiel Unterstützung von Interfaces, Klassen und Vererbung. Der Vorteil hierbei ist, dass die Erweiterungen von TypeScript von einem Compiler in normales JavaScript umgewandelt werden, sodass man TypeScript mit jedem Browser oder auch mit Node.js benutzen kann, solange der Code vorher kompiliert wird\cite{Deeleman2016}. 
+
+Eine Angular 2 Anwendung besteht im Grunde aus \acs{HTML}-Templates, aus Komponenten-Klassen die diese Templates verwalten und aus Services, welche die Applikationslogik enthalten. Komponenten und Services können zu Modulen zusammengefasst werden, die eine vollständige Funktionalität bilden. Die Anwendung wird durch \enquote{bootstrapping} des Hauptmoduls (das sogenannte \enquote{root module}) gestartet\cite{Angular.io2017}.
+
+%TODO Direktiven, Bild von Architektur, warum Angular 2? 
 
 \subsection{REST Services}
 Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST steht für Representational State Transfer und ist ein Architekturstil für den Entwurf von verteilten Systemen. Die Grundlage von REST wird durch folgende sechs Prinzipien festgelegt\cite{Varanasi2015}:
@@ -21,14 +25,16 @@ Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST s
 	\item \textit{Client-Server}. Die Unterteilung zwischen Client und Server ermöglicht es den jeweiligen Komponenten sich unabhängig voneinander zu entwickeln und erlaubt dementsprechend die Skalierung des Systems.
 	\item \textit{Zustandslos}. Die Kommunikation zwischen Client und Server sollte zustandslos sein. Das bedeutet, dass der Server sich nicht den Zustand des Clients merken braucht. Stattdessen kümmert sich der Client darum, alle notwendige Informationen in der Anfrage mitzuliefern, damit der Server diese verstehen und verarbeiten kann.
 	\item \textit{Mehrschichtige Systeme}. Es können mehrere Schichten wie zum Beispiel Gateways, Firewalls oder Proxies zwischen Client und Server existieren. Diese Schichten können transparent hinzugefügt, modifiziert, umgeordnet oder gelöscht werden.
-	\item \textit{Cache}. Antworten vom Server müssen als "cacheable" oder "noncacheable" deklariert sein. Dadurch wissen Clients, ob sie die Antworten zwischenspeichern können, um sie später wiederzuverwenden. Dieser Vorgang verringert die Last auf den Server und verbessert die Performance.
+	\item \textit{Cache}. Antworten vom Server müssen als \enquote{cacheable} oder \enquote{noncacheable} deklariert sein. Dadurch wissen Clients, ob sie die Antworten zwischenspeichern können, um sie später wiederzuverwenden. Dieser Vorgang verringert die Last auf den Server und verbessert die Performance.
 	\item \textit{Uniform Interface}. Alle Interaktionen zwischen Client, Server und dazwischenliegenden Komponenten basieren auf die Uniformität der Schnittstellen. Solche Schnittstellen definieren welche Ressourcen über eine eindeutige \acs{URI} durch bestimmte \acs{HTTP}-Methoden erreichbar sind. Ein Beispiel für eine REST URI könnte folgendermaßen aussehen: \\
 	\texttt{http://blog.example.com/posts/1}\\
 	Die URI repräsentiert hier den Zugriff auf einem Blog-Post mit Identifikator 1.
 	\item \textit{Code on demand}. Clients können ihre Funktionalitäten erweitern indem sie Code (wie JavaScript Skripte oder Java Applets) bei Bedarf herunterladen und ausführen. Dies ist jedoch eine optionale Eigenschaft.
 \end{itemize}
 
+Anwendungen die diese Prinzipien befolgen, gelten als \enquote{RESTful}, also REST-konform. Es ist hierbei nicht vorgegeben, welche Technologie konkret für die Entwicklung solcher Anwendungen benutzt werden soll. Theoretisch ist es möglich eine REST-Anwendung mit einer beliebigen Netzwerk-Infrastruktur oder einem beliebigen Protokoll aufzubauen. In der Praxis nutzen diese Applikationen jedoch hauptsächlich die Eigenschaften der Web-Entwicklung und verwenden dementsprechend \acs{HTTP} als Übertragungsprotokoll.
 
+Von den sechs oben beschriebenen Punkten ist das Prinzip des Uniform Interfaces das Hauptmerkmal von REST-Anwendungen, welches diese Art von Applikationen von anderen netzwerkbasierten Anwendungen unterscheidet. %TODO umschreiben
 
 \subsection{MySQL Datenbank}
-Warum MySQL? Vorkenntnisse in SQL, open source, ORM mit Spring Boot Data JPA Dependency (Hibernate, Spring data JPA, Spring ORMs)
+%TODO Warum MySQL? Vorkenntnisse in SQL, open source...
