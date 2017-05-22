@@ -4,7 +4,7 @@ Hier werden konkret alle Aspekte der Umsetzung der in \cref{specification} berei
 \subsection{Initiales Aufsetzen der Anwendung}
 Bevor die Entwicklung starten kann müssen die grundlegende Bausteine der Anwendung angelegt, konfiguriert und verbunden werden. 
 
-\subsubsection{Spring Boot Anwendung}
+\subsubsection{Spring Boot Anwendung}\label{spring-boot-init}
 Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring Boot Projekt inklusive Abhängigkeiten einfach generiert werden kann. Die Oberfläche (namens Spring Initializr) erlaubt es Maven oder Gradle als Build-Management-Tool zu verwenden. In diesem Projekt fiel die Entscheidung für Maven, aufgrund der bereits vorhandenen Erfahrung mit dem Tool. 
 
 \begin{figure}[th!]
@@ -36,9 +36,9 @@ Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Pr
 \subsubsection{Angular 2 Anwendung}
 Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Hierbei handelt es sich um die Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen\cite{Arora2017}. 
 
-Angular CLI ist Open Source und wird anhand des Node Package Managers (\acs{npm}) installiert. Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung. Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu. Die statische Inhalte werden mit \texttt{ng build} gebaut. 
+Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{npm}) installiert. Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung. Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu. Die statische Inhalte werden mit \texttt{ng build} gebaut. 
 
-Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im \texttt{resources/static} Verzeichnis liegen. Das kann durch einer Anpassung an der auf \cref{fig:angular-cli} markierten Stelle erreicht werden.
+Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im \texttt{resources/static} Verzeichnis liegen. Das kann durch einer Anpassung an der auf \cref{fig:angular-cli} markierten Stelle  der \texttt{angular-cli.json} Datei erreicht werden. Des weiteren enthält diese Datei auch weitere wichtige Konfigurationen, wie der Ablageort von anderen Ressourcen wie Bilder oder benötigte Stylesheets. An dieser Stelle werden demnach die \acs{CSS}-Dateien für das Bootstrap Framework referenziert, sowie eine eigene Stylesheet für weitere Anpassungen. Mehr zu Bootstrap und zu den Designentscheidungen werden später in dieser Arbeit behandelt.
 
 \begin{figure}[th!]
 	\centering
@@ -47,15 +47,21 @@ Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im \texttt{res
 	\label{fig:angular-cli}
 \end{figure}
 
+\subsection{Backend-Klassen und Objektrelationales Mapping}
+%TODO Eine Klasse pro Entität in der Datenbank + DAO-Klasse, Beispiele für die Realisierung von Beziehungen usw. zeigen (ORM-Annotationen)
 
-\subsection{Datenbank}\label{db_umsetzung}
+\subsection{REST-Schnittstellen}
+%TODO Aufbau der Rest-Interfaces + Implementierungen, evtl. Klassendiagramme. 
 
-
-\subsection{Backend-Klassen und ORM}
-Eine Klasse pro Entität in der Datenbank + DAO-Klasse, Beispiele für die Realisierung von Beziehungen usw. zeigen (ORM-Annotationen)
-
-\subsection{Webservices}
-Jersey erklären (was es ist, Konfiguration), Aufbau der Rest-Interfaces + Implementierungen, evtl. Klassendiagramme. 
+In \cref{spring-boot-init} wurde bereits erwähnt, dass für das Erstellen von REST-Services innerhalb der Spring Boot Anwendung Jersey benutzt wird. Durch die eingebundene Abhängigkeit 
 
 \subsection{Frontend}
-Erstellte Module in Angular 2 (was sind Module? -> Erklären), Struktur von Komponenten, Hauptkomponenten der Module, Services, Routing
+%TODO Erstellte Module in Angular 2 (was sind Module? -> Erklären), Struktur von Komponenten, Hauptkomponenten der Module, Services, Routing
+
+\subsubsection{Module}
+
+\subsubsection{Komponenten}
+
+\subsubsection{Services}
+
+\subsubsection{Routing}
