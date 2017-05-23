@@ -1,9 +1,9 @@
 \section{Architektur von Webanwendungen}\label{web_architecture} \thispagestyle{nomarkstyle}
 Da es sich bei einem Online-Shop um eine Webanwendung handelt, ist es notwendig die allgemeine Architektur von solchen Anwendungen, sowie die unterschiedliche Technologien die eingesetzt werden können, zu analysieren. Diese Information wird später wichtig um eine  Architekturentscheidung passend zu den Anforderungen und den Zielen treffen zu können.
 
-Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden\cite{Saternos2014}.
+Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden \cite{Saternos2014}.
 
-Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt\cite{Techopedia2017}:
+Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt \cite{Techopedia2017}:
 \begin{itemize}
 	\item \textit{Tier 1: Präsentationsschicht.} Ist für die Darstellung der Daten und allgemein der Benutzerschnittstelle verantwortlich.
 	\item \textit{Tier 2: Anwendungsschicht.} Auch Businesslogik-Schicht genannt, kontrolliert diese Schicht die eigentliche Funktionalität der Anwendung.
@@ -15,12 +15,12 @@ Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die An
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{bilder/kap2/three-tier}
-	\caption{Drei-Schichten-Modell der Client-Server-Architektur\cite{Conallen2000}}
+	\caption{Drei-Schichten-Modell der Client-Server-Architektur \cite{Conallen2000}}
 	\label{fig:three-tier}
 \end{figure}
 
 \subsection{Serverseite}
-Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Antworten von Anfragen aus dem Client, sowie die Kommunikation mit der Datenbank (falls vorhanden). Welche Sprache hierfür gewählt wird bestimmt auch die Frameworks und weitere Technologien die entsprechend zur Verfügung stehen. Im Folgenden sind einige der beliebtesten Sprachen für die Server-Programmierung, sowie jeweils die Frameworks welche oft im Rahmen der Web-Entwicklung damit verwendet werden aufgelistet\cite{School2016}:
+Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Antworten von Anfragen aus dem Client, sowie die Kommunikation mit der Datenbank (falls vorhanden). Welche Sprache hierfür gewählt wird bestimmt auch die Frameworks und weitere Technologien die entsprechend zur Verfügung stehen. Im Folgenden sind einige der beliebtesten Sprachen für die Server-Programmierung, sowie jeweils die Frameworks welche oft im Rahmen der Web-Entwicklung damit verwendet werden aufgelistet \cite{School2016}:
 
 \begin{itemize}
 	\item \textbf{C\#}. Objektorientiert, von Microsoft für die .NET Common Language Runtime entwickelt. \textit{Framework: ASP.NET}
@@ -33,7 +33,7 @@ Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passend
 \subsubsection{Webserver}
 Die Aufgabe eines Webservers ist die Inhalte einer Webseite per \acs{HTTP} an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also \acs{HTML}-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
 
-Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx\cite{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
+Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx \cite{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
 
 \subsubsection{Applikationsserver}
 Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \cite{ITWissen.info2013}
@@ -41,8 +41,28 @@ Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwe
 %TODO Welche AppServer gibt es?
 
 \subsubsection{Datenbank}
-%TODO Welche Datenbanken gibt es? Relational, NoSQL + mögliche Produkte
-%TODO ORM
+Für die Datenhaltung in einer Webanwendung werden fast immer Datenbanken verwendet, um Inhalte unabhängig von der Anwendung persistent speichern zu können.
+Dabei werden meist relationale oder \acs{NoSQL}-Datenbanken eingesetzt. Relationale Datenbanken bilden in ihrem Datenmodell die Beziehungen zwischen den einzelnen Datensätzen ab.
+Als Entitäten bezeichnet, werden logisch unabhängige Datensätze in jeweils eigenen Tabellen gespeichert. Jeder Datensatz ist dabei in einer eigenen Zeile gespeichert, die Tabellenspalten stellen die einzelnen Attribute dar.
+Verweise auf andere Entitäten für die Abbildung der Beziehungen werden durch sogenannte Fremdschlüssel-Spalten realisiert, die als Wert einen bestimmten Datensatz einer anderen Entität referenzieren können.
+Die am meisten verwendeten Produkte relationaler Datenbanken sind MySQL, MSSQL, ...%TODO ricthig machen mit Verweisen und Zitat
+
+\acs{NoSQL}-Datenbanken sind die häufigste Alternative zu den relationalen Lösungen. Der Name ist ein Akronym für "Not only SQL" und spielt damit auf die verbreitetste Datenbanksprache \acs{SQL} relationaler Modelle an.
+Unter dieser Kategorisierung gibt es sehr verschiedene Modelle. Folgend sind die wichtigsten Datenmodelle mit je einem Beispiel:
+
+\begin{itemize}
+\item\textbf{Dokumentenorientierte Datenbanken} MongoDB
+\item\textbf{Key-Value-Datenbanken} Redis
+\item\textbf{Graphdatenbanken} Neo4j
+\item\textbf{Spaltenorientierte Datenbanken} Apache Cassandra
+\end{itemize}
+
+\subsubsection{ORM}
+Unter dem Object Relational Mapping, kurz \acs{ORM}, versteht man die Zuordnung der Repräsentation von Objekten in der verwendeten Programmiersprache zu der dafür vorgesehenen Datenstruktur in der relationalen Datenbank.
+Diese Aufgabe benötigt sowohl eine technische Lösung zur Anbindung und Ansteuerung der Datenbank aus der Anwendung, als auch eine logische für die richtige Zuordnung von Objekten auf Entitäten-Tabellen und Objekt-Attributen auf deren Spalten.
+Für die Anbindung der Datenbank gibt es je nach eingesetzter Programmiersprache und Datenbank-Technologie spezielle Tools, auf die hier nicht näher eingegangen werden soll.
+Zum Zweck des Mappings, also der logischen Zuordnung, gibt es Hilfe in Form von Frameworks, die es ebenfalls für die verschiedenen zugrunde liegenden Technologien gibt.
+Die wichtigsten Vertreter sind hier das Entity Framework für .NET-Sprachen und Hibernate für Java.
 
 \subsection{Clientseite}
 Sprachen und frameworks
