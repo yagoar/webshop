@@ -43,16 +43,12 @@
 \usepackage{caption}
 \captionsetup[figure]{font=small,skip=3pt}
 \captionsetup[table]{font=small,skip=3pt}
+\captionsetup[lstlisting]{font=small,skip=3pt}
 \usepackage{array}
 \renewcommand{\arraystretch}{1.5}
 \usepackage{framed}
 \usepackage{longtable}
 \usepackage{color}
-\definecolor{gray}{rgb}{0.4,0.4,0.4}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
-\definecolor{cyan}{rgb}{0.0,0.6,0.6}
-\definecolor{maroon}{rgb}{0.5,0,0}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
 
 %Abschnitte
 \usepackage[compact]{titlesec}
@@ -109,6 +105,62 @@
 
 %Listings
 \usepackage{listings}
+
+\definecolor{editorLightGray}{cmyk}{0.05, 0.05, 0.05, 0.1}
+\definecolor{editorGray}{cmyk}{0.6, 0.55, 0.55, 0.2}
+\definecolor{editorPurple}{cmyk}{0.5, 1, 0, 0}
+\definecolor{editorWhite}{cmyk}{0, 0, 0, 0}
+\definecolor{editorBlack}{cmyk}{1, 1, 1, 1}
+\definecolor{editorOrange}{cmyk}{0, 0.8, 1, 0}
+\definecolor{editorBlue}{cmyk}{1, 0.6, 0, 0}
+\definecolor{editorPink}{cmyk}{0, 1, 0, 0}
+
+\lstdefinelanguage{HTML5}{
+	language=html,
+	tagstyle=\color{editorBlue},
+	identifierstyle=\color{editorBlack},
+	keywordstyle=\color{editorBlue},
+	commentstyle=\color{editorGray},
+	stringstyle=\color{editorPurple},
+	moredelim=[s][{\color{editorOrange}}]{(}{)},
+	moredelim=[s][{\color{editorOrange}}]{[}{]}
+}
+
+\lstdefinelanguage{json}{ 
+	literate= 
+	*{:}{{{\color{editorBlue}{:}}}}{1} 
+	{,}{{{\color{editorBlue}{,}}}}{1} 
+	{\{}{{{\color{editorBlue}{\{}}}}{1} 
+	{\}}{{{\color{editorBlue}{\}}}}}{1} 
+	{[}{{{\color{editorBlue}{[}}}}{1} 
+	{]}{{{\color{editorBlue}{]}}}}{1}
+} 
+
+\lstdefinelanguage{JavaScript}{
+	keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+	keywordstyle=\color{editorBlue}\bfseries,
+	ndkeywords={class, export, boolean, throw, implements, import, this},
+	ndkeywordstyle=\color{editorBlue}\bfseries,
+	identifierstyle=\color{editorBlack},
+	sensitive=false,
+	comment=[l]{//},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{editorGray}\ttfamily,
+	stringstyle=\color{editorPurple}\ttfamily,
+	morestring=[b]',
+	morestring=[b]",
+	moredelim=[s][{\color{editorPurple}}]{@Component(\{}{\})}
+}
+
+\lstset{
+	basicstyle=\normalfont\ttfamily,
+	numbers=left,
+	numberstyle=\scriptsize,
+	stepnumber=1,
+	numbersep=8pt,
+	frame=single,
+	captionpos=b
+}
 
 
 %Referenzen

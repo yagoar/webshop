@@ -1,5 +1,14 @@
 \section{Architekturentscheidung}\label{arch_decission} \thispagestyle{nomarkstyle}
-Diagramm mit den Komponenten (unten aufgelistet) %TODO Architektur-Diagramm
+Nach einer sorgfältigen Analyse der unterschiedlichen Technologien, wurde eine Architektur entworfen, welche in \cref{fig:webshop_arch} dargestellt ist. Die Komponenten wurden so gewählt, dass sie untereinander mit möglichst wenig Konfigurationsaufwand reibungslos funktionieren. 
+
+\begin{figure}[th!]
+	\centering
+	\includegraphics[width=\linewidth]{bilder/kap5/webshop_arch.png}
+	\caption{Grundlegende Architektur des Webshops}
+	\label{fig:webshop_arch}
+\end{figure}
+
+In den nächsten Seiten werden die theoretische Grundlagen zu den einzelnen Komponenten, sowie weitere Erläuterungen zu den Gründen der Architekturentscheidung beschrieben. 
 
 \subsection{Spring Boot Anwendung}
 Spring ist ein Framework für die Entwicklung von Applikationen in der Programmiersprache Java. Das Framework kann für alle Arten von Java-Anwendungen genutzt werden, da eine große Vielfalt an Abhängigkeiten für die unterschiedlichsten Funktionalitäten zur Verfügung steht.
@@ -10,7 +19,7 @@ Das Ziel Spring Boot Projekts ist es genau diesen Nachteil zu beseitigen. Durch 
 
 Die Gründe für die Verwendung von Spring Boot als serverseitige Anwendung des Webshops sind einige. Zum einen ist im Team bereits etwas Erfahrung aus anderen Projekten vorhanden, die hier wiederverwendet werden kann. Zum anderen erleichtert Spring Boot durch das einfache Aufsetzen der Anwendung, der umfangreichen Dokumentation, sowie der großen Auswahl an Abhängigkeiten deutlich den Start mit der Umsetzung der eigentlichen Anforderungen. Besonders die Abhängigkeit \texttt{spring-boot-starter-web} ist für die Entwicklung von Webanwendungen nützlich, denn damit wird automatisch ein Webserver bzw. ein Java Servlet Container (Apache Tomcat) in das Projekt eingebettet.
 
-\subsection{Angular 2 Frontend}
+\subsection{Angular 2 Front-End}
 
 Angular 2 ist die neue, komplett umgebaute Version des Angular 1.x Frameworks. Diese Version liefert eine brandneue Architektur basierend auf Komponenten die in TypeScript implementiert werden. Bei TypeScript handelt es sich wiederum um ein von Microsoft entwickeltes Superset von JavaScript. TypeScript führt ein optionales Typsystem ein, sowie mehrere ECMAScript 6 Funktionalitäten, wie zum Beispiel Unterstützung von Interfaces, Klassen und Vererbung. Der Vorteil hierbei ist, dass die Erweiterungen von TypeScript von einem Compiler in normales JavaScript umgewandelt werden, sodass man TypeScript mit jedem Browser oder auch mit Node.js benutzen kann, solange der Code vorher kompiliert wird\cite{Deeleman2016}. 
 
@@ -31,7 +40,7 @@ Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Ang
 Diese werden in den nächsten Abschnitten näher beschrieben.
 
 \subsubsection{Komponenten}
-Komponenten sind Klassen die einen Teil der Oberfläche, die sogenannte \enquote{View} (zu Deutsch Darstellung), kontrollieren. Jede Klasse enthält Attributen und Methoden mit denen die Darstellung verändert werden kann.
+Komponenten sind TypeScript-Klassen die einen Teil der Oberfläche, die sogenannte \enquote{View} (zu Deutsch Darstellung), kontrollieren. Jede Klasse enthält Attributen und Methoden mit denen die Darstellung verändert werden kann.
 
 \subsubsection{Templates}
 Templates definieren wie die Darstellung einer Komponente genau aussieht. Hierfür wird eine erweiterte Form von \acs{HTML} verwendet. Templates können somit zum Beispiel auch Kinder einer Komponente durch besondere HTML-Tags anzeigen. 
@@ -40,25 +49,51 @@ Templates definieren wie die Darstellung einer Komponente genau aussieht. Hierf�
 Module fassen mehrere Komponenten und Services zu einem Funktionalitäts-Block zusammen. Jede Angular Anwendung besitzt mindestens ein Modul, das sogenannte \enquote{Root Module}.
 
 \subsubsection{Metadaten}
-Geben Angular Information darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechende Metadaten enthält. In TypeScript wird das mittels einem Decorator gemacht, eine Annotation die über die Klassendeklaration gesetzt wird.
-%TODO Beispiel @Component
+Metadaten geben Angular Information darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechende Metadaten enthält. In TypeScript wird das mittels einem Decorator gemacht, eine Annotation die über die Klassendeklaration gesetzt wird.
+\\
+\begin{lstlisting}[language=JavaScript,caption={Beispiel Metadaten-Annotation für Komponenten},label=lst:metadata_ex]
+@Component({
+	selector:    'sample-component',
+	templateUrl: './sample.component.html',
+	providers: []
+})
+export class SampleComponent implements OnInit {
+	/* . . . */
+}
+\end{lstlisting}
+
+In \cref{lst:metadata_ex} ist als Beispiel die Annotation für Komponenten dargestellt. Unter \texttt{@Component} können unterschiedliche Aspekte einer Komponente definiert werden, wie der \acs{HTML}-Selektor, der Ablageort des Templates oder benötigte Abhängigkeiten.
 
 \subsubsection{Data Binding}
-Mechanismus zur Zuordnung von bestimmten Teilen eines Templates zu Teile der dazugehörigen Komponente. \cref{fig:databinding} zeigt die vier Arten von Data Binding Syntax in Angular. Jede Form von Data Binding hat auch eine Richtung: von der Komponente zum Document Object Model (\acs{DOM}) im Template, vom DOM zur Komponente oder bidirektional.
+Als Data Binding (zu Deutsch Datenbindung) bezeichnet man den Mechanismus zur Zuordnung von bestimmten Teilen eines Templates zu Teile der dazugehörigen Komponente. \cref{fig:databinding} zeigt die vier Arten von Data Binding Syntax in Angular. Jede Form von Data Binding hat auch eine Richtung: von der Komponente zum Document Object Model (\acs{DOM}) im Template, vom \acs{DOM} zur Komponente oder bidirektional.
+
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.4\linewidth]{bilder/kap5/databinding}
-	\caption[Arten des Data Bindings in Angular 2]{Arten des Data Bindings in Angular 2\footnotemark}
+	\includegraphics[width=0.5\linewidth]{bilder/kap5/databinding}
+	\caption[Arten des Data Bindings in Angular 2]{Arten des Data Bindings in Angular 2}
 	\label{fig:databinding}
 \end{figure}
 
-\footnotetext{Quelle: Angular IO, \textit{Architecture Overview - Data Binding}, 2017. URL: https://angular.io/docs/ts/latest/guide/architecture.html\#!\#data-binding}
-
-%TODO Beispiel 
+\newpage
+Um diese vier Data Binding Formen weiter zu veranschaulichen, ist in \cref{lst:databinding_ex} jeweils ein Beispiel dargestellt. In der ersten Zeile wird durch die doppelte geschweifte Klammern der Wert \texttt{name} vom Attribut \texttt{user} der Komponenten-Klasse in die \acs{DOM} eingefügt. Zeile 2 zeigt eine eingebundene Kindkomponente \texttt{FoodComponent}, die als Input den Wert des Attributs \texttt{selectedFood} von der Komponenten-Klasse erhält. Die runde Klammern mit einem Event-Bezeichner in Zeile 3 binden eine Methode der Komponente zum angegebenen Event. Die letzte Zeile zeigt eine besondere Art von Data Binding, das \textit{Two-Way Data Binding}. Hierbei fließt der Wert vom Attribut der Klasse nicht nur von der Komponente in die \acs{DOM} ein, sondern wird auch in der Komponente aktualisiert wenn dieser sich beispielsweise durch eine Benutzereingabe verändert.
+\\
+\begin{lstlisting}[language=HTML5,caption={Beispiele zu den Data Binding Arten},label=lst:databinding_ex]
+<h1>Hallo {{user.name}}</h1>
+<food-component [user]="selectedFood"></food-component>
+<li (click)="selectFood(food)"></li>
+<input [(ngModel)]="user.name">
+\end{lstlisting}
 
 \subsubsection{Direktiven}
+Bei Direktiven handelt es sich um Klassen mit dem \texttt{@Directive}-Decorator, in denen beliebige Funktionalitäten zur dynamischen Transformation der DOM definiert werden können. Komponenten sind sozusagen Direktiven mit einem Template. Neben Komponenten gibt es aber auch zwei andere Arten von Direktiven: strukturelle und Attribut-Direktiven. Erstere verändern das Layout der View durch das Hinzufügen, Löschen oder Ersetzen von Elementen in der \acs{DOM}. Attribut-Direktiven verändern hingegen das Aussehen oder das Verhalten eines bereits vorhandenen DOM-Elements. Ein Beispiel davon ist die \texttt{ngModel}-Direktive die bereits in \cref{lst:databinding_ex} gezeigt wurde.
+
 \subsubsection{Services}
+Der Begriff Service ist in Angular sehr weit umfassend, da grundsätzlich alles mögliche ein Service sein kann. Typischerweise handelt es sich jedoch einfach um eine Klasse, die eine konkrete Aufgabe erledigt, wie zum Beispiel Logging, Datenzugriff, Berechnungen, usw. Diese Logik sollte idealerweise nie in Komponenten selbst enthalten sein, da diese nur als Mediatoren zwischen der Benutzeroberfläche (View) und der Logik zu verstehen sind.
+
+Services zeigen an sich also keine besondere Angular-Eigenschaften. Um die Trennung zwischen der in Services gekapselte Logik und den Komponenten einfach zu überwinden wird jedoch ein charakteristischer Mechanismus von Angular verwendet, die Dependency Injection. 
+
 \subsubsection{Dependency Injection}
+Dieser Mechanismus ermöglicht es eine neue Instanz einer Klasse mit allen nötigen Abhängigkeiten (in der Regel Services) zu versorgen. Um Angular mitzuteilen, welche Services eine Komponente benötigt, müssen diese im Konstruktor oder alternativ im \texttt{@Component}-Decorator deklariert werden, wie in \cref{lst:metadata_ex} bereits gezeigt wurde.
 
 \subsection{REST Services}
 Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST steht für Representational State Transfer und ist ein Architekturstil für den Entwurf von verteilten Systemen. Die Grundlage von REST wird durch folgende sechs Prinzipien festgelegt\cite{Varanasi2015}:

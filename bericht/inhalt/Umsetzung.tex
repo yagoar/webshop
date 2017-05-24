@@ -15,6 +15,7 @@ Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring B
 \end{figure}
 
 \cref{fig:spring-initializr} zeigt die gewählte Konfiguration für das Grundprojekt. Links sind die Metadaten für das Deployment definiert und rechts die Abhängigkeiten. Diese sind initial:
+
 \begin{itemize}
 	\item \textit{Spring Web}. Benötigt um eine Webanwendung mit eingebetteten Tomcat-Server zu implementieren.
 	\item \textit{Jersey}. Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen. Für die Darstellung dieser Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding). Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden. Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt. Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\cite{Oracle2015}.
@@ -38,14 +39,9 @@ Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Hierbe
 
 Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert. Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung. Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu. Die statische Inhalte werden mit \texttt{ng build} gebaut. 
 
-Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im  \texttt{resources/static} Verzeichnis (siehe \cref{fig:init-project}) liegen. Das kann durch einer Anpassung an der auf \cref{fig:angular-cli} markierten Stelle  der \texttt{angular-cli.json} Datei erreicht werden. Des weiteren enthält diese Datei auch weitere wichtige Konfigurationen, wie der Ablageort von anderen Ressourcen wie Bilder oder benötigte Stylesheets. An dieser Stelle werden demnach die \acs{CSS}-Dateien für das Bootstrap Framework referenziert, sowie eine eigene Stylesheet für weitere Anpassungen. Mehr zu Bootstrap und zu den Designentscheidungen wird später in dieser Arbeit behandelt.
-
-\begin{figure}[th!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{bilder/kap7/angular-cli}
-	\caption{Auszug der Datei angular-cli.json}
-	\label{fig:angular-cli}
-\end{figure}
+Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im  \texttt{resources/static} Verzeichnis (siehe \cref{fig:init-project}) liegen. Das kann durch einer Anpassung an der \texttt{angular-cli.json} Datei erreicht werden (Zeile 4 von \cref{lst:angular-cli}). Des weiteren enthält diese Datei auch weitere wichtige Konfigurationen, wie der Ablageort von anderen Ressourcen wie Bilder oder benötigte Stylesheets. An dieser Stelle werden demnach die \acs{CSS}-Dateien für das Bootstrap Framework referenziert, sowie eine eigene Stylesheet für weitere Anpassungen. Mehr zu Bootstrap und zu den Designentscheidungen wird später in dieser Arbeit behandelt.
+\\
+\lstinputlisting[language=json,firstline=7,lastline=10,caption=Auszug der Datei angular-cli.json,label=lst:angular-cli]{listings/angular-cli.json}
 
 \subsection{Backend-Klassen und Objektrelationales Mapping}
 %TODO Eine Klasse pro Entität in der Datenbank + DAO-Klasse, Beispiele für die Realisierung von Beziehungen usw. zeigen (ORM-Annotationen)
