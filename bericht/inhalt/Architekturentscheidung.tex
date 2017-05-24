@@ -79,4 +79,11 @@ Anwendungen die diese Prinzipien befolgen, gelten als \enquote{RESTful}, also RE
 Von den sechs oben beschriebenen Punkten ist das Prinzip des Uniform Interfaces das Hauptmerkmal von REST-Anwendungen, welches diese Art von Applikationen von anderen netzwerkbasierten Anwendungen unterscheidet. %TODO umschreiben
 
 \subsection{MySQL Datenbank}
-%TODO Warum MySQL? Vorkenntnisse in SQL, open source...
+Den Ausschlag für die Wahl eine MySQL-Datenbank gaben mehrere Faktoren. Zum einen ist MySQL weit verbreitet und bietet als Open Source-Projekt kostenfrei eine Vielzahl an Funktionalitäten.
+Ein weiterer Punkt ist die bereits vorhandene Erfahrung im Umgang mit SQL aus vorigen Projekten.
+Unter dem Gesichtspunkt der bisherigen Entscheidung für Java als Implementierungssprache für das Backend ist MySQL eine gute Wahl, da es entsprechende Treiber für die Ansteuerung gibt und die Java Persistence API (\acs{JPA}) eine gute Integration der Datenbank in die Anwendung ermöglicht.
+
+\subsection{Hibernate ORM}
+Mit Java und einer MySQL-Datenbank als Voraussetzung bietet sich die Verwendung von Hibernate für die Objektrelationale Abbildung an.
+Mit Hibernate stehen dem Entwickler viele Annotationen zur Verfügung, die eine einfache Kennzeichnung von Klassen und Attributen für ihre Rolle in der Datenbank ermöglichen.
+Auch bei komplexeren Strukturen wie einer Vererbungshierarchie von Klassen gewährleistet Hibernate eine Abbildung auf die Datenbankstruktur und bietet verschiedene Möglichkeiten an, wie das geschehen kann.
