@@ -42,19 +42,21 @@ Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwe
 
 \subsubsection{Datenbank}
 Für die Datenhaltung in einer Webanwendung werden fast immer Datenbanken verwendet, um Inhalte unabhängig von der Anwendung persistent speichern zu können.
-Dabei werden meist relationale oder \acs{NoSQL}-Datenbanken eingesetzt. Relationale Datenbanken bilden in ihrem Datenmodell die Beziehungen zwischen den einzelnen Datensätzen ab.
+Dabei werden meist relationale oder \acs{NoSQL}-Datenbanken eingesetzt.
+
+Relationale Datenbanken bilden in ihrem Datenmodell die Beziehungen zwischen den einzelnen Datensätzen ab.
 Als Entitäten bezeichnet, werden logisch unabhängige Datensätze in jeweils eigenen Tabellen gespeichert. Jeder Datensatz ist dabei in einer eigenen Zeile gespeichert, die Tabellenspalten stellen die einzelnen Attribute dar.
 Verweise auf andere Entitäten für die Abbildung der Beziehungen werden durch sogenannte Fremdschlüssel-Spalten realisiert, die als Wert einen bestimmten Datensatz einer anderen Entität referenzieren können.
 Die am meisten verwendeten Produkte relationaler Datenbanken sind MySQL, MSSQL, ...%TODO ricthig machen mit Verweisen und Zitat
 
 \acs{NoSQL}-Datenbanken sind die häufigste Alternative zu den relationalen Lösungen. Der Name ist ein Akronym für "Not only SQL" und spielt damit auf die verbreitetste Datenbanksprache \acs{SQL} relationaler Modelle an.
-Unter dieser Kategorisierung gibt es sehr verschiedene Modelle. Folgend sind die wichtigsten Datenmodelle mit je einem Beispiel:
+Unter dieser Kategorisierung gibt es verschiedene Modelle. Folgend sind die wichtigsten Datenmodelle mit je einem Beispiel:
 
 \begin{itemize}
-\item\textbf{Dokumentenorientierte Datenbanken} MongoDB
-\item\textbf{Key-Value-Datenbanken} Redis
-\item\textbf{Graphdatenbanken} Neo4j
-\item\textbf{Spaltenorientierte Datenbanken} Apache Cassandra
+\item\textbf{Dokumentenorientierte Datenbanken.} MongoDB
+\item\textbf{Key-Value-Datenbanken.} Redis
+\item\textbf{Graphdatenbanken.} Neo4j
+\item\textbf{Spaltenorientierte Datenbanken.} Apache Cassandra
 \end{itemize}
 
 \subsubsection{ORM}
