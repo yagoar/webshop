@@ -3994,7 +3994,7 @@ module.exports = "<router-outlet></router-outlet>"
 /***/ 861:
 /***/ (function(module, exports) {
 
-module.exports = "<a href=\"#\"><img src=\"../../assets/webshop%20logo.png\" class=\"img-responsive center-block\" id=\"logo\"/></a>"
+module.exports = "<a href=\"#\"><img src=\"../../assets/webshop%20logo.svg\" class=\"img-responsive center-block\" id=\"logo\"/></a>"
 
 /***/ }),
 
