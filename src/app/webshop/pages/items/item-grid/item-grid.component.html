@@ -1,6 +1,6 @@
 <div class="row item-grid">
   <div *ngFor="let item of pagedItems">
-    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div *ngIf="!item.deleted" class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
       <a href="/#/shop/details/{{item.i_id}}">
         <div class="item-grid-img-wrapper">
         <img class="img-responsive center-block" src = "api/v1/items/images/{{item.i_id}}"/>

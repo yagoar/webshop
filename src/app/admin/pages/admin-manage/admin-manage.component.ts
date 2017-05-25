@@ -16,6 +16,7 @@ export class AdminManageComponent implements OnInit {
     pagedItems: any[];
     pager: any = {};
     pageSize: number = 30;
+    deleteSuccess:boolean = false;
 
     artNrFilter: string = "";
 
@@ -63,9 +64,18 @@ export class AdminManageComponent implements OnInit {
         }
     }
 
-    deleteItem(itemId) {
-        this.adminService.deleteItem(itemId).subscribe(data => {
-            this.getAllItems();
-        })
+    deleteItem(item) {
+        if(item.dtype === "single"){
+            this.adminService.deleteItem(item.i_id).subscribe(data => {
+                this.deleteSuccess = true;
+                this.getAllItems();
+            })
+        }else if(item.dtype === "multiple"){
+            this.adminService.deleteItemSet(item.i_id).subscribe(data => {
+                this.deleteSuccess = true;
+                this.getAllItems();
+            });
+        }
+
     }
 }

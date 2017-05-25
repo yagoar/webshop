@@ -18,7 +18,8 @@ export class RegisterComponent implements OnInit {
     diffAddress: boolean = false;
     billingAddress: any = {};
     shippingAddress: any = {};
-
+    registerFailed: boolean = false;
+    registerSuccess: boolean = false;
     datepicker: boolean = false;
 
     constructor(private route: ActivatedRoute,
@@ -46,10 +47,14 @@ export class RegisterComponent implements OnInit {
             .subscribe(
                 data => {
                     this.loading = false;
-                    this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.returnUrl }});
+                    this.registerSuccess = true;
+                    window.scrollTo(0,0);
+                    setTimeout(() => this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.returnUrl }}), 3000)
                 },
                 error => {
                     this.loading = false;
+                    this.registerFailed = true;
+                    window.scrollTo(0,0);
                 });
     }
 

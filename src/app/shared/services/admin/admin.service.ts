@@ -29,7 +29,15 @@ export class AdminService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.put(`/api/v1/admin/item/${itemId}`, options).map((response: Response) => response.text());
+        return this.http.delete(`/api/v1/admin/item/${itemId}`, options).map((response: Response) => response.text());
+    }
+
+    deleteItemSet(itemId) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.delete(`/api/v1/admin/itemSet/${itemId}`, options).map((response: Response) => response.text());
     }
 
     getAllUsers() : Observable<any> {
@@ -40,12 +48,12 @@ export class AdminService {
         return this.http.get('/api/v1/admin/users/admin', options).map((response: Response) => response.json());
     }
 
-    upload(file: FormData, itemName: string) : Observable<any> {
+    upload(file: FormData, itemId: number) : Observable<any> {
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(`/api/v1/file/upload/${itemName}`, file, options).map((response: Response) => response.text());
+        return this.http.post(`/api/v1/file/upload/${itemId}`, file, options).map((response: Response) => response.text());
     }
 
     makeAdmin(email: String) : Observable<any> {

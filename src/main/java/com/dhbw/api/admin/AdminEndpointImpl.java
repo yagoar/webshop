@@ -103,7 +103,8 @@ public class AdminEndpointImpl implements AdminEndpoint {
             BaseItem set = itemSet;
             set.setDtype("multiple");
             baseItemDao.save(itemSet);
-            return Response.ok("Set erfolgreich angelegt").build();
+            baseItemDao.flush(); //Flush to get id of persisted entity
+            return Response.ok(set.getI_id()).build();
         } else return Response.status(Response.Status.FORBIDDEN).build();
     }
 

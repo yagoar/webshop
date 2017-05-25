@@ -82,6 +82,7 @@ export class EditItemSetComponent implements OnInit {
       let item = _.filter(this.items, {articleNumber: Number(this.itemInput)})[0];
       if (item != null) {
         this.itemsInSet.push(item);
+        this.itemInput = "";
       } else {
         this.addItemFailed = true;
       }

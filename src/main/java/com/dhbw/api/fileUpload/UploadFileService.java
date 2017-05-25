@@ -27,12 +27,14 @@ public class UploadFileService {
     BaseItemDao baseItemDao;
 
     @POST
-    @Path("upload/{itemName}")
+    @Path("upload/{itemId}")
     @Consumes({MediaType.MULTIPART_FORM_DATA, MediaType.APPLICATION_JSON})
     public Response uploadFile(
             @FormDataParam("file") InputStream uploadedInputStream,
             @FormDataParam("file") FormDataContentDisposition fileDetail,
-            @PathParam("itemName") String itemName) {
+            @PathParam("itemId") Long itemId) {
+
+
 
         try {
             ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -42,7 +44,7 @@ public class UploadFileService {
             while ((read = uploadedInputStream.read(bytes)) != -1) {
                 out.write(bytes, 0, read);
             }
-            BaseItem item = baseItemDao.findByName(itemName);
+            BaseItem item = baseItemDao.findOne(itemId);
             item.setImage(out.toByteArray());
             baseItemDao.save(item);
             out.flush();

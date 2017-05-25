@@ -15,7 +15,20 @@ export class UserService {
     constructor(private http: Http, private authenticationService: AuthenticationService) { }
 
     create(user: User) : Observable<any> {
-        return this.http.put('/api/v1/user/register', user).map((response: Response) => response.text());
+        return this.http.put('/api/v1/user/register', user).map((res: Response) => {
+            if (res) {
+                if (res.status === 201) {
+                    return [{ status: res.status, json: res }]
+                }
+                else if (res.status === 200) {
+                    return [{ status: res.status, json: res }]
+                }
+            }
+        }).catch((error: any) => {
+            if (error.status === 400) {
+                return Observable.throw(new Error(error.status));
+            }
+        });
     }
 
     getUserInfo() : Observable<any> {

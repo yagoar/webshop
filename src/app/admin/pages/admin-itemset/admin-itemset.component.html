@@ -40,7 +40,7 @@
                 <br>
                 Artikel im Set:
                 <ul *ngFor="let item of itemsInSet">
-                    <li> {{item.articleNumber}}
+                    <li> {{item.articleNumber}}  <a><i class="fa fa-times" aria-hidden="true" title="Artikel aus Artikelset entfernen" (click)="removeItem(item)"></i></a>
                 </ul>
                 <div *ngIf="itemsInSet.length === 0">
                     Keine Items im Set

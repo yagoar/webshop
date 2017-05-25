@@ -12,6 +12,7 @@ import * as _ from "lodash";
 export class AdminItemsetComponent implements OnInit {
 
     item: any = {};
+    itemId: any;
     loading = false;
     userfile: any;
     categories: Array<Category> = [];
@@ -48,25 +49,29 @@ export class AdminItemsetComponent implements OnInit {
         this.item.items = this.itemsInSet;
         this.adminService.createItemset(this.item).subscribe(
             data => {
-                this.item = data;
+                this.itemId = data;
+                this.uploadFile();
             },
             error => {
                 console.log(error);
             }
         );
-        this.uploadFile();
+
     }
 
     uploadFile() {
-        this.loading = true;
         let formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
-        this.adminService.upload(formData, this.item.name).subscribe(
+        this.adminService.upload(formData, this.itemId).subscribe(
             data => {
                 this.createSuccess = true;
+                this.loading = false;
+
             },
             error => {
                 this.createFailed = true;
+                this.loading = false;
+
                 console.log(error);
             }
         );
@@ -77,15 +82,19 @@ export class AdminItemsetComponent implements OnInit {
             let item = _.filter(this.items, {articleNumber: Number(this.itemInput)})[0];
             if(item != null) {
                 this.itemsInSet.push(item);
+                this.itemInput = "";
             } else {
                 this.addItemFailed = true;
             }
         }
     }
 
+    removeItem(item){
+        _.remove(this.itemsInSet, item);
+    }
+
     fileChangeEvent(event: any) {
         this.userfile = event.target.files[0];
-        console.log(this.userfile);
     }
 
     onCategorySelectionChange(cat: Category) {

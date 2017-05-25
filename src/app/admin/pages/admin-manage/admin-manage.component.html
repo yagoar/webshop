@@ -1,3 +1,5 @@
+<h2 class="text-center">Artikel verwalten</h2>
+<alert *ngIf="deleteSuccess"  type="success" dismissible="true" (click)="deleteSuccess = false">Artikel/Set erfolgreich gelöscht</alert>
 <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2">
         <h4>Artikelnr.</h4>
@@ -25,7 +27,7 @@
                     <a (click)="editItem(item)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <a (click)="deleteItem(item.i_id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a (click)="deleteItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
