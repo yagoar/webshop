@@ -1,7 +1,7 @@
-<h2 class="text-center">Artikel anlegen</h2>
+<h2 class="text-center">Set anlegen</h2>
 <br>
 <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
         <form (ngSubmit)="createItemset()">
 
             <div class="form-group">
@@ -34,23 +34,23 @@
                 </div>
             </div>
             <div class="form-group" id="items">
-                <label for="items">Einzelartikel</label>
-                <div *ngFor="let item of items" class="order">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col">
-                            {{item.articleNumber}}
-                            <br>
-                            {{item.name}}
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col">
-                            <input type="checkbox" data-md-icheck (change)="onItemSelect(item, $event)"/>
-                        </div>
-                    </div>
+                <label for="items">Einzelartikel</label><br>
+                <input type="text" class="form-control" id="set-add-input" [(ngModel)]="itemInput" name="addItem" placeholder="Artikelnr."/>
+                <a class="btn btn-primary" (click)="addItem()">Hinzufügen</a> <br>
+                <br>
+                Artikel im Set:
+                <ul *ngFor="let item of itemsInSet">
+                    <li> {{item.articleNumber}}
+                </ul>
+                <div *ngIf="itemsInSet.length === 0">
+                    Keine Items im Set
                 </div>
+                <br>
+                <alert *ngIf="addItemFailed" type="danger" dismissible="true" (click)="addItemFailed = false">Artikelnr. existiert nicht</alert>
             </div>
             <div class="form-group">
                 <label for="price">Preis</label>
-                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
+                <input type="number" step="0.01" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
             </div>
             <div class="form-group">
                 <label for="pic">Bild</label>
@@ -61,5 +61,8 @@
                 <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Set speichern</button>
             </div>
         </form>
+        <alert *ngIf="createFailed"  type="danger" dismissible="true" (click)="createFailed = false">Artikelset anlegen fehlgeschlagen</alert>
+        <alert *ngIf="createSuccess"  type="success" dismissible="true" (click)="createSuccess = false">Artikelset anlegen erfolgreich</alert>
+
     </div>
 </div>

@@ -3,7 +3,6 @@
 <div class="row">
   <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
     <form (ngSubmit)="editItem()">
-
       <div class="form-group">
         <label for="name">Name des Artikels</label>
         <input type="text" class="form-control" id="name" name="name" [(ngModel)]="item.name" #name="ngModel"
@@ -26,13 +25,13 @@
       </div>
       <div class="form-group" id="categories">
         <label for="categories">Kategorie</label>
-        <div *ngFor="let cat of categories; let idx=index" class="order">
+        <div *ngFor="let cat of categories" class="order">
           <div class="row">
             <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
               {{cat.name}}
             </div>
             <div class="col-lg-3 col-lg-offset-1 col-md-4 col-sm-4 col-xs-12 order-col">
-              <input type="radio" name="radiogroup" [value]="cat.name" (change)="onCategorySelectionChange(cat)" required/>
+              <input type="radio" name="radiogroup" [checked]="activeCategory.c_id===cat.c_id" [value]="cat.name" (change)="onCategorySelectionChange(cat)" required/>
             </div>
           </div>
         </div>
@@ -59,12 +58,8 @@
       </div>
       <div class="form-group">
         <label for="price">Preis</label>
-        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price"
+        <input type="number" step="0.01" class="form-control" id="price" name="price" [(ngModel)]="item.price"
                #price="ngModel" required/>
-      </div>
-      <div class="form-group">
-        <label for="pic">Bild</label>
-        <input type="file" id="pic" name="pictureLink" (change)="fileChangeEvent($event)" required/>
       </div>
       <div class="form-group">
         <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading"
@@ -73,5 +68,8 @@
         </button>
       </div>
     </form>
+    <alert *ngIf="editFailed"  type="danger" dismissible="true" (click)="editFailed = false">Änderung fehlgeschlagen</alert>
+    <alert *ngIf="editSuccess"  type="success" dismissible="true" (click)="editSuccess = false">Änderung erfolgreich</alert>
+
   </div>
 </div>

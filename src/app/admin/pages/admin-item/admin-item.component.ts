@@ -13,6 +13,8 @@ export class AdminItemComponent implements OnInit {
     loading = false;
     userfile: any;
     categories: Array<Category> = [];
+    createFailed:boolean = false;
+    createSuccess:boolean = false;
 
     constructor(private adminService: AdminService, private itemService: ItemsService) {
 
@@ -42,22 +44,22 @@ export class AdminItemComponent implements OnInit {
     }
 
     uploadFile() {
-        var formData = new FormData();
+        let formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
         this.adminService.upload(formData, this.item.name).subscribe(
             data => {
                 this.loading = false;
-                console.log(data);
+                this.createSuccess = true;
             },
             error => {
                 console.log(error);
+                this.createFailed= true;
             }
         );
     }
 
     fileChangeEvent(event: any) {
         this.userfile = event.target.files[0];
-        console.log(this.userfile);
     }
 
     onCategorySelectionChange(cat: Category) {

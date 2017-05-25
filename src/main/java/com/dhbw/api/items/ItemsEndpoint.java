@@ -35,16 +35,6 @@ public interface ItemsEndpoint {
     Response getAllItems();
 
     /**
-     * Gets a category by its id
-     *
-     * @param categoryId id of the selected category, items in child categories should appear too
-     * @return Response object with the category object
-     */
-    @GET
-    @Path("category/{categoryId}")
-    Response getCategory(@PathParam("categoryId")  Long categoryId);
-
-    /**
      * Gets items of a category with a selected page
      * Request body contains ItemFilter object, which values are used to perform a query with filters
      *
@@ -53,7 +43,7 @@ public interface ItemsEndpoint {
      */
     @GET
     @Path("{categoryId}")
-    Response getItemsInCategory(@PathParam("categoryId")  Long categoryId);
+    Response getItemPage(@PathParam("categoryId")  Long categoryId);
 
     /**
      * Gets detail information of an item

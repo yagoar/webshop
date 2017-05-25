@@ -20,6 +20,7 @@ export class ItemsComponent implements OnInit {
   categories: Array<Category> = [];
   filters: Array<SideBarFilter>;
   selectedFilters: Array<FilterOption> = [];
+  loading: boolean = false;
 
   constructor(private route: ActivatedRoute, private itemsService : ItemsService) {
 
@@ -29,14 +30,14 @@ export class ItemsComponent implements OnInit {
 
     //Subscribe to id parameter in URL and get items
     this.route.params.subscribe(param => {
+      this.loading = true;
       this.categoryId = param['id'];
       if(param['childId'] != null) {
         this.childCategoryId = param['childId'];
-        this.getItemsinCategory(this.childCategoryId);
+        this.getItemPage(this.childCategoryId);
       } else {
-        this.getItemsinCategory(this.categoryId);
+        this.getItemPage(this.categoryId);
       }
-      this.getCategory();
     });
 
     //subscribe to filter changes
@@ -46,22 +47,14 @@ export class ItemsComponent implements OnInit {
 
   }
 
-  getItemsinCategory(catId) {
-    this.itemsService.getItemsInCategory(catId).subscribe(
+  getItemPage(catId) {
+    this.itemsService.getItemPage(catId).subscribe(
         data => {
-          this.items = data;
-          this.getFilters();
-        },
-        error => {
-
-        });
-  }
-
-  getCategory() {
-    this.itemsService.getCategory(this.categoryId).subscribe(
-        data => {
-          this.category = data;
+          this.items = data.items;
+          this.category = data.category;
           this.categories = this.category.childrenCategories;
+          this.getFilters();
+          this.loading = false;
         },
         error => {
           console.log(error);
@@ -110,7 +103,7 @@ export class ItemsComponent implements OnInit {
     this.filters.push(
         new SideBarFilter("Marke", brands),
         new SideBarFilter("Farbe", colors),
-        new SideBarFilter("Material", materials) )
+        new SideBarFilter("Material", materials) );
 
   }
 

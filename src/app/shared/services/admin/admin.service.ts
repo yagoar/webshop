@@ -2,9 +2,7 @@ import {Injectable} from "@angular/core";
 import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Item} from "../../models/shop/item";
 import {Observable} from "rxjs";
-import {AuthenticationService} from "../authentication/authentication.service";
 import {AdminAuthenticationService} from "../authentication/admin-authentication.service";
-import {User} from "../../models/user";
 
 @Injectable()
 export class AdminService {
@@ -47,8 +45,6 @@ export class AdminService {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         let options = new RequestOptions({ headers: headers });
 
-        console.log(this.adminAuthService.adminToken);
-
         return this.http.post(`/api/v1/file/upload/${itemName}`, file, options).map((response: Response) => response.text());
     }
 
@@ -58,6 +54,22 @@ export class AdminService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post('/api/v1/admin/users/admin', email, options).map((response: Response) => response.json());
+    }
+
+    editItem(item: Item) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(`/api/v1/admin/item/${item.i_id}`, item, options).map((response: Response) => response.text());
+    }
+
+    editItemSet(itemSet: Item) : Observable<any> {
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.post(`/api/v1/admin/itemSet/${itemSet.i_id}`, itemSet, options).map((response: Response) => response.text());
     }
 
 }

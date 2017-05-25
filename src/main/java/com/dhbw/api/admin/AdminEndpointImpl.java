@@ -113,7 +113,6 @@ public class AdminEndpointImpl implements AdminEndpoint {
             MultipleItem old = (MultipleItem) baseItemDao.findOne(itemSetId);
             old.setDeleted(true);
             baseItemDao.save(old);
-            itemSet.setItems(old.getItems());
             baseItemDao.save(itemSet);
             return Response.ok("Set erfolgreich geändert").build();
         } else return Response.status(Response.Status.FORBIDDEN).build();

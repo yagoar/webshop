@@ -3,6 +3,7 @@ import {AdminService} from "../../../shared/services/admin/admin.service";
 import {Category} from "../../../shared/models/shop/category";
 import {ItemsService} from "../../../shared/services/shop/items.service";
 import {Item} from "../../../shared/models/shop/item";
+import * as _ from "lodash";
 
 @Component({
     selector: 'admin-itemset',
@@ -15,7 +16,11 @@ export class AdminItemsetComponent implements OnInit {
     userfile: any;
     categories: Array<Category> = [];
     items: Array<Item> = [];
-    selectedItems: Array<Item> = [];
+    itemsInSet: Array<Item> = [];
+    itemInput: any = '';
+    createFailed:boolean = false;
+    createSuccess:boolean = false;
+    addItemFailed:boolean = false;
 
     constructor(private adminService: AdminService, private itemService: ItemsService) {
 
@@ -40,7 +45,7 @@ export class AdminItemsetComponent implements OnInit {
 
     createItemset() {
         this.loading = true;
-        this.item.items = this.selectedItems;
+        this.item.items = this.itemsInSet;
         this.adminService.createItemset(this.item).subscribe(
             data => {
                 this.item = data;
@@ -54,16 +59,28 @@ export class AdminItemsetComponent implements OnInit {
 
     uploadFile() {
         this.loading = true;
-        var formData = new FormData();
+        let formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
         this.adminService.upload(formData, this.item.name).subscribe(
             data => {
-                console.log(data);
+                this.createSuccess = true;
             },
             error => {
+                this.createFailed = true;
                 console.log(error);
             }
         );
+    }
+
+    addItem() {
+        if(this.itemInput !== "" && !Number.isNaN(this.itemInput)){
+            let item = _.filter(this.items, {articleNumber: Number(this.itemInput)})[0];
+            if(item != null) {
+                this.itemsInSet.push(item);
+            } else {
+                this.addItemFailed = true;
+            }
+        }
     }
 
     fileChangeEvent(event: any) {
@@ -74,17 +91,4 @@ export class AdminItemsetComponent implements OnInit {
     onCategorySelectionChange(cat: Category) {
         this.item.category = cat;
     }
-
-    onItemSelect(item: Item, event: any) {
-        if(event.target.checked) {
-            this.selectedItems.push(item);
-        }
-        else {
-            var index = this.selectedItems.indexOf(item);
-            if(index > -1) {
-                this.selectedItems.splice(index, 1);
-            }
-        }
-    }
-
 }

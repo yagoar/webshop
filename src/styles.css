@@ -144,6 +144,13 @@ input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
 
+/* - Date input- */
+.big-spinner {
+    padding-top: 35px;
+    color: #7c0d34;
+}
+
+
 /********************************************************
  * Logo header *
 ********************************************************/
@@ -210,6 +217,8 @@ input[type="date"]::-webkit-input-placeholder{
     min-height: 100%;
     overflow:auto;
     padding-bottom:22px;
+    height: 100%;
+    overflow-y: hidden;
 }
 
 /********************************************************
@@ -539,4 +548,9 @@ footer {
 
 #article-number-filter {
     width: 100%;
+}
+
+#set-add-input {
+    width: 100px;
+    display: inline;
 }

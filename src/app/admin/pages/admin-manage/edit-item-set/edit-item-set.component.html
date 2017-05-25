@@ -1,3 +1,64 @@
-<p>
-  edit-item-set works!
-</p>
+<h2 class="text-center">Set {{item.articleNumber}} editieren</h2>
+<br>
+<div class="row">
+  <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+    <form (ngSubmit)="editItemSet()">
+
+      <div class="form-group">
+        <label for="name">Name des Artikels</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="item.name" #name="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="articleNumber">Artikelnummer</label>
+        <input type="text" class="form-control" id="articleNumber" name="articleNumber" [(ngModel)]="item.articleNumber" #articleNumber="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="stock">Lagerbestand</label>
+        <input type="number" class="form-control" id="stock" name="stock" [(ngModel)]="item.stock" #stock="ngModel" required />
+      </div>
+      <div class="form-group">
+        <label for="description">Beschreibung</label>
+        <textarea type="text" class="form-control" id="description" name="description" [(ngModel)]="item.description" #description="ngModel" required> </textarea>
+      </div>
+      <div class="form-group" id="categories">
+        <label for="categories">Kategorie</label>
+        <div *ngFor="let cat of categories; let idx=index" class="order">
+          <div class="row">
+            <div class="col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col">
+              {{cat.name}}
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col">
+              <input type="radio" name="radiogroup" [checked]="activeCategory.c_id===cat.c_id" [value]="cat.name" (change)="onCategorySelectionChange(cat)" required/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" id="items">
+        <label for="items">Einzelartikel</label><br>
+        <input type="text" class="form-control" id="set-add-input" [(ngModel)]="itemInput" name="addItem" placeholder="Artikelnr."/>
+        <a class="btn btn-primary" (click)="addItem()">Hinzufügen</a> <br>
+        <br>
+        Artikel im Set:
+        <ul *ngFor="let item of itemsInSet">
+          <li> {{item.articleNumber}}  <a><i class="fa fa-times" aria-hidden="true" title="Artikel aus Artikelset entfernen" (click)="removeItem(item)"></i></a>
+
+        </ul>
+        <div *ngIf="itemsInSet.length === 0">
+          Keine Items im Set
+        </div>
+        <br>
+        <alert *ngIf="addItemFailed" type="danger" dismissible="true" (click)="addItemFailed = false">Artikelnr. existiert nicht</alert>
+      </div>
+      <div class="form-group">
+        <label for="price">Preis</label>
+        <input type="number" step="0.01" class="form-control" id="price" name="price" [(ngModel)]="item.price" #price="ngModel" required />
+      </div>
+      <div class="form-group">
+        <button type="submit" [disabled]="loading" class="btn btn-primary"><i *ngIf="loading" class="fa fa-spinner fa-spin"></i> Set speichern</button>
+      </div>
+    </form>
+    <alert *ngIf="editFailed"  type="danger" dismissible="true" (click)="editFailed = false">Änderung fehlgeschlagen</alert>
+    <alert *ngIf="editSuccess"  type="success" dismissible="true" (click)="editSuccess = false">Änderung erfolgreich</alert>
+
+  </div>
+</div>

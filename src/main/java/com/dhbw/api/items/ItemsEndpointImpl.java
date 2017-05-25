@@ -2,8 +2,10 @@ package com.dhbw.api.items;
 
 import com.dhbw.domain.item.BaseItem;
 import com.dhbw.domain.item.Category;
+import com.dhbw.domain.item.ItemPage;
 import com.dhbw.domain.item.repositories.BaseItemDao;
 import com.dhbw.domain.item.repositories.CategoryDao;
+import com.fasterxml.jackson.databind.deser.Deserializers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -41,58 +43,29 @@ public class ItemsEndpointImpl implements ItemsEndpoint {
     }
 
     @Override
-    public Response getCategory(Long categoryId) {
+    public Response getItemPage(Long categoryId) {
+
         Category parentCategory = categoryDao.findOne(categoryId);
-        parentCategory = getChildCategories(parentCategory);
-        return Response.status(Response.Status.OK).entity(parentCategory).build();
+        List<BaseItem> itemList = new ArrayList<>();
+        ItemPage itemPage = getChildCategories(parentCategory, itemList);
+
+        return Response.status(Response.Status.OK).entity(itemPage).build();
     }
 
-    private Category getChildCategories(Category parentCategory) {
+    private ItemPage getChildCategories(Category parentCategory, List<BaseItem> itemList) {
+
         parentCategory.setChildrenCategories(new ArrayList<>());
         List<Category> childCategories = categoryDao.getChildCategories(parentCategory);
-        if (childCategories.size() == 0) {
-            return parentCategory;
-        } else {
+        itemList.addAll(baseItemDao.findByCategory(parentCategory));
+
+        if (childCategories.size() > 0) {
             parentCategory.setChildrenCategories(childCategories);
             for (Category c : childCategories) {
-                getChildCategories(c);
+                getChildCategories(c, itemList);
             }
         }
-        return parentCategory;
-    }
 
-    @Override
-    public Response getItemsInCategory(Long categoryId) {
-        Category parentCategory = categoryDao.findOne(categoryId);
-        List<BaseItem> all = baseItemDao.findByCategory(parentCategory);
-        parentCategory = getChildCategories(parentCategory);
-        parentCategory = allChildItems(parentCategory);
-        List<Category> cats = parentCategory.getChildrenCategories();
-        for(Category cat : cats) {
-            if(cat.getChildrenItems() != null) {
-                all.addAll(cat.getChildrenItems());
-            }
-        }
-        return Response.status(Response.Status.OK).entity(all).type(MediaType.APPLICATION_JSON_TYPE).build();
-    }
-
-    private Category allChildItems(Category parentCategory) {
-        parentCategory.setChildrenItems(baseItemDao.findByCategory(parentCategory));
-        parentCategory = getChildCategories(parentCategory);
-        List<Category> allChildren = parentCategory.getChildrenCategories();
-        if(allChildren.isEmpty()) {
-            return parentCategory;
-        }
-        else {
-            for(Category cat : allChildren) {
-                List<BaseItem> catItems = baseItemDao.findByCategory(cat);
-                if(catItems != null) {
-                    parentCategory.setChildrenItems(catItems);
-                }
-                allChildItems(cat);
-            }
-        }
-        return parentCategory;
+        return new ItemPage(parentCategory, itemList);
     }
 
     @Override

@@ -55,9 +55,12 @@ export class AdminManageComponent implements OnInit {
         this.setPage(event.page);
     }
 
-    editItem(itemId) {
-        this.router.navigate([`/admin/manage/item/${itemId}`]);
-        //this.router.navigate([`/admin/manage/set/${itemId}`]);
+    editItem(item) {
+        if(item.dtype === "single"){
+            this.router.navigate([`/admin/manage/item/${item.i_id}`]);
+        }else if(item.dtype === "multiple"){
+            this.router.navigate([`/admin/manage/set/${item.i_id}`]);
+        }
     }
 
     deleteItem(itemId) {

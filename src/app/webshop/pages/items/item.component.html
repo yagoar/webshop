@@ -1,5 +1,5 @@
-<h2 class="text-center">{{category.name}}</h2>
-<div class="row">
+<h2 *ngIf="!loading" class="text-center">{{category.name}}</h2>
+<div *ngIf="!loading" class="row">
   <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
     <items-sidebar [categories]="categories" [filters]="filters" ></items-sidebar>
   </div>
@@ -7,5 +7,9 @@
     <div></div>
     <items-grid [items]="items"></items-grid>
   </div>
+</div>
+
+<div *ngIf="loading" class="row big-spinner text-center">
+  <i class="fa fa-spinner fa-spin fa-4x"></i><br>
 </div>
 

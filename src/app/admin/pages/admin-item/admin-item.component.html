@@ -59,7 +59,7 @@
             </div>
             <div class="form-group">
                 <label for="price">Preis</label>
-                <input type="number" class="form-control" id="price" name="price" [(ngModel)]="item.price"
+                <input type="number" step="0.01" class="form-control" id="price" name="price" [(ngModel)]="item.price"
                        #price="ngModel" required/>
             </div>
             <div class="form-group">
@@ -73,5 +73,7 @@
                 </button>
             </div>
         </form>
+        <alert *ngIf="createFailed"  type="danger" dismissible="true" (click)="createFailed = false">Artikel anlegen fehlgeschlagen</alert>
+        <alert *ngIf="createSuccess"  type="success" dismissible="true" (click)="createSuccess = false">Artikel anlegen erfolgreich</alert>
     </div>
 </div>
