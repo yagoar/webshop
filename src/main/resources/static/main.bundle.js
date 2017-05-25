@@ -142,7 +142,7 @@ var PagerService = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -458,21 +458,22 @@ var AdminItemsetComponent = (function () {
         this.loading = true;
         this.item.items = this.itemsInSet;
         this.adminService.createItemset(this.item).subscribe(function (data) {
-            _this.item = data;
+            _this.itemId = data;
+            _this.uploadFile();
         }, function (error) {
             console.log(error);
         });
-        this.uploadFile();
     };
     AdminItemsetComponent.prototype.uploadFile = function () {
         var _this = this;
-        this.loading = true;
         var formData = new FormData();
         formData.append("file", this.userfile, this.userfile.name);
-        this.adminService.upload(formData, this.item.name).subscribe(function (data) {
+        this.adminService.upload(formData, this.itemId).subscribe(function (data) {
             _this.createSuccess = true;
+            _this.loading = false;
         }, function (error) {
             _this.createFailed = true;
+            _this.loading = false;
             console.log(error);
         });
     };
@@ -481,15 +482,18 @@ var AdminItemsetComponent = (function () {
             var item = __WEBPACK_IMPORTED_MODULE_3_lodash__["filter"](this.items, { articleNumber: Number(this.itemInput) })[0];
             if (item != null) {
                 this.itemsInSet.push(item);
+                this.itemInput = "";
             }
             else {
                 this.addItemFailed = true;
             }
         }
     };
+    AdminItemsetComponent.prototype.removeItem = function (item) {
+        __WEBPACK_IMPORTED_MODULE_3_lodash__["remove"](this.itemsInSet, item);
+    };
     AdminItemsetComponent.prototype.fileChangeEvent = function (event) {
         this.userfile = event.target.files[0];
-        console.log(this.userfile);
     };
     AdminItemsetComponent.prototype.onCategorySelectionChange = function (cat) {
         this.item.category = cat;
@@ -609,6 +613,7 @@ var AdminManageComponent = (function () {
         this.filteredItems = [];
         this.pager = {};
         this.pageSize = 30;
+        this.deleteSuccess = false;
         this.artNrFilter = "";
     }
     AdminManageComponent.prototype.ngOnInit = function () {
@@ -650,11 +655,20 @@ var AdminManageComponent = (function () {
             this.router.navigate([("/admin/manage/set/" + item.i_id)]);
         }
     };
-    AdminManageComponent.prototype.deleteItem = function (itemId) {
+    AdminManageComponent.prototype.deleteItem = function (item) {
         var _this = this;
-        this.adminService.deleteItem(itemId).subscribe(function (data) {
-            _this.getAllItems();
-        });
+        if (item.dtype === "single") {
+            this.adminService.deleteItem(item.i_id).subscribe(function (data) {
+                _this.deleteSuccess = true;
+                _this.getAllItems();
+            });
+        }
+        else if (item.dtype === "multiple") {
+            this.adminService.deleteItemSet(item.i_id).subscribe(function (data) {
+                _this.deleteSuccess = true;
+                _this.getAllItems();
+            });
+        }
     };
     AdminManageComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -755,6 +769,7 @@ var EditItemSetComponent = (function () {
             var item = __WEBPACK_IMPORTED_MODULE_3_lodash__["filter"](this.items, { articleNumber: Number(this.itemInput) })[0];
             if (item != null) {
                 this.itemsInSet.push(item);
+                this.itemInput = "";
             }
             else {
                 this.addItemFailed = true;
@@ -1834,7 +1849,7 @@ var WebshopComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
@@ -2024,7 +2039,13 @@ var AdminService = (function () {
         // add authorization header with jwt token
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.put("/api/v1/admin/item/" + itemId, options).map(function (response) { return response.text(); });
+        return this.http.delete("/api/v1/admin/item/" + itemId, options).map(function (response) { return response.text(); });
+    };
+    AdminService.prototype.deleteItemSet = function (itemId) {
+        // add authorization header with jwt token
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
+        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
+        return this.http.delete("/api/v1/admin/itemSet/" + itemId, options).map(function (response) { return response.text(); });
     };
     AdminService.prototype.getAllUsers = function () {
         // add authorization header with jwt token
@@ -2032,11 +2053,11 @@ var AdminService = (function () {
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
         return this.http.get('/api/v1/admin/users/admin', options).map(function (response) { return response.json(); });
     };
-    AdminService.prototype.upload = function (file, itemName) {
+    AdminService.prototype.upload = function (file, itemId) {
         // add authorization header with jwt token
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'Bearer ' + this.adminAuthService.adminToken });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: headers });
-        return this.http.post("/api/v1/file/upload/" + itemName, file, options).map(function (response) { return response.text(); });
+        return this.http.post("/api/v1/file/upload/" + itemId, file, options).map(function (response) { return response.text(); });
     };
     AdminService.prototype.makeAdmin = function (email) {
         // add authorization header with jwt token
@@ -2605,6 +2626,8 @@ var TreeCategoryComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__authentication_authentication_service__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2618,13 +2641,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var UserService = (function () {
     function UserService(http, authenticationService) {
         this.http = http;
         this.authenticationService = authenticationService;
     }
     UserService.prototype.create = function (user) {
-        return this.http.put('/api/v1/user/register', user).map(function (response) { return response.text(); });
+        return this.http.put('/api/v1/user/register', user).map(function (res) {
+            if (res) {
+                if (res.status === 201) {
+                    return [{ status: res.status, json: res }];
+                }
+                else if (res.status === 200) {
+                    return [{ status: res.status, json: res }];
+                }
+            }
+        }).catch(function (error) {
+            if (error.status === 400) {
+                return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(new Error(error.status));
+            }
+        });
     };
     UserService.prototype.getUserInfo = function () {
         // add authorization header with jwt token
@@ -2871,7 +2908,7 @@ var OrderHistoryComponent = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_services_shop_user_service__ = __webpack_require__(75);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterComponent; });
@@ -2900,6 +2937,8 @@ var RegisterComponent = (function () {
         this.diffAddress = false;
         this.billingAddress = {};
         this.shippingAddress = {};
+        this.registerFailed = false;
+        this.registerSuccess = false;
         this.datepicker = false;
     }
     RegisterComponent.prototype.ngOnInit = function () {
@@ -2916,9 +2955,13 @@ var RegisterComponent = (function () {
         this.userService.create(this.user)
             .subscribe(function (data) {
             _this.loading = false;
-            _this.router.navigate(['/shop/login'], { queryParams: { returnUrl: _this.returnUrl } });
+            _this.registerSuccess = true;
+            window.scrollTo(0, 0);
+            setTimeout(function () { return _this.router.navigate(['/shop/login'], { queryParams: { returnUrl: _this.returnUrl } }); }, 3000);
         }, function (error) {
             _this.loading = false;
+            _this.registerFailed = true;
+            window.scrollTo(0, 0);
         });
     };
     RegisterComponent.prototype.showDatepicker = function () {
@@ -3909,7 +3952,7 @@ module.exports = "<h2 class=\"text-center\">Artikel anlegen</h2>\n<br>\n<div cla
 /***/ 855:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Set anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1\">\n        <form (ngSubmit)=\"createItemset()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\n            </div>\n            <div class=\"form-group\" id=\"categories\">\n                <label for=\"categories\">Kategorie</label>\n                <div *ngFor=\"let cat of categories; let idx=index\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{cat.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"radio\" name=\"radiogroup\" [value]=\"cat.name\" (change)=\"onCategorySelectionChange(cat)\" required/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\" id=\"items\">\n                <label for=\"items\">Einzelartikel</label><br>\n                <input type=\"text\" class=\"form-control\" id=\"set-add-input\" [(ngModel)]=\"itemInput\" name=\"addItem\" placeholder=\"Artikelnr.\"/>\n                <a class=\"btn btn-primary\" (click)=\"addItem()\">Hinzufügen</a> <br>\n                <br>\n                Artikel im Set:\n                <ul *ngFor=\"let item of itemsInSet\">\n                    <li> {{item.articleNumber}}\n                </ul>\n                <div *ngIf=\"itemsInSet.length === 0\">\n                    Keine Items im Set\n                </div>\n                <br>\n                <alert *ngIf=\"addItemFailed\" type=\"danger\" dismissible=\"true\" (click)=\"addItemFailed = false\">Artikelnr. existiert nicht</alert>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" step=\"0.01\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\n            </div>\n        </form>\n        <alert *ngIf=\"createFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"createFailed = false\">Artikelset anlegen fehlgeschlagen</alert>\n        <alert *ngIf=\"createSuccess\"  type=\"success\" dismissible=\"true\" (click)=\"createSuccess = false\">Artikelset anlegen erfolgreich</alert>\n\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Set anlegen</h2>\n<br>\n<div class=\"row\">\n    <div class=\"col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1\">\n        <form (ngSubmit)=\"createItemset()\">\n\n            <div class=\"form-group\">\n                <label for=\"name\">Name des Artikels</label>\n                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" [(ngModel)]=\"item.name\" #name=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"articleNumber\">Artikelnummer</label>\n                <input type=\"text\" class=\"form-control\" id=\"articleNumber\" name=\"articleNumber\" [(ngModel)]=\"item.articleNumber\" #articleNumber=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"stock\">Lagerbestand</label>\n                <input type=\"number\" class=\"form-control\" id=\"stock\" name=\"stock\" [(ngModel)]=\"item.stock\" #stock=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"description\">Beschreibung</label>\n                <textarea type=\"text\" class=\"form-control\" id=\"description\" name=\"description\" [(ngModel)]=\"item.description\" #description=\"ngModel\" required> </textarea>\n            </div>\n            <div class=\"form-group\" id=\"categories\">\n                <label for=\"categories\">Kategorie</label>\n                <div *ngFor=\"let cat of categories; let idx=index\" class=\"order\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-9 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            {{cat.name}}\n                        </div>\n                        <div class=\"col-lg-3 col-md-4 col-sm-4 col-xs-12 order-col\">\n                            <input type=\"radio\" name=\"radiogroup\" [value]=\"cat.name\" (change)=\"onCategorySelectionChange(cat)\" required/>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"form-group\" id=\"items\">\n                <label for=\"items\">Einzelartikel</label><br>\n                <input type=\"text\" class=\"form-control\" id=\"set-add-input\" [(ngModel)]=\"itemInput\" name=\"addItem\" placeholder=\"Artikelnr.\"/>\n                <a class=\"btn btn-primary\" (click)=\"addItem()\">Hinzufügen</a> <br>\n                <br>\n                Artikel im Set:\n                <ul *ngFor=\"let item of itemsInSet\">\n                    <li> {{item.articleNumber}}  <a><i class=\"fa fa-times\" aria-hidden=\"true\" title=\"Artikel aus Artikelset entfernen\" (click)=\"removeItem(item)\"></i></a>\n                </ul>\n                <div *ngIf=\"itemsInSet.length === 0\">\n                    Keine Items im Set\n                </div>\n                <br>\n                <alert *ngIf=\"addItemFailed\" type=\"danger\" dismissible=\"true\" (click)=\"addItemFailed = false\">Artikelnr. existiert nicht</alert>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"price\">Preis</label>\n                <input type=\"number\" step=\"0.01\" class=\"form-control\" id=\"price\" name=\"price\" [(ngModel)]=\"item.price\" #price=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"pic\">Bild</label>\n                <input type=\"file\" id=\"pic\" name=\"pictureLink\" (change) = \"fileChangeEvent($event)\" required />\n            </div>\n\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Set speichern</button>\n            </div>\n        </form>\n        <alert *ngIf=\"createFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"createFailed = false\">Artikelset anlegen fehlgeschlagen</alert>\n        <alert *ngIf=\"createSuccess\"  type=\"success\" dismissible=\"true\" (click)=\"createSuccess = false\">Artikelset anlegen erfolgreich</alert>\n\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -3923,7 +3966,7 @@ module.exports = "<h2 class=\"text-center\">Login</h2>\n<div class=\"row\">\n  <
 /***/ 857:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n    <div class=\"col-lg-2 col-md-2 col-sm-2\">\n        <h4>Artikelnr.</h4>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-6\">\n        <h4>Name</h4>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-2 col-md-2 col-sm-2\">\n        <input type=\"text\" name=\"articleNrFilter\" placeholder=\"Artikelnr.\" class=\"input-field\" id=\"article-number-filter\" [ngModel]=\"artNrFilter\" (ngModelChange)=\"applyFilter($event)\"/>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\n        <div *ngFor=\"let item of pagedItems\" class=\"admin-item\">\n            <div *ngIf=\"!item.deleted\" class=\"row\">\n                <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12 admin-item-col\">\n                    {{item.articleNumber}}\n                </div>\n                <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 admin-item-col\">\n                    {{item.name}}\n                </div>\n                <div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-12\">\n                    <a (click)=\"editItem(item)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>\n                </div>\n                <div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-12\">\n                    <a (click)=\"deleteItem(item.i_id)\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"text-center\">\n        <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"filteredItems.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                    previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Artikel verwalten</h2>\n<alert *ngIf=\"deleteSuccess\"  type=\"success\" dismissible=\"true\" (click)=\"deleteSuccess = false\">Artikel/Set erfolgreich gelöscht</alert>\n<div class=\"row\">\n    <div class=\"col-lg-2 col-md-2 col-sm-2\">\n        <h4>Artikelnr.</h4>\n    </div>\n    <div class=\"col-lg-6 col-md-6 col-sm-6\">\n        <h4>Name</h4>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-2 col-md-2 col-sm-2\">\n        <input type=\"text\" name=\"articleNrFilter\" placeholder=\"Artikelnr.\" class=\"input-field\" id=\"article-number-filter\" [ngModel]=\"artNrFilter\" (ngModelChange)=\"applyFilter($event)\"/>\n    </div>\n</div>\n<div class=\"row\">\n    <div class=\"col-lg-12 col-md-12 col-sm-12 \">\n        <div *ngFor=\"let item of pagedItems\" class=\"admin-item\">\n            <div *ngIf=\"!item.deleted\" class=\"row\">\n                <div class=\"col-lg-2 col-md-2 col-sm-2 col-xs-12 admin-item-col\">\n                    {{item.articleNumber}}\n                </div>\n                <div class=\"col-lg-6 col-md-6 col-sm-6 col-xs-12 admin-item-col\">\n                    {{item.name}}\n                </div>\n                <div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-12\">\n                    <a (click)=\"editItem(item)\"><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i></a>\n                </div>\n                <div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-12\">\n                    <a (click)=\"deleteItem(item)\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<div class=\"row\">\n    <div class=\"text-center\">\n        <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"filteredItems.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                    previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -4021,7 +4064,7 @@ module.exports = "<h3 class=\"text-center\">Bestellhistorie</h3>\n\n<div class=\
 /***/ 871:
 /***/ (function(module, exports) {
 
-module.exports = "<h2 class=\"text-center\">Registrierung</h2>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <form (ngSubmit)=\"register()\">\n            <div class=\"form-group\">\n                <label>Anrede</label>\n                <ng-select id=\"gender\"\n                           [allowClear]=\"false\"\n                           [items]=\"gender\"\n                           [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                           (data)=\"setGender($event)\"\n                           placeholder=\"Keine Anrede\">\n                </ng-select>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"firstName\">Vorname</label>\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" [(ngModel)]=\"user.firstName\" #firstName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Nachname</label>\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" [(ngModel)]=\"user.lastName\" #lastName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Geburtsdatum</label>\n                <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"tt.mm.jjjj\" [(ngModel)]=\"user.dateOfBirth\" (focus)=\"showDatepicker()\" #dateOfBirth=\"ngModel\"  required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"username\">E-Mail</label>\n                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"user.email\" #username=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Passwort</label>\n                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"user.password\" #password=\"ngModel\" minlength=\"8\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilstreet\">Straße Nr.</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilstreet\" name=\"bilstreet\" [(ngModel)]=\"billingAddress.streetNo\" #bilstreet=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilcity\">Stadt</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcity\" name=\"bilcity\" [(ngModel)]=\"billingAddress.city\" #bilcity=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilzip\">Postleitzahl</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilzip\" name=\"bilzip\" [(ngModel)]=\"billingAddress.zip\" #bilzip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"shizip\">Land</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcountry\" name=\"bilcountry\" [(ngModel)]=\"billingAddress.country\" #shizip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"diffAddress\" [(ngModel)]=\"diffAddress\" />Andere Lieferaddresse</label>\n            </div>\n            <div *ngIf=\"diffAddress\">\n                <div class=\"form-group\">\n                    <label>Anrede</label>\n                    <ng-select id=\"gender\"\n                               [allowClear]=\"false\"\n                               [items]=\"gender\"\n                               [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                               (data)=\"setAddrGender($event)\"\n                               placeholder=\"Keine Anrede\">\n                    </ng-select>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"firstName\">Vorname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiFirstName\" name=\"shiFirstName\" [(ngModel)]=\"shippingAddress.firstName\" #firstName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"lastName\">Nachname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiLastName\" name=\"shiLastName\" [(ngModel)]=\"shippingAddress.lastName\" #lastName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shistreet\">Straße Nr.</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shistreet\" name=\"shistreet\" [(ngModel)]=\"shippingAddress.streetNo\" #shistreet=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shicity\">Stadt</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicity\" name=\"shicity\" [(ngModel)]=\"shippingAddress.city\" #shicity=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Postleitzahl</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shizip\" name=\"shizip\" [(ngModel)]=\"shippingAddress.zip\" #shizip=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Land</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicountry\" name=\"shicountry\" [(ngModel)]=\"shippingAddress.country\" #shizip=\"ngModel\" required />\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Registrieren</button>\n            </div>\n        </form>\n        <p>Sie haben bereits ein Konto? <a href=\"#/shop/login\"><button class=\"btn btn-secondary\">Anmelden</button></a></p>\n    </div>\n</div>\n"
+module.exports = "<h2 class=\"text-center\">Registrierung</h2>\n<div class=\"row\">\n    <div class=\"col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3\">\n        <alert *ngIf=\"registerFailed\"  type=\"danger\" dismissible=\"true\" (click)=\"registerFailed = false\">Benutzer mit der angegebenen E-Mail existiert bereits</alert>\n        <alert *ngIf=\"registerSuccess\"  type=\"success\" dismissible=\"false\">Registrierung erfolgreich, Sie werden zum Login weitergeleitet...</alert>\n        <form (ngSubmit)=\"register()\">\n            <div class=\"form-group\">\n                <label>Anrede</label>\n                <ng-select id=\"gender\"\n                           [allowClear]=\"false\"\n                           [items]=\"gender\"\n                           [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                           (data)=\"setGender($event)\"\n                           placeholder=\"Keine Anrede\">\n                </ng-select>\n            </div>\n            <div class=\"form-group\">\n                <label for=\"firstName\">Vorname</label>\n                <input type=\"text\" class=\"form-control\" id=\"firstName\" name=\"firstName\" [(ngModel)]=\"user.firstName\" #firstName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Nachname</label>\n                <input type=\"text\" class=\"form-control\" id=\"lastName\" name=\"lastName\" [(ngModel)]=\"user.lastName\" #lastName=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"lastName\">Geburtsdatum</label>\n                <input type=\"date\" class=\"form-control\" id=\"dateOfBirth\" name=\"dateOfBirth\" placeholder=\"tt.mm.jjjj\" [(ngModel)]=\"user.dateOfBirth\" (focus)=\"showDatepicker()\" #dateOfBirth=\"ngModel\"  required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"username\">E-Mail</label>\n                <input type=\"text\" class=\"form-control\" id=\"username\" name=\"username\" [(ngModel)]=\"user.email\" #username=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"password\">Passwort</label>\n                <input type=\"password\" class=\"form-control\" id=\"password\" name=\"password\" [(ngModel)]=\"user.password\" #password=\"ngModel\" minlength=\"8\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilstreet\">Straße Nr.</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilstreet\" name=\"bilstreet\" [(ngModel)]=\"billingAddress.streetNo\" #bilstreet=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilcity\">Stadt</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcity\" name=\"bilcity\" [(ngModel)]=\"billingAddress.city\" #bilcity=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"bilzip\">Postleitzahl</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilzip\" name=\"bilzip\" [(ngModel)]=\"billingAddress.zip\" #bilzip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label for=\"shizip\">Land</label>\n                <input type=\"text\" class=\"form-control\" id=\"bilcountry\" name=\"bilcountry\" [(ngModel)]=\"billingAddress.country\" #shizip=\"ngModel\" required />\n            </div>\n            <div class=\"form-group\">\n                <label class=\"checkbox-inline\"><input type=\"checkbox\" name=\"diffAddress\" [(ngModel)]=\"diffAddress\" />Andere Lieferaddresse</label>\n            </div>\n            <div *ngIf=\"diffAddress\">\n                <div class=\"form-group\">\n                    <label>Anrede</label>\n                    <ng-select id=\"gender\"\n                               [allowClear]=\"false\"\n                               [items]=\"gender\"\n                               [active]=\"[{id: 'FEMALE', text:'Frau'}]\"\n                               (data)=\"setAddrGender($event)\"\n                               placeholder=\"Keine Anrede\">\n                    </ng-select>\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"firstName\">Vorname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiFirstName\" name=\"shiFirstName\" [(ngModel)]=\"shippingAddress.firstName\" #firstName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"lastName\">Nachname</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shiLastName\" name=\"shiLastName\" [(ngModel)]=\"shippingAddress.lastName\" #lastName=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shistreet\">Straße Nr.</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shistreet\" name=\"shistreet\" [(ngModel)]=\"shippingAddress.streetNo\" #shistreet=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shicity\">Stadt</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicity\" name=\"shicity\" [(ngModel)]=\"shippingAddress.city\" #shicity=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Postleitzahl</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shizip\" name=\"shizip\" [(ngModel)]=\"shippingAddress.zip\" #shizip=\"ngModel\" required />\n                </div>\n                <div class=\"form-group\">\n                    <label for=\"shizip\">Land</label>\n                    <input type=\"text\" class=\"form-control\" id=\"shicountry\" name=\"shicountry\" [(ngModel)]=\"shippingAddress.country\" #shizip=\"ngModel\" required />\n                </div>\n            </div>\n            <div class=\"form-group\">\n                <button type=\"submit\" [disabled]=\"loading\" class=\"btn btn-primary\"><i *ngIf=\"loading\" class=\"fa fa-spinner fa-spin\"></i> Registrieren</button>\n            </div>\n        </form>\n        <p>Sie haben bereits ein Konto? <a href=\"#/shop/login\"><button class=\"btn btn-secondary\">Anmelden</button></a></p>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -4084,7 +4127,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-lg-4 col-lg-offset-2 c
 /***/ 880:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row item-grid\">\n  <div *ngFor=\"let item of pagedItems\">\n    <div class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\">\n      <a href=\"/#/shop/details/{{item.i_id}}\">\n        <div class=\"item-grid-img-wrapper\">\n        <img class=\"img-responsive center-block\" src = \"api/v1/items/images/{{item.i_id}}\"/>\n        </div>\n      </a>\n      <div class=\"item-info\">\n        <div class=\"item-name\"><a href=\"/#/shop/details/{{item.i_id}}\"><b>{{item.name}}</b></a></div>\n        <div class=\"item-brand\">{{item.brand}}</div>\n        <div class=\"item-price\">\n          <button type=\"button\" (click)=\"addToCart(item)\" class=\"btn btn-secondary\">\n            <i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> <b>{{item.price | currency:'EUR':true}}</b>\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"text-center\">\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"filteredItems.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n  </div>\n</div>\n\n"
+module.exports = "<div class=\"row item-grid\">\n  <div *ngFor=\"let item of pagedItems\">\n    <div *ngIf=\"!item.deleted\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\">\n      <a href=\"/#/shop/details/{{item.i_id}}\">\n        <div class=\"item-grid-img-wrapper\">\n        <img class=\"img-responsive center-block\" src = \"api/v1/items/images/{{item.i_id}}\"/>\n        </div>\n      </a>\n      <div class=\"item-info\">\n        <div class=\"item-name\"><a href=\"/#/shop/details/{{item.i_id}}\"><b>{{item.name}}</b></a></div>\n        <div class=\"item-brand\">{{item.brand}}</div>\n        <div class=\"item-price\">\n          <button type=\"button\" (click)=\"addToCart(item)\" class=\"btn btn-secondary\">\n            <i class=\"fa fa-shopping-basket\" aria-hidden=\"true\"></i> <b>{{item.price | currency:'EUR':true}}</b>\n          </button>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"row\">\n  <div class=\"text-center\">\n    <pagination [itemsPerPage]=\"pageSize\" [boundaryLinks]=\"true\" [totalItems]=\"filteredItems.length\" [maxSize]=\"6\" [(ngModel)]=\"pager.currentPage\" class=\" pagination-sm\"\n                previousText=\"&lsaquo;\" nextText=\"&rsaquo;\" firstText=\"&laquo;\" lastText=\"&raquo;\" (pageChanged)=\"onPageChange($event)\"></pagination>\n  </div>\n</div>\n\n"
 
 /***/ }),
 
