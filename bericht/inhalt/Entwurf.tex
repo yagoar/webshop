@@ -1,6 +1,6 @@
-\section{Entwurf} \thispagestyle{nomarkstyle}
+\section{Entwurf}\label{outline} \thispagestyle{nomarkstyle}
 
-\subsection{Datenmodell}
+\subsection{Datenmodell}\label{outline_datamodel}
 Beim Etnwurf des Datenmodells wurde darauf geachtet, es möglichst schlank zu halten und nur benötigte Informationen zu speichern.
 Die grundlegenden Entitäten sind:
 \begin{itemize}
@@ -12,6 +12,7 @@ Die grundlegenden Entitäten sind:
 \item\textbf{ShoppingOrder.} getätigte Bestellungen
 \end{itemize}
 
+
 Abbildung \ref{fig:ERM} zeigt das Datenmodell in der Gesamtsicht.
 \begin{figure}[th!]
 	\centering
@@ -21,6 +22,7 @@ Abbildung \ref{fig:ERM} zeigt das Datenmodell in der Gesamtsicht.
 \end{figure}
 
 Die Beziehungen zwischen den Entitäten sind entweder direkt per Fremdschlüssel oder über Beziehungstabellen dargestellt und werden im Folgenden kurz beschrieben.
+
 Ein User hat eine Lieferadresse (Shipping address) und eine Rechnungsadresse (Billing address).
 Um die bereits angesprochene Hierarchie von Kategorien abzubilden, können Kategorien eine Eltern-Kategorie haben (Parent category).
 Jeder Artikel ist genau einer Kategorie zugeordnet. Für die im Shop so genannten Sets mit mehreren Artikeln, gibt es eine zusätzliche Tabelle, die einem Set mehrere Einzel-Artikel zuordnen kann.
