@@ -97,14 +97,9 @@ In dieser letzten Variante wird wie bei Table-per-subclass für alle Entitäten 
 Die Zuordnung wird über UNION-Operationen hergestellt, was ebenfalls zu Performance-Verlusten bei großen Klassen-Hierarchien führen kann.
 
 Innerhalb des Webshops wurde für die Hierarchie bei Artikeln die \enquote{Single Table}-Strategie gewählt.
-Abbildung \ref{fig:inheritanceMapping} zeigt die Klassen-Definitionen mit den Annotationen für das \acs{ORM}.
+\cref{lst:inheritanceMapping} zeigt die Klassen-Definitionen mit den Annotationen für das \acs{ORM}.
 
-\begin{figure}[th!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{bilder/kap7/Vererbungshierarchie}
-	\caption{Vererbungshierarchie}
-	\label{fig:inheritanceMapping}
-\end{figure}
+\lstinputlisting[language=Java, breaklines=true, caption=Vererbungshierarchie, label=lst:inheritanceMapping]{listings/Inheritance.java}
 
 \subsection{REST-Schnittstellen}
 %TODO Aufbau der Rest-Interfaces + Implementierungen, evtl. Klassendiagramme. 
