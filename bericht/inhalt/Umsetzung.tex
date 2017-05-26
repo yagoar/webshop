@@ -50,16 +50,11 @@ Diese gewährleisten den Zugriff auf die Datenbank und bieten außerdem Funktion
 Von den \acs{DAO}-Klassen gelieferte Datensätze können als Instanzen der repräsentierenden Klasse weiterverwendet werden.
 Für die Realisierung dieser Zugriffs-Klassen wurden Spring Data \acs{JPA} Repositories verwendet, die neben den grundlegenden \acs{CRUD}-Operationen eine Vielzahl an möglichen Abfragen ermöglichen.
 
-\begin{figure}[th!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{bilder/kap7/JpaRepo}
-	\caption{CategoryDao.java}
-	\label{fig:CategoryDao}
-\end{figure}
+\lstinputlisting[language=java,breaklines=true, firstline=15,caption=CategoryDao.java,label=lst:CategoryDao]{listings/CategoryDao.java}
 
-\cref{fig:CategoryDao} zeigt eine solche \acs{DAO}-Klasse.
+\cref{lst:CategoryDao} zeigt eine solche \acs{DAO}-Klasse.
 Zugriffs-Funktionen zu definieren kann auf unterschiedliche Art und Weise passieren. Zum einen ermöglichen diese Repositories es, Suchkriterien über den Namen der jeweiligen Funktion zu definieren.
-So kann beispielsweise über eine Funktion "findByName(String name)" der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung "Name" enthält. Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
+So kann beispielsweise über eine Funktion \textit{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält. Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
 Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (@Query)eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
 
 \subsection{Objektrelationale Abbildung (\acs{ORM}) mit Hibernate}
@@ -82,19 +77,34 @@ Für die Beziehungen zu anderen Entitäten können entsprechend der Kardinalitä
 \item{@ManyToMany}
 \end{itemize}
 
-Über Parameter dieser Annotationen können neben der Ziel-Entität für die Relationen weitere Einstellungen gemacht werden, auf die hier nicht näher eingegangen werden soll.
+Über Parameter dieser Annotationen können neben der Ziel-Entität weitere Einstellungen (beispielsweise zum Cascading) gemacht werden, auf die hier nicht näher eingegangen werden soll.
 
 \subsubsection{Vererbung von Klassen}
 Eine Vererbungshierarchie von Klassen kann mit verschiedenen Strategien in der Datenbank abgebildet werden.
-Hibernate bietet dafür drei grundlegende Varianten an:
+Hibernate bietet dafür vier grundlegende Varianten an \cite{Mihalcea2017}:
+\paragraph{Mapped Superclass}$\;$ \\
+In dieser einfachsten Form der Abbildung einer Vererbung wird für jede konkrete Ausprägung der vererbenden Klasse eine eigene Tabelle angelegt, die neben ihren eigenen auch alle Spalten der Eltern-Klasse enthält.
+Die Vererbungshierarchie wird damit nicht explizit im Datenmodell ersichtlich.
 \paragraph{Single table}$\;$ \\
+Dabei werden alle erbenden Klassen in einer einzigen Tabelle in der Datenbank abgebildet. Dadurch enthält die Tabelle viele Spalten, da alle Attribute jeder Sub-Klasse enthalten sind.
+Für einzelne Datensätze einer bestimmten erbenden Klasse werden nicht benötigte Spalten mit \enquote{null}-Werten belegt.
+Um zu unterscheiden welche Datensätze zu welcher Sub-Klasse gehören wird außerdem eine sogenannte \enquote{Discriminator Column} definiert.
+Dieser Ansatz ist sehr performant, da für Abfragen immer nur eine Tabelle verwendet werden muss.
+\paragraph{Table-per-subclass}$\;$ \\
+Hier wird für die vererbende und jede erbende Klasse eine eigene Tabelle in der Datenbank erzeugt. Letzere enthalten dabei nur die Attribute, die sie zusätzlich zu den der Eltern-Klasse haben. Die Zuordnung zur Eltern-Klasse wird über JOINS hergestellt, was die Performanz bei häufigen Abfragen negativ beeinflussen kann.
+\paragraph{Table-per-concrete-class}$\;$ \\
+In dieser letzten Variante wird wie bei Table-per-subclass für alle Entitäten eine Tabelle erzeugt. Diese enthalten jedoch jeweils alle eigenen und die Attribute der Eltern-Klasse.
+Die Zuordnung wird über UNION-Operationen hergestellt, was ebenfalls zu Performance-Verlusten bei großen Klassen-Hierarchien führen kann.
 
-\paragraph{Table per class}$\;$ \\
-\paragraph{Joined}$\;$ \\
+Innerhalb des Webshops wurde für die Hierarchie bei Artikeln die \enquote{Single Table}-Strategie gewählt.
+Abbildung \ref{fig:inheritanceMapping} zeigt die Klassen-Definitionen mit den Annotationen für das \acs{ORM}.
 
-
-
-%TODO Eine Klasse pro Entität in der Datenbank + DAO-Klasse, Beispiele für die Realisierung von Beziehungen usw. zeigen (ORM-Annotationen)
+\begin{figure}[th!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{bilder/kap7/Vererbungshierarchie}
+	\caption{Vererbungshierarchie}
+	\label{fig:inheritanceMapping}
+\end{figure}
 
 \subsection{REST-Schnittstellen}
 %TODO Aufbau der Rest-Interfaces + Implementierungen, evtl. Klassendiagramme. 
