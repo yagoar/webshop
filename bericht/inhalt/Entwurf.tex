@@ -37,4 +37,26 @@ Ohne diese Lösung müsste es für eine Bestellung von beispielsweise dreißig E
 %TODO Klassendiagramme
 
 \subsection{Design der Weboberfläche}
-%TODO UI Mockups
+Vor Beginn der Implementierung wurde ein Konzept für das Design der Weboberfläche erstellt. Der Fokus lag hierbei eher auf die strukturelle Aspekte der Anwendung, also die Platzierung von den unterschiedlichen Elementen auf der Oberfläche, und nicht so sehr auf das genaue Aussehen dieser Elementen. Der Grund dafür ist, dass die Struktur einen direkten Einfluss auf die Implementierung der Komponenten hat, während Farben, Schriftarten, Icons usw. auch im Verlauf der Entwicklung ohne einen größeren Umbau verändert werden können.
+
+\cref{fig:mockup_shop} zeigt die grundlegende Struktur der Shop-Oberfläche im Browser. Wie man sehen kann, ist der Entwurf sehr simpel und intuitiv gehalten. Eine Leiste im Kopfbereich enthält die Links zum Benutzerbereich und zum Warenkorb. Die größere Menüleiste unter dem Logo erlaubt die Navigation zwischen den Hauptkategorien des Webshops. Je nachdem in welchem Bereich der Anwendung sich der Benutzer befindet, variiert der Inhalt der Seite. Prinzipiell soll es fünf unterschiedliche Arten des Inhaltes geben: die Startseite, die Produktlisten zur gewählten Kategorie, die Kontoübersicht, der Warenkorb und die Bestellmaske. Die Mockups dazu sind im Anhang zu finden. %TODO Anhang Mockups
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\linewidth]{bilder/kap6/mockup_shop.png}
+	\caption{Mockup des Webshops}
+	\label{fig:mockup_shop}
+\end{figure}
+
+Da eine wachsende Mehrheit der Nutzer mobile Geräte für ihre Internetzugriffe verwendet ist es sehr wichtig eine Strategie für die Darstellung der Weboberfläche in solchen Geräten zu definieren. Die in 2016 von der Mediaagentur Zenithmedia veröffentlichte Vorhersage sagte aus, dass in 2017 weltweit 75 der Internetnutzung über mobile Geräte erfolgen wird, 79 in 2018\footcite[Vgl.][]{Zenithmedia2016}.
+
+Es gibt verschiedene Ansätze, um Webseiten für unterschiedliche Displaygrößen zu optimieren. Eine Möglichkeit wäre es, eine zweite Version der Webseite zu erstellen, welche speziell für die Nutzung auf mobilen Endgeräten angepasst ist. Eine weitere, modernere Alternative sind Paradigmen wie \textit{Responsive} und \textit{Adaptative} Webdesign. In beiden Fällen werden sogenannte Breakpoints für die Größe des Displays gesetzt, bei denen die Webseite skaliert und sich an die neue Auflösung anpasst. Der Unterschied liegt darin, dass beim Adaptative Design eine feste Anzahl an Breakpoints gesetzt wird und es keine Übergänge dazwischen gibt, während beim Responsive Design eine fluide Anpassung auch zwischen den Breakpoints möglich ist.
+
+Der für dieses Projekt ausgewählte Ansatz ist Responsive Webdesign, da es mithilfe der geplanten Technologien einfach zu realisieren ist. Auf \cref{fig:mockup_mobile} ist wieder die Grundstruktur der Webseite zu sehen, jedoch auf die Größe eines Smartphone-Displays skaliert. Eine wichtige Änderung die bei dieser Skalierung geschehen sollte ist die an der Menüleiste. Diese sollte nicht länger als Leiste dargestellt werden, sondern als auf- und zuklappbares Dropdown-Menü. 
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.35\linewidth]{bilder/kap6/mockup_mobile.png}
+	\caption{Mockup des Webshops Handy Version}
+	\label{fig:mockup_mobile}
+\end{figure}

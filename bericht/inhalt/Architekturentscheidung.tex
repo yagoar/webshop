@@ -13,19 +13,20 @@ In den nächsten Seiten werden die theoretische Grundlagen zu den einzelnen Komp
 \subsection{Spring Boot Anwendung}
 Spring ist ein Framework für die Entwicklung von Applikationen in der Programmiersprache Java. Das Framework kann für alle Arten von Java-Anwendungen genutzt werden, da eine große Vielfalt an Abhängigkeiten für die unterschiedlichsten Funktionalitäten zur Verfügung steht.
 
-Ursprünglich entsteht Spring als eine leichtgewichtige Alternative zu Java Enterprise Edition (\acs{JEE}), sodass die Komponenten der Software nicht mehr als Enterprise JavaBeans (\acs{EJB}s) sondern als einfache Java Objekte (\acs{POJO}s) realisiert werden können. Die Eigenschaften von \acs{EJB}s werden anhand von Techniken wie Dependency Injection und aspektorientierte Programmierung erreicht. Ein großer Nachteil hierbei ist jedoch der große Konfigurationsaufwand für die Entwickler. Initial erfolgte diese Konfiguration über mehrere \acs{XML}-Dateien. Ab Spring 2.5 wurde die \acs{XML}-basierte Konfiguration teilweise durch sogenannte Annotationen in den Java-Klassen ersetzt, was den Aufwand jedoch nicht sonderlich reduziert\cite{Walls2015}.
+Ursprünglich entsteht Spring als eine leichtgewichtige Alternative zu Java Enterprise Edition (\acs{JEE}), sodass die Komponenten der Software nicht mehr als Enterprise JavaBeans (\acs{EJB}s) sondern als einfache Java Objekte (\acs{POJO}s) realisiert werden können. Die Eigenschaften von \acs{EJB}s werden anhand von Techniken wie Dependency Injection und aspektorientierte Programmierung erreicht. Ein großer Nachteil hierbei ist jedoch der große Konfigurationsaufwand für die Entwickler. Initial erfolgte diese Konfiguration über mehrere \acs{XML}-Dateien. Ab Spring 2.5 wurde die \acs{XML}-basierte Konfiguration teilweise durch sogenannte Annotationen in den Java-Klassen ersetzt, was den Aufwand jedoch nicht sonderlich reduziert\footcite[Vgl.][S. 2]{Walls2015}.
 
-Das Ziel Spring Boot Projekts ist es genau diesen Nachteil zu beseitigen. Durch eine automatische Konfiguration können Entwickler schnell komplexere Spring-Anwendungen aufbauen, ohne auf die Konfiguration von allgemeinen Funktionalitäten achten zu müssen. Zudem ist auch das Einbinden von Spring-Abhängigkeiten stark vereinfacht\cite{Webb2013}.
+Das Ziel Spring Boot Projekts ist es genau diesen Nachteil zu beseitigen. Durch eine automatische Konfiguration können Entwickler schnell komplexere Spring-Anwendungen aufbauen, ohne auf die Konfiguration von allgemeinen Funktionalitäten achten zu müssen. Zudem ist auch das Einbinden von Spring-Abhängigkeiten stark vereinfacht\footcite[Vgl.][]{Webb2013}.
 
 Die Gründe für die Verwendung von Spring Boot als serverseitige Anwendung des Webshops sind einige. Zum einen ist im Team bereits etwas Erfahrung aus anderen Projekten vorhanden, die hier wiederverwendet werden kann. Zum anderen erleichtert Spring Boot durch das einfache Aufsetzen der Anwendung, der umfangreichen Dokumentation, sowie der großen Auswahl an Abhängigkeiten deutlich den Start mit der Umsetzung der eigentlichen Anforderungen. Besonders die Abhängigkeit \texttt{spring-boot-starter-web} ist für die Entwicklung von Webanwendungen nützlich, denn damit wird automatisch ein Webserver bzw. ein Java Servlet Container (Apache Tomcat) in das Projekt eingebettet.
 
 \subsection{Angular 2 Front-End}
 
-Angular 2 ist die neue, komplett umgebaute Version des Angular 1.x Frameworks. Diese Version liefert eine brandneue Architektur basierend auf Komponenten die in TypeScript implementiert werden. Bei TypeScript handelt es sich wiederum um ein von Microsoft entwickeltes Superset von JavaScript. TypeScript führt ein optionales Typsystem ein, sowie mehrere ECMAScript 6 Funktionalitäten, wie zum Beispiel Unterstützung von Interfaces, Klassen und Vererbung. Der Vorteil hierbei ist, dass die Erweiterungen von TypeScript von einem Compiler in normales JavaScript umgewandelt werden, sodass man TypeScript mit jedem Browser oder auch mit Node.js benutzen kann, solange der Code vorher kompiliert wird\cite{Deeleman2016}. 
+Angular 2 ist die neue, komplett umgebaute Version des Angular 1.x Frameworks (auch bekannt als AngularJS). Diese Version liefert eine brandneue Architektur basierend auf Komponenten die in TypeScript implementiert werden. Bei TypeScript handelt es sich wiederum um ein von Microsoft entwickeltes Superset von JavaScript. TypeScript führt ein optionales Typsystem ein, sowie mehrere ECMAScript 6 Funktionalitäten, wie zum Beispiel Unterstützung von Interfaces, Klassen und Vererbung. Der Vorteil hierbei ist, dass die Erweiterungen von TypeScript von einem Compiler in normales JavaScript umgewandelt werden, sodass man TypeScript mit jedem Browser oder auch mit Node.js benutzen kann, solange der Code vorher kompiliert wird\footcite[Vgl.][S. 33]{Deeleman2016}. 
 
-%TODO Warum Angular 2
+Es handelt sich zum ein sehr junges Framework (die endgültige Version wurde im September 2016 veröffentlicht), sodass es noch zu früh ist um dessen Erfolg messen zu können. Fest steht jedoch, dass die aktuelle Beliebtheit von TypeScript ein ausschlaggebender Faktor sein könnte. Da im Rahmen dieses Projekts allgemein keine bestimmte Technologien vorgegeben wurden, bietet es sich durchaus an, das Framework mit den neuen Features und der neuen Architektur näher kennenzulernen. Dadurch wird für die Implementierung des Front-Ends Angular 2 gesetzt.
 
-Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Angular.io2017}:
+Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\footcite[Vgl.][]{Angular.io2017}:
+
 \begin{itemize}
 	\item \textit{Komponenten}
 	\item \textit{Templates} 
@@ -74,7 +75,6 @@ Als Data Binding (zu Deutsch Datenbindung) bezeichnet man den Mechanismus zur Zu
 	\label{fig:databinding}
 \end{figure}
 
-\newpage
 Um diese vier Data Binding Formen weiter zu veranschaulichen, ist in \cref{lst:databinding_ex} jeweils ein Beispiel dargestellt. In der ersten Zeile wird durch die doppelte geschweifte Klammern der Wert \texttt{name} vom Attribut \texttt{user} der Komponenten-Klasse in die \acs{DOM} eingefügt. Zeile 2 zeigt eine eingebundene Kindkomponente \texttt{FoodComponent}, die als Input den Wert des Attributs \texttt{selectedFood} von der Komponenten-Klasse erhält. Die runde Klammern mit einem Event-Bezeichner in Zeile 3 binden eine Methode der Komponente zum angegebenen Event. Die letzte Zeile zeigt eine besondere Art von Data Binding, das \textit{Two-Way Data Binding}. Hierbei fließt der Wert vom Attribut der Klasse nicht nur von der Komponente in die \acs{DOM} ein, sondern wird auch in der Komponente aktualisiert wenn dieser sich beispielsweise durch eine Benutzereingabe verändert.
 \\
 \begin{lstlisting}[language=HTML5,caption={Beispiele zu den Data Binding Arten},label=lst:databinding_ex]
@@ -96,7 +96,7 @@ Services zeigen an sich also keine besondere Angular-Eigenschaften. Um die Trenn
 Dieser Mechanismus ermöglicht es eine neue Instanz einer Klasse mit allen nötigen Abhängigkeiten (in der Regel Services) zu versorgen. Um Angular mitzuteilen, welche Services eine Komponente benötigt, müssen diese im Konstruktor oder alternativ im \texttt{@Component}-Decorator deklariert werden, wie in \cref{lst:metadata_ex} bereits gezeigt wurde.
 
 \subsection{REST Services}
-Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST steht für Representational State Transfer und ist ein Architekturstil für den Entwurf von verteilten Systemen. Die Grundlage von REST wird durch folgende sechs Prinzipien festgelegt\cite{Varanasi2015}:
+Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST steht für Representational State Transfer und ist ein Architekturstil für den Entwurf von verteilten Systemen. Die Grundlage von REST wird durch folgende sechs Prinzipien festgelegt\footcite[Vgl.][S. 1-3]{Varanasi2015}:
 
 \begin{itemize}
 	\item \textit{Client-Server}. Die Unterteilung zwischen Client und Server ermöglicht es den jeweiligen Komponenten sich unabhängig voneinander zu entwickeln und erlaubt dementsprechend die Skalierung des Systems.
