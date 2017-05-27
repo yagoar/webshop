@@ -44,13 +44,13 @@ Diese werden in den nächsten Abschnitten näher beschrieben.
 Komponenten sind TypeScript-Klassen die einen Teil der Oberfläche, die sogenannte \enquote{View} (zu Deutsch Darstellung), kontrollieren. Jede Klasse enthält Attributen und Methoden mit denen die Darstellung verändert werden kann.
 
 \subsubsection{Templates}
-Templates definieren wie die Darstellung einer Komponente genau aussieht. Hierfür wird eine erweiterte Form von \acs{HTML} verwendet. Templates können somit zum Beispiel auch Kinder einer Komponente durch besondere HTML-Tags anzeigen. 
+Templates definieren wie die Darstellung einer Komponente genau aussieht. Hierfür wird eine erweiterte Form von \acs{HTML} verwendet. Templates können somit zum Beispiel auch Kinder einer Komponente durch besondere HTML-Tags einbinden. 
 
 \subsubsection{Module}
 Module fassen mehrere Komponenten und Services zu einem Funktionalitäts-Block zusammen. Jede Angular Anwendung besitzt mindestens ein Modul, das sogenannte \enquote{Root Module}.
 
 \subsubsection{Metadaten}
-Metadaten geben Angular Information darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechende Metadaten enthält. In TypeScript wird das mittels einem Decorator gemacht, eine Annotation die über die Klassendeklaration gesetzt wird.
+Metadaten geben Angular Information darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechenden Metadaten enthält. In TypeScript wird das mittels einem Decorator gemacht, eine Annotation die über die Klassendeklaration gesetzt wird.
 \\
 \begin{lstlisting}[language=JavaScript,caption={Beispiel Metadaten-Annotation für Komponenten},label=lst:metadata_ex]
 @Component({
@@ -66,11 +66,11 @@ export class SampleComponent implements OnInit {
 In \cref{lst:metadata_ex} ist als Beispiel die Annotation für Komponenten dargestellt. Unter \texttt{@Component} können unterschiedliche Aspekte einer Komponente definiert werden, wie der \acs{HTML}-Selektor, der Ablageort des Templates oder benötigte Abhängigkeiten.
 
 \subsubsection{Data Binding}
-Als Data Binding (zu Deutsch Datenbindung) bezeichnet man den Mechanismus zur Zuordnung von bestimmten Teilen eines Templates zu Teile der dazugehörigen Komponente. \cref{fig:databinding} zeigt die vier Arten von Data Binding Syntax in Angular. Jede Form von Data Binding hat auch eine Richtung: von der Komponente zum Document Object Model (\acs{DOM}) im Template, vom \acs{DOM} zur Komponente oder bidirektional.
+Als Data Binding (zu Deutsch Datenbindung) bezeichnet man den Mechanismus zur Zuordnung von bestimmten Elementen eines Templates zu Datenstrukturen der dazugehörigen Komponente. \cref{fig:databinding} zeigt die vier Arten von Data Binding Syntax in Angular. Jede Form von Data Binding hat auch eine Richtung: von der Komponente zum Document Object Model (\acs{DOM}) im Template, vom \acs{DOM} zur Komponente oder bidirektional.
 
 \begin{figure}[ht!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{bilder/kap5/databinding}
+	\includegraphics[width=0.4\linewidth]{bilder/kap5/databinding}
 	\caption[Arten des Data Bindings in Angular 2]{Arten des Data Bindings in Angular 2}
 	\label{fig:databinding}
 \end{figure}
@@ -88,7 +88,7 @@ Um diese vier Data Binding Formen weiter zu veranschaulichen, ist in \cref{lst:d
 Bei Direktiven handelt es sich um Klassen mit dem \texttt{@Directive}-Decorator, in denen beliebige Funktionalitäten zur dynamischen Transformation der DOM definiert werden können. Komponenten sind sozusagen Direktiven mit einem Template. Neben Komponenten gibt es aber auch zwei andere Arten von Direktiven: strukturelle und Attribut-Direktiven. Erstere verändern das Layout der View durch das Hinzufügen, Löschen oder Ersetzen von Elementen in der \acs{DOM}. Attribut-Direktiven verändern hingegen das Aussehen oder das Verhalten eines bereits vorhandenen DOM-Elements. Ein Beispiel davon ist die \texttt{ngModel}-Direktive die bereits in \cref{lst:databinding_ex} gezeigt wurde.
 
 \subsubsection{Services}
-Der Begriff Service ist in Angular sehr weit umfassend, da grundsätzlich alles mögliche ein Service sein kann. Typischerweise handelt es sich jedoch einfach um eine Klasse, die eine konkrete Aufgabe erledigt, wie zum Beispiel Logging, Datenzugriff, Berechnungen, usw. Diese Logik sollte idealerweise nie in Komponenten selbst enthalten sein, da diese nur als Mediatoren zwischen der Benutzeroberfläche (View) und der Logik zu verstehen sind.
+Der Begriff Service ist in Angular sehr weit umfassend, da grundsätzlich alles mögliche ein Service sein kann. Typischerweise handelt es sich jedoch einfach um eine Klasse, die eine konkrete Aufgabe erledigt, wie zum Beispiel Logging, Datenzugriff, Berechnungen, usw. Diese Logik sollte idealerweise nie in Komponenten selbst enthalten sein, da diese nur als Mediatoren zwischen der Darstellung (View) und der Logik zu verstehen sind.
 
 Services zeigen an sich also keine besondere Angular-Eigenschaften. Um die Trennung zwischen der in Services gekapselte Logik und den Komponenten einfach zu überwinden wird jedoch ein charakteristischer Mechanismus von Angular verwendet, die Dependency Injection. 
 
@@ -112,6 +112,8 @@ Für die Kommunikation zwischen Front- und Back-End wird REST eingesetzt. REST s
 Anwendungen die diese Prinzipien befolgen, gelten als \enquote{RESTful}, also REST-konform. Es ist hierbei nicht vorgegeben, welche Technologie konkret für die Entwicklung solcher Anwendungen benutzt werden soll. Theoretisch ist es möglich eine REST-Anwendung mit einer beliebigen Netzwerk-Infrastruktur oder einem beliebigen Protokoll aufzubauen. In der Praxis nutzen diese Applikationen jedoch hauptsächlich die Eigenschaften der Web-Entwicklung und verwenden dementsprechend \acs{HTTP} als Übertragungsprotokoll.
 
 Von den sechs oben beschriebenen Punkten ist das Prinzip des Uniform Interfaces das Hauptmerkmal von REST-Anwendungen, welches diese Art von Applikationen von anderen netzwerkbasierten Anwendungen unterscheidet. %TODO umschreiben
+
+%TODO JSON
 
 \subsection{MySQL Datenbank}
 Den Ausschlag für die Wahl eine MySQL-Datenbank gaben mehrere Faktoren. Zum einen ist MySQL weit verbreitet und bietet als Open Source-Projekt kostenfrei eine Vielzahl an Funktionalitäten.

@@ -26,19 +26,17 @@ Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passend
 	\item \textbf{C\#}. Objektorientiert, von Microsoft für die .NET Common Language Runtime entwickelt. \textit{Framework: ASP.NET}
 	\item \textbf{Java.} Objektorientiert, universell einsetzbar und robust. \textit{Framework: Spring}
 	\item \textbf{Node.js.} Entstand durch die wachsende Popularität von JavaScript in der Web-Programmierung. Hierbei wird die JavaScript-Syntax für Clients auch im Server benutzt. \textit{Frameworks: Express und Hapi}
-	\item \textbf{PHP.} Wurde von Anfang an für die Entwicklung dynamischer Webanwendungen konzipiert und ist die verbreitetste Programmiersprache Zwecke in diesem Bereich. \textit{Frameworks: Laravel und Symfony}
+	\item \textbf{PHP.} Wurde von Anfang an für die Entwicklung dynamischer Webanwendungen konzipiert und ist die verbreitetste Programmiersprache in diesem Bereich. \textit{Frameworks: Laravel und Symfony}
 	\item \textbf{Ruby.} Gewann deutlich Popularität nach der Veröffentlichung des Frameworks Ruby on Rails. \textit{Framework: Ruby on Rails}
 \end{itemize}
 
 \subsubsection{Webserver}
 Die Aufgabe eines Webservers ist die Inhalte einer Webseite per \acs{HTTP} an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also \acs{HTML}-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
 
-Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx \footcite[Vgl.][]{Rouse2012}. %TODO Servlet Webserver - Tomcat, Jetty
+Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx \footcite[Vgl.][]{Rouse2012}.
 
 \subsubsection{Applikationsserver}
 Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \footcite[Vgl.][]{ITWissen.info2013}
-
-%TODO Welche AppServer gibt es?
 
 \subsubsection{Datenbank}
 Für die Datenhaltung in einer Webanwendung werden fast immer Datenbanken verwendet, um Inhalte unabhängig von der Anwendung persistent speichern zu können.
