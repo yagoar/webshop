@@ -138,19 +138,25 @@ Zusätzlich zu den Benutzer- und Administrator-Funktionalitäten wurden zwei wei
 \subsection{Weitere Implementierungsdetails}
 In diesem Abschnitt werden einzelne Details zur Implementierung vorgestellt.
 Die dabei behandelten Themen resultierten aus der Notwendigkeit für eine bestimmte Funktionalität des Shops oder stellten ein Problem dar, für das eine Lösung gefunden werden musste.
-\subsection{Passwort-Verschlüsselung}
+\subsubsection{Passwort-Verschlüsselung}
 Dass Passwörter nicht unverschlüsselt in einer Datenbank enthalten sein sollten, ist seit dem Diebstahl von persönlichen Nutzerdaten und -Zugängen bei großen Online-Anbietern nicht nur Fachleuten, sondern auch Laien bekannt.
 Das Bundesamt für Sicherheit in der Informationstechnik \acs{BSI} gibt dafür offizielle Leitlinien heraus, in welcher Form das geschehen kann. \cite{BSI2016}
 Auf die einzelnen Kryptographieverfahren und die Generierung solcher Schlüssel soll hier aber nicht weiter eingegeangen werden, sondern lediglich gezeigt werden, wie die Verschlüsselung in der Anwendung umgesetzt wurde.
 Dabei wurde auf das bestehende Framework jBCrypt zurückgegriffen, eine Java-Implementierung des OpenBSD Blowfish Passwort-Hashing-Algorithmus. \cite{jBCrypt2015}
 Dieser benutzt eine 64-Bit Block-Cipher, um einen Hash des Passworts zu generieren, der dann in der Datenbank gespeichert werden kann. \cite{Provos}
-Beim Registrieren eines Nutzers wird sein Passwort über das Framework zu einem Hash-Wert gemacht und gespeichert.
-Bei sämtlichen User-relevanten Operationen wird dann das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
+Beim Registrieren eines Nutzers wird sein Passwort über das Framework zu einem Hash-Wert verarbeitet und gespeichert.
+Wenn ein User sich am System anmeldet wird das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
+\subsubsection{Token-Authentifizierung}
+Um zu vermeiden, dass sich ein Benutzer für jede Anfrage an den Server immer wieder anmelden muss, wurde auf die Verwendung einer Token-Authentifizierung zurückgegriffen.
 
-\subsection{Token-Authentifizierung}
+\acs{JSON} Web Token (\acs{JWT}) ist ein offener Standard für die sichere Übermittlung von \acs{JSON}-Objekten zwischen zwei Partnern und wird häufig für die Authentifizierung bei Web-Anwendungen verwendet.
+Durch eine digitale Signierung mit einem Verschlüsselungs-Algorithmus sind die Tokens sicher. Außerdem können im Token selbst zusätzliche Informationen gehalten werden.
+Diese können beispielsweise verwendet werden, um den Benutzer zu identifizieren, wodurch bei einer erneuten Anfrage nicht zuerst wieder eine Datenbank-Abfrage nötig wird. \cite{Auth02016}
 
-%TODO Token erklären
-\subsection{File Upload}
+Für den Webshop wurde \acs{JWT} integriert, indem beim Login ein Token erstellt und übermittelt wird. Für erneute Anfragen wird dieses mitgeschickt. Als zusätzliche Information enthält es die User-Id und die Rolle des Benutzers (User oder Admin).
+Bei sämtlichen REST-Endpoint-Methoden, die eine Anmeldung erfordern, werden das Token und für die Admin-Funktionalitäten die Rolle überprüft.
+\subsubsection{File Upload}
+
 %TODO FileUpload + Speicherung in der DB
 
 \subsection{Frontend}
