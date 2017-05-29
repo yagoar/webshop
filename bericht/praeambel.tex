@@ -27,7 +27,7 @@
 
 %Literaturverzeichnis
 \usepackage{csquotes}
-\usepackage[backend=biber,bibencoding=utf8,style=verbose-inote,citestyle=authortitle]{biblatex}
+\usepackage[backend=biber,bibencoding=utf8]{biblatex}
 \addbibresource{studienarbeit.bib}
 
 %Abkürzungsverzeichnis
@@ -154,7 +154,8 @@
 	stringstyle=\color{editorPurple}\ttfamily,
 	morestring=[b]',
 	morestring=[b]",
-	moredelim=[s][{\color{editorPurple}}]{@Component(\{}{\})}
+	moredelim=[s][{\color{editorPurple}}]{@Component(\{}{\})},
+	moredelim=[s][{\color{editorPurple}}]{@NgModule(\{}{\})}
 }
 
 \lstset{language=Java,
