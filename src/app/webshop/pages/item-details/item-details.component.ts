@@ -1,9 +1,10 @@
 import {Component, OnInit, Pipe} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router, RouterState, RouterStateSnapshot} from "@angular/router";
 import {ItemsService} from "../../../shared/services/shop/items.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {Item} from "../../../shared/models/shop/item";
 import {ShoppingCartService} from "../../../shared/services/shop/shopping-cart.service";
+import {AuthenticationService} from "../../../shared/services/authentication/authentication.service";
 
 @Component({
   selector: 'webshop-item-details',
@@ -13,10 +14,20 @@ export class ItemDetailsComponent implements OnInit {
 
   itemId: number;
   item: any = {};
+  snapshot: any;
 
-  constructor(private route: ActivatedRoute, private itemsService : ItemsService, private shoppingCartService : ShoppingCartService) { }
+    constructor(private shoppingCartService: ShoppingCartService,
+                private itemsService: ItemsService,
+                private authenticationService: AuthenticationService,
+                private router: Router,
+                private route: ActivatedRoute
+    ) {
+        const state: RouterState = router.routerState;
+        this.snapshot = state.snapshot;
+    }
 
-  ngOnInit() {
+
+    ngOnInit() {
     //Subscribe to id parameter in URL and get item details
     this.route.params.subscribe(param => {
       this.itemId = param['id'];
@@ -34,11 +45,13 @@ export class ItemDetailsComponent implements OnInit {
   }
 
     public addToCart(item:Item) {
-        let scItem = {
-            item: item,
-            quantity: 1
-        };
-        this.shoppingCartService.addItemToShoppingCart(scItem.item);
+
+        if(this.authenticationService.token != null) {
+            this.shoppingCartService.addItemToShoppingCart(item);
+        } else {
+            this.shoppingCartService.tempStoreItem(item);
+            this.router.navigate(['/shop/login'], { queryParams: { returnUrl: this.snapshot.url }});
+        }
     }
 
 }

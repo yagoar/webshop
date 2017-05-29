@@ -1,6 +1,11 @@
 /********************************************************
  * All *
 ********************************************************/
+@font-face {
+    font-family: WatermelonScriptDemo;
+    src: url('./assets/font.ttf') format('truetype');
+}
+
 
 html {
     position: relative;
@@ -12,6 +17,8 @@ body {
     font-size: medium;
     padding-bottom: 70px;
 }
+
+
 
 /********************************************************
  * UI Elements *
@@ -219,6 +226,10 @@ input[type="date"]::-webkit-input-placeholder{
     padding-bottom:22px;
     height: 100%;
     overflow-y: hidden;
+}
+
+.menu-link {
+    cursor: pointer;
 }
 
 /********************************************************
