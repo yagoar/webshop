@@ -70,13 +70,31 @@ Die wichtigsten clientseitigen Webtechnologien sind schon seit einigen Jahren HT
 \subsubsection{JavaScript Erweiterungen}
 Ein wichtiger Wendepunkt in der Geschichte von JavaScript war die Einführung von \acs{AJAX} (\enquote{Asynchronous JavaScript and XML}). Durch AJAX wurde es möglich, asynchrone Anfragen zum Server durchzuführen, um Teile einer Seite zu verändern ohne sie komplett neu laden zu müssen. Ein großer Vorteil davon ist die erhöhte Reaktionsgeschwindigkeit der Weboberfläche, da diese nicht durch die Anfragen blockiert wird.
 
-Kurze Zeit später kamen die sogenannte JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code\cite{Fink2014}.
+Kurze Zeit später kamen die sogenannten JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code\cite{Fink2014}.
 
-\subsubsection{Arten von Webanwendungen}
+\subsubsection{Arten von Webanwendungen}\label{web_types}
 Die bereits erwähnten Verbesserungen an JavaScript, aber auch an HTML mit der Veröffentlichung von HTML5, brachten mit sich neue Techniken mit denen neuartige Anwendungen aufgebaut werden konnten. Single Page Applications (\acs{SPA}s) sind eine Art von Webanwendung die in diesem Rahmen erschien. In den nächsten Abschnitten werden zum Vergleich die traditionelle Webanwendungen, sowie die moderne Single Page Applications näher beschrieben.
 
-%TODO Traditionelle Anwendungen s. 6-7
-%TODO Moderne SPAs 11-13 
+\paragraph{Traditionelle Webanwendungen}$\;$ \\
+Eine traditionelle Webanwendung generiert die dargestellte Webseite immer wieder neu wenn eine beliebige HTTP Anfrage eingeht. Das gilt demnach nicht nur für den initialen Aufruf der Webseite sondern auch zum Beispiel für das Senden eines ausgefüllten Formulars. Die im Server erzeugte HTML-Seite wird als Antwort zum Client gesendet, was dort wiederum eine Aktualisierung bewirkt. Bei einer Aktualisierung lädt der Browser die Seite neu und ersetzt dabei die ursprüngliche HTML durch die neue\cite{Fink2014}. \cref{fig:traditional-web} veranschaulicht diesen Ablauf.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{bilder/kap2/trad_web}
+	\caption{Lebenszyklus einer traditionellen Webanwendung}
+	\label{fig:traditional-web}
+\end{figure}
+
+\paragraph{Single Page Applications}$\;$ \\
+Wie auf \cref{fig:spa} zu erkennen ist, gibt es beim initialen Aufruf der Webseite keine Unterschiede zwischen traditionellen und Single Page Anwendungen. Bei allen weiteren Anfragen ist der Ablauf jedoch anders. Durch AJAX sind die Anwendungen in der Lage Anfragen an den Server zu senden, bei denen nur die notwendige Daten angefordert werden. Der Client erhält daraufhin eine Antwort, welche diese Daten enthält (üblicherweise im \acs{JSON}-Format). Sobald die Daten ankommen, kann der Client die HTML-Seite partiell anpassen, ganz ohne Neuladen des Browser-Fensters. Dieser Ablauf ist für alle Benutzerinteraktionen in der Anwendung gleich, selbst für die Navigation. Das macht die Antwortzeiten solcher Anwendungen sehr kurz, was eine sehr positive Auswirkung auf die Benutzerzufriedenheit hat.
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{bilder/kap2/spa}
+	\caption{Lebenszyklus einer \acs{SPA}}
+	\label{fig:spa}
+\end{figure}
+
 
 
 

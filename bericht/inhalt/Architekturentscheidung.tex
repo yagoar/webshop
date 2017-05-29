@@ -19,15 +19,15 @@ Das Ziel Spring Boot Projekts ist es genau diesen Nachteil zu beseitigen. Durch 
 
 Die Gründe für die Verwendung von Spring Boot als serverseitige Anwendung des Webshops sind einige. Zum einen ist im Team bereits etwas Erfahrung aus anderen Projekten vorhanden, die hier wiederverwendet werden kann. Zum anderen erleichtert Spring Boot durch das einfache Aufsetzen der Anwendung, der umfangreichen Dokumentation, sowie der großen Auswahl an Abhängigkeiten deutlich den Start mit der Umsetzung der eigentlichen Anforderungen. Besonders die Abhängigkeit \texttt{spring-boot-starter-web} ist für die Entwicklung von Webanwendungen nützlich, denn damit wird automatisch ein Webserver bzw. ein Java Servlet Container (Apache Tomcat) in das Projekt eingebettet.
 
-\subsection{Angular 2 Front-End}\label{angular_arch}
+\subsection{Angular 2 Frontend}\label{angular_arch}
 
 Angular 2 ist die neue, komplett umgebaute Version des Angular 1.x Frameworks (auch bekannt als AngularJS). Diese Version liefert eine brandneue Architektur basierend auf Komponenten die in TypeScript implementiert werden. Bei TypeScript handelt es sich wiederum um ein von Microsoft entwickeltes Superset von JavaScript. TypeScript führt ein optionales Typsystem ein, sowie mehrere ECMAScript 6 Funktionalitäten, wie zum Beispiel Unterstützung von Interfaces, Klassen und Vererbung. Der Vorteil hierbei ist, dass die Erweiterungen von TypeScript von einem Compiler in normales JavaScript umgewandelt werden, sodass man TypeScript mit jedem Browser oder auch mit Node.js benutzen kann, solange der Code vorher kompiliert wird\cite{Deeleman2016}. 
 
-Es handelt sich zum ein sehr junges Framework (die endgültige Version wurde im September 2016 veröffentlicht), sodass es noch zu früh ist um dessen Erfolg messen zu können. Fest steht jedoch, dass die aktuelle Beliebtheit von TypeScript ein ausschlaggebender Faktor sein könnte. Da im Rahmen dieses Projekts allgemein keine bestimmte Technologien vorgegeben wurden, bietet es sich durchaus an, das Framework mit den neuen Features und der neuen Architektur näher kennenzulernen. Dadurch wird für die Implementierung des Front-Ends Angular 2 gesetzt.
+Es handelt sich zum ein sehr junges Framework (die endgültige Version wurde im September 2016 veröffentlicht), sodass es noch zu früh ist um dessen Erfolg messen zu können. Fest steht jedoch, dass die aktuelle Beliebtheit von TypeScript ein ausschlaggebender Faktor sein könnte. Da im Rahmen dieses Projekts allgemein keine bestimmte Technologien vorgegeben wurden, bietet es sich durchaus an, das Framework mit den neuen Features und der neuen Architektur näher kennenzulernen. 
 
-%TODO SPA + Routing Grund für A2
+Neben dem eigenen Interesse an das Framework war noch ein weiterer Faktor maßgeblich für die Entscheidung, Angular als Technologie für die Implementierung des Frontends zu setzen. Es ist geplant, den Webshop als eine Single Page Application zu realisieren, deren Vorteile bereits in \cref{web_types} geschildert wurden. Angular gehört schon seit der ersten Version zu den beliebtesten Frameworks für diesen Anwendungsfall, da die mitgelieferten Tools und Funktionalitäten die Implementierung sehr vereinfachen. Besonders der Routing-Mechanismus für die Navigation in der \acs{SPA} ist in Angular sehr ausgereift.
 
-Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Angular.io2017}:
+Nun zu den Eigenschaften des Frameworks. Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Angular.io2017}:
 
 \begin{itemize}
 	\item \textit{Komponenten}
