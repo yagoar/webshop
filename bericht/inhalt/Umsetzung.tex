@@ -103,21 +103,14 @@ Innerhalb des Webshops wurde für die Hierarchie bei Artikeln die \enquote{Singl
 \lstinputlisting[language=Java, breaklines=true, caption=Vererbungshierarchie, label=lst:inheritanceMapping]{listings/Inheritance.java}
 
 \subsection{REST-Schnittstellen}
-Wie in \cref{spring-boot-init} bereits erwähnt, wurde für das Erstellen der REST-Services innerhalb der Spring Boot Anwendung Jersey benutzt.
+Wie in \cref{spring-boot-init} bereits erwähnt, wurde für das Erstellen der REST-Services innerhalb der Spring Boot Anwendung Jersey als Implementierung der Java-Schnittstelle \acs{JAX-RS} benutzt.
+Für die Darstellung der zu übertragenden Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding).
+Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden.
+Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt.
+Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\cite{Oracle2015}.
 
-
-Für die Darstellung dieser Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding). Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden. Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt. Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\cite{Oracle2015}.
-
-
-Jersey ist eine Implementierung der Java-Schnittstelle \acs{JAX-RS} für die Entwicklung von REST-konformen Web-Services. \cite{Jersey2017} %Bereits in Seite 32
 Über Annotationen können normale Java-Klassen zu sogenannten Endpoints gemacht werden, die Anfragen über eine \acs{URI} entgegen nehmen und beantworten können.
-
-%TODO Absätze mergen
-
-
 Die wichtigsten sind \cite{Jersey2017a}:
-
-
 
 \begin{itemize}
 \item{@Path.} Legt die \acs{URI} für die Web-Services der Klasse oder einer Methode fest.
