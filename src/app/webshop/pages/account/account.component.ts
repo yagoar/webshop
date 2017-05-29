@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../shared/services/authentication/authentication.service";
 import {UserService} from "../../../shared/services/shop/user.service";
-import {Router} from "@angular/router";
+import {Router, RouterState} from "@angular/router";
 import {ShoppingCartService} from "../../../shared/services/shop/shopping-cart.service";
 import {ResetPassword} from "../../../shared/models/reset-password";
 
@@ -28,10 +28,15 @@ export class AccountComponent implements OnInit {
   changeEmailFailed: boolean = false;
   changeEmailSuccess: boolean = false;
 
+  snapshot: any;
+
   constructor(private authenticationService: AuthenticationService,
               private userService: UserService,
               private shoppincartService: ShoppingCartService,
-              private router: Router) { }
+              private router: Router) {
+    const state: RouterState = router.routerState;
+    this.snapshot = state.snapshot;
+  }
 
   ngOnInit() {
     this.getUserInfo();
@@ -99,7 +104,7 @@ export class AccountComponent implements OnInit {
   changeAddress(type: string) {
     this.userService.currentShippingAddress = this.shippingAddress;
     this.userService.currentBillingAddress = this.billingAddress;
-    this.router.navigate(['/shop/change-address'], { queryParams: { type: type }});
+    this.router.navigate(['/shop/change-address'], { queryParams: { type: type, returnUrl: this.snapshot.url }});
   }
 
 }

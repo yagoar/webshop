@@ -1,7 +1,7 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
 import {ShoppingCart} from "../../../../shared/models/shop/shopping-cart";
 import {ShoppingCartService} from "../../../../shared/services/shop/shopping-cart.service";
-import {Router} from "@angular/router";
+import {Router, RouterState} from "@angular/router";
 import {UserService} from "../../../../shared/services/shop/user.service";
 import {ItemsAndQuantity} from "../../../../shared/models/shop/items-quantity";
 
@@ -21,6 +21,7 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
   allGood: boolean = true;
   unavailable: ItemsAndQuantity[] = [];
   unavailableMessage: string = "";
+  snapshot: any;
 
   constructor(private shoppingCartService: ShoppingCartService, private router: Router, private userService: UserService) {
     this.shoppingCartService.shoppingCartUpdate.subscribe(
@@ -28,6 +29,9 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
           this.shoppingCart = data;
         }
     );
+
+      const state: RouterState = router.routerState;
+      this.snapshot = state.snapshot;
   }
 
   ngOnInit() {
@@ -55,7 +59,7 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
           if(i.item.stock < i.quantity) {
               this.allGood = false;
               this.unavailable.push({item: i.item, quantity: i.item.stock});
-          }})
+          }});
           if(this.allGood) {
               this.placeOrder();
           }
@@ -78,6 +82,8 @@ export class OrderConfirmationComponent implements OnInit, DoCheck {
   }
 
   changeAddress(type: string) {
-    this.router.navigate(['/shop/change-address'], { queryParams: { type: type }});
+      this.userService.currentShippingAddress = this.shippingAddress;
+      this.userService.currentBillingAddress = this.billingAddress;
+      this.router.navigate(['/shop/change-address'], { queryParams: { type: type, returnUrl: this.snapshot.url }});
   }
 }
