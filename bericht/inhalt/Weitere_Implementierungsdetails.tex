@@ -3,10 +3,10 @@ In diesem Kapitel werden einzelne Details zur Implementierung vorgestellt.
 Die dabei behandelten Themen resultierten aus der Notwendigkeit für eine bestimmte Funktionalität des Shops oder stellten ein Problem dar, für das eine Lösung gefunden werden musste.
 \subsection{Passwort-Verschlüsselung}
 Dass Passwörter nicht unverschlüsselt in einer Datenbank enthalten sein sollten, ist seit dem Diebstahl von persönlichen Nutzerdaten und -Zugängen bei großen Online-Anbietern nicht nur Fachleuten, sondern auch Laien bekannt.
-Das Bundesamt für Sicherheit in der Informationstechnik \acs{BSI} gibt dafür offizielle Leitlinien heraus, in welcher Form das geschehen kann. \cite{BSI2016}
+Das Bundesamt für Sicherheit in der Informationstechnik \acs{BSI} gibt dafür offizielle Leitlinien heraus, in welcher Form das geschehen kann. \footcite[Vgl.][]{BSI2016}
 Auf die einzelnen Kryptographieverfahren und die Generierung solcher Schlüssel soll hier aber nicht weiter eingegeangen werden, sondern lediglich gezeigt werden, wie die Verschlüsselung in der Anwendung umgesetzt wurde.
-Dabei wurde auf das bestehende Framework jBCrypt zurückgegriffen, eine Java-Implementierung des OpenBSD Blowfish Passwort-Hashing-Algorithmus. \cite{jBCrypt2015}
-Dieser benutzt eine 64-Bit Block-Cipher, um einen Hash des Passworts zu generieren, der dann in der Datenbank gespeichert werden kann. \cite{Provos}
+Dabei wurde auf das bestehende Framework jBCrypt zurückgegriffen, eine Java-Implementierung des OpenBSD Blowfish Passwort-Hashing-Algorithmus. \footcite[Vgl.][]{jBCrypt2015}
+Dieser benutzt eine 64-Bit Block-Cipher, um einen Hash des Passworts zu generieren, der dann in der Datenbank gespeichert werden kann. \footcite[Vgl.][]{Provos}
 Beim Registrieren eines Nutzers wird sein Passwort über das Framework zu einem Hash-Wert gemacht und gespeichert.
 Bei sämtlichen User-relevanten Operationen wird dann das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
 \subsection{Token-Authentifizierung}
