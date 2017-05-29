@@ -1002,6 +1002,8 @@ var AccountComponent = (function () {
         this.changePWSuccess = false;
         this.changeEmailFailed = false;
         this.changeEmailSuccess = false;
+        var state = router.routerState;
+        this.snapshot = state.snapshot;
     }
     AccountComponent.prototype.ngOnInit = function () {
         this.getUserInfo();
@@ -1058,7 +1060,7 @@ var AccountComponent = (function () {
     AccountComponent.prototype.changeAddress = function (type) {
         this.userService.currentShippingAddress = this.shippingAddress;
         this.userService.currentBillingAddress = this.billingAddress;
-        this.router.navigate(['/shop/change-address'], { queryParams: { type: type } });
+        this.router.navigate(['/shop/change-address'], { queryParams: { type: type, returnUrl: this.snapshot.url } });
     };
     AccountComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1107,6 +1109,8 @@ var ChangeAddressComponent = (function () {
     ChangeAddressComponent.prototype.ngOnInit = function () {
         //Get address type from route params
         this.addressType = this.route.snapshot.queryParams['type'];
+        // get return url from route parameters or default to '/'
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
         //Get current address from user service
         if (this.addressType == "billing") {
             this.address = this.userService.currentBillingAddress;
@@ -1124,14 +1128,14 @@ var ChangeAddressComponent = (function () {
             this.address.gender = "FEMALE";
         }
         this.userService.changeAddress(this.address, this.addressType).subscribe(function (data) {
-            _this.router.navigate(['/shop/account'], { queryParams: { successAddrChange: _this.addressType } });
+            _this.router.navigate([_this.returnUrl], { queryParams: { successAddrChange: _this.addressType } });
         });
     };
     ChangeAddressComponent.prototype.setAddrGender = function (value) {
         this.address.gender = value.id;
     };
     ChangeAddressComponent.prototype.cancelChangeAddr = function () {
-        this.router.navigate(['/shop/account']);
+        this.router.navigate([this.returnUrl]);
     };
     ChangeAddressComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1353,6 +1357,8 @@ var OrderConfirmationComponent = (function () {
         this.shoppingCartService.shoppingCartUpdate.subscribe(function (data) {
             _this.shoppingCart = data;
         });
+        var state = router.routerState;
+        this.snapshot = state.snapshot;
     }
     OrderConfirmationComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1397,7 +1403,9 @@ var OrderConfirmationComponent = (function () {
         });
     };
     OrderConfirmationComponent.prototype.changeAddress = function (type) {
-        this.router.navigate(['/shop/change-address'], { queryParams: { type: type } });
+        this.userService.currentShippingAddress = this.shippingAddress;
+        this.userService.currentBillingAddress = this.billingAddress;
+        this.router.navigate(['/shop/change-address'], { queryParams: { type: type, returnUrl: this.snapshot.url } });
     };
     OrderConfirmationComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
