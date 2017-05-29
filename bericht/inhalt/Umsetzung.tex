@@ -19,14 +19,14 @@ Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring B
 
 \begin{itemize}
 	\item \textit{Spring Web}. Benötigt um eine Webanwendung mit eingebetteten Tomcat-Server zu implementieren.
-	\item \textit{Jersey}. Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen. Für die Darstellung dieser Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding). Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden. Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt. Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\footcite[Vgl.][]{Oracle2015}.
-	\item \textit{Spring Data JPA}. Stellt die Zugriffstechnologie der Java Persistence API (\acs{JPA}) zur Verfügung. Mit dieser Abhängigkeit können Datenzugriffsobjekte angelegt werden (sogenannte \acs{DAO}s, Data Access Objects), die alle notwendige Datenbankoperationen implementieren\footcite[Vgl.][]{Webb2017}. 
-	\item \textit{Spring MySQL JDBC Driver}. Damit kann die Spring Boot Anwendung automatisch eine Verbindung zur MySQL-Datenbank herstellen\footcite[Vgl.][]{Webb2017}. Alle weitere Konfigurationen für diese Verbindung werden später in dieser Arbeit beschrieben.
+	\item \textit{Jersey}. Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen. Für die Darstellung dieser Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding). Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden. Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt. Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\cite{Oracle2015}.
+	\item \textit{Spring Data JPA}. Stellt die Zugriffstechnologie der Java Persistence API (\acs{JPA}) zur Verfügung. Mit dieser Abhängigkeit können Datenzugriffsobjekte angelegt werden (sogenannte \acs{DAO}s, Data Access Objects), die alle notwendige Datenbankoperationen implementieren\cite{Webb2017}. 
+	\item \textit{Spring MySQL JDBC Driver}. Damit kann die Spring Boot Anwendung automatisch eine Verbindung zur MySQL-Datenbank herstellen\cite{Webb2017}. Alle weitere Konfigurationen für diese Verbindung werden später in dieser Arbeit beschrieben.
 \end{itemize}
 
 Die Ordnerstruktur des generierten Projekts kann der \cref{fig:init-project} entnommen werden. Es handelt sich hierbei um die übliche Struktur einer Java-Anwendung, mit einem \texttt{main} und einem \texttt{test} Verzeichnis. Initial sind im \texttt{main} Verzeichnis nur zwei Dateien: die \texttt{WebshopApplication} Klasse und die \texttt{application.properties}. Erstere enthält die Java \texttt{main}-Methode, welche die Anwendung lauffähig macht. Dort werden auch automatisch alle notwendige Konfigurationen für Spring Boot gesetzt. Die \texttt{application.properties} Datei ist zu diesem Zeitpunkt noch leer, aber sie wird später benutzt um unterschiedliche Aspekte der Anwendung (wie zum Beispiel Server-Port oder Verbindungsdaten zur Datenbank) auf einer einfachen Art und Weise einzustellen.
 
-Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Project Object Model oder \acs{POM} ist die grundlegende Arbeitseinheit von Maven. Die XML-Datei enthält Information über das Projekt, sowie Konfigurationsdetails welche von Maven verwendet werden um das Projekt zu bauen. Einige dieser Konfigurationen sind Projekt-Abhängigkeiten, Plugins, Build-Profile usw.\footcite[Vgl.][]{Foundation2017}
+Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Project Object Model oder \acs{POM} ist die grundlegende Arbeitseinheit von Maven. Die XML-Datei enthält Information über das Projekt, sowie Konfigurationsdetails welche von Maven verwendet werden um das Projekt zu bauen. Einige dieser Konfigurationen sind Projekt-Abhängigkeiten, Plugins, Build-Profile usw.\cite{Foundation2017}
 
 \begin{figure}[th!]
 	\centering
@@ -36,7 +36,7 @@ Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Pr
 \end{figure}
 
 \subsubsection{Angular 2 Anwendung}
-Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Hierbei handelt es sich um die Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen\footcite[Vgl.][]{Arora2017}. 
+Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Hierbei handelt es sich um die Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen\cite{Arora2017}. 
 
 Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert. Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung. Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu. Die statische Inhalte werden mit \texttt{ng build} gebaut. 
 
@@ -82,7 +82,7 @@ Für die Beziehungen zu anderen Entitäten können entsprechend der Kardinalitä
 
 \subsubsection{Vererbung von Klassen}
 Eine Vererbungshierarchie von Klassen kann mit verschiedenen Strategien in der Datenbank abgebildet werden.
-Hibernate bietet dafür vier grundlegende Varianten an \footcite[Vgl.][]{Mihalcea2017}:
+Hibernate bietet dafür vier grundlegende Varianten an \cite{Mihalcea2017}:
 \paragraph{Mapped Superclass}$\;$ \\
 In dieser einfachsten Form der Abbildung einer Vererbung wird für jede konkrete Ausprägung der vererbenden Klasse eine eigene Tabelle angelegt, die neben ihren eigenen auch alle Spalten der Eltern-Klasse enthält.
 Die Vererbungshierarchie wird damit nicht explizit im Datenmodell ersichtlich.

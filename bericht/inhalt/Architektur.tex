@@ -1,9 +1,9 @@
 \section{Architektur von Webanwendungen}\label{web_architecture} \thispagestyle{nomarkstyle}
 Da es sich bei einem Online-Shop um eine Webanwendung handelt, ist es notwendig die allgemeine Architektur von solchen Anwendungen, sowie die unterschiedliche Technologien die eingesetzt werden können, zu analysieren. Diese Information wird später wichtig um eine  Architekturentscheidung passend zu den Anforderungen und den Zielen treffen zu können.
 
-Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden \footcite[Vgl.][S. 1-8]{Saternos2014}.
+Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt. Stattdessen bekommt der Client initial eine Seite mit wenig Daten, die per asynchrone Aufrufe vom Server geholt werden \cite{Saternos2014}.
 
-Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt \footcite[Vgl.][]{Techopedia2017}:
+Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt \cite{Techopedia2017}:
 \begin{itemize}
 	\item \textit{Tier 1: Präsentationsschicht.} Ist für die Darstellung der Daten und allgemein der Benutzerschnittstelle verantwortlich.
 	\item \textit{Tier 2: Anwendungsschicht.} Auch Businesslogik-Schicht genannt, kontrolliert diese Schicht die eigentliche Funktionalität der Anwendung.
@@ -15,12 +15,12 @@ Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die An
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{bilder/kap2/three-tier}
-	\caption{Drei-Schichten-Modell der Client-Server-Architektur \footcite[Vgl.][]{Conallen2000}}
+	\caption{Drei-Schichten-Modell der Client-Server-Architektur \cite{Conallen2000}}
 	\label{fig:three-tier}
 \end{figure}
 
 \subsection{Serverseite}
-Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Antworten von Anfragen aus dem Client, sowie die Kommunikation mit der Datenbank (falls vorhanden). Welche Sprache hierfür gewählt wird bestimmt auch die Frameworks und weitere Technologien die entsprechend zur Verfügung stehen. Im Folgenden sind einige der beliebtesten Sprachen für die Server-Programmierung, sowie jeweils die Frameworks welche oft im Rahmen der Web-Entwicklung damit verwendet werden aufgelistet \footcite[Vgl.][S. 9-12]{School2016}:
+Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Antworten von Anfragen aus dem Client, sowie die Kommunikation mit der Datenbank (falls vorhanden). Welche Sprache hierfür gewählt wird bestimmt auch die Frameworks und weitere Technologien die entsprechend zur Verfügung stehen. Im Folgenden sind einige der beliebtesten Sprachen für die Server-Programmierung, sowie jeweils die Frameworks welche oft im Rahmen der Web-Entwicklung damit verwendet werden aufgelistet \cite{School2016}:
 
 \begin{itemize}
 	\item \textbf{C\#}. Objektorientiert, von Microsoft für die .NET Common Language Runtime entwickelt. \textit{Framework: ASP.NET}
@@ -33,10 +33,10 @@ Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passend
 \subsubsection{Webserver}
 Die Aufgabe eines Webservers ist die Inhalte einer Webseite per \acs{HTTP} an den Client zu liefern. In der Regel handelt es sich hierbei um statische Inhalte, also \acs{HTML}-Dateien, Bilder oder auch dynamisch generierte Dateien. Für die dynamische Erzeugung von Dateien können Webserver Skriptsprachen wie Perl, PHP, ASP oder JSP unterstützen.
 
-Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx \footcite[Vgl.][]{Rouse2012}.
+Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft Internet Information Server (\acs{ISS}) und nginx \cite{Rouse2012}.
 
 \subsubsection{Applikationsserver}
-Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \footcite[Vgl.][]{ITWissen.info2013}
+Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab. Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \cite{ITWissen.info2013}
 
 \subsubsection{Datenbank}
 Für die Datenhaltung in einer Webanwendung werden fast immer Datenbanken verwendet, um Inhalte unabhängig von der Anwendung persistent speichern zu können.
@@ -65,12 +65,12 @@ Zum Zweck des Mappings, also der logischen Zuordnung, gibt es Hilfe in Form von 
 Die wichtigsten Vertreter sind hier das Entity Framework für .NET-Sprachen und Hibernate für Java.
 
 \subsection{Clientseite}
-Die wichtigsten clientseitigen Webtechnologien sind schon seit einigen Jahren HTML, CSS und JavaScript. Hierbei sind HTML und CSS Technologien für die Darstellung der Webseite und JavaScript allgemein für die clientseitige Programmierung zuständig\footcite[Vgl.][]{Thattil2016}. 
+Die wichtigsten clientseitigen Webtechnologien sind schon seit einigen Jahren HTML, CSS und JavaScript. Hierbei sind HTML und CSS Technologien für die Darstellung der Webseite und JavaScript allgemein für die clientseitige Programmierung zuständig\cite{Thattil2016}. 
 
 \subsubsection{JavaScript Erweiterungen}
 Ein wichtiger Wendepunkt in der Geschichte von JavaScript war die Einführung von \acs{AJAX} (\enquote{Asynchronous JavaScript and XML}). Durch AJAX wurde es möglich, asynchrone Anfragen zum Server durchzuführen, um Teile einer Seite zu verändern ohne sie komplett neu laden zu müssen. Ein großer Vorteil davon ist die erhöhte Reaktionsgeschwindigkeit der Weboberfläche, da diese nicht durch die Anfragen blockiert wird.
 
-Kurze Zeit später kamen die sogenannte JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code\footcite[Vgl.][S. 4]{Fink2014}.
+Kurze Zeit später kamen die sogenannte JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code\cite{Fink2014}.
 
 \subsubsection{Arten von Webanwendungen}
 Die bereits erwähnten Verbesserungen an JavaScript, aber auch an HTML mit der Veröffentlichung von HTML5, brachten mit sich neue Techniken mit denen neuartige Anwendungen aufgebaut werden konnten. Single Page Applications (\acs{SPA}s) sind eine Art von Webanwendung die in diesem Rahmen erschien. In den nächsten Abschnitten werden zum Vergleich die traditionelle Webanwendungen, sowie die moderne Single Page Applications näher beschrieben.
