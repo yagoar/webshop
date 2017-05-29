@@ -103,9 +103,32 @@ Innerhalb des Webshops wurde für die Hierarchie bei Artikeln die \enquote{Singl
 \lstinputlisting[language=Java, breaklines=true, caption=Vererbungshierarchie, label=lst:inheritanceMapping]{listings/Inheritance.java}
 
 \subsection{REST-Schnittstellen}
-WIe in \cref{spring-boot-init} bereits erwähnt, wurde für das Erstellen der REST-Services innerhalb der Spring Boot Anwendung Jersey benutzt.
-%TODO Aufbau der Rest-Interfaces + Implementierungen, evtl. Klassendiagramme. 
+Wie in \cref{spring-boot-init} bereits erwähnt, wurde für das Erstellen der REST-Services innerhalb der Spring Boot Anwendung Jersey benutzt.
+Jersey ist eine Implementierung der Java-Schnittstelle \acs{JAX-RS} für die Entwicklung von REST-konformen Web-Services. \cite{Jersey2017}
+Über Annotationen können normale Java-Klassen zu sogenannten Endpoints gemacht werden, die Anfragen über eine \acs{URI} entgegen nehmen und beantworten können.
+Die wichtigsten sind \cite{Jersey2017a}:
+\begin{itemize}
+\item{@Path.} Legt die \acs{URI} für die Web-Services der Klasse oder einer Methode fest.
+\item{@GET, @POST, @PUT, @DELETE, @HEAD.} Definiert die \acs{HTTP}-Methode für den Aufruf einer Service-Methode.
+\item{@Consumes, @Produces.} Spezifiziert den \acs{MIME}-Typ, der von der Funktion konsumiert bzw. produziert werden kann.
+\item{@*Param.} Um Parameter bei der Anfrage auszulesen (z.B. \textit{@PathParam} für Paramter in der \acs{URI} der Anfrage).
+\end{itemize}
 
+Für die vorliegende Anwendung wurden die Endpoints thematisch separiert.
+\cref{fig:endpoints} zeigt die definierten Endpoint-Klassen und ihre Implementierung.
+
+\begin{figure}[th!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{bilder/kap7/api_diagram}
+	\caption{REST-Endpoints}
+	\label{fig:endpoints}
+\end{figure}
+
+Zusätzlich zu den Benutzer- und Administrator-Funktionalitäten wurden zwei weitere Endpoints für die Authentifizierung und den File-Upload erstellt.
+\\
+\lstinputlisting[language=Java,breaklines=true,caption=REST-Beispiel,label=lst:RESTexample]{listings/RESTexample.java}
+
+\cref{lst:RESTexample} zeigt die Deklaration der Registrierungs-Funktion für Benutzer sowie deren Implementierung.
 
 \newpage
 \subsection{Weitere Implementierungsdetails}
