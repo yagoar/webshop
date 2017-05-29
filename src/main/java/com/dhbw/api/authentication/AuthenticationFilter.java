@@ -1,6 +1,10 @@
 package com.dhbw.api.authentication;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.JWTVerifier;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 
 import javax.annotation.Priority;
 import javax.ws.rs.NotAuthorizedException;
@@ -12,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 
 /**
@@ -38,7 +43,19 @@ public class AuthenticationFilter implements ContainerRequestFilter {
         // Extract the token from the HTTP Authorization header
         String token = authorizationHeader.substring("Bearer".length()).trim();
 
-
+        try {
+            Algorithm algorithm = Algorithm.HMAC256("HappinessThroughWool");
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withIssuer("webshop")
+                    .build();
+            DecodedJWT jwt = verifier.verify(token);
+        } catch (UnsupportedEncodingException exception) {
+            requestContext.abortWith(
+                    Response.status(Response.Status.BAD_REQUEST).build());
+        } catch (JWTVerificationException exception) {
+            requestContext.abortWith(
+                    Response.status(Response.Status.UNAUTHORIZED).build());
+        }
         JWT decoded = JWT.decode(token);
         String u_id = decoded.getClaim("id").asString();
         String userRole = decoded.getClaim("role").asString();
@@ -53,7 +70,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
             @Override
             public boolean isUserInRole(String role) {
-                if(userRole.equals(role)) return true;
+                if (userRole.equals(role)) return true;
                 else return false;
             }
 
@@ -67,21 +84,5 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                 return null;
             }
         });
-
-
-        try {
-
-            // Validate the token
-            validateToken(token);
-
-        } catch (Exception e) {
-            requestContext.abortWith(
-                    Response.status(Response.Status.UNAUTHORIZED).build());
-        }
-    }
-
-    private void validateToken(String token) throws Exception {
-        JWT decoded = JWT.decode(token);
-        if(!decoded.getIssuer().equals("webshop")) throw new Exception("Token source not verified");
     }
 }

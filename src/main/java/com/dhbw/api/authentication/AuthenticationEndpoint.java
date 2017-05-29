@@ -84,7 +84,7 @@ public class AuthenticationEndpoint {
 
         String token = null;
         try {
-            Algorithm algorithm = Algorithm.HMAC256("secret");
+            Algorithm algorithm = Algorithm.HMAC256("HappinessThroughWool");
             token = JWT.create()
                     .withIssuer("webshop")
                     .withClaim("id", user.getU_id().toString())
