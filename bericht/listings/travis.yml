@@ -1,0 +1,31 @@
+sudo: true
+language: java
+jdk:
+ - oraclejdk8
+
+env:
+  - TRAVIS_NODE_VERSION="7"
+
+install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm install -g @angular/cli
+  - npm install
+
+script: ng build
+
+before_deploy:
+  - git config --global user.email "webshop_dev@mail.com"
+  - git config --global user.name "Travis CI"
+  - STASH_SAVE=$(git stash save)
+  - git checkout master
+  - if [[ "$STASH_SAVE" != "No local changes to save" ]]; then git stash pop; fi
+  - git add -A
+  - git diff-index --quiet --cached HEAD || git commit -m "Travis build [ci skip]"
+  - git push origin master
+
+deploy:
+ provider: heroku
+ api-key:
+  secure: c8e184c6-1cae-4029-bdad-27b1a4c566ea
+ strategy: git
+ app: studienarbeit-webshop

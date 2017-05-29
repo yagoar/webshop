@@ -9,6 +9,7 @@
 \setlength{\parskip}{1em}
 \setlength{\emergencystretch}{\textwidth}
 \renewcommand{\baselinestretch}{1.5}\normalsize
+\usepackage{setspace}
 
 % Schriftart
 \usepackage{upquote}
@@ -173,8 +174,40 @@
 	showstringspaces=false
 }
 
+\makeatletter
+
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+	keywords={true,false,null,y,n},
+	keywordstyle=\color{editorGray},
+	sensitive=false,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	commentstyle=\color{editorPurple}\ttfamily,
+	stringstyle=\color{editorPurple}\ttfamily,
+	moredelim=[l][\color{editorPink}]{*},
+	moredelim=**[il][\color{editorOrange}{:}\color{editorBlack}]{:},   % switch to value style at :
+	morestring=[b]',
+	morestring=[b]",
+	literate =    {---}{{\ProcessThreeDashes}}3
+	{>}{{\textcolor{red}\textgreater}}1     
+	{|}{{\textcolor{red}\textbar}}1 
+	{\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\color{editorBlue}\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{editorGray}\mdseries-{-}-}}
+
 \lstset{
-	basicstyle=\footnotesize\ttfamily,
+	basicstyle=\footnotesize\ttfamily\setstretch{1},
 	numbers=left,
 	numberstyle=\scriptsize,
 	stepnumber=1,

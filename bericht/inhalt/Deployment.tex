@@ -1,8 +1,25 @@
 \section{Deployment} \thispagestyle{nomarkstyle}
+Im Verlauf der Entwicklung stellte sich intern das Bedürfnis nach einer durchgehend lauffähigen Online-Demo des Webshops heraus. Dabei sollten alle Änderungen am Projekt automatisch compiliert und in das Demo-System eingespielt werden. Um dies umsetzen zu können wurde eine Deployment-Strategie definiert, die in diesem Abschnitt näher erläutert wird.
+
+\subsection{Versionsverwaltung mit Git}
+Für die Versionsverwaltung des Projekts wird Git verwendet, eines der beliebtesten Versionsverwaltungssysteme in der Softwareentwicklung. Als zentrale Ablage des Quellcodes wurde ein Repository in der GitHub-Plattform erstellt, sodass die Teammitglieder bequem ihre Änderungen an das Repository senden und auch die neuesten Änderungen aktualisieren können\cite{Coutermarsh2014}. Neben den allgemeinen Vorteilen von Git und GitHub ist deren Einsatz auch eine Voraussetzung für die nächsten Schritte.
+
 \subsection{Travis Continuous Integration}
-Travis.yml - Einstellungen erklären, Trigger (Push auf master), 
+Die Travis CI (Continuous Integration) Software ermöglicht es automatisch bei einem Commit auf das GitHub Repository die Anwendung zu bauen (inklusive Test-Suites falls welche konfiguriert sind). Zudem kann Travis auch so eingestellt werden, dass nach einem erfolgreichen Build der Code direkt in die gewünschte Umgebung deployed wird\cite{Coutermarsh2014}.
+
+Die Einrichtung von Travis ist in wenigen Schritten erledigt:
+
+\begin{enumerate}
+	\item Je nachdem ob es sich um ein Open Source oder ein privates Repository handelt ist eine Anmeldung mit dem GitHub-Konto über jeweils \textit{travis-ci.org} oder \textit{travis-ci.com} nötig. In diesem Fall handelt es sich um ein Open Source Projekt.
+	\item In der Profilübersicht sind alle Repositories des angemeldeten Benutzerkontos aufgelistet. Anhand eines Buttons kann Travis für das entsprechende Repository aktiviert werden. Dadurch wird ein sogenanntes \enquote{Webhook} gesetzt, welches zukünftige Commits erkennt und automatisch ein Build ausführt.
+	\item Im Hauptverzeichnis des Repositories muss eine Datei mit dem Namen \texttt{.travis.yml} erstellt werden. Diese Datei teilt Travis mehrere Informationen die für den Build benötigt werden, wie die verwendete Programmiersprache, weitere Befehle die ausgeführt werden sollen und die Deployment-Konfigurationen.
+\end{enumerate}
+
+Der Inhalt der \textit{.travis.yml}-Datei für dieses Projekt ist in \cref{travis_yaml} zu finden.
+
 
 \subsection{Heroku}
-Free dyno, Eigenschaften, setup, Möglichkeiten
-
+%TODO Free dyno, Eigenschaften, setup, Möglichkeiten
+\cite{Coutermarsh2014}
 \subsection{AWS Datenbank Instanz}
+\cite{Gaut2016}
