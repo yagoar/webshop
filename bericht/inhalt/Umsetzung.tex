@@ -1,6 +1,6 @@
 \cleardoublepage
 \section{Umsetzung} \thispagestyle{nomarkstyle}
-Hier werden konkret alle Aspekte der Umsetzung der in \cref{specification} bereits beschriebenen Spezifikation behandelt. %TODO umschreiben
+In diesem Kapitel werden die wichtigsten Aspekte der Umsetzung der in \cref{specification} beschriebenen Spezifikation behandelt, sowie exemplarisch einige Implementierungsdetails vorgestellt.
  
 \subsection{Initiales Aufsetzen der Anwendung}
 Bevor die Entwicklung starten kann müssen die grundlegende Bausteine der Anwendung angelegt, konfiguriert und verbunden werden. 
@@ -72,10 +72,10 @@ In Kombination mit einer automatischen Inkrementierung, die MySQL für numerisch
 
 Für die Beziehungen zu anderen Entitäten können entsprechend der Kardinalität folgende Annotationen verwendet werden:
 \begin{itemize}
-\item{@OneToOne}
-\item{@OneToMany}
-\item{@ManyToOne}
-\item{@ManyToMany}
+\item{@OneToOne.} 1:1
+\item{@OneToMany.} 1:N
+\item{@ManyToOne.} N:1
+\item{@ManyToMany.} N:N
 \end{itemize}
 
 Über Parameter dieser Annotationen können neben der Ziel-Entität weitere Einstellungen (beispielsweise zum Cascading) gemacht werden, auf die hier nicht näher eingegangen werden soll.
