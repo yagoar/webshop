@@ -9,13 +9,14 @@ Dafür ist die Implementierung eines Rollensystems nötig, um die Benutzergruppe
 
 Für die Bestellung von Artikeln ist es nötig, dass sich ein Benutzer in der Anwendung registrieren und seine persönlichen Daten angeben kann.
 Um eine Bestellung aufzugeben muss sich der registrierte Benutzer am System anmelden können.
-Die detaillierte Beschreibung der für diese Funktionalitäten benötigten Anwendungsfälle findet sich in Kapitel \ref{usecases}.
+Die detaillierte Beschreibung der für diese Funktionalitäten benötigten Anwendungsfälle findet sich in \cref{usecases}.
 \subsection{Nichtfunktionale Anforderungen}
 Die Anwendung sollte von allen gängigen Browsern in neueren Versionen sowie auf mobilen Geräten darstellbar sein.
 Sensible Daten, wie die persönlichen Daten der Anwender, müssen vor unbefugtem Zugriff geschützt sein.
+Der Admin-Bereich sollte getrennt vom Webshop sein.
 
 Im Fehlerfall soll der Benutzer über Hinweise darauf aufmerksam gemacht werden.
-Dabei sollen interne Fehlermeldungen des Servers, sowie unverständliche Fehlercodes sollen vor dem Anwender verborgen werden.
+Dabei sollen interne Fehlermeldungen des Servers, sowie unverständliche Fehlercodes vor dem Anwender verborgen werden.
 Um die Benutzerfreundlichkeit der Anwendung zu sichern, sollte sich die Antwortzeit des Servers in einem vertretbaren Rahmen bewegen (Richtwert 3 Sekunden).
 \subsection{Hauptanwendungsfälle}\label{usecases}
 Das folgende Diagramm zeigt die Anwendungsfälle für den Benutzer und Administrator, sowie die jeweils beteiligten System-Komponenten.
@@ -50,6 +51,7 @@ Um Artikel anschauen zu können, muss ein Besucher der Seite nicht registriert o
 \paragraph{Login/Logout}$\;$ \\
 Registrierte Nutzer können sich durch die Eingabe ihrer E-Mail-Adresse und ihrem Passwort im Shop einloggen.
 Bei einer fehlerhaften Eingabe soll eine Meldung ausgegeben werden.
+Zudem soll die Login-Seite neuen Benutzern die Möglichkeit bieten, sich zu registrieren.
 Der Login ist Voraussetzung für folgende weitere Use Cases: Anzeigen/Bearbeiten der persönlichen Informationen, Zum Warenkorb hinzufügen, Bestellung aufgeben und Bestellhistorie einsehen.
 Außerdem muss beim Einloggen auch der Warenkorb des jeweiligen Benutzers geladen werden, da dieser Artikel enthalten kann, die der User beim letzten Besuch des Shops hineingelegt hat.
 Beim Logout wird der Benutzer wieder abgemledet und kann ohne einen erneuten Login nicht mehr auf seine Daten zugreifen oder die benutzerspezifischen Anwendungsfälle ausführen.
@@ -67,15 +69,16 @@ Für eine Passwort-Änderung muss auch das bisherige Passwort eingegeben werden.
 
 \paragraph{Show shopping cart (Warenkorb anzeigen)}$\;$ \\
 Der Warenkorb soll jederzeit über einen Button am oberen Rand der Seite erreichbar sein.
+Ist der Benutzer noch nicht angemeldet, soll er beim Klick auf den Warenkorb auf die Login-Seite umgeleitet werden.
 Über einen Klick auf den Button wird eine detaillierte Auflistung der Artikel, die dem Warenkorb hinzugefügt wurden, sowie der Gesamtwert des Warenkorbs angezeigt.
 In der Detailansicht soll auch eine Anpassung der Menge für jeden Artikel und das Entfernen eines Artikels aus dem Warenkorb möglich sein.
-Für registrierte, angemeldete Benutzer wird der Warenkorb gespeichert, so dass der Einkauf zu einem späteren Zeitpunkt fortgesetzt werden kann.
+Der Warenkorb soll gespeichert werden, so dass der Einkauf zu einem späteren Zeitpunkt fortgesetzt werden kann.
 \paragraph{Add to shopping cart (Zum Warenkorb hinzufügen)}$\;$ \\
 Artikel sollen jederzeit zum Warenkorb hinzugefügt werden können, wenn ein Benutzer eigeloggt ist. Sowohl in einer Übersicht über mehrere Artikel als auch in der Detailansicht eines Artikels soll dies möglich sein.
 Das Hinzufügen eines Artikels zum Warenkorb soll dem Benutzer rückgemeldet werden, damit er erkennt, dass die Aktion erfolgreich war.
 \paragraph{Place order (Bestellung aufgeben)}$\;$ \\
 Über die Detailansicht des Warenkorbs sollen Bestellungen aufgegeben werden können.
-Vor der tatsächlichen Auslösung der Bestellung soll dem Benutzer eine Zusammenfassung gezeigt werden, die neben den einzelnen Artikeln auch seine Adressdaten, und den Gesamtwert der Bestellung enthält.
+Vor der tatsächlichen Auslösung der Bestellung soll dem Benutzer eine Zusammenfassung gezeigt werden, die neben den einzelnen Artikeln auch seine Adressdaten und den Gesamtwert der Bestellung enthält.
 In dieser Übersicht soll auch die Menge für die einzelnen Artikel angepasst werden können.
 Nach der Bestätigung durch den Nutzer soll die Bestellung ausgelöst und eine entsprechende Meldung ausgegeben werden.
 \paragraph{Show order history (Bestellhistorie einsehen)}$\;$ \\
@@ -87,11 +90,11 @@ Unter den Hauptkategorien kann der Benutzer in Unterkategorien auswählen, wonac
 Dadurch kann erreicht werden, dass ein Nutzer seinen Wunsch so weit präzisieren kann, dass er nur noch eine überschaubare Menge an Artikeln gezeigt bekommt, die seinen Kriterien entsprechen.
 \paragraph{Filter products (Artikel filtern)}$\;$ \\
 Um die Suche nach Artikeln weiter zu unterstützen, soll eine Filterung möglich sein, die eine Auswahl nach verschiedenen Artikelmerkmalen bietet.
-So soll der Benutzer beispielsweise nach der Marke filtern können, um nur Produkte dieser Marke angezeigt zu bekommen.
+So soll der Benutzer beispielsweise nach der Marke oder der Farbe filtern können, um nur Produkte dieser Marke oder Farbe angezeigt zu bekommen.
 \paragraph{Show product details (Detailansicht eines Artikels)}$\;$ \\
 Durch einen Klick auf den Namen oder das Vorschaubild eines Artikels, soll dessen Detailansicht erscheinen, die alle verfügbaren Informationen zu diesem Artikel zeigt.
 \subsubsection{Administrator-Anwendungsfälle}
-Anwendungsfälle für Administratoren sind nur für Benutzer zugänglich, die über die entsprechende Rolle verfügen. Relaisiert werden soll das über eine Markierung der Nutzer, die Administrator-Rechte haben.
+Anwendungsfälle für Administratoren sind nur für Benutzer zugänglich, die über die entsprechende Rolle verfügen.
 Der Bereich für alle derartigen Operationen soll getrennt vom restlichen Shop sein und ist vor unbefugtem Zugriff zu schützen.
 \paragraph{Login/Logout}$\;$ \\
 Die Anmeldung für Administratoren soll über eine gesonderte URL erfolgen, die nicht im Shop verlinkt ist.
@@ -107,7 +110,14 @@ Um neue Artikel für den Shop anzulegen oder bestehende zu ändern/löschen, sol
 Für das Anlegen neuer Artikel muss das Hochladen von Bilddateien ermöglicht werden.
 Neue Artikel oder Änderungen sollten sofort im Shop integriert werden.
 \subsection{System-Abgrenzung}
-Diagramm, Grenzen stecken
+Das System beschränkt sich auf einen Web-Server mit der Anwendung, die in Shop und Admin-Bereich unterteilt ist und der Datenbank.
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\linewidth]{bilder/kap4/system_abgrenzung}
+	\caption{Systemkontext}
+	\label{fig:system_context}
+\end{figure}
+\cref{fig:system_context} zeigt den System-Kontext der Anwendung.
 \subsection{Inhaltliche Definition}
 Für den thematischen Inhalt des Webshops wurde das Thema Wolle und Handarbeit gewählt.
 Der Fokus liegt dabei auf der Wolle. Als Hauptkategorien wurden Wolle, Stricken, Häkeln, Zubehör und Bücher festgelegt.
