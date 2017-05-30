@@ -156,9 +156,13 @@ Diese können beispielsweise verwendet werden, um den Benutzer zu identifizieren
 Für den Webshop wurde \acs{JWT} integriert, indem beim Login ein Token erstellt und übermittelt wird. Für erneute Anfragen wird dieses mitgeschickt. Als zusätzliche Information enthält es die User-Id und die Rolle des Benutzers (User oder Admin).
 Bei sämtlichen REST-Endpoint-Methoden, die eine Anmeldung erfordern, werden das Token und für die Admin-Funktionalitäten die Rolle überprüft.
 \subsubsection{File Upload}
+Für das Hochladen und Speichern von Dateien oder Bildern durch Benutzer gibt es in Web-Anwendungen verschiedene Realisierungsmöglichkeiten.
+Wie bei allen Eingaben, die von Usern gemacht werden, muss dabei auch auf die Sicherheit geachtet werden, da durch solche Operationen Schaden an der Anwendung oder der Datenbank angerichtet werden können.
+Da in der vorliegenden Anwendungen der Upload von Bild-Daten nur von Administratoren durchgeführt werden kann, ist dieser Aspekt aber vernachlässigbar.
 
-%TODO FileUpload + Speicherung in der DB
-
+Um Bilder für Artikel persistent zu speichern und auch bei einer möglichen Neu-Installation der Anwendung verfügbar zu haben, wurde eine Lösung gewählt, die die Bilder mit den Artikeldaten in der Datenbank speichert.
+Der Datentyp \acs{Blob} (Binary Large Object) ermöglicht das Speichern eines simplen binären Byte-Arrays, das beim Upload direkt als Stream geschrieben werden kann.
+Eine dafür erstellte REST-Endpoint-Funktion liefert dann für einen Artikel das entsprechende Bild zurück, das im Frontend angezeigt werden kann.
 \subsection{Frontend}
 Dieser Abschnitt behandelt die Details zur Implementierung der Angular 2 Anwendung. Die Gliederung ist so aufgebaut, dass einige der in \cref{angular_arch} beschriebenen   Architekturelementen mit der konkreten Umsetzung im Rahmen dieses Projekts vertieft werden.
 
