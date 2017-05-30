@@ -1,4 +1,57 @@
 \section{Fazit} \thispagestyle{nomarkstyle}
+Dieses Kaptiel soll abschließend ein Fazit des Projekts und der entstandenen Anwendung ziehen.
+Dabei soll auf Probleme eingegangen werden, sowie in einem Ausblick gezeigt werden, was über den Projekt-Umfang hinaus weiter getan werden könnte. Zuletzt soll eine kritische Bewertung des Projekts erfolgen.
 \subsection{Hürden und Stolpersteine}
-\subsection{Kritische Würdigung}
+Exemplarisch werden hier einige Schwierigkeiten, die während des Projekts auftraten und ihre jeweilige Lösung beschrieben.
+\subsubsection{Artikel-Bilder}
+Anfangs wurden die Bilder für die Artikel in ein Verzeichnis innerhalb der Anwendung gespeichert.
+Das stellt für die Artikel, die bereits bei Auslieferung der Anwendung vorhanden sind, auch kein Problem dar.
+Allerdings werden dann neue Bilder, die im Zuge des Anlegens von Artikeln in dieses Verzeichnis hochgeladen werden, nur so lange gespeichert, wie die Anwendung unverändert auf dem Server liegt.
+Sobald durch ein Deployment der Webshop neu auf den Server gelegt wird, sind diese Bilder nicht mehr vorhanden, da sie nicht Teil der verwalteten Anwendung sind.
+
+Demnach wurde in einer Anpassung ein Verzeichnis außerhalb der Anwendung definiert, was diesen Umstand umging, allerdings neue Probleme mit sich brachte.
+Die Benutzung relativer und absoluter Pfade für eine Dateireferenzierung ist problematisch, da sie je nach der Umgebung der Anwendung variieren können und damit fehleranfällig sind und eine manuelle Anpassung nötig machen können.
+
+Also wurde nach einiger Recherche die Variante gewählt, die Bilder direkt in der Datenbank als Blob zu speichern.
+Diese Lösung macht die Bilder unabhängig von der Anwendung und durch die Speicherung in der Datenbank genauso persistent wie alle anderen Ressourcen.
+\subsubsection{Kategorien-Hierarchie}
+Die Hierarchie der Kategorien ist eine elegante Möglichkeit, Artikel zu gruppieren, brachte aber auch einiges an Aufwand und Schwierigkeiten mit sich.
+Je nach Verschachtelungs-Tiefe wird es zunehmend schwieriger, die Kategorien zu verwalten und herauszufinden, welche Artikel in einer Kategorie und allen ihren Kinder-Kategorien vorhanden sind.
+Da die Anzahl dieser Hierarchie-Ebenen bei der Planung nicht definiert wurde, wurden für die Abfrage der Artikel einer Kategorie rekursive Funktionen nötig, um dynamisch je nach Verschachtelungs-Tiefe alle Artikel abzurufen.
+Dieser Umstand wirkt sich auf Abfragen der obersten Hierarchie negativ auf die Performanz aus.
+Eine Festlegung der Ebenen oder eine zusätzliche Abbildung der Hierarchie in der Datenbank hätte den Umgang damit erleichtert.
+\subsubsection{Filterung}
+Auch für die Filterung von Artikeln nach bestimmten Merkmalen musste während der Entwicklung eine Lösung gefunden werden.
+Nach einiger Überlegung, wie das bewerkstelligt werden kann, fiel die Entscheidung für eine Umsetzung im Frontend.
+Dank Angular und TypeScript konnte eine solche Logik dort implementiert werden, die man sonst eher im Backend ansiedeln würde.
+Dennoch war diese Realisierung mit einigem Aufwand verbunden, um die dafür benötigten Informationen jeweils dynamisch auszulesen und für die Filterung verfügbar zu machen.
 \subsection{Ausblick}
+In diesem Abschnitt werden einige Aspekte beschrieben, die für eine Weiterentwicklung des Webshop sinnvoll oder wünschenswert wären.
+\subsubsection{Suche}
+Eine Volltext-Suche zu implementieren, wäre für viele Aspekte des Shops und des Admin-Bereichs hilfreich.
+Diese sollte in der gesamten Anwendung verfügbar gemacht werden, um zum Beispiel nach Artikeln über Schlagworte zu suchen oder im Admin-Bereich nach Usern über den Namen.
+Einige solcher Such-Möglichkeiten wurden jeweils in den \acs{DAO}-Klassen als Funktionen definiert.
+Um diese Funktionalität aber nicht für alle Entitäten einzeln umzusetzen, wäre eine solche globale Suche wünschenswert und würde sich auch im Hinblick auf einen wachsenden Shop lohnen.
+\subsubsection{Artikel und Angebote}
+Für einen Webshop im Produktiv-Betrieb wäre es attraktiv, wenn man bestimmte Inhalte dynamisch anpassen könnte.
+So könnten beispielsweise Artikel im Preis reduziert und hervorgehoben oder bestimmte Verkaufs-Aktionen durchgeführt werden.
+Solche Aktionen könnten jeweils auf der Startseite platziert werden, um eine Umsatz-Steigerung zu erzielen.
+Das würde auch bei der Kunden-Bindung helfen, da regelmäßige Kunden bei einer solchen dynamischen Gestaltung des Shops auch öfter die Seite besuchen.
+\subsubsection{Admin-Bereich}
+Im Admin-Bereich sind viele Erweiterungen denkbar. Eine Verwaltung der Kategorien wäre eine sinnvolle Erweiterung der Anpassungs-Möglichkeiten für Administratoren.
+Ebenso könnten die eben angesprochenen Aktionen oder Rabatte über den Admin-Bereich eingespielt werden, damit dafür nicht immer Änderungen am statischen Source-Code der Oberfläche gemacht werden müssen.
+\subsection{Kritische Würdigung}
+Zuletzt soll der Gesamtablauf des Projekts bewertet werden.
+\subsubsection{Spezifikation}
+Die Definition der Anforderungen und die Planung der Umsetzung hatte zwar gut funktioniert, brachte aber im Laufe des Projekts einige Lücken ans Licht, sodass nach-spezifiziert werden musste.
+Fehlende Aspekte bei der Spezifikation bringen häufig später bei der Entwicklung einen Mehr-Aufwand mit sich oder bringen den Ablauf ins Stocken.
+Trotz dieser Lücken lief die Implementierung aber ohne schwerwiegende Probleme und auch die Zeitplanung konnte größtenteils eingehalten werden.
+\subsubsection{Arbeitsaufteilung und Tools}
+Die generelle Unterteilung in Front- und Backend-Entwicklung machte die Verantwortlichkeiten klar. Trotzdem waren beide Projektmitglieder über die Arbeit des anderen informiert und halfen sich gegenseitig aus.
+Gegen Ende der Umsetzung waren dann beide mit Themen im Frontend und Anpassungen oder Bugfixes beschäftigt.
+Die Verwendung von Git als Versionsverwaltungs-System hat einen reibungslosen Ablauf beim parallelen Arbeiten ermöglicht.
+Durch das Continuous Deployment konnten Änderungen quasi in Echtzeit auf dem Server getestet werden.
+\subsubsection{Lerneffekt}
+Die Verwendung von Angular 2 brachte einen großen Lerneffekt mit sich und hat nach einer gewissen Eingewöhnungsphase sehr gut funktioniert.
+Auch der Umgang mit diversen Tools rund um den gesamten Entwicklungsprozess haben einige gute Erfahrungen mit sich gebracht.
+Zusammenfassend kann der Lerneffekt als sehr hoch bezeichnet werden und als gute Erfahrung für zukünftige Projekte gesehen werden.
