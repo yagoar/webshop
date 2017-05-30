@@ -44,7 +44,7 @@ Einige dieser Konfigurationen sind Projekt-Abhängigkeiten, Plugins, Build-Profi
 	\label{fig:init-project}
 \end{figure}
 
-\subsubsection{Angular 2 Anwendung}
+\subsubsection{Angular 2 Anwendung}\label{angular_setup}
 Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Dabei handelt es sich um Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen \cite{Arora2017}.
 
 Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert.
@@ -188,9 +188,11 @@ Dieser Abschnitt behandelt die Details zur Implementierung der Angular 2 Anwendu
 \subsubsection{Module}
 Es ist weitestgehend den Entwicklern überlassen, welche Funktionalitäten in welcher Form zu Angular-Modulen gekapselt werden. Prinzipiell wäre es auch möglich eine Anwendung ganz ohne Module zu erstellen (abgesehen vom bereits erwähnten, obligatorischen Root-Modul). Im Webshop wurden jedoch der Übersichtlichkeit halber zwei Module definiert: ein Shop- und ein Admin-Modul. Somit ist die Trennung zwischen diesen Bereichen auch in der Implementierung gegeben.
 
-Beide Module enthalten eine Modul-Klasse, eine Basiskomponente mit Template, sowie ein Routing-Modul welches importiert wird. Die Aufgabe der Routing Module ist es, bestimmte 
+Beide Module enthalten eine Modul-Klasse, eine Basiskomponente mit Template, sowie ein Routing-Modul welches importiert wird. Die Aufgabe der Routing-Module ist es, beim Aufruf einer bestimmten URL der Webseite eine dazu zugewiesene Komponente in einen Platzhalter des \acs{DOM}s zu laden.
+\\
+\lstinputlisting[language=JavaScript,breaklines=true,caption=Routing-Module,label=lst:routing]{listings/routing.ts}
 
-%TODO Routing-Modul beschreiben
+\cref{lst:routing} zeigt einige der Routen des Shop-Moduls. Wie in Zeile 2 zu sehen ist, sind alle URLs des Webshops unter dem Pfad \enquote{shop} definiert, der die Hauptkomponente des Moduls repräsentiert. Im Template dieser Komponente ist der bereits erwähnte Platzhalter für die Kind-Komponenten enthalten.
 
 \subsubsection{Komponenten}
 %TODO Welche Komponenten gibt es
