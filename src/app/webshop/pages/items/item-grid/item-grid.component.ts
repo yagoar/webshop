@@ -29,8 +29,7 @@ export class ItemsGridComponent implements OnInit, OnChanges {
               private router: Router
   ) {
     const state: RouterState = router.routerState;
-    const snapshot: RouterStateSnapshot = state.snapshot;
-    this.snapshot = snapshot;
+    this.snapshot = state.snapshot;
   }
 
   ngOnInit() {

@@ -11,7 +11,7 @@
    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
      <ul class="nav navbar-nav">
        <li><a href="#">Home</a></li>
-       <li *ngFor="let category of parentCategories"><a href="#/shop/category/{{category.c_id}}" (click)="isCollapsed=!isCollapsed">{{category.name}}</a></li>
+       <li *ngFor="let category of parentCategories"><a class="menu-link" (click)="navigateToCategory(category.c_id)">{{category.name}}</a></li>
 
      </ul>
    </div>

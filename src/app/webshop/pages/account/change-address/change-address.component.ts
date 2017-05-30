@@ -21,6 +21,9 @@ export class ChangeAddressComponent implements OnInit {
     //Get address type from route params
     this.addressType = this.route.snapshot.queryParams['type'];
 
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
     //Get current address from user service
     if(this.addressType == "billing"){
       this.address = this.userService.currentBillingAddress;
@@ -44,7 +47,7 @@ export class ChangeAddressComponent implements OnInit {
 
     this.userService.changeAddress(this.address, this.addressType).subscribe(
         data => {
-          this.router.navigate(['/shop/account'], { queryParams: { successAddrChange: this.addressType }});
+          this.router.navigate([this.returnUrl], { queryParams: { successAddrChange: this.addressType }});
         }
     );
   }
@@ -54,7 +57,7 @@ export class ChangeAddressComponent implements OnInit {
   }
 
   cancelChangeAddr() {
-    this.router.navigate(['/shop/account']);
+    this.router.navigate([this.returnUrl]);
   }
 
 }
