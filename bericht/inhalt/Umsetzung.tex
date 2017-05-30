@@ -3,10 +3,12 @@
 In diesem Kapitel werden die wichtigsten Aspekte der Umsetzung der in \cref{specification} beschriebenen Spezifikation behandelt, sowie exemplarisch einige Implementierungsdetails vorgestellt.
  
 \subsection{Initiales Aufsetzen der Anwendung}
-Bevor die Entwicklung starten kann müssen die grundlegende Bausteine der Anwendung angelegt, konfiguriert und verbunden werden. 
+Bevor mit der Entwicklung begonnen werden kann, müssen die grundlegenden Bausteine der Anwendung angelegt, konfiguriert und miteinander verbunden werden.
 
 \subsubsection{Spring Boot Anwendung}\label{spring-boot-init}
-Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring Boot Projekt inklusive Abhängigkeiten einfach generiert werden kann. Die Oberfläche (namens Spring Initializr) erlaubt es Maven oder Gradle als Build-Management-Tool zu verwenden. In diesem Projekt fiel die Entscheidung für Maven, aufgrund der bereits vorhandenen Erfahrung mit dem Tool. 
+Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring Boot Projekt inklusive Abhängigkeiten einfach generiert werden kann.
+Die Oberfläche (namens Spring Initializr) erlaubt es Maven oder Gradle als Build-Management-Tool zu verwenden.
+In diesem Projekt fiel die Entscheidung für Maven, aufgrund der bereits vorhandenen Erfahrung mit dem Tool.
 
 \begin{figure}[th!]
 	\centering
@@ -18,15 +20,22 @@ Spring stellt eine Weboberfläche zur Verfügung, in der ein komplettes Spring B
 \cref{fig:spring-initializr} zeigt die gewählte Konfiguration für das Grundprojekt. Links sind die Metadaten für das Deployment definiert und rechts die Abhängigkeiten. Diese sind initial:
 
 \begin{itemize}
-	\item \textit{Spring Web}. Benötigt um eine Webanwendung mit eingebetteten Tomcat-Server zu implementieren.
-	\item \textit{Jersey}. Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen\cite{Oracle2015}. 
-	\item \textit{Spring Data JPA}. Stellt die Zugriffstechnologie der Java Persistence API (\acs{JPA}) zur Verfügung. Mit dieser Abhängigkeit können Datenzugriffsobjekte angelegt werden (sogenannte \acs{DAO}s, Data Access Objects), die alle notwendige Datenbankoperationen implementieren\cite{Webb2017}.
-	\item \textit{Spring MySQL JDBC Driver}. Damit kann die Spring Boot Anwendung automatisch eine Verbindung zur MySQL-Datenbank herstellen\cite{Webb2017}. Alle weitere Konfigurationen für diese Verbindung werden später in dieser Arbeit beschrieben.
+	\item \textit{Spring Web.} Wird benötigt um eine Webanwendung mit eingebettetem Tomcat-Server zu implementieren.
+	\item \textit{Jersey.} Hierbei handelt es sich um die Referenzimplementierung von JAX-RS. JAX-RS ermöglicht es, anhand von Annotationen, herkömmliche Java-Klassen per REST verfügbar zu machen \cite{Oracle2015}.
+	\item \textit{Spring Data JPA.} Stellt die Zugriffstechnologie der Java Persistence API (\acs{JPA}) zur Verfügung. Mit dieser Abhängigkeit können Datenzugriffsobjekte angelegt werden (sogenannte \acs{DAO}s, Data Access Objects), die alle notwendige Datenbankoperationen implementieren \cite{Webb2017}.
+	\item \textit{Spring MySQL JDBC Driver.} Mit diesem Treiber kann die Spring Boot Anwendung automatisch eine Verbindung zur MySQL-Datenbank herstellen \cite{Webb2017}. Alle weitere Konfigurationen für diese Verbindung werden später in dieser Arbeit beschrieben.
 \end{itemize}
 
-Die Ordnerstruktur des generierten Projekts kann der \cref{fig:init-project} entnommen werden. Es handelt sich hierbei um die übliche Struktur einer Java-Anwendung, mit einem \texttt{main} und einem \texttt{test} Verzeichnis. Initial sind im \texttt{main} Verzeichnis nur zwei Dateien: die \texttt{WebshopApplication} Klasse und die \texttt{application.properties}. Erstere enthält die Java \texttt{main}-Methode, welche die Anwendung lauffähig macht. Dort werden auch automatisch alle notwendige Konfigurationen für Spring Boot gesetzt. Die \texttt{application.properties} Datei ist zu diesem Zeitpunkt noch leer, aber sie wird später benutzt um unterschiedliche Aspekte der Anwendung (wie zum Beispiel Server-Port oder Verbindungsdaten zur Datenbank) auf einer einfachen Art und Weise einzustellen.
+Die Ordnerstruktur des generierten Projekts kann der \cref{fig:init-project} entnommen werden.
+Es handelt sich hierbei um die übliche Struktur einer Java-Anwendung, mit einem \texttt{main} und einem \texttt{test} Verzeichnis.
+Initial sind im \texttt{main} Verzeichnis nur zwei Dateien: die \texttt{WebshopApplication} Klasse und die \texttt{application.properties}.
+Erstere enthält die Java \texttt{main}-Methode, welche die Anwendung lauffähig macht.
+Dort werden auch automatisch alle notwendige Konfigurationen für Spring Boot gesetzt.
+Die \texttt{application.properties} Datei ist zu diesem Zeitpunkt noch leer, aber sie wird später benutzt um unterschiedliche Aspekte der Anwendung (wie zum Beispiel Server-Port oder Verbindungsdaten zur Datenbank) auf einfache Art und Weise einzustellen.
 
-Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Project Object Model oder \acs{POM} ist die grundlegende Arbeitseinheit von Maven. Die XML-Datei enthält Information über das Projekt, sowie Konfigurationsdetails welche von Maven verwendet werden um das Projekt zu bauen. Einige dieser Konfigurationen sind Projekt-Abhängigkeiten, Plugins, Build-Profile usw.\cite{Foundation2017}
+Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Project Object Model oder \acs{POM} ist die grundlegende Arbeitseinheit von Maven.
+Diese XML-Datei enthält Information über das Projekt, sowie Konfigurationsdetails, die von Maven verwendet werden um das Projekt zu bauen.
+Einige dieser Konfigurationen sind Projekt-Abhängigkeiten, Plugins, Build-Profile usw. \cite{Foundation2017}
 
 \begin{figure}[th!]
 	\centering
@@ -36,11 +45,18 @@ Eine weitere wichtige Datei ist die \texttt{pom.xml} im Stammverzeichnis. Das Pr
 \end{figure}
 
 \subsubsection{Angular 2 Anwendung}
-Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Hierbei handelt es sich um die Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen\cite{Arora2017}.
+Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Dabei handelt es sich um Angular CLI, ein Tool für die Initialisierung, Entwicklung und Wartung von Angular Anwendungen \cite{Arora2017}.
 
-Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert. Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung. Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu. Die statische Inhalte werden mit \texttt{ng build} gebaut. 
+Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert.
+Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung.
+Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu.
+Die statische Inhalte werden mit \texttt{ng build} gebaut.
 
-Damit Spring Boot diese Inhalte verwenden kann müssen sie jedoch im  \texttt{resources/static} Verzeichnis (siehe \cref{fig:init-project}) liegen. Das kann durch einer Anpassung an der \texttt{angular-cli.json} Datei erreicht werden (Zeile 4 von \cref{lst:angular-cli}). Des weiteren enthält diese Datei auch weitere wichtige Konfigurationen, wie der Ablageort von anderen Ressourcen wie Bilder oder benötigte Stylesheets. An dieser Stelle werden demnach die \acs{CSS}-Dateien für das Bootstrap Framework referenziert, sowie eine eigene Stylesheet für weitere Anpassungen. Mehr zu Bootstrap und zu den Designentscheidungen wird später in dieser Arbeit behandelt.
+Damit Spring Boot diese Inhalte verwenden kann, müssen sie jedoch im  \texttt{resources/static} Verzeichnis (siehe \cref{fig:init-project}) liegen.
+Das kann durch einer Anpassung an der \texttt{angular-cli.json} Datei erreicht werden (Zeile 4 von \cref{lst:angular-cli}).
+Des weiteren enthält diese Datei auch weitere wichtige Konfigurationen, wie der Ablageort von anderen Ressourcen wie Bildern oder benötigten Stylesheets.
+An dieser Stelle werden demnach die \acs{CSS}-Dateien für das Bootstrap Framework referenziert, sowie ein eigenes Stylesheet für weitere Anpassungen.
+Mehr zu Bootstrap und zu den Designentscheidungen wird später in dieser Arbeit behandelt.
 \\
 \lstinputlisting[language=json,firstline=7,lastline=10,caption=Auszug der Datei angular-cli.json,label=lst:angular-cli]{listings/angular-cli.json}
 
@@ -55,14 +71,16 @@ Für die Realisierung dieser Zugriffs-Klassen wurden Spring Data \acs{JPA} Repos
 
 \cref{lst:CategoryDao} zeigt eine solche \acs{DAO}-Klasse.
 Zugriffs-Funktionen zu definieren kann auf unterschiedliche Art und Weise passieren. Zum einen ermöglichen diese Repositories es, Suchkriterien über den Namen der jeweiligen Funktion zu definieren.
-So kann beispielsweise über eine Funktion \textit{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält. Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
+So kann beispielsweise über eine Funktion \textit{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält.
+Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
 Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (@Query)eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
 
 \subsection{Objektrelationale Abbildung (\acs{ORM}) mit Hibernate}
-Für die Zuordnung der Backend-Klassen zu der entsprechenden Tabelle in der Datenbank mit Hibernate stehen dem Entwickler eine Vielzahl von Annotationen zur Verfügung, von denen einige hier kurz beschrieben werden sollen.
-Die Hibernate Annotation um eine Klasse als Entität zu markieren ist denkbar einfach. Sie wird direkt über der Klassendefinition mit \textit{@Entity} gesetzt.
-Darüber hinaus können auch der Tabellen-Name sowie die Namen der einzelnen Tabellenspalten über der Definition der Klasse beziehungsweise des Attributs gesetzt werden. Das ist allerdings nur für den Fall nötig, wenn diese Namen explizit vergeben werden sollen.
-Wenn man die Zuordnung für eine bereits bestehende Datenbank machen möchte, sind diese expliziten Namen sehr hilfreich.
+Für die Zuordnung der Backend-Klassen zu den entsprechenden Tabellen in der Datenbank mit Hibernate stehen dem Entwickler eine Vielzahl von Annotationen zur Verfügung, von denen einige hier kurz beschrieben werden sollen.
+Die Hibernate Annotation um eine Klasse als Entität zu markieren ist denkbar einfach. Sie wird direkt über der Klassendeklaration mit \textit{@Entity} gesetzt.
+Darüber hinaus können auch der Tabellen-Name sowie die Namen der einzelnen Tabellenspalten über der Deklarationen der Klasse beziehungsweise des Attributs gesetzt werden.
+Das ist allerdings nur für den Fall nötig, wenn diese Namen explizit vergeben werden sollen. Ansonsten werden sie von Hibernate gemäß dem Namen der Klasse in Kleinschriebung vergeben.
+Wenn man aber die Zuordnung für eine bereits bestehende Datenbank machen möchte, sind diese expliziten Namen sehr hilfreich.
 Ist eine entsprechende Tabelle beim Start der Anwendung nicht vorhanden, wird diese von Hibernate erzeugt.
 
 Eine weitere wichtige Annotation betrifft die Primärschlüssel der Tabelle, die jeden Datensatz eindeutig identifizieren können. Mit \textit{@Id} kann dieses Attribut gekennzeichnet werden.
@@ -89,10 +107,11 @@ Die Vererbungshierarchie wird damit nicht explizit im Datenmodell ersichtlich.
 \paragraph{Single table}$\;$ \\
 Dabei werden alle erbenden Klassen in einer einzigen Tabelle in der Datenbank abgebildet. Dadurch enthält die Tabelle viele Spalten, da alle Attribute jeder Sub-Klasse enthalten sind.
 Für einzelne Datensätze einer bestimmten erbenden Klasse werden nicht benötigte Spalten mit \enquote{null}-Werten belegt.
-Um zu unterscheiden welche Datensätze zu welcher Sub-Klasse gehören wird außerdem eine sogenannte \enquote{Discriminator Column} definiert.
+Um zu unterscheiden welche Datensätze zu welcher Sub-Klasse gehören, wird außerdem eine sogenannte \enquote{Discriminator Column} definiert.
 Dieser Ansatz ist sehr performant, da für Abfragen immer nur eine Tabelle verwendet werden muss.
 \paragraph{Table-per-subclass}$\;$ \\
-Hier wird für die vererbende und jede erbende Klasse eine eigene Tabelle in der Datenbank erzeugt. Letzere enthalten dabei nur die Attribute, die sie zusätzlich zu den der Eltern-Klasse haben. Die Zuordnung zur Eltern-Klasse wird über JOINS hergestellt, was die Performanz bei häufigen Abfragen negativ beeinflussen kann.
+Hier wird für die vererbende und jede erbende Klasse eine eigene Tabelle in der Datenbank erzeugt. Letzere enthalten dabei nur die Attribute, die sie zusätzlich zu den der Eltern-Klasse haben.
+Die Zuordnung zur Eltern-Klasse wird über JOINS hergestellt, was die Performanz bei häufigen Abfragen negativ beeinflussen kann.
 \paragraph{Table-per-concrete-class}$\;$ \\
 In dieser letzten Variante wird wie bei Table-per-subclass für alle Entitäten eine Tabelle erzeugt. Diese enthalten jedoch jeweils alle eigenen und die Attribute der Eltern-Klasse.
 Die Zuordnung wird über UNION-Operationen hergestellt, was ebenfalls zu Performance-Verlusten bei großen Klassen-Hierarchien führen kann.
@@ -105,9 +124,9 @@ Innerhalb des Webshops wurde für die Hierarchie bei Artikeln die \enquote{Singl
 \subsection{REST-Schnittstellen}
 Wie in \cref{spring-boot-init} bereits erwähnt, wurde für das Erstellen der REST-Services innerhalb der Spring Boot Anwendung Jersey als Implementierung der Java-Schnittstelle \acs{JAX-RS} benutzt.
 Für die Darstellung der zu übertragenden Ressourcen verwendet JAX-RS standardmäßig die Implementierung von \acs{JAXB} (Java Architecture for XML Binding).
-Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST Aufruf in die entsprechende XML oder \acs{JSON} Darstellung umgewandelt werden.
-Die Unterstützung des JSON Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt.
-Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings\cite{Oracle2015}.
+Der Vorteil daran ist, dass die Klassen mit der Annotation \texttt{@XmlRootElement} automatisch bei einem REST-Aufruf in die entsprechende XML- oder \acs{JSON}-Darstellung umgewandelt werden.
+Die Unterstützung des JSON-Formates ist dadurch gewährleistet, dass JAXB die Jackson Bibliotheken benutzt.
+Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von Java-Objekten in JSON-Strings \cite{Oracle2015}.
 
 Über Annotationen können normale Java-Klassen zu sogenannten Endpoints gemacht werden, die Anfragen über eine \acs{URI} entgegen nehmen und beantworten können.
 Die wichtigsten sind \cite{Jersey2017a}:
@@ -116,7 +135,7 @@ Die wichtigsten sind \cite{Jersey2017a}:
 \item{@Path.} Legt die \acs{URI} für die Web-Services der Klasse oder einer Methode fest.
 \item{@GET, @POST, @PUT, @DELETE, @HEAD.} Definiert die \acs{HTTP}-Methode für den Aufruf einer Service-Methode.
 \item{@Consumes, @Produces.} Spezifiziert den \acs{MIME}-Typ, der von der Funktion konsumiert bzw. produziert werden kann.
-\item{@*Param.} Um Parameter bei der Anfrage auszulesen (z.B. \textit{@PathParam} für Paramter in der \acs{URI} der Anfrage).
+\item{@*Param.} Wird verwendet, um Parameter bei der Anfrage auszulesen (z.B. \textit{@PathParam} für Paramter in der \acs{URI} der Anfrage).
 \end{itemize}
 
 Für die vorliegende Anwendung wurden die Endpoints thematisch separiert.
@@ -133,7 +152,7 @@ Zusätzlich zu den Benutzer- und Administrator-Funktionalitäten wurden zwei wei
 \\
 \lstinputlisting[language=Java,breaklines=true,caption=REST-Beispiel,label=lst:RESTexample]{listings/RESTexample.java}
 
-\cref{lst:RESTexample} zeigt die Deklaration der Registrierungs-Funktion für Benutzer sowie deren Implementierung.
+\cref{lst:RESTexample} zeigt die Deklaration der Registrierungs-Funktion für Benutzer sowie deren Implementierung als Beispiel für die Endpoint-Funktionalitäten.
 
 \subsection{Weitere Implementierungsdetails}
 In diesem Abschnitt werden einzelne Details zur Implementierung vorgestellt.
@@ -145,12 +164,12 @@ Auf die einzelnen Kryptographieverfahren und die Generierung solcher Schlüssel 
 Dabei wurde auf das bestehende Framework jBCrypt zurückgegriffen, eine Java-Implementierung des OpenBSD Blowfish Passwort-Hashing-Algorithmus. \cite{jBCrypt2015}
 Dieser benutzt eine 64-Bit Block-Cipher, um einen Hash des Passworts zu generieren, der dann in der Datenbank gespeichert werden kann. \cite{Provos}
 Beim Registrieren eines Nutzers wird sein Passwort über das Framework zu einem Hash-Wert verarbeitet und gespeichert.
-Wenn ein User sich am System anmeldet wird das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
+Wenn ein User sich am System anmeldet, wird das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
 \subsubsection{Token-Authentifizierung}
 Um zu vermeiden, dass sich ein Benutzer für jede Anfrage an den Server immer wieder anmelden muss, wurde auf die Verwendung einer Token-Authentifizierung zurückgegriffen.
 
 \acs{JSON} Web Token (\acs{JWT}) ist ein offener Standard für die sichere Übermittlung von \acs{JSON}-Objekten zwischen zwei Partnern und wird häufig für die Authentifizierung bei Web-Anwendungen verwendet.
-Durch eine digitale Signierung mit einem Verschlüsselungs-Algorithmus sind die Tokens sicher. Außerdem können im Token selbst zusätzliche Informationen gehalten werden.
+Durch eine digitale Signierung mit einem Verschlüsselungs-Algorithmus sind die Tokens fälschungssicher. Außerdem können im Token selbst zusätzliche Informationen gehalten werden.
 Diese können beispielsweise verwendet werden, um den Benutzer zu identifizieren, wodurch bei einer erneuten Anfrage nicht zuerst wieder eine Datenbank-Abfrage nötig wird. \cite{Auth02016}
 
 Für den Webshop wurde \acs{JWT} integriert, indem beim Login ein Token erstellt und übermittelt wird. Für erneute Anfragen wird dieses mitgeschickt. Als zusätzliche Information enthält es die User-Id und die Rolle des Benutzers (User oder Admin).
