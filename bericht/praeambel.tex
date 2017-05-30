@@ -28,15 +28,18 @@
 
 %Literaturverzeichnis
 \usepackage{csquotes}
-\usepackage[backend=biber,bibencoding=utf8]{biblatex}
+\usepackage[backend=biber,bibencoding=utf8,sorting=none]{biblatex}
 \addbibresource{studienarbeit.bib}
 
 %Abkürzungsverzeichnis
 \usepackage[printonlyused]{acronym}
 
 %Anhang
-\usepackage[titletoc]{appendix}
+\usepackage[titletoc,page]{appendix}
 \newcommand*{\Appendixautorefname}{Anhang}
+
+%PDFs
+\usepackage{pdfpages}
 
 %Graphiken / Tabellen
 \usepackage{graphicx}
