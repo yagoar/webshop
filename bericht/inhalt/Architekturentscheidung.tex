@@ -44,7 +44,8 @@ Es ist geplant, den Webshop als eine Single Page Application zu realisieren, der
 Angular gehört schon seit der ersten Version zu den beliebtesten Frameworks für diesen Anwendungsfall, da die mitgelieferten Tools und Funktionalitäten die Implementierung sehr vereinfachen.
 Besonders der Routing-Mechanismus für die Navigation in der \acs{SPA} ist in Angular sehr ausgereift.
 
-%TODO Erklären warum so ausführlich
+In den nächsten Seiten werden die Eigenschaften des Frameworks etwas ausführlicher behandelt, da das Thema im Laufe der Implementierung mitunter den größten Einarbeitungsaufwand betrug.
+
 Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Angular.io2017}:
 
 \begin{itemize}
@@ -57,8 +58,6 @@ Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Ang
 	\item \textit{Services}
 	\item \textit{Dependency Injection}
 \end{itemize}
-
-Diese werden in den nächsten Abschnitten näher beschrieben.
 
 \subsubsection{Komponenten}
 Komponenten sind TypeScript-Klassen, die die Darstellung der Oberfläche, die sogenannte \enquote{View} kontrollieren.
@@ -95,17 +94,19 @@ Diese teilt Angular mit, welche Komponenten im Modul deklariert sind, sowie welc
 Das Root-Modul enthält zusätzlich auch die \texttt{bootstrap}-Definition, in der die Hauptkomponente festgelegt wird, die Angular beim Ausführen der Anwendung in die \texttt{index.html} der Webseite einfügt \cite{Angular.io2017a}.
 
 \subsubsection{Data Binding}
+\begin{wrapfigure}[9]{r}{0.4\textwidth}
+	\centering
+	\vspace{-20pt}
+	\includegraphics[width=0.4\textwidth]{bilder/kap5/databinding}
+	\vspace{-20pt}
+	\caption{Arten des Data Bindings in Angular 2}
+	\label{fig:databinding}
+\end{wrapfigure}
 Als Data Binding (zu Deutsch Datenbindung) bezeichnet man den Mechanismus zur Zuordnung von bestimmten Elementen eines Templates zu Datenstrukturen der dazugehörigen Komponente.
 \cref{fig:databinding} zeigt die vier Arten von Data Binding Syntax in Angular.
 Jede Form von Data Binding hat auch eine Richtung: von der Komponente zum Document Object Model (\acs{DOM}) im Template, vom \acs{DOM} zur Komponente oder bidirektional.
 
-\begin{figure}[ht!]
-	\centering
-	\includegraphics[width=0.4\linewidth]{bilder/kap5/databinding}
-	\caption[Arten des Data Bindings in Angular 2]{Arten des Data Bindings in Angular 2}
-	\label{fig:databinding}
-\end{figure}
-
+\newpage
 Um diese vier Data Binding Formen weiter zu veranschaulichen, ist in \cref{lst:databinding_ex} jeweils ein Beispiel dargestellt. In der ersten Zeile wird durch die doppelte geschweifte Klammern der Wert \texttt{name} vom Attribut \texttt{user} der Komponenten-Klasse in die \acs{DOM} eingefügt.
 Zeile 2 zeigt eine eingebundene Kindkomponente \texttt{FoodComponent}, die als Input den Wert des Attributs \texttt{selectedFood} von der Komponenten-Klasse erhält.
 Die runden Klammern mit einem Event-Bezeichner in Zeile 3 binden eine Methode der Komponente zum angegebenen Event.
