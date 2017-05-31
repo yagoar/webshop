@@ -157,6 +157,7 @@ Zusätzlich zu den Benutzer- und Administrator-Funktionalitäten wurden zwei wei
 \subsection{Weitere Implementierungsdetails}
 In diesem Abschnitt werden einzelne Details zur Implementierung vorgestellt.
 Die dabei behandelten Themen resultierten aus der Notwendigkeit für eine bestimmte Funktionalität des Shops oder stellten ein Problem dar, für das eine Lösung gefunden werden musste.
+
 \subsubsection{Passwort-Verschlüsselung}
 Dass Passwörter nicht unverschlüsselt in einer Datenbank enthalten sein sollten, ist seit dem Diebstahl von persönlichen Nutzerdaten und -Zugängen bei großen Online-Anbietern nicht nur Fachleuten, sondern auch Laien bekannt.
 Das Bundesamt für Sicherheit in der Informationstechnik \acs{BSI} gibt dafür offizielle Leitlinien heraus, in welcher Form das geschehen kann. \cite{BSI2016}
@@ -165,7 +166,8 @@ Dabei wurde auf das bestehende Framework jBCrypt zurückgegriffen, eine Java-Imp
 Dieser benutzt eine 64-Bit Block-Cipher, um einen Hash des Passworts zu generieren, der dann in der Datenbank gespeichert werden kann. \cite{Provos}
 Beim Registrieren eines Nutzers wird sein Passwort über das Framework zu einem Hash-Wert verarbeitet und gespeichert.
 Wenn ein User sich am System anmeldet, wird das im Klartext eingegebene Passwort wiederum mit dem gespeicherten Hash-Wert verglichen, was erneut vom Framework bewerkstelligt wird.
-\subsubsection{Token-Authentifizierung}
+
+\subsubsection{Token-Authentifizierung}\label{token}
 Um zu vermeiden, dass sich ein Benutzer für jede Anfrage an den Server immer wieder anmelden muss, wurde auf die Verwendung einer Token-Authentifizierung zurückgegriffen.
 
 \acs{JSON} Web Token (\acs{JWT}) ist ein offener Standard für die sichere Übermittlung von \acs{JSON}-Objekten zwischen zwei Partnern und wird häufig für die Authentifizierung bei Web-Anwendungen verwendet.
@@ -174,6 +176,7 @@ Diese können beispielsweise verwendet werden, um den Benutzer zu identifizieren
 
 Für den Webshop wurde \acs{JWT} integriert, indem beim Login ein Token erstellt und übermittelt wird. Für erneute Anfragen wird dieses mitgeschickt. Als zusätzliche Information enthält es die User-Id und die Rolle des Benutzers (User oder Admin).
 Bei sämtlichen REST-Endpoint-Methoden, die eine Anmeldung erfordern, werden das Token und für die Admin-Funktionalitäten die Rolle überprüft.
+
 \subsubsection{File Upload}
 Für das Hochladen und Speichern von Dateien oder Bildern durch Benutzer gibt es in Web-Anwendungen verschiedene Realisierungsmöglichkeiten.
 Wie bei allen Eingaben, die von Usern gemacht werden, muss dabei auch auf die Sicherheit geachtet werden, da durch solche Operationen Schaden an der Anwendung oder der Datenbank angerichtet werden können.
@@ -182,6 +185,7 @@ Da in der vorliegenden Anwendungen der Upload von Bild-Daten nur von Administrat
 Um Bilder für Artikel persistent zu speichern und auch bei einer möglichen Neu-Installation der Anwendung verfügbar zu haben, wurde eine Lösung gewählt, die die Bilder mit den Artikeldaten in der Datenbank speichert.
 Der Datentyp \acs{Blob} (Binary Large Object) ermöglicht das Speichern eines simplen binären Byte-Arrays, das beim Upload direkt als Stream geschrieben werden kann.
 Eine dafür erstellte REST-Endpoint-Funktion liefert dann für einen Artikel das entsprechende Bild zurück, das im Frontend angezeigt werden kann.
+
 \subsection{Frontend}
 Dieser Abschnitt behandelt die Details zur Implementierung der Angular 2 Anwendung. Die Gliederung ist so aufgebaut, dass einige der in \cref{angular_arch} beschriebenen   Architekturelementen mit der konkreten Umsetzung im Rahmen dieses Projekts vertieft werden.
 
@@ -195,7 +199,6 @@ Beide Module enthalten eine Modul-Klasse, eine Basiskomponente mit Template, sow
 \cref{lst:routing} zeigt einige der Routen des Shop-Moduls. Wie in Zeile 2 zu sehen ist, sind alle URLs des Webshops unter dem Pfad \enquote{shop} definiert, der die Hauptkomponente des Moduls repräsentiert. Im Template dieser Komponente ist der bereits erwähnte Platzhalter für die Kind-Komponenten enthalten. Die Eigenschaft \texttt{canActivate} der Pfade sagt aus, dass diese URL geschützt ist und ausschließlich angemeldete Benutzer darauf zugreifen können. Dafür wird eine Funktion ausgeführt die überprüft, ob bereits ein Benutzer angemeldet ist und im negativen Fall eine Weiterleitung zur Login-Komponente tätigt.
 
 \subsubsection{Komponenten}
-
 Die Anwendung ist so aufgebaut, dass es für den Inhalt jeder Seite eine Komponente gibt. Diese kann wiederum aus weitere Komponenten bestehen, die in das Template eingebunden werden. Ein Beispiel davon ist die Produktauflistung zu jedem Kategorie-Reiter. Alle Seiten dieser Art sehen wie auf \cref{fig:items_list} aus. Die rote Markierungen identifizieren die zwei Kind-Komponenten die eingebunden sind.
 
 \begin{figure}[th!]
@@ -210,17 +213,17 @@ Wie diese Seite realisiert wurde ist in \cref{lst:item-template} veranschaulicht
 \lstinputlisting[language=HTML5,breaklines=true,caption=Template für die Produklisten-Komponente,label=lst:item-template]{listings/items-template.html}
 
 \subsubsection{Services}
-%TODO Grundlegende Services, Observer Pattern im Shopping Cart Service
-
 Alle Methoden zum Aufruf der \acs{REST}-Schnittstellen sind in mehrere Services gekapselt. In der Angular Anwendung gibt es ein Service für jede auf \cref{fig:endpoints} dargestellte Schnittstelle, sozusagen als Gegenstück davon. \cref{lst:service} zeigt beispielsweise die Methode zum Aufruf des Warenkorbes eines Benutzers.
 \\
 \lstinputlisting[language=JavaScript,breaklines=true,caption=Methode für den Aufruf des Warenkorbes,label=lst:service]{listings/service.ts}
 
-In den Zeilen 3 und 4 von \cref{lst:service} werden Header für die HTTP-Anfrage vorbereitet. 
+In den Zeilen 3 und 4 von \cref{lst:service} wird der Authentifizierungs-Header für die HTTP-Anfrage vorbereitet. Der Header besteht aus einem JWT-Token (siehe \cref{token}), der beim Login in der Anwendung gespeichert wird. Die Anfrage selbst beginnt in Zeile 6, mit dem Aufruf der GET-Methode. Diese und alle weitere HTTP-Methoden sind in Angular durch ein eigenes Modul gewährleistet. Wie man sieht erhält die Methode als Parameter die URL zum gewünschten REST-Endpoint und die Header. Der Rückgabewert des asynchronen Aufrufs ist ein sogenanntes \textit{Observable}-Objekt der RxJS-Bibliothek. Diese Bibliothek implementiert in JavaScript das Observer-Pattern, ein Verhaltensmuster das zur Weitergabe von Änderungen an einem Objekt an andere beobachtende Objekte dient\cite{Angular.io2017b}. 
+
+\newpage
+Zwei der wichtigsten Methoden eines RxJS Observable-Objekts sind in \cref{lst:service} zu sehen. Zum einen die \texttt{map()}-Funktion in Zeile 7 und zum anderen \texttt{subscribe()} in der darunterliegenden Zeile. Erstere dient zur Transformation der empfangenen Daten, in diesem Fall das Parsen von den Daten zu einem JSON-Objekt. Die \texttt{subscribe()}-Funktion ermöglicht es, das Observable-Objekt auf jegliche Änderungen zu beobachten (im dargestellten Beispiel die Daten aus dem asynchronen Aufruf und eventuelle Fehlermeldungen). Sobald eine Änderung erkannt bzw. eine Antwort vom Server erhalten wird, können beliebige Aktionen mit den Daten durchgeführt werden.
+
+Ein weiterer Anwendungsfall des Observer-Patterns in Angular-Anwendungen sind die Interaktionen zwischen Komponenten die nicht direkt miteinander verwandt sind (keine Eltern-Kind-Beziehung). Auch davon ist in \cref{lst:service} ein Beispiel zu sehen. Das \texttt{shoppingCartUpdate}-Objekt in Zeile 12 ist im Service als ein sogenannter \textit{EventEmitter} deklariert. Andere Komponenten und Services der Anwendung können mit \texttt{subscribe()} dieses Objekt beobachten. Wird wie in Zeile 12 die Methode \texttt{next()} mit einem neuen Wert aufgerufen, bekommen alle Beobachter die Änderung mit.
 
 \subsubsection{Styling}
-%TODO Boostrap, wie funktioniert es (Grid-Paradigma), wie eingebunden
 
-%TODO Styling Entscheidungen, collapsible Menü mit ng2-bootstrap
-
-
+In \cref{angular_setup} wurde bereits erwähnt, dass im Frontend das Bootstrap Framework für das Design der Oberfläche verwendet wird. Grund dafür ist, dass Bootrap besonders für die Entwicklung von Anwendungen mit Responsive Design konzipiert ist. Traditionell wurde die Aufteilung der Elemente auf einer Webseite mit Tabellen gemacht, die jedoch schwer zu skalieren sind. Die Lösung von Bootstrap ist das sogenannte \textit{Grid System}. Hierbei ist die Oberfläche in Zeilen mit jeweils zwölf virtuelle Spalten mit skalierbarer Breite aufgeteilt. \cref{lst:item-template} in Seite \pageref{lst:item-template} zeigt wie das Grid System eingesetzt werden kann. Mit der CSS-Klasse \texttt{col} können beliebige Spalten-Kombinationen für unterschiedliche Display-Größen erstellt werden. 

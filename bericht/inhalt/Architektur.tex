@@ -1,18 +1,9 @@
 \section{Architektur von Webanwendungen}\label{web_architecture} \thispagestyle{nomarkstyle}
-Da es sich bei einem Online-Shop um eine Webanwendung handelt ist es notwendig, die allgemeine Architektur von solchen Anwendungen, sowie die unterschiedlichen Technologien, die eingesetzt werden können, zu analysieren.
-Diese Informationen werden später wichtig um eine Architekturentscheidung passend zu den Anforderungen und Zielen treffen zu können.
+Da es sich bei einem Online-Shop um eine Webanwendung handelt ist es notwendig,die allgemeine Architektur von solchen Anwendungen, sowie die unterschiedlichen Technologien, die eingesetzt werden können, zu analysieren.
+Diese Information weden sper wichtig um eine Architekturentscheidung passend zu den Anforderungen und Zielen treffen zu können.
 
 Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt.
 Stattdessen bekommt der Client initial eine Seite mit wenig Daten geliefert, die per asynchronen Aufrufen vom Server geholt werden \cite{Saternos2014}.
-
-Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt \cite{Techopedia2017}:
-\begin{itemize}
-	\item \textit{Tier 1: Präsentationsschicht.} Ist für die Darstellung der Daten und allgemein der Benutzerschnittstelle verantwortlich.
-	\item \textit{Tier 2: Anwendungsschicht.} Auch Businesslogik-Schicht genannt, kontrolliert diese Schicht die eigentliche Funktionalität der Anwendung.
-	\item \textit{Tier 3: Datenschicht.} Enthält die physischen Daten, üblicherweise in einer separaten Datenbank.
-\end{itemize}
-
-\autoref{fig:three-tier} veranschaulicht diese Unterteilung der logischen Komponenten im Zusammenhang mit der Trennung von Client und Server. %TODO Bild an die richtige Stelle bringen
 
 \begin{figure}[ht!]
 	\centering
@@ -20,6 +11,16 @@ Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die An
 	\caption{Drei-Schichten-Modell der Client-Server-Architektur \cite{Conallen2000}}
 	\label{fig:three-tier}
 \end{figure}
+
+Ein Modell dieser Architektur ist die Three-Tier-Architektur. Hierbei ist die Anwendung in drei logische Schichten unterteilt\cite{Techopedia2017}:
+
+\begin{itemize}
+	\item \textit{Tier 1: Präsentationsschicht.} Ist für die Darstellung der Daten und allgemein der Benutzerschnittstelle verantwortlich.
+	\item \textit{Tier 2: Anwendungsschicht.} Auch Businesslogik-Schicht genannt, kontrolliert diese Schicht die eigentliche Funktionalität der Anwendung.
+	\item \textit{Tier 3: Datenschicht.} Enthält die physischen Daten, üblicherweise in einer separaten Datenbank.
+\end{itemize}
+
+\autoref{fig:three-tier} veranschaulicht diese Unterteilung der logischen Komponenten im Zusammenhang mit der Trennung von Client und Server.
 
 \subsection{Serverseite}
 Ein wichtiger Punkt der serverseitigen Architektur ist die Auswahl einer passenden Programmiersprache. Zu den Aufgaben solcher Programmiersprachen gehören hauptsächlich das Entgegennehmen und Beantworten von Anfragen des Clients, sowie die Kommunikation mit der Datenbank (falls vorhanden).

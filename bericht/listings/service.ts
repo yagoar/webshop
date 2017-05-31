@@ -3,7 +3,8 @@ getShoppingCart() {
         let headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.get('/api/v1/shopping-cart', options).map((response: Response) => response.json())
+        this.http.get('/api/v1/shopping-cart', options)
+			.map((response: Response) => response.json())
             .subscribe(
                 data => {
                     this.shoppingCart = data;
