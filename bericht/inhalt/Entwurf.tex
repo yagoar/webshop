@@ -1,5 +1,5 @@
 \section{Entwurf}\label{outline} \thispagestyle{nomarkstyle}
-Dieses Kapitel beschreibt den konzeptionellen Entwurf des Datenmodells un der Oberfläche als Grundlage für die darauf aufbauende Umsetzung.
+Dieses Kapitel beschreibt den konzeptionellen Entwurf des Datenmodells und der Oberfläche als Grundlage für die darauf aufbauende Umsetzung.
 
 \subsection{Datenmodell}\label{outline_datamodel}
 Beim Entwurf des Datenmodells wurde darauf geachtet, es möglichst schlank zu halten und nur benötigte Informationen zu speichern.
@@ -29,14 +29,14 @@ Um die bereits angesprochene Hierarchie von Kategorien abzubilden, können Kateg
 Jeder Artikel ist genau einer Kategorie zugeordnet. Für die im Shop so genannten Sets mit mehreren Artikeln, gibt es eine zusätzliche Tabelle, die einem Set mehrere Einzel-Artikel zuordnen kann.
 Die Warenkörbe sind immer einem Benutzer zugeordnet. In gleicher Weise sind auch die Bestellungen Benutzer-spezifisch.
 Um der Tatsache gerecht zu werden, dass in einem Warenkorb oder in einer Bestellung Artikel mehrmals vorhanden sein können (wenn ein Benutzer von einem Artikel mehrere Exemplare bestellt), wurde eine zusätzliche Entität eingeführt.
-Diese ItemAndQuantity genannte Entität hält jeweils eine Referenz auf einen Artikel, sowie eine Anzahl für diesen Artikel.
+Diese \textit{ItemAndQuantity} genannte Entität hält jeweils eine Referenz auf einen Artikel, sowie eine Anzahl für diesen Artikel.
 Warenkörbe und Bestellungen enthalten also immer Einträge aus dieser Tabelle.
 Auf diese Weise genügt es, für einen Artikel immer nur einen Eintrag zu speichern, auch wenn die bestellte Menge größer ist.
 Ohne diese Lösung müsste es für eine Bestellung von beispielsweise dreißig Exemplaren eines Artikels auch dreißig Einträge geben.
 
 \subsection{Design der Weboberfläche}
 Vor Beginn der Implementierung wurde ein Konzept für das Design der Weboberfläche erstellt.
-Der Fokus lag hierbei eher auf den strukturellen Aspekten der Anwendung, also die Platzierung der unterschiedlichen Elemente auf der Oberfläche, und nicht so sehr auf das genaue Aussehen dieser Elemente.
+Der Fokus lag hierbei eher auf den strukturellen Aspekten der Anwendung, also die Platzierung der unterschiedlichen Elemente auf der Oberfläche, und nicht so sehr auf dem genauen Aussehen dieser Elemente.
 Der Grund dafür ist, dass die Struktur einen direkten Einfluss auf die Implementierung der Komponenten hat, während Farben, Schriftarten, Icons usw. auch im Verlauf der Entwicklung ohne einen größeren Umbau verändert werden können.
 
 \cref{fig:mockup_shop} zeigt die grundlegende Struktur der Shop-Oberfläche im Browser.
@@ -63,7 +63,7 @@ In beiden Fällen werden sogenannte Breakpoints für die Größe des Displays ge
 Der Unterschied liegt darin, dass beim Adaptative Design eine feste Anzahl an Breakpoints gesetzt wird und es keine Übergänge dazwischen gibt, während beim Responsive Design eine fluide Anpassung auch zwischen den Breakpoints möglich ist.
 
 Der für dieses Projekt gewählte Ansatz ist Responsive Webdesign, da es mithilfe der geplanten Technologien einfach zu realisieren ist.
-Auf \cref{fig:mockup_mobile} ist wieder die Grundstruktur der Webseite zu sehen, jedoch auf die Größe eines Smartphone-Displays skaliert.
+In \cref{fig:mockup_mobile} ist wieder die Grundstruktur der Webseite zu sehen, jedoch auf die Größe eines Smartphone-Displays skaliert.
 Eine wichtige Änderung bei dieser Skalierung betrifft die Menüleiste. Diese sollte nicht länger als Leiste dargestellt werden, sondern als auf- und zuklappbares Dropdown-Menü.
  
 \begin{figure}[ht!]

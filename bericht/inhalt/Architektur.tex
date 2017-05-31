@@ -42,7 +42,7 @@ Die verbreitetsten Webserver-Produkte sind Apache \acs{HTTP} Server, Microsoft I
 
 \subsubsection{Applikationsserver}
 Ein Applikationsserver liefert, konkret im Bereich der Webanwendungen, die notwendige Businesslogik um dynamische Inhalte generieren zu können, sowie andere Funktionalitäten bereitzustellen. Dieser Server ist direkt an den Webserver angeschlossen und fängt die Anfragen nach dynamischem Inhalt ab.
-Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt. \cite{ITWissen.info2013}
+Diese werden dann zum Beispiel mit einer Kombination aus Templates, laufenden Programmen und Datenbankzugriffen erzeugt \cite{ITWissen.info2013}.
 
 \subsubsection{Datenbank}
 Für die Datenhaltung in einer Webanwendung werden fast immer Datenbanken verwendet, um Inhalte unabhängig von der Anwendung persistent speichern zu können.
@@ -50,8 +50,8 @@ Dabei werden meist relationale oder \acs{NoSQL}-Datenbanken eingesetzt.
 
 Relationale Datenbanken bilden in ihrem Datenmodell die Beziehungen zwischen den einzelnen Datensätzen ab.
 Als Entitäten bezeichnet, werden logisch unabhängige Datensätze in jeweils eigenen Tabellen gespeichert. Jeder Datensatz ist dabei in einer eigenen Zeile gespeichert und die Tabellenspalten stellen die einzelnen Attribute dar.
-Verweise auf andere Entitäten für die Abbildung der Beziehungen werden durch sogenannte Fremdschlüssel-Spalten realisiert, die als Wert einen bestimmten Datensatz einer anderen Entität referenzieren können.
-Die am meisten verwendeten Produkte relationaler Datenbanken sind Oracle Database, MySQL, Microsoft SQL Server, PostgreSQL und DB2. \cite{solidIT2017}
+Verweise auf andere Entitäten für die Abbildung der Beziehungen werden durch sogenannte Fremdschlüssel-Spalten realisiert, die einen bestimmten Datensatz einer anderen oder auch derselben Entität referenzieren können.
+Die am meisten verwendeten Produkte relationaler Datenbanken sind Oracle Database, MySQL, Microsoft SQL Server, PostgreSQL und DB2 \cite{solidIT2017}.
 
 \acs{NoSQL}-Datenbanken sind die häufigste Alternative zu den relationalen Lösungen. Der Name ist ein Akronym für \enquote{Not only SQL} und spielt damit auf die Beschränkungen der verbreitetsten Datenbanksprache \acs{SQL} relationaler Modelle an.
 Unter dieser Kategorisierung gibt es verschiedene Modelle. Folgend sind die wichtigsten Datenmodelle mit je einem Beispiel \cite{solidIT2017a}:
@@ -71,18 +71,18 @@ Zum Zweck des Mappings, also der logischen Zuordnung, gibt es Hilfe in Form von 
 Die wichtigsten Vertreter sind hier das Entity Framework für .NET-Sprachen und Hibernate für Java.
 
 \subsection{Clientseite}
-Die wichtigsten clientseitigen Webtechnologien sind schon seit einigen Jahren HTML, CSS und JavaScript. Hierbei sind HTML und CSS Technologien für die Darstellung der Webseite und JavaScript allgemein für die clientseitige Programmierung zuständig\cite{Thattil2016}. 
+Die wichtigsten clientseitigen Webtechnologien sind schon seit einigen Jahren HTML, CSS und JavaScript. Hierbei sind HTML und CSS Technologien für die Darstellung der Webseite und JavaScript allgemein für die clientseitige Programmierung zuständig \cite{Thattil2016}.
 
 \subsubsection{JavaScript Erweiterungen}
 Ein wichtiger Wendepunkt in der Geschichte von JavaScript war die Einführung von \acs{AJAX} (\enquote{Asynchronous JavaScript and XML}). Durch AJAX wurde es möglich, asynchrone Anfragen zum Server durchzuführen, um Teile einer Seite zu verändern ohne sie komplett neu laden zu müssen. Ein großer Vorteil davon ist die erhöhte Reaktionsgeschwindigkeit der Weboberfläche, da diese nicht durch die Anfragen blockiert wird.
 
-Kurze Zeit später kamen die sogenannten JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code\cite{Fink2014}.
+Kurze Zeit später kamen die sogenannten JavaScript Document Object Model (\acs{DOM}) Libraries wie \textit{jQuery} dazu. Diese Bibliotheken fügten zahlreiche nützliche Funktionalitäten zur einfachen Manipulation der DOM und zur Implementierung von AJAX-Aufrufen mit deutlich weniger Code \cite{Fink2014}.
 
 \subsubsection{Arten von Webanwendungen}\label{web_types}
-Die bereits erwähnten Verbesserungen an JavaScript, aber auch an HTML mit der Veröffentlichung von HTML5, brachten mit sich neue Techniken mit denen neuartige Anwendungen aufgebaut werden konnten. Single Page Applications (\acs{SPA}s) sind eine Art von Webanwendung die in diesem Rahmen erschien. In den nächsten Abschnitten werden zum Vergleich die traditionelle Webanwendungen, sowie die moderne Single Page Applications näher beschrieben.
+Die bereits erwähnten Verbesserungen an JavaScript, aber auch an HTML mit der Veröffentlichung von HTML5, brachten neue Techniken mit sich, mit denen neuartige Anwendungen aufgebaut werden konnten. Single Page Applications (\acs{SPA}s) sind eine Art von Webanwendung, die in diesem Rahmen erschien. In den nächsten Abschnitten werden zum Vergleich die traditionellen Webanwendungen, sowie die modernen Single Page Applications näher beschrieben.
 
 \paragraph{Traditionelle Webanwendungen}$\;$ \\
-Eine traditionelle Webanwendung generiert die dargestellte Webseite immer wieder neu wenn eine beliebige HTTP Anfrage eingeht. Das gilt demnach nicht nur für den initialen Aufruf der Webseite sondern auch zum Beispiel für das Senden eines ausgefüllten Formulars. Die im Server erzeugte HTML-Seite wird als Antwort zum Client gesendet, was dort wiederum eine Aktualisierung bewirkt. Bei einer Aktualisierung lädt der Browser die Seite neu und ersetzt dabei die ursprüngliche HTML durch die neue\cite{Fink2014}. \cref{fig:traditional-web} veranschaulicht diesen Ablauf.
+Eine traditionelle Webanwendung generiert die dargestellte Webseite immer wieder neu wenn eine beliebige HTTP-Anfrage eingeht. Das gilt demnach nicht nur für den initialen Aufruf der Webseite, sondern zum Beispiel auch für das Senden eines ausgefüllten Formulars. Die im Server erzeugte HTML-Seite wird als Antwort zum Client gesendet, was dort wiederum eine Aktualisierung bewirkt. Bei einer Aktualisierung lädt der Browser die Seite neu und ersetzt dabei die ursprüngliche HTML durch die neue \cite{Fink2014}. \cref{fig:traditional-web} veranschaulicht diesen Ablauf.
 
 \begin{figure}[ht!]
 	\centering
@@ -92,7 +92,7 @@ Eine traditionelle Webanwendung generiert die dargestellte Webseite immer wieder
 \end{figure}
 
 \paragraph{Single Page Applications}$\;$ \\
-Wie auf \cref{fig:spa} zu erkennen ist, gibt es beim initialen Aufruf der Webseite keine Unterschiede zwischen traditionellen und Single Page Anwendungen. Bei allen weiteren Anfragen ist der Ablauf jedoch anders. Durch AJAX sind die Anwendungen in der Lage Anfragen an den Server zu senden, bei denen nur die notwendige Daten angefordert werden. Der Client erhält daraufhin eine Antwort, welche diese Daten enthält (üblicherweise im \acs{JSON}-Format). Sobald die Daten ankommen, kann der Client die HTML-Seite partiell anpassen, ganz ohne Neuladen des Browser-Fensters. Dieser Ablauf ist für alle Benutzerinteraktionen in der Anwendung gleich, selbst für die Navigation. Das macht die Antwortzeiten solcher Anwendungen sehr kurz, was eine sehr positive Auswirkung auf die Benutzerzufriedenheit hat.
+Wie auf \cref{fig:spa} zu erkennen ist, gibt es beim initialen Aufruf der Webseite keine Unterschiede zwischen traditionellen und Single Page Anwendungen. Bei allen weiteren Anfragen ist der Ablauf jedoch anders. Durch AJAX sind die Anwendungen in der Lage, Anfragen an den Server zu senden, bei denen nur die notwendigen Daten angefordert werden. Der Client erhält daraufhin eine Antwort, welche diese Daten enthält (üblicherweise im \acs{JSON}-Format). Sobald die Daten ankommen kann der Client die HTML-Seite partiell anpassen, ohne ein Neuladen des Browser-Fensters. Dieser Ablauf ist für alle Benutzerinteraktionen in der Anwendung gleich, selbst für die Navigation. Das macht die Antwortzeiten solcher Anwendungen sehr kurz, was eine sehr positive Auswirkung auf die Benutzerzufriedenheit hat.
 
 \begin{figure}[ht!]
 	\centering
