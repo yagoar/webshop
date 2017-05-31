@@ -192,13 +192,31 @@ Beide Module enthalten eine Modul-Klasse, eine Basiskomponente mit Template, sow
 \\
 \lstinputlisting[language=JavaScript,breaklines=true,caption=Routing-Module,label=lst:routing]{listings/routing.ts}
 
-\cref{lst:routing} zeigt einige der Routen des Shop-Moduls. Wie in Zeile 2 zu sehen ist, sind alle URLs des Webshops unter dem Pfad \enquote{shop} definiert, der die Hauptkomponente des Moduls repräsentiert. Im Template dieser Komponente ist der bereits erwähnte Platzhalter für die Kind-Komponenten enthalten.
+\cref{lst:routing} zeigt einige der Routen des Shop-Moduls. Wie in Zeile 2 zu sehen ist, sind alle URLs des Webshops unter dem Pfad \enquote{shop} definiert, der die Hauptkomponente des Moduls repräsentiert. Im Template dieser Komponente ist der bereits erwähnte Platzhalter für die Kind-Komponenten enthalten. Die Eigenschaft \texttt{canActivate} der Pfade sagt aus, dass diese URL geschützt ist und ausschließlich angemeldete Benutzer darauf zugreifen können. Dafür wird eine Funktion ausgeführt die überprüft, ob bereits ein Benutzer angemeldet ist und im negativen Fall eine Weiterleitung zur Login-Komponente tätigt.
 
 \subsubsection{Komponenten}
-%TODO Welche Komponenten gibt es
+
+Die Anwendung ist so aufgebaut, dass es für den Inhalt jeder Seite eine Komponente gibt. Diese kann wiederum aus weitere Komponenten bestehen, die in das Template eingebunden werden. Ein Beispiel davon ist die Produktauflistung zu jedem Kategorie-Reiter. Alle Seiten dieser Art sehen wie auf \cref{fig:items_list} aus. Die rote Markierungen identifizieren die zwei Kind-Komponenten die eingebunden sind.
+
+\begin{figure}[th!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{bilder/kap7/items}
+	\caption{Inhalt der Seite für die Kategorie Wolle}
+	\label{fig:items_list}
+\end{figure}
+
+Wie diese Seite realisiert wurde ist in \cref{lst:item-template} veranschaulicht. Die Einbindung der Unterkomponenten erfolgt jeweils in Zeilen 4 und 8. Die Attribute in orangefarbener Schrift sind sogenannte \textit{Inputs} der Komponente, eine Form von Data-Binding welche in \cref{angular_arch} bereits beschrieben wurde.
+\\
+\lstinputlisting[language=HTML5,breaklines=true,caption=Template für die Produklisten-Komponente,label=lst:item-template]{listings/items-template.html}
 
 \subsubsection{Services}
 %TODO Grundlegende Services, Observer Pattern im Shopping Cart Service
+
+Alle Methoden zum Aufruf der \acs{REST}-Schnittstellen sind in mehrere Services gekapselt. In der Angular Anwendung gibt es ein Service für jede auf \cref{fig:endpoints} dargestellte Schnittstelle, sozusagen als Gegenstück davon. \cref{lst:service} zeigt beispielsweise die Methode zum Aufruf des Warenkorbes eines Benutzers.
+\\
+\lstinputlisting[language=JavaScript,breaklines=true,caption=Methode für den Aufruf des Warenkorbes,label=lst:service]{listings/service.ts}
+
+In den Zeilen 3 und 4 von \cref{lst:service} werden Header für die HTTP-Anfrage vorbereitet. 
 
 \subsubsection{Styling}
 %TODO Boostrap, wie funktioniert es (Grid-Paradigma), wie eingebunden
