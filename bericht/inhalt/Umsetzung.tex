@@ -73,7 +73,7 @@ Für die Realisierung dieser Zugriffs-Klassen wurden Spring Data \acs{JPA} Repos
 Zugriffs-Funktionen zu definieren kann auf unterschiedliche Art und Weise passieren. Zum einen ermöglichen diese Repositories es, Suchkriterien über den Namen der jeweiligen Funktion zu definieren.
 So kann beispielsweise über eine Funktion \texttt{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält.
 Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
-Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (\textt{@Query}) eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
+Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (\texttt{@Query}) eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
 
 \subsection{Objektrelationale Abbildung (\acs{ORM}) mit Hibernate}
 Für die Zuordnung der Backend-Klassen zu den entsprechenden Tabellen in der Datenbank mit Hibernate stehen dem Entwickler eine Vielzahl von Annotationen zur Verfügung, von denen einige hier kurz beschrieben werden sollen.
