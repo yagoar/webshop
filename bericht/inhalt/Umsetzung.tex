@@ -50,7 +50,7 @@ Auch hier wird ein Tool eingesetzt, um eine Basisanwendung zu generieren. Dabei 
 Angular CLI ist ein Open Source Projekt und wird anhand des Node Package Managers (\acs{NPM}) installiert.
 Daraufhin stehen zahlreiche nützliche Befehle für die Kommandozeile zur Verfügung.
 Für das Generieren einer Angular-Anwendung wird \texttt{ng init} ausgeführt. Der Befehl erstellt alle notwendige Ressourcen, sowie die komplette Konfiguration dazu.
-Die statische Inhalte werden mit \texttt{ng build} gebaut.
+Die statischen Inhalte werden mit \texttt{ng build} gebaut.
 
 Damit Spring Boot diese Inhalte verwenden kann, müssen sie jedoch im  \texttt{resources/static} Verzeichnis (siehe \cref{fig:init-project}) liegen.
 Das kann durch einer Anpassung an der \texttt{angular-cli.json} Datei erreicht werden (Zeile 4 von \cref{lst:angular-cli}).
@@ -227,4 +227,4 @@ Ein weiterer Anwendungsfall des Observer-Patterns in Angular-Anwendungen sind di
 
 \subsubsection{Styling}
 
-In \cref{angular_setup} wurde bereits erwähnt, dass im Frontend das Bootstrap Framework für das Design der Oberfläche verwendet wird. Grund dafür ist, dass Bootrap besonders für die Entwicklung von Anwendungen mit Responsive Design konzipiert ist. Traditionell wurde die Aufteilung der Elemente auf einer Webseite mit Tabellen gemacht, die jedoch schwer zu skalieren sind. Die Lösung von Bootstrap ist das sogenannte \textit{Grid System}. Hierbei ist die Oberfläche in Zeilen mit jeweils zwölf virtuellen Spalten mit skalierbarer Breite aufgeteilt. \cref{lst:item-template} auf Seite \pageref{lst:item-template} zeigt, wie das Grid System eingesetzt werden kann. Mit der CSS-Klasse \texttt{col} können beliebige Spalten-Kombinationen für unterschiedliche Display-Größen erstellt werden.
+In \cref{angular_setup} wurde bereits erwähnt, dass im Frontend das Bootstrap Framework für das Design der Oberfläche verwendet wird. Grund dafür ist, dass Bootstrap besonders für die Entwicklung von Anwendungen mit Responsive Design konzipiert ist. Traditionell wurde die Aufteilung der Elemente auf einer Webseite mit Tabellen gemacht, die jedoch schwer zu skalieren sind. Die Lösung von Bootstrap ist das sogenannte \textit{Grid System}. Hierbei ist die Oberfläche in Zeilen mit jeweils zwölf virtuellen Spalten mit skalierbarer Breite aufgeteilt. \cref{lst:item-template} auf Seite \pageref{lst:item-template} zeigt, wie das Grid System eingesetzt werden kann. Mit der CSS-Klasse \texttt{col} können beliebige Spalten-Kombinationen für unterschiedliche Display-Größen erstellt werden.
