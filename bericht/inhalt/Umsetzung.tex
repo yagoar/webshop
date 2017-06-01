@@ -143,7 +143,7 @@ Für die vorliegende Anwendung wurden die Endpoints thematisch separiert.
 
 \begin{figure}[th!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{bilder/kap7/api_diagram}
+	\includegraphics[width=\linewidth]{bilder/kap7/api_diagram}
 	\caption{REST-Endpoints}
 	\label{fig:endpoints}
 \end{figure}
@@ -219,7 +219,7 @@ Alle Methoden zum Aufruf der \acs{REST}-Schnittstellen sind in mehrere Services 
 \lstinputlisting[language=JavaScript,breaklines=true,caption=Methode für den Aufruf des Warenkorbes,label=lst:service]{listings/service.ts}
 
 In den Zeilen 3 und 4 von \cref{lst:service} wird der Authentifizierungs-Header für die HTTP-Anfrage vorbereitet. Der Header besteht aus einem JWT-Token (siehe \cref{token}), der beim Login in der Anwendung gespeichert wird. Die Anfrage selbst beginnt in Zeile 6, mit dem Aufruf der GET-Methode. Diese und alle weitere HTTP-Methoden sind in Angular durch ein eigenes Modul gewährleistet. Wie man sieht erhält die Methode als Parameter die URL zum gewünschten REST-Endpoint und die Header. Der Rückgabewert des asynchronen Aufrufs ist ein sogenanntes \textit{Observable}-Objekt der RxJS-Bibliothek. Diese Bibliothek implementiert in JavaScript das Observer-Pattern, ein Verhaltensmuster das zur Weitergabe von Änderungen an einem Objekt an andere beobachtenden Objekte dient \cite{Angular.io2017b}.
-\newpage
+
 Zwei der wichtigsten Methoden eines RxJS Observable-Objekts sind in \cref{lst:service} zu sehen. Zum einen die \texttt{map()}-Funktion in Zeile 7 und zum anderen \texttt{subscribe()} in der darunterliegenden Zeile. Erstere dient zur Transformation der empfangenen Daten, in diesem Fall das Parsen von den Daten zu einem JSON-Objekt. Die \texttt{subscribe()}-Funktion ermöglicht es, das Observable-Objekt im Hinblick auf jegliche Änderungen zu beobachten (im dargestellten Beispiel die Daten aus dem asynchronen Aufruf und eventuelle Fehlermeldungen). Sobald eine Änderung erkannt bzw. eine Antwort vom Server erhalten wird, können beliebige Aktionen mit den Daten durchgeführt werden.
 
 Ein weiterer Anwendungsfall des Observer-Patterns in Angular-Anwendungen sind die Interaktionen zwischen Komponenten, die nicht direkt miteinander verwandt sind (keine Eltern-Kind-Beziehung). Auch davon ist in \cref{lst:service} ein Beispiel zu sehen. Das \texttt{shoppingCartUpdate}-Objekt in Zeile 12 ist im Service als ein sogenannter \textit{EventEmitter} deklariert. Andere Komponenten und Services der Anwendung können mit \texttt{subscribe()} dieses Objekt beobachten. Wird wie in Zeile 12 die Methode \texttt{next()} mit einem neuen Wert aufgerufen, bekommen alle Beobachter die Änderung mit.
