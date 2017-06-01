@@ -44,9 +44,9 @@ Es ist geplant, den Webshop als eine Single Page Application zu realisieren, der
 Angular gehört schon seit der ersten Version zu den beliebtesten Frameworks für diesen Anwendungsfall, da die mitgelieferten Tools und Funktionalitäten die Implementierung sehr vereinfachen.
 Besonders der Routing-Mechanismus für die Navigation in der \acs{SPA} ist in Angular sehr ausgereift.
 
-In den nächsten Seiten werden die Eigenschaften des Frameworks etwas ausführlicher behandelt, da das Thema im Laufe der Implementierung mitunter den größten Einarbeitungsaufwand betrug.
+Auf den nächsten Seiten werden die Eigenschaften des Frameworks etwas ausführlicher behandelt, da das Thema im Laufe der Implementierung mitunter den größten Einarbeitungsaufwand mit sich brachte.
 
-Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen\cite{Angular.io2017}:
+Eine Angular 2 Anwendung besteht im Grunde aus den folgenden Bausteinen \cite{Angular.io2017}:
 
 \begin{itemize}
 	\item \textit{Komponenten}
@@ -68,7 +68,7 @@ Templates definieren wie die Darstellung einer Komponente genau aussieht.
 Hierfür wird eine erweiterte Form von \acs{HTML} verwendet. Templates können somit zum Beispiel auch Kinder einer Komponente durch besondere HTML-Tags einbinden.
 
 \subsubsection{Metadaten}
-Metadaten geben Angular Information darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechenden Metadaten enthält.
+Metadaten geben Angular Informationen darüber, wie eine Klasse verarbeitet werden soll. Komponenten können erst von Angular als solche erkannt werden, wenn die Klasse die entsprechenden Metadaten enthält.
 In TypeScript wird das mittels einem Decorator gemacht, eine Annotation, die über die Klassendeklaration gesetzt wird.
 \\
 \begin{lstlisting}[language=JavaScript,caption={Beispiel Metadaten-Annotation für Komponenten},label=lst:metadata_ex]
@@ -90,7 +90,7 @@ Module fassen mehrere Komponenten und Services zu einem Funktionalitäts-Block z
 \lstinputlisting[language=JavaScript,caption=Root Modul,label=lst:root-module]{listings/app.module.ts}
 
 \cref{lst:root-module} zeigt den initialen Zustand eines Root-Moduls. Jedes Modul wird durch die Metadaten in der \texttt{@NgModule}-Annotation definiert.
-Diese teilt Angular mit, welche Komponenten im Modul deklariert sind, sowie welche Module und Services die importiert bzw. eingebunden werden müssen.
+Diese teilt Angular mit, welche Komponenten im Modul deklariert sind, sowie welche Module und Services importiert bzw. eingebunden werden müssen.
 Das Root-Modul enthält zusätzlich auch die \texttt{bootstrap}-Definition, in der die Hauptkomponente festgelegt wird, die Angular beim Ausführen der Anwendung in die \texttt{index.html} der Webseite einfügt \cite{Angular.io2017a}.
 
 \subsubsection{Data Binding}
@@ -132,7 +132,7 @@ Der Begriff Service ist in Angular sehr weit umfassend, da grundsätzlich alles 
 Typischerweise handelt es sich jedoch einfach um eine Klasse, die eine konkrete Aufgabe erledigt, wie zum Beispiel Logging, Datenzugriff, Berechnungen, usw.
 Diese Logik sollte idealerweise nie in Komponenten selbst enthalten sein, da diese nur als Mediatoren zwischen der Darstellung (View) und der Logik zu verstehen sind.
 
-Services zeigen an sich also keine besondere Angular-Eigenschaften. Um die Trennung zwischen der in Services gekapselten Logik und den Komponenten einfach zu überwinden, wird jedoch ein charakteristischer Mechanismus von Angular verwendet, die Dependency Injection.
+Services zeigen an sich also keine besonderen Angular-Eigenschaften. Um die Trennung zwischen der in Services gekapselten Logik und den Komponenten einfach zu überwinden, wird jedoch ein charakteristischer Mechanismus von Angular verwendet, die Dependency Injection.
 
 \subsubsection{Dependency Injection}
 Dieser Mechanismus ermöglicht es, eine neue Instanz einer Klasse mit allen nötigen Abhängigkeiten (in der Regel Services) zu versorgen.
@@ -159,7 +159,7 @@ In der Praxis nutzen diese Applikationen jedoch hauptsächlich die Eigenschaften
 Von den sechs oben beschriebenen Punkten ist das Prinzip des Uniform Interfaces das Hauptmerkmal von REST-Anwendungen, welches diese Art von Applikationen von anderen netzwerkbasierten Anwendungen unterscheidet.
 
 \subsection{MySQL Datenbank}
-Den Ausschlag für die Wahl eine MySQL-Datenbank gaben mehrere Faktoren. Zum einen ist MySQL weit verbreitet und bietet als Open Source-Projekt kostenfrei eine Vielzahl an Funktionalitäten.
+Den Ausschlag für die Wahl einer MySQL-Datenbank gaben mehrere Faktoren. Zum einen ist MySQL weit verbreitet und bietet als Open Source-Projekt kostenfrei eine Vielzahl an Funktionalitäten.
 Ein weiterer Punkt ist die bereits vorhandene Erfahrung im Umgang mit SQL aus vorigen Projekten.
 Unter dem Gesichtspunkt der bisherigen Entscheidung für Java als Implementierungssprache für das Backend ist MySQL eine gute Wahl, da es entsprechende Treiber für die Ansteuerung gibt und die Java Persistence API (\acs{JPA}) eine gute Integration der Datenbank in die Anwendung ermöglicht.
 

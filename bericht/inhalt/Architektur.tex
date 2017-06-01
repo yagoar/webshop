@@ -1,6 +1,6 @@
 \section{Architektur von Webanwendungen}\label{web_architecture} \thispagestyle{nomarkstyle}
 Da es sich bei einem Online-Shop um eine Webanwendung handelt ist es notwendig,die allgemeine Architektur von solchen Anwendungen, sowie die unterschiedlichen Technologien, die eingesetzt werden können, zu analysieren.
-Diese Information weden sper wichtig um eine Architekturentscheidung passend zu den Anforderungen und Zielen treffen zu können.
+Diese Information weden später wichtig um eine Architekturentscheidung passend zu den Anforderungen und Zielen treffen zu können.
 
 Moderne Webanwendungen werden heutzutage überwiegend nach der Client-Server-Architektur aufgebaut. Anders als bei den rein serverbasierten Ansätzen, wird im Client-Server-Ansatz nicht eine komplette Seite im Server generiert und dem Client übermittelt.
 Stattdessen bekommt der Client initial eine Seite mit wenig Daten geliefert, die per asynchronen Aufrufen vom Server geholt werden \cite{Saternos2014}.
@@ -92,7 +92,7 @@ Eine traditionelle Webanwendung generiert die dargestellte Webseite immer wieder
 \end{figure}
 
 \paragraph{Single Page Applications}$\;$ \\
-Wie auf \cref{fig:spa} zu erkennen ist, gibt es beim initialen Aufruf der Webseite keine Unterschiede zwischen traditionellen und Single Page Anwendungen. Bei allen weiteren Anfragen ist der Ablauf jedoch anders. Durch AJAX sind die Anwendungen in der Lage, Anfragen an den Server zu senden, bei denen nur die notwendigen Daten angefordert werden. Der Client erhält daraufhin eine Antwort, welche diese Daten enthält (üblicherweise im \acs{JSON}-Format). Sobald die Daten ankommen kann der Client die HTML-Seite partiell anpassen, ohne ein Neuladen des Browser-Fensters. Dieser Ablauf ist für alle Benutzerinteraktionen in der Anwendung gleich, selbst für die Navigation. Das macht die Antwortzeiten solcher Anwendungen sehr kurz, was eine sehr positive Auswirkung auf die Benutzerzufriedenheit hat.
+Wie in \cref{fig:spa} zu erkennen ist, gibt es beim initialen Aufruf der Webseite keine Unterschiede zwischen traditionellen und Single Page Anwendungen. Bei allen weiteren Anfragen ist der Ablauf jedoch anders. Durch AJAX sind die Anwendungen in der Lage, Anfragen an den Server zu senden, bei denen nur die notwendigen Daten angefordert werden. Der Client erhält daraufhin eine Antwort, welche diese Daten enthält (üblicherweise im \acs{JSON}-Format). Sobald die Daten ankommen kann der Client die HTML-Seite partiell anpassen, ohne ein Neuladen des Browser-Fensters. Dieser Ablauf ist für alle Benutzerinteraktionen in der Anwendung gleich, selbst für die Navigation. Das macht die Antwortzeiten solcher Anwendungen sehr kurz, was eine sehr positive Auswirkung auf die Benutzerzufriedenheit hat.
 
 \begin{figure}[ht!]
 	\centering

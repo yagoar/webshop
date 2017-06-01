@@ -71,29 +71,29 @@ Für die Realisierung dieser Zugriffs-Klassen wurden Spring Data \acs{JPA} Repos
 
 \cref{lst:CategoryDao} zeigt eine solche \acs{DAO}-Klasse.
 Zugriffs-Funktionen zu definieren kann auf unterschiedliche Art und Weise passieren. Zum einen ermöglichen diese Repositories es, Suchkriterien über den Namen der jeweiligen Funktion zu definieren.
-So kann beispielsweise über eine Funktion \textit{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält.
+So kann beispielsweise über eine Funktion \texttt{findByName(String name)} der Datensatz mit dem der Funktion übergebenen Namen gefunden werden, wenn die Tabelle eine Spalte mit der Bezeichnung \enquote{Name} enthält.
 Die Zuordnung auf die entsprechende Spalte in der Tabelle und die Suchfunktionalität müssen dabei nicht vom Entwickler implementiert werden.
-Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (@Query)eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
+Neben diesen semi-automatischen Funktionen können aber auch eigene Methoden definiert werden. Dafür kann über eine Annotation (\textt{@Query}) eine \acs{SQL}-Query für die Abfrage an die Datenbank definiert werden.
 
 \subsection{Objektrelationale Abbildung (\acs{ORM}) mit Hibernate}
 Für die Zuordnung der Backend-Klassen zu den entsprechenden Tabellen in der Datenbank mit Hibernate stehen dem Entwickler eine Vielzahl von Annotationen zur Verfügung, von denen einige hier kurz beschrieben werden sollen.
-Die Hibernate Annotation um eine Klasse als Entität zu markieren ist denkbar einfach. Sie wird direkt über der Klassendeklaration mit \textit{@Entity} gesetzt.
+Die Hibernate Annotation um eine Klasse als Entität zu markieren ist denkbar einfach. Sie wird direkt über der Klassendeklaration mit \texttt{@Entity} gesetzt.
 Darüber hinaus können auch der Tabellen-Name sowie die Namen der einzelnen Tabellenspalten über der Deklarationen der Klasse beziehungsweise des Attributs gesetzt werden.
 Das ist allerdings nur für den Fall nötig, wenn diese Namen explizit vergeben werden sollen. Ansonsten werden sie von Hibernate gemäß dem Namen der Klasse in Kleinschriebung vergeben.
 Wenn man aber die Zuordnung für eine bereits bestehende Datenbank machen möchte, sind diese expliziten Namen sehr hilfreich.
 Ist eine entsprechende Tabelle beim Start der Anwendung nicht vorhanden, wird diese von Hibernate erzeugt.
 
-Eine weitere wichtige Annotation betrifft die Primärschlüssel der Tabelle, die jeden Datensatz eindeutig identifizieren können. Mit \textit{@Id} kann dieses Attribut gekennzeichnet werden.
+Eine weitere wichtige Annotation betrifft die Primärschlüssel der Tabelle, die jeden Datensatz eindeutig identifizieren können. Mit \texttt{@Id} kann dieses Attribut gekennzeichnet werden.
 Empfehlenswert ist dabei die Verwendung eines künstlichen Schlüssels als Zahlenwert, der für jeden Eintrag hochgezählt wird.
-Auch dafür bietet Hibernate eine komfortable Lösung, indem über \textit{@GeneratedValue} ein solcher generierter Wert definiert wird.
+Auch dafür bietet Hibernate eine komfortable Lösung, indem über \texttt{@GeneratedValue} ein solcher generierter Wert definiert wird.
 In Kombination mit einer automatischen Inkrementierung, die MySQL für numerische Werte bietet, kann also automatisch ein eindeutiger Zahlenwert für jeden neuen Eintrag in der Tabelle gesetzt werden.
 
 Für die Beziehungen zu anderen Entitäten können entsprechend der Kardinalität folgende Annotationen verwendet werden:
 \begin{itemize}
-\item{@OneToOne.} 1:1
-\item{@OneToMany.} 1:N
-\item{@ManyToOne.} N:1
-\item{@ManyToMany.} N:N
+\item{\texttt{@OneToOne}.} 1:1
+\item{\texttt{@OneToMany}.} 1:N
+\item{\texttt{@ManyToOne}.} N:1
+\item{\texttt{@ManyToMany}.} N:N
 \end{itemize}
 
 Über Parameter dieser Annotationen können neben der Ziel-Entität weitere Einstellungen (beispielsweise zum Cascading) gemacht werden, auf die hier nicht näher eingegangen werden soll.
@@ -132,10 +132,10 @@ Die Jackson Bibliothek bietet einen mächtigen Parser für die Konvertierung von
 Die wichtigsten sind \cite{Jersey2017a}:
 
 \begin{itemize}
-\item{@Path.} Legt die \acs{URI} für die Web-Services der Klasse oder einer Methode fest.
-\item{@GET, @POST, @PUT, @DELETE, @HEAD.} Definiert die \acs{HTTP}-Methode für den Aufruf einer Service-Methode.
-\item{@Consumes, @Produces.} Spezifiziert den \acs{MIME}-Typ, der von der Funktion konsumiert bzw. produziert werden kann.
-\item{@*Param.} Wird verwendet, um Parameter bei der Anfrage auszulesen (z.B. \textit{@PathParam} für Paramter in der \acs{URI} der Anfrage).
+\item{\texttt{@Path}.} Legt die \acs{URI} für die Web-Services der Klasse oder einer Methode fest.
+\item{\texttt{@GET, @POST, @PUT, @DELETE, @HEAD}.} Definiert die \acs{HTTP}-Methode für den Aufruf einer Service-Methode.
+\item{\texttt{@Consumes, @Produces}.} Spezifiziert den \acs{MIME}-Typ, der von der Funktion konsumiert bzw. produziert werden kann.
+\item{\texttt{@*Param}.} Wird verwendet, um Parameter bei der Anfrage auszulesen (z.B. \texttt{@PathParam} für Paramter in der \acs{URI} der Anfrage).
 \end{itemize}
 
 Für die vorliegende Anwendung wurden die Endpoints thematisch separiert.
@@ -143,7 +143,7 @@ Für die vorliegende Anwendung wurden die Endpoints thematisch separiert.
 
 \begin{figure}[th!]
 	\centering
-	\includegraphics[width=0.75\linewidth]{bilder/kap7/api_diagram}
+	\includegraphics[width=0.8\linewidth]{bilder/kap7/api_diagram}
 	\caption{REST-Endpoints}
 	\label{fig:endpoints}
 \end{figure}
@@ -204,7 +204,7 @@ Die Anwendung ist so aufgebaut, dass für den Inhalt jeder Seite eine Komponente
 
 \begin{figure}[th!]
 	\centering
-	\includegraphics[width=\linewidth]{bilder/kap7/items}
+	\includegraphics[width=0.8\linewidth]{bilder/kap7/items}
 	\caption{Inhalt der Seite für die Kategorie Wolle}
 	\label{fig:items_list}
 \end{figure}
@@ -219,7 +219,6 @@ Alle Methoden zum Aufruf der \acs{REST}-Schnittstellen sind in mehrere Services 
 \lstinputlisting[language=JavaScript,breaklines=true,caption=Methode für den Aufruf des Warenkorbes,label=lst:service]{listings/service.ts}
 
 In den Zeilen 3 und 4 von \cref{lst:service} wird der Authentifizierungs-Header für die HTTP-Anfrage vorbereitet. Der Header besteht aus einem JWT-Token (siehe \cref{token}), der beim Login in der Anwendung gespeichert wird. Die Anfrage selbst beginnt in Zeile 6, mit dem Aufruf der GET-Methode. Diese und alle weitere HTTP-Methoden sind in Angular durch ein eigenes Modul gewährleistet. Wie man sieht erhält die Methode als Parameter die URL zum gewünschten REST-Endpoint und die Header. Der Rückgabewert des asynchronen Aufrufs ist ein sogenanntes \textit{Observable}-Objekt der RxJS-Bibliothek. Diese Bibliothek implementiert in JavaScript das Observer-Pattern, ein Verhaltensmuster das zur Weitergabe von Änderungen an einem Objekt an andere beobachtenden Objekte dient \cite{Angular.io2017b}.
-
 \newpage
 Zwei der wichtigsten Methoden eines RxJS Observable-Objekts sind in \cref{lst:service} zu sehen. Zum einen die \texttt{map()}-Funktion in Zeile 7 und zum anderen \texttt{subscribe()} in der darunterliegenden Zeile. Erstere dient zur Transformation der empfangenen Daten, in diesem Fall das Parsen von den Daten zu einem JSON-Objekt. Die \texttt{subscribe()}-Funktion ermöglicht es, das Observable-Objekt im Hinblick auf jegliche Änderungen zu beobachten (im dargestellten Beispiel die Daten aus dem asynchronen Aufruf und eventuelle Fehlermeldungen). Sobald eine Änderung erkannt bzw. eine Antwort vom Server erhalten wird, können beliebige Aktionen mit den Daten durchgeführt werden.
 
